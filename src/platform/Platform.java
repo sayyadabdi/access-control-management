@@ -17,7 +17,7 @@ public class Platform
 
 	private List<Permission> permissions;
 
-	private HashMap<Permission, Resource> permMap;
+	private HashMap<Permission, List<Resource>> permMap;
 
 	public Platform()
 	{
@@ -47,12 +47,13 @@ public class Platform
 		var random = new Random();
 		for (Permission p : this.permissions)
 		{
+			List<Resource> list = new ArrayList<>();
+			this.permMap.put(p, list);
+
 			for (Resource r : this.resources)
 			{
 				if (random.nextBoolean())
-				{
-					this.permMap.put(p, r);
-				}
+					list.add(r);
 			}
 		}
 
