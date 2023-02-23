@@ -1,5 +1,5 @@
 ------------ MODULE PermissionManager ----------------------------
-EXTENDS Naturals
+EXTENDS Naturals, Sequences
 
 CONSTANTS P, R, A
 
@@ -11,6 +11,7 @@ Permissions == 1..P
 Resources == 1..R
 Applications == 1..A
 
+Boolean == { "TRUE", "FALSE", "NULL" }
 PermissionRequestDecision == { "GRANT", "DENY" }
 UserConsent == { "ALLOW", "REJECT" }
 
@@ -18,52 +19,124 @@ UserConsent == { "ALLOW", "REJECT" }
 
 --algorithm PermissionManager
 {
-    variables permissions = [i \in P |-> i];
-              resources = [i \in R |-> i];
+    variables appPerms = [i \in Applications |-> [p \in Permissions |-> Boolean]];
+              permConstents = [p \in Permissions |-> [a \in Applications |-> Boolean]];
+              
+    macro arbitraryDecision() {skip;}
+    macro askUserPermission() {skip;}
+    macro incompleteRevoke() {skip;}
+    
+    procedure ask() {askLabel: skip;return}
+    procedure uninstallApp() {uninstallAppLabel: skip;return}    
+    procedure makeDecision() {makeDecisionLabel3: skip;return}
+    
     fair process (a \in Applications)
-    variables unchecked = {}, max = 0, nxt = 1 ;
-    { platform:- while (TRUE) 
-                 {
-                    cs: skip;
-                 };
+    {
+        platform:- while (TRUE)
+                   {
+                        i1: call ask();
+                        i2: call uninstallApp();
+                        i3: incompleteRevoke();
+                        i4: call makeDecision();
+                        i5: askUserPermission();
+                        i6: arbitraryDecision();
+                   };
     }
 }
 
     this ends the comment containing the PlusCal code
 *************)             
-\* BEGIN TRANSLATION (chksum(pcal) = "9c887fbb" /\ chksum(tla) = "7c8cb3da")
-VARIABLES permissions, resources, pc, unchecked, max, nxt
+\* BEGIN TRANSLATION (chksum(pcal) = "95c8b8da" /\ chksum(tla) = "d41402b0")
+VARIABLES appPerms, permConstents, pc, stack
 
-vars == << permissions, resources, pc, unchecked, max, nxt >>
+vars == << appPerms, permConstents, pc, stack >>
 
 ProcSet == (Applications)
 
 Init == (* Global variables *)
-        /\ permissions = [i \in P |-> i]
-        /\ resources = [i \in R |-> i]
-        (* Process a *)
-        /\ unchecked = [self \in Applications |-> {}]
-        /\ max = [self \in Applications |-> 0]
-        /\ nxt = [self \in Applications |-> 1]
+        /\ appPerms = [i \in Applications |-> [p \in Permissions |-> Boolean]]
+        /\ permConstents = [p \in Permissions |-> [a \in Applications |-> Boolean]]
+        /\ stack = [self \in ProcSet |-> << >>]
         /\ pc = [self \in ProcSet |-> "platform"]
 
-platform(self) == /\ pc[self] = "platform"
-                  /\ pc' = [pc EXCEPT ![self] = "cs"]
-                  /\ UNCHANGED << permissions, resources, unchecked, max, nxt >>
+askLabel(self) == /\ pc[self] = "askLabel"
+                  /\ TRUE
+                  /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                  /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                  /\ UNCHANGED << appPerms, permConstents >>
 
-cs(self) == /\ pc[self] = "cs"
+ask(self) == askLabel(self)
+
+uninstallAppLabel(self) == /\ pc[self] = "uninstallAppLabel"
+                           /\ TRUE
+                           /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                           /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                           /\ UNCHANGED << appPerms, permConstents >>
+
+uninstallApp(self) == uninstallAppLabel(self)
+
+makeDecisionLabel3(self) == /\ pc[self] = "makeDecisionLabel3"
+                            /\ TRUE
+                            /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                            /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                            /\ UNCHANGED << appPerms, permConstents >>
+
+makeDecision(self) == makeDecisionLabel3(self)
+
+platform(self) == /\ pc[self] = "platform"
+                  /\ pc' = [pc EXCEPT ![self] = "i1"]
+                  /\ UNCHANGED << appPerms, permConstents, stack >>
+
+i1(self) == /\ pc[self] = "i1"
+            /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "ask",
+                                                     pc        |->  "i2" ] >>
+                                                 \o stack[self]]
+            /\ pc' = [pc EXCEPT ![self] = "askLabel"]
+            /\ UNCHANGED << appPerms, permConstents >>
+
+i2(self) == /\ pc[self] = "i2"
+            /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "uninstallApp",
+                                                     pc        |->  "i3" ] >>
+                                                 \o stack[self]]
+            /\ pc' = [pc EXCEPT ![self] = "uninstallAppLabel"]
+            /\ UNCHANGED << appPerms, permConstents >>
+
+i3(self) == /\ pc[self] = "i3"
+            /\ TRUE
+            /\ pc' = [pc EXCEPT ![self] = "i4"]
+            /\ UNCHANGED << appPerms, permConstents, stack >>
+
+i4(self) == /\ pc[self] = "i4"
+            /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "makeDecision",
+                                                     pc        |->  "i5" ] >>
+                                                 \o stack[self]]
+            /\ pc' = [pc EXCEPT ![self] = "makeDecisionLabel3"]
+            /\ UNCHANGED << appPerms, permConstents >>
+
+i5(self) == /\ pc[self] = "i5"
+            /\ TRUE
+            /\ pc' = [pc EXCEPT ![self] = "i6"]
+            /\ UNCHANGED << appPerms, permConstents, stack >>
+
+i6(self) == /\ pc[self] = "i6"
             /\ TRUE
             /\ pc' = [pc EXCEPT ![self] = "platform"]
-            /\ UNCHANGED << permissions, resources, unchecked, max, nxt >>
+            /\ UNCHANGED << appPerms, permConstents, stack >>
 
-a(self) == platform(self) \/ cs(self)
+a(self) == platform(self) \/ i1(self) \/ i2(self) \/ i3(self) \/ i4(self)
+              \/ i5(self) \/ i6(self)
 
-Next == (\E self \in Applications: a(self))
+Next == (\E self \in ProcSet:  \/ ask(self) \/ uninstallApp(self)
+                               \/ makeDecision(self))
+           \/ (\E self \in Applications: a(self))
 
 Spec == /\ Init /\ [][Next]_vars
-        /\ \A self \in Applications : WF_vars((pc[self] # "platform") /\ a(self))
+        /\ \A self \in Applications : /\ WF_vars((pc[self] # "platform") /\ a(self))
+                                      /\ WF_vars(ask(self))
+                                      /\ WF_vars(uninstallApp(self))
+                                      /\ WF_vars(makeDecision(self))
 
 \* END TRANSLATION 
 =============================================================================
 \* Modification History
-\* Last modified Tue Feb 21 22:47:46 IRST 2023 by Amirhosein
+\* Last modified Thu Feb 23 06:14:48 IRST 2023 by Amirhosein
