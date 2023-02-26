@@ -1,0 +1,170 @@
+------------ MODULE PermissionManager ------------
+EXTENDS Naturals, Sequences
+
+CONSTANTS P, A
+
+ASSUME P \in Nat
+ASSUME A \in Nat
+
+Permissions == 1..P
+Applications == 1..A
+
+GRANT == "GRANT"
+DENY == "DENY"
+NULL == "NULL"
+ALLOW == "ALLOW"
+REJECT == "REJECT"
+
+PermissionRequestDecision == { GRANT, DENY, NULL }
+UserConsent == { ALLOW, REJECT }
+
+(***       this is a comment containing the PlusCal code *
+
+--algorithm PermissionManager
+{
+    variables appPerms = [i \in Applications |-> [p \in Permissions |-> PermissionRequestDecision]];
+              permConsents = [p \in Permissions |-> [a \in Applications |-> UserConsent]];
+
+    macro arbitraryDecision() {skip;}
+    macro askUserPermission() {skip;}
+    macro incompleteRevoke() {skip;}
+    
+    procedure ask(app, perm) {askLabel: if(appPerms[app][perm] = GRANT) { skip; };return}
+    procedure installApp(app) {installAppLabel: skip;return}
+    procedure uninstallApp(app) {uninstallAppLabel: skip;return}
+    procedure makeDecision(app) {makeDecisionLabel3: skip;return}
+    
+    fair process (a \in Applications)
+        variable perms = Permissions;
+    {
+        platform:- while (TRUE)
+                   {
+                        either { call installApp(self); }
+                        or
+                        {
+                            either { call uninstallApp(self); }
+                            or { with (p \in perms) { call ask(self, p); } }
+                        };
+                   };
+    }
+}
+
+    this ends the comment containing the PlusCal code
+*************)             
+\* BEGIN TRANSLATION (chksum(pcal) = "1b87d740" /\ chksum(tla) = "5c5279c6")
+\* Parameter app of procedure ask at line 32 col 19 changed to app_
+\* Parameter app of procedure installApp at line 33 col 26 changed to app_i
+\* Parameter app of procedure uninstallApp at line 34 col 28 changed to app_u
+CONSTANT defaultInitValue
+VARIABLES appPerms, permConsents, pc, stack, app_, perm, app_i, app_u, app, 
+          perms
+
+vars == << appPerms, permConsents, pc, stack, app_, perm, app_i, app_u, app, 
+           perms >>
+
+ProcSet == (Applications)
+
+Init == (* Global variables *)
+        /\ appPerms = [i \in Applications |-> [p \in Permissions |-> PermissionRequestDecision]]
+        /\ permConsents = [p \in Permissions |-> [a \in Applications |-> UserConsent]]
+        (* Procedure ask *)
+        /\ app_ = [ self \in ProcSet |-> defaultInitValue]
+        /\ perm = [ self \in ProcSet |-> defaultInitValue]
+        (* Procedure installApp *)
+        /\ app_i = [ self \in ProcSet |-> defaultInitValue]
+        (* Procedure uninstallApp *)
+        /\ app_u = [ self \in ProcSet |-> defaultInitValue]
+        (* Procedure makeDecision *)
+        /\ app = [ self \in ProcSet |-> defaultInitValue]
+        (* Process a *)
+        /\ perms = [self \in Applications |-> Permissions]
+        /\ stack = [self \in ProcSet |-> << >>]
+        /\ pc = [self \in ProcSet |-> "platform"]
+
+askLabel(self) == /\ pc[self] = "askLabel"
+                  /\ IF appPerms[app_[self]][perm[self]] = GRANT
+                        THEN /\ TRUE
+                        ELSE /\ TRUE
+                  /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                  /\ app_' = [app_ EXCEPT ![self] = Head(stack[self]).app_]
+                  /\ perm' = [perm EXCEPT ![self] = Head(stack[self]).perm]
+                  /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                  /\ UNCHANGED << appPerms, permConsents, app_i, app_u, app, 
+                                  perms >>
+
+ask(self) == askLabel(self)
+
+installAppLabel(self) == /\ pc[self] = "installAppLabel"
+                         /\ TRUE
+                         /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                         /\ app_i' = [app_i EXCEPT ![self] = Head(stack[self]).app_i]
+                         /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                         /\ UNCHANGED << appPerms, permConsents, app_, perm, 
+                                         app_u, app, perms >>
+
+installApp(self) == installAppLabel(self)
+
+uninstallAppLabel(self) == /\ pc[self] = "uninstallAppLabel"
+                           /\ TRUE
+                           /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                           /\ app_u' = [app_u EXCEPT ![self] = Head(stack[self]).app_u]
+                           /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                           /\ UNCHANGED << appPerms, permConsents, app_, perm, 
+                                           app_i, app, perms >>
+
+uninstallApp(self) == uninstallAppLabel(self)
+
+makeDecisionLabel3(self) == /\ pc[self] = "makeDecisionLabel3"
+                            /\ TRUE
+                            /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                            /\ app' = [app EXCEPT ![self] = Head(stack[self]).app]
+                            /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                            /\ UNCHANGED << appPerms, permConsents, app_, perm, 
+                                            app_i, app_u, perms >>
+
+makeDecision(self) == makeDecisionLabel3(self)
+
+platform(self) == /\ pc[self] = "platform"
+                  /\ \/ /\ /\ app_i' = [app_i EXCEPT ![self] = self]
+                           /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "installApp",
+                                                                    pc        |->  "platform",
+                                                                    app_i     |->  app_i[self] ] >>
+                                                                \o stack[self]]
+                        /\ pc' = [pc EXCEPT ![self] = "installAppLabel"]
+                        /\ UNCHANGED <<app_, perm, app_u>>
+                     \/ /\ \/ /\ /\ app_u' = [app_u EXCEPT ![self] = self]
+                                 /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "uninstallApp",
+                                                                          pc        |->  "platform",
+                                                                          app_u     |->  app_u[self] ] >>
+                                                                      \o stack[self]]
+                              /\ pc' = [pc EXCEPT ![self] = "uninstallAppLabel"]
+                              /\ UNCHANGED <<app_, perm>>
+                           \/ /\ \E p \in perms[self]:
+                                   /\ /\ app_' = [app_ EXCEPT ![self] = self]
+                                      /\ perm' = [perm EXCEPT ![self] = p]
+                                      /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "ask",
+                                                                               pc        |->  "platform",
+                                                                               app_      |->  app_[self],
+                                                                               perm      |->  perm[self] ] >>
+                                                                           \o stack[self]]
+                                   /\ pc' = [pc EXCEPT ![self] = "askLabel"]
+                              /\ app_u' = app_u
+                        /\ app_i' = app_i
+                  /\ UNCHANGED << appPerms, permConsents, app, perms >>
+
+a(self) == platform(self)
+
+Next == (\E self \in ProcSet:  \/ ask(self) \/ installApp(self)
+                               \/ uninstallApp(self) \/ makeDecision(self))
+           \/ (\E self \in Applications: a(self))
+
+Spec == /\ Init /\ [][Next]_vars
+        /\ \A self \in Applications : /\ WF_vars((pc[self] # "platform") /\ a(self))
+                                      /\ WF_vars(installApp(self))
+                                      /\ WF_vars(uninstallApp(self))
+                                      /\ WF_vars(ask(self))
+
+\* END TRANSLATION 
+=============================================================================
+\* Modification History
+\* Last modified Sat Feb 25 06:14:31 IRST 2023 by Amirhosein

@@ -2,22 +2,28 @@
 <launchConfiguration type="org.lamport.tla.toolbox.tool.tlc.modelCheck">
     <stringAttribute key="configurationName" value="Model_1"/>
     <intAttribute key="distributedFPSetCount" value="0"/>
-    <stringAttribute key="distributedNetworkInterface" value="192.168.1.11"/>
+    <stringAttribute key="distributedNetworkInterface" value="127.0.0.1"/>
     <intAttribute key="distributedNodesCount" value="1"/>
     <stringAttribute key="distributedTLC" value="off"/>
+    <intAttribute key="fpIndex" value="5"/>
     <intAttribute key="maxHeapSize" value="25"/>
     <stringAttribute key="modelBehaviorInit" value=""/>
     <stringAttribute key="modelBehaviorNext" value=""/>
     <stringAttribute key="modelBehaviorSpec" value="Spec"/>
-    <intAttribute key="modelBehaviorSpecType" value="0"/>
-    <stringAttribute key="modelBehaviorVars" value=""/>
+    <intAttribute key="modelBehaviorSpecType" value="1"/>
+    <stringAttribute key="modelBehaviorVars" value="permConsents, perm_, stack, perm, test, appPerms, app_, pc, installed, app, app_i, app_u"/>
     <stringAttribute key="modelComments" value=""/>
     <booleanAttribute key="modelCorrectnessCheckDeadlock" value="false"/>
-    <listAttribute key="modelCorrectnessInvariants"/>
+    <listAttribute key="modelCorrectnessInvariants">
+        <listEntry value="0TypeOK"/>
+    </listAttribute>
     <listAttribute key="modelCorrectnessProperties"/>
+    <intAttribute key="modelEditorOpenTabs" value="8"/>
+    <stringAttribute key="modelExpressionEval" value=""/>
     <listAttribute key="modelParameterConstants">
-        <listEntry value="P;;;0;0"/>
-        <listEntry value="R;;;0;0"/>
+        <listEntry value="P;;2;0;0"/>
+        <listEntry value="A;;2;0;0"/>
+        <listEntry value="defaultInitValue;;2;0;0"/>
     </listAttribute>
     <intAttribute key="modelVersion" value="20191005"/>
     <intAttribute key="numberOfWorkers" value="4"/>
