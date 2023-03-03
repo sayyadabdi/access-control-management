@@ -1,0 +1,243 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 122 and seed -2488681158818800400 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 10348] (Windows 8 6.2 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file C:\Users\Amirhosein\git\access-control-management\spec\BasicCustomPermissionManager.toolbox\Model_1\MC.tla
+Parsing file C:\Users\Amirhosein\git\access-control-management\spec\BasicCustomPermissionManager.toolbox\Model_1\BasicCustomPermissionManager.tla
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\TLC.tla
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Naturals.tla
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Sequences.tla
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\FiniteSets.tla
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module BasicCustomPermissionManager
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module MC
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2023-03-03 12:44:07)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2212:0 @!@!@
+Implied-temporal checking--satisfiability problem has 1 branches.
+@!@!@ENDMSG 2212 @!@!@
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2102:1 @!@!@
+Attempted to check if 
+"NULL"
+which is not a TLC function value, is in the set of functions:
+{ <<"GRANT", "GRANT">>,
+  <<"GRANT", "DENY">>,
+  <<"GRANT", "NULL">>,
+  <<"DENY", "GRANT">>,
+  <<"DENY", "DENY">>,
+  <<"DENY", "NULL">>,
+  <<"NULL", "GRANT">>,
+  <<"NULL", "DENY">>,
+  <<"NULL", "NULL">> }
+While working on the initial state:
+/\ appPerms = <<"NULL", "NULL">>
+/\ pc = <<"install", "install">>
+/\ appCP = <<"NULL", "NULL">>
+/\ installed = <<FALSE, FALSE>>
+/\ stack = <<<<>>, <<>>>>
+/\ a1 = <<2, 2>>
+/\ a2 = <<2, 2>>
+/\ userConsent = <<"NULL", "NULL">>
+
+@!@!@ENDMSG 2102 @!@!@
+@!@!@STARTMSG 2147:1 @!@!@
+TLC was unable to fingerprint.
+
+Fingerprint Stack Trace:
+1) line 167, col 44 to line 167, col 86 of module BasicCustomPermissionManager
+0) line 167, col 27 to line 167, col 87 of module BasicCustomPermissionManager
+
+Reason:
+Attempted to check if 
+"NULL"
+which is not a TLC function value, is in the set of functions:
+{ <<"GRANT", "GRANT">>,
+  <<"GRANT", "DENY">>,
+  <<"GRANT", "NULL">>,
+  <<"DENY", "GRANT">>,
+  <<"DENY", "DENY">>,
+  <<"DENY", "NULL">>,
+  <<"NULL", "GRANT">>,
+  <<"NULL", "DENY">>,
+  <<"NULL", "NULL">> }
+@!@!@ENDMSG 2147 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2023-03-03 12:44:08
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2773:0 @!@!@
+<Init line 80, col 1 to line 80, col 4 of module BasicCustomPermissionManager>: 2:2
+@!@!@ENDMSG 2773 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 81, col 9 to line 89, col 48 of module BasicCustomPermissionManager: 2
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<l1 line 91, col 1 to line 91, col 8 of module BasicCustomPermissionManager>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 93, col 27 to line 93, col 74 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 94, col 27 to line 94, col 74 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 95, col 27 to line 95, col 74 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 96, col 27 to line 96, col 77 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 97, col 27 to line 97, col 63 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 99, col 38 to line 99, col 85 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 100, col 38 to line 100, col 85 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 101, col 38 to line 101, col 85 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 102, col 38 to line 102, col 88 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 103, col 38 to line 103, col 74 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 105, col 49 to line 105, col 97 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 106, col 49 to line 106, col 69 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 107, col 55 to line 107, col 103 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 108, col 55 to line 108, col 109 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 109, col 55 to line 109, col 102 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 110, col 55 to line 110, col 110 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 111, col 38 to line 111, col 85 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 112, col 38 to line 112, col 85 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 113, col 38 to line 113, col 85 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 114, col 38 to line 114, col 88 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 115, col 16 to line 115, col 47 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<install line 119, col 1 to line 119, col 13 of module BasicCustomPermissionManager>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 120, col 21 to line 120, col 66 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 121, col 21 to line 121, col 58 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 122, col 21 to line 122, col 79 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<platform line 124, col 1 to line 124, col 14 of module BasicCustomPermissionManager>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 126, col 45 to line 126, col 84 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 127, col 45 to line 127, col 87 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 128, col 39 to line 128, col 76 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 129, col 28 to line 129, col 65 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 130, col 28 to line 130, col 54 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 132, col 51 to line 132, col 90 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 133, col 51 to line 133, col 93 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 135, col 45 to line 135, col 58 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 136, col 34 to line 136, col 71 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 137, col 34 to line 137, col 60 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 139, col 42 to line 139, col 73 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 140, col 42 to line 140, col 80 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 141, col 42 to line 145, col 90 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 146, col 39 to line 146, col 70 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 147, col 34 to line 147, col 47 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 148, col 22 to line 148, col 69 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<Terminating line 153, col 1 to line 153, col 11 of module BasicCustomPermissionManager>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 154, col 19 to line 154, col 32 of module BasicCustomPermissionManager: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2774:0 @!@!@
+<TypeOK line 167, col 1 to line 167, col 6 of module BasicCustomPermissionManager>
+@!@!@ENDMSG 2774 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 167, col 11 to line 170, col 52 of module BasicCustomPermissionManager: 2
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2774:0 @!@!@
+<Action line 172, col 18 to line 174, col 48 of module BasicCustomPermissionManager>
+@!@!@ENDMSG 2774 @!@!@
+@!@!@STARTMSG 2202:0 @!@!@
+End of statistics.
+@!@!@ENDMSG 2202 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(1) at 2023-03-03 12:44:08: 1 states generated (47 s/min), 1 distinct states found (47 ds/min), 1 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+1 states generated, 1 distinct states found, 1 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 1261ms at (2023-03-03 12:44:08)
+@!@!@ENDMSG 2186 @!@!@
