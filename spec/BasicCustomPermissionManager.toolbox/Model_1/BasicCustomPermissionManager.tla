@@ -33,7 +33,7 @@ Boolean == { TRUE, FALSE }
     
     macro defineCP(app) { either { appCP[app] := NORMAL; }
                           or { appCP[app] := SENSITIVE; }}
-               
+
     macro askUser(app) { either { appPerms[app] := GRANT; userConsent[app] := ALLOW; }
                             or { appPerms[app] := DENY; userConsent[app] := REJECT; }}
                
@@ -168,4 +168,4 @@ UserAgreed == [] ~(/\ \E m \in Applications : appCP[m] = SENSITIVE
 
 =============================================================================
 \* Modification History
-\* Last modified Fri Mar 03 12:53:22 IRST 2023 by Amirhosein
+\* Last modified Fri Mar 03 13:03:19 IRST 2023 by Amirhosein
