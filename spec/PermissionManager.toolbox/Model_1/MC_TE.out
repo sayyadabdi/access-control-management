@@ -2,13 +2,13 @@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 50 and seed -8595664729150773564 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 2396] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 31 and seed -4326999672809273560 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 10888] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
 @!@!@ENDMSG 2220 @!@!@
-Parsing file C:\Users\Amirhosein\git\access-control-management\spec\PermissionManager.toolbox\Model_1\MC.tla
-Parsing file C:\Users\Amirhosein\git\access-control-management\spec\PermissionManager.toolbox\Model_1\PermissionManager.tla
+Parsing file G:\repos\access-control-management\spec\PermissionManager.toolbox\Model_1\MC.tla
+Parsing file G:\repos\access-control-management\spec\PermissionManager.toolbox\Model_1\PermissionManager.tla
 Warning: symbols were renamed.
 Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\TLC.tla
 Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Naturals.tla
@@ -24,16 +24,16 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2023-03-18 21:02:58)
+Starting... (2023-03-20 09:32:35)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2189:0 @!@!@
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2023-03-18 21:02:59.
+Finished computing initial states: 1 distinct state generated at 2023-03-20 09:32:36.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2110:1 @!@!@
-Invariant CpUserAgreed is violated.
+Invariant UserAgreed is violated.
 @!@!@ENDMSG 2110 @!@!@
 @!@!@STARTMSG 2121:1 @!@!@
 The behavior up to this point is:
@@ -47,7 +47,6 @@ The behavior up to this point is:
 /\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"platform", "platform">>
 /\ perm = <<defaultInitValue, defaultInitValue>>
-/\ appCP = <<"NULL", "NULL">>
 /\ app = <<defaultInitValue, defaultInitValue>>
 /\ perm_ = <<defaultInitValue, defaultInitValue>>
 /\ installed = <<FALSE, FALSE>>
@@ -56,24 +55,7 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-2: <platform line 208, col 19 to line 212, col 53 of module PermissionManager>
-/\ app_i = <<defaultInitValue, defaultInitValue>>
-/\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
-/\ app_u = <<defaultInitValue, defaultInitValue>>
-/\ app_ = <<defaultInitValue, defaultInitValue>>
-/\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ pc = <<"install", "platform">>
-/\ perm = <<defaultInitValue, defaultInitValue>>
-/\ appCP = <<"NULL", "NULL">>
-/\ app = <<defaultInitValue, defaultInitValue>>
-/\ perm_ = <<defaultInitValue, defaultInitValue>>
-/\ installed = <<FALSE, FALSE>>
-/\ stack = <<<<>>, <<>>>>
-/\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-3: <install line 214, col 18 to line 247, col 62 of module PermissionManager>
+2: <platform line 225, col 19 to line 258, col 57 of module PermissionManager>
 /\ app_i = <<1, defaultInitValue>>
 /\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
@@ -81,24 +63,22 @@ The behavior up to this point is:
 /\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"l5", "platform">>
 /\ perm = <<defaultInitValue, defaultInitValue>>
-/\ appCP = <<"NULL", "NULL">>
 /\ app = <<defaultInitValue, defaultInitValue>>
 /\ perm_ = <<defaultInitValue, defaultInitValue>>
 /\ installed = <<FALSE, FALSE>>
-/\ stack = <<<<[pc |-> "update", app_i |-> defaultInitValue, procedure |-> "installApp"]>>, <<>>>>
+/\ stack = <<<<[pc |-> "platform", app_i |-> defaultInitValue, procedure |-> "installApp"]>>, <<>>>>
 /\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-4: <l5 line 165, col 13 to line 171, col 54 of module PermissionManager>
+3: <l5 line 183, col 13 to line 189, col 47 of module PermissionManager>
 /\ app_i = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
 /\ app_ = <<defaultInitValue, defaultInitValue>>
 /\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ pc = <<"update", "platform">>
+/\ pc = <<"platform", "platform">>
 /\ perm = <<defaultInitValue, defaultInitValue>>
-/\ appCP = <<"NULL", "NULL">>
 /\ app = <<defaultInitValue, defaultInitValue>>
 /\ perm_ = <<defaultInitValue, defaultInitValue>>
 /\ installed = <<TRUE, FALSE>>
@@ -107,7 +87,7 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-5: <update line 249, col 17 to line 274, col 75 of module PermissionManager>
+4: <platform line 225, col 19 to line 258, col 57 of module PermissionManager>
 /\ app_i = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
@@ -115,7 +95,6 @@ The behavior up to this point is:
 /\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"l1", "platform">>
 /\ perm = <<defaultInitValue, defaultInitValue>>
-/\ appCP = <<"NULL", "NULL">>
 /\ app = <<defaultInitValue, defaultInitValue>>
 /\ perm_ = <<1, defaultInitValue>>
 /\ installed = <<TRUE, FALSE>>
@@ -124,7 +103,7 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-6: <l1 line 115, col 13 to line 132, col 47 of module PermissionManager>
+5: <l1 line 133, col 13 to line 150, col 40 of module PermissionManager>
 /\ app_i = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
@@ -132,7 +111,6 @@ The behavior up to this point is:
 /\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"l2", "platform">>
 /\ perm = <<defaultInitValue, defaultInitValue>>
-/\ appCP = <<"NULL", "NULL">>
 /\ app = <<defaultInitValue, defaultInitValue>>
 /\ perm_ = <<1, defaultInitValue>>
 /\ installed = <<TRUE, FALSE>>
@@ -141,7 +119,7 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-7: <l2 line 134, col 13 to line 144, col 73 of module PermissionManager>
+6: <l2 line 152, col 13 to line 162, col 56 of module PermissionManager>
 /\ app_i = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
@@ -149,7 +127,6 @@ The behavior up to this point is:
 /\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"l7", "platform">>
 /\ perm = <<1, defaultInitValue>>
-/\ appCP = <<"NULL", "NULL">>
 /\ app = <<1, defaultInitValue>>
 /\ perm_ = <<1, defaultInitValue>>
 /\ installed = <<TRUE, FALSE>>
@@ -158,7 +135,7 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-8: <l7 line 186, col 13 to line 204, col 36 of module PermissionManager>
+7: <l7 line 204, col 13 to line 221, col 79 of module PermissionManager>
 /\ app_i = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
@@ -166,7 +143,6 @@ The behavior up to this point is:
 /\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"l3", "platform">>
 /\ perm = <<defaultInitValue, defaultInitValue>>
-/\ appCP = <<"NULL", "NULL">>
 /\ app = <<defaultInitValue, defaultInitValue>>
 /\ perm_ = <<1, defaultInitValue>>
 /\ installed = <<TRUE, FALSE>>
@@ -175,7 +151,7 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-9: <l3 line 146, col 13 to line 153, col 67 of module PermissionManager>
+8: <l3 line 164, col 13 to line 171, col 61 of module PermissionManager>
 /\ app_i = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
@@ -183,7 +159,6 @@ The behavior up to this point is:
 /\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"l4", "platform">>
 /\ perm = <<defaultInitValue, defaultInitValue>>
-/\ appCP = <<"NULL", "NULL">>
 /\ app = <<defaultInitValue, defaultInitValue>>
 /\ perm_ = <<1, defaultInitValue>>
 /\ installed = <<TRUE, FALSE>>
@@ -192,7 +167,7 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-10: <l4 line 155, col 13 to line 161, col 71 of module PermissionManager>
+9: <l4 line 173, col 13 to line 179, col 54 of module PermissionManager>
 /\ app_i = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
@@ -200,7 +175,6 @@ The behavior up to this point is:
 /\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"platform", "platform">>
 /\ perm = <<defaultInitValue, defaultInitValue>>
-/\ appCP = <<"NULL", "NULL">>
 /\ app = <<defaultInitValue, defaultInitValue>>
 /\ perm_ = <<defaultInitValue, defaultInitValue>>
 /\ installed = <<TRUE, FALSE>>
@@ -209,24 +183,7 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-11: <platform line 208, col 19 to line 212, col 53 of module PermissionManager>
-/\ app_i = <<defaultInitValue, defaultInitValue>>
-/\ permsInUse = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
-/\ app_u = <<defaultInitValue, defaultInitValue>>
-/\ app_ = <<defaultInitValue, defaultInitValue>>
-/\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
-/\ pc = <<"install", "platform">>
-/\ perm = <<defaultInitValue, defaultInitValue>>
-/\ appCP = <<"NULL", "NULL">>
-/\ app = <<defaultInitValue, defaultInitValue>>
-/\ perm_ = <<defaultInitValue, defaultInitValue>>
-/\ installed = <<TRUE, FALSE>>
-/\ stack = <<<<>>, <<>>>>
-/\ appPermConsents = <<<<"ALLOW", "NULL">>, <<"NULL", "NULL">>>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-12: <install line 214, col 18 to line 247, col 62 of module PermissionManager>
+10: <platform line 225, col 19 to line 258, col 57 of module PermissionManager>
 /\ app_i = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
 /\ app_u = <<1, defaultInitValue>>
@@ -234,33 +191,15 @@ The behavior up to this point is:
 /\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"l6", "platform">>
 /\ perm = <<defaultInitValue, defaultInitValue>>
-/\ appCP = <<"NULL", "NULL">>
 /\ app = <<defaultInitValue, defaultInitValue>>
 /\ perm_ = <<defaultInitValue, defaultInitValue>>
 /\ installed = <<TRUE, FALSE>>
-/\ stack = <<<<[pc |-> "update", app_u |-> defaultInitValue, procedure |-> "uninstallApp"]>>, <<>>>>
+/\ stack = <<<<[pc |-> "platform", app_u |-> defaultInitValue, procedure |-> "uninstallApp"]>>, <<>>>>
 /\ appPermConsents = <<<<"ALLOW", "NULL">>, <<"NULL", "NULL">>>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-13: <l6 line 175, col 13 to line 182, col 77 of module PermissionManager>
-/\ app_i = <<defaultInitValue, defaultInitValue>>
-/\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
-/\ app_u = <<defaultInitValue, defaultInitValue>>
-/\ app_ = <<defaultInitValue, defaultInitValue>>
-/\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
-/\ pc = <<"update", "platform">>
-/\ perm = <<defaultInitValue, defaultInitValue>>
-/\ appCP = <<"NULL", "NULL">>
-/\ app = <<defaultInitValue, defaultInitValue>>
-/\ perm_ = <<defaultInitValue, defaultInitValue>>
-/\ installed = <<FALSE, FALSE>>
-/\ stack = <<<<>>, <<>>>>
-/\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-14: <update line 249, col 17 to line 274, col 75 of module PermissionManager>
+11: <l6 line 193, col 13 to line 200, col 70 of module PermissionManager>
 /\ app_i = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
@@ -268,7 +207,6 @@ The behavior up to this point is:
 /\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"platform", "platform">>
 /\ perm = <<defaultInitValue, defaultInitValue>>
-/\ appCP = <<"SENSITIVE", "NULL">>
 /\ app = <<defaultInitValue, defaultInitValue>>
 /\ perm_ = <<defaultInitValue, defaultInitValue>>
 /\ installed = <<FALSE, FALSE>>
@@ -276,396 +214,412 @@ The behavior up to this point is:
 /\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 
 @!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+12: <platform line 225, col 19 to line 258, col 57 of module PermissionManager>
+/\ app_i = <<1, defaultInitValue>>
+/\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_u = <<defaultInitValue, defaultInitValue>>
+/\ app_ = <<defaultInitValue, defaultInitValue>>
+/\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
+/\ pc = <<"l5", "platform">>
+/\ perm = <<defaultInitValue, defaultInitValue>>
+/\ app = <<defaultInitValue, defaultInitValue>>
+/\ perm_ = <<defaultInitValue, defaultInitValue>>
+/\ installed = <<FALSE, FALSE>>
+/\ stack = <<<<[pc |-> "platform", app_i |-> defaultInitValue, procedure |-> "installApp"]>>, <<>>>>
+/\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+13: <l5 line 183, col 13 to line 189, col 47 of module PermissionManager>
+/\ app_i = <<defaultInitValue, defaultInitValue>>
+/\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_u = <<defaultInitValue, defaultInitValue>>
+/\ app_ = <<defaultInitValue, defaultInitValue>>
+/\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
+/\ pc = <<"platform", "platform">>
+/\ perm = <<defaultInitValue, defaultInitValue>>
+/\ app = <<defaultInitValue, defaultInitValue>>
+/\ perm_ = <<defaultInitValue, defaultInitValue>>
+/\ installed = <<TRUE, FALSE>>
+/\ stack = <<<<>>, <<>>>>
+/\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+14: <platform line 225, col 19 to line 258, col 57 of module PermissionManager>
+/\ app_i = <<defaultInitValue, defaultInitValue>>
+/\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_u = <<defaultInitValue, defaultInitValue>>
+/\ app_ = <<1, defaultInitValue>>
+/\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
+/\ pc = <<"l1", "platform">>
+/\ perm = <<defaultInitValue, defaultInitValue>>
+/\ app = <<defaultInitValue, defaultInitValue>>
+/\ perm_ = <<1, defaultInitValue>>
+/\ installed = <<TRUE, FALSE>>
+/\ stack = <<<<[pc |-> "platform", app_ |-> defaultInitValue, perm_ |-> defaultInitValue, procedure |-> "ask"]>>, <<>>>>
+/\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+15: <l1 line 133, col 13 to line 150, col 40 of module PermissionManager>
+/\ app_i = <<defaultInitValue, defaultInitValue>>
+/\ permsInUse = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_u = <<defaultInitValue, defaultInitValue>>
+/\ app_ = <<defaultInitValue, defaultInitValue>>
+/\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
+/\ pc = <<"platform", "platform">>
+/\ perm = <<defaultInitValue, defaultInitValue>>
+/\ app = <<defaultInitValue, defaultInitValue>>
+/\ perm_ = <<defaultInitValue, defaultInitValue>>
+/\ installed = <<TRUE, FALSE>>
+/\ stack = <<<<>>, <<>>>>
+/\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2023-03-18 21:02:59
+The coverage statistics at 2023-03-20 09:32:36
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
-<Init line 96, col 1 to line 96, col 4 of module PermissionManager>: 2:2
+<Init line 115, col 1 to line 115, col 4 of module PermissionManager>: 2:2
 @!@!@ENDMSG 2773 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 97, col 9 to line 113, col 49 of module PermissionManager: 2
+  line 116, col 9 to line 131, col 49 of module PermissionManager: 2
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<l1 line 115, col 1 to line 115, col 8 of module PermissionManager>: 1148:2198
+<l1 line 133, col 1 to line 133, col 8 of module PermissionManager>: 152:325
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 115, col 16 to line 115, col 30 of module PermissionManager: 13479
+  line 133, col 16 to line 133, col 30 of module PermissionManager: 2067
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 115, col 16 to line 115, col 23 of module PermissionManager: 11281
+  |line 133, col 16 to line 133, col 23 of module PermissionManager: 1746
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 116, col 19 to line 116, col 59 of module PermissionManager: 2198
+  line 134, col 19 to line 134, col 59 of module PermissionManager: 325
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 117, col 24 to line 121, col 77 of module PermissionManager: 21
+  line 135, col 27 to line 135, col 93 of module PermissionManager: 35
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 122, col 30 to line 122, col 69 of module PermissionManager: 2177
+  |line 135, col 41 to line 135, col 93 of module PermissionManager: 39
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 123, col 35 to line 127, col 88 of module PermissionManager: 21
+  line 136, col 27 to line 136, col 74 of module PermissionManager: 35
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 128, col 38 to line 128, col 69 of module PermissionManager: 2156
+  |line 136, col 33 to line 136, col 74 of module PermissionManager: 39
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 129, col 38 to line 130, col 58 of module PermissionManager: 2156
+  line 137, col 27 to line 137, col 80 of module PermissionManager: 35
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 131, col 16 to line 132, col 47 of module PermissionManager: 2198
+  |line 137, col 35 to line 137, col 80 of module PermissionManager: 39
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 138, col 27 to line 138, col 83 of module PermissionManager: 35
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 138, col 36 to line 138, col 83 of module PermissionManager: 39
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 139, col 27 to line 139, col 77 of module PermissionManager: 35
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 139, col 36 to line 139, col 77 of module PermissionManager: 39
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 140, col 30 to line 140, col 69 of module PermissionManager: 286
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 141, col 35 to line 145, col 88 of module PermissionManager: 36
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 146, col 38 to line 146, col 69 of module PermissionManager: 250
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 147, col 38 to line 148, col 58 of module PermissionManager: 250
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 149, col 16 to line 150, col 40 of module PermissionManager: 321
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<l2 line 134, col 1 to line 134, col 8 of module PermissionManager>: 915:1421
+<l2 line 152, col 1 to line 152, col 8 of module PermissionManager>: 134:198
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 134, col 16 to line 134, col 30 of module PermissionManager: 12701
+  line 152, col 16 to line 152, col 30 of module PermissionManager: 1938
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 134, col 16 to line 134, col 23 of module PermissionManager: 11280
+  |line 152, col 16 to line 152, col 23 of module PermissionManager: 1740
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 135, col 16 to line 141, col 67 of module PermissionManager: 1421
+  line 153, col 16 to line 159, col 67 of module PermissionManager: 198
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 142, col 16 to line 142, col 47 of module PermissionManager: 1421
+  line 160, col 16 to line 160, col 47 of module PermissionManager: 198
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 143, col 16 to line 144, col 73 of module PermissionManager: 1421
+  line 161, col 16 to line 162, col 56 of module PermissionManager: 198
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<l3 line 146, col 1 to line 146, col 8 of module PermissionManager>: 657:1097
+<l3 line 164, col 1 to line 164, col 8 of module PermissionManager>: 130:197
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 146, col 16 to line 146, col 30 of module PermissionManager: 12376
+  line 164, col 16 to line 164, col 30 of module PermissionManager: 1936
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 146, col 16 to line 146, col 23 of module PermissionManager: 11279
+  |line 164, col 16 to line 164, col 23 of module PermissionManager: 1739
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 147, col 19 to line 147, col 59 of module PermissionManager: 1097
+  line 165, col 19 to line 165, col 59 of module PermissionManager: 197
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 148, col 24 to line 148, col 93 of module PermissionManager: 549
+  line 166, col 24 to line 166, col 93 of module PermissionManager: 99
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 149, col 27 to line 149, col 30 of module PermissionManager: 548
+  line 167, col 27 to line 167, col 30 of module PermissionManager: 98
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 150, col 27 to line 150, col 46 of module PermissionManager: 548
+  line 168, col 27 to line 168, col 46 of module PermissionManager: 98
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 151, col 16 to line 151, col 47 of module PermissionManager: 1097
+  line 169, col 16 to line 169, col 47 of module PermissionManager: 197
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 152, col 16 to line 153, col 67 of module PermissionManager: 1097
+  line 170, col 16 to line 171, col 61 of module PermissionManager: 197
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<l4 line 155, col 1 to line 155, col 8 of module PermissionManager>: 380:586
+<l4 line 173, col 1 to line 173, col 8 of module PermissionManager>: 76:139
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 155, col 16 to line 155, col 30 of module PermissionManager: 11864
+  line 173, col 16 to line 173, col 30 of module PermissionManager: 1877
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 155, col 16 to line 155, col 23 of module PermissionManager: 11278
+  |line 173, col 16 to line 173, col 23 of module PermissionManager: 1738
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 156, col 16 to line 156, col 63 of module PermissionManager: 586
+  line 174, col 16 to line 174, col 63 of module PermissionManager: 139
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 157, col 16 to line 157, col 69 of module PermissionManager: 586
+  line 175, col 16 to line 175, col 69 of module PermissionManager: 139
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 158, col 16 to line 158, col 72 of module PermissionManager: 586
+  line 176, col 16 to line 176, col 72 of module PermissionManager: 139
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 159, col 16 to line 159, col 66 of module PermissionManager: 586
+  line 177, col 16 to line 177, col 66 of module PermissionManager: 139
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 160, col 16 to line 161, col 71 of module PermissionManager: 586
+  line 178, col 16 to line 179, col 54 of module PermissionManager: 139
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<l5 line 165, col 1 to line 165, col 8 of module PermissionManager>: 106:652
+<l5 line 183, col 1 to line 183, col 8 of module PermissionManager>: 31:160
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 165, col 16 to line 165, col 30 of module PermissionManager: 11929
+  line 183, col 16 to line 183, col 30 of module PermissionManager: 1897
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 165, col 16 to line 165, col 23 of module PermissionManager: 11277
+  |line 183, col 16 to line 183, col 23 of module PermissionManager: 1737
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 166, col 16 to line 166, col 68 of module PermissionManager: 652
+  line 184, col 16 to line 184, col 68 of module PermissionManager: 160
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 167, col 16 to line 167, col 63 of module PermissionManager: 652
+  line 185, col 16 to line 185, col 63 of module PermissionManager: 160
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 168, col 16 to line 168, col 72 of module PermissionManager: 652
+  line 186, col 16 to line 186, col 72 of module PermissionManager: 160
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 169, col 16 to line 169, col 66 of module PermissionManager: 652
+  line 187, col 16 to line 187, col 66 of module PermissionManager: 160
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 170, col 16 to line 171, col 54 of module PermissionManager: 652
+  line 188, col 16 to line 189, col 47 of module PermissionManager: 160
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<l6 line 175, col 1 to line 175, col 8 of module PermissionManager>: 12:275
+<l6 line 193, col 1 to line 193, col 8 of module PermissionManager>: 47:164
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 175, col 16 to line 175, col 30 of module PermissionManager: 11551
+  line 193, col 16 to line 193, col 30 of module PermissionManager: 1899
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 175, col 16 to line 175, col 23 of module PermissionManager: 11276
+  |line 193, col 16 to line 193, col 23 of module PermissionManager: 1735
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 176, col 16 to line 176, col 69 of module PermissionManager: 275
+  line 194, col 16 to line 194, col 69 of module PermissionManager: 164
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 177, col 16 to line 177, col 95 of module PermissionManager: 275
+  line 195, col 16 to line 195, col 95 of module PermissionManager: 164
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 178, col 16 to line 178, col 104 of module PermissionManager: 275
+  line 196, col 16 to line 196, col 104 of module PermissionManager: 164
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 179, col 16 to line 179, col 63 of module PermissionManager: 275
+  line 197, col 16 to line 197, col 63 of module PermissionManager: 164
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 180, col 16 to line 180, col 72 of module PermissionManager: 275
+  line 198, col 16 to line 198, col 72 of module PermissionManager: 164
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 181, col 16 to line 181, col 66 of module PermissionManager: 275
+  line 199, col 16 to line 199, col 66 of module PermissionManager: 164
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 182, col 16 to line 182, col 77 of module PermissionManager: 275
+  line 200, col 16 to line 200, col 70 of module PermissionManager: 164
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<l7 line 186, col 1 to line 186, col 8 of module PermissionManager>: 1026:3672
+<l7 line 204, col 1 to line 204, col 8 of module PermissionManager>: 161:524
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 186, col 16 to line 186, col 30 of module PermissionManager: 12193
+  line 204, col 16 to line 204, col 30 of module PermissionManager: 1865
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 186, col 16 to line 186, col 23 of module PermissionManager: 11275
+  |line 204, col 16 to line 204, col 23 of module PermissionManager: 1734
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 187, col 22 to line 190, col 104 of module PermissionManager: 918
+  line 205, col 22 to line 208, col 104 of module PermissionManager: 131
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 191, col 22 to line 191, col 69 of module PermissionManager: 1836
+  line 209, col 22 to line 209, col 69 of module PermissionManager: 262
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 192, col 22 to line 192, col 72 of module PermissionManager: 1836
+  line 210, col 22 to line 210, col 72 of module PermissionManager: 262
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 193, col 22 to line 193, col 75 of module PermissionManager: 1836
+  line 211, col 22 to line 211, col 75 of module PermissionManager: 262
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 194, col 22 to line 194, col 72 of module PermissionManager: 1836
+  line 212, col 22 to line 212, col 72 of module PermissionManager: 262
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 195, col 22 to line 198, col 104 of module PermissionManager: 918
+  line 213, col 22 to line 216, col 104 of module PermissionManager: 131
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 199, col 22 to line 199, col 69 of module PermissionManager: 1836
+  line 217, col 22 to line 217, col 69 of module PermissionManager: 262
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 200, col 22 to line 200, col 72 of module PermissionManager: 1836
+  line 218, col 22 to line 218, col 72 of module PermissionManager: 262
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 201, col 22 to line 201, col 75 of module PermissionManager: 1836
+  line 219, col 22 to line 219, col 75 of module PermissionManager: 262
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 202, col 22 to line 202, col 72 of module PermissionManager: 1836
+  line 220, col 22 to line 220, col 72 of module PermissionManager: 262
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 203, col 16 to line 204, col 36 of module PermissionManager: 3672
+  line 221, col 16 to line 221, col 79 of module PermissionManager: 524
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<platform line 208, col 1 to line 208, col 14 of module PermissionManager>: 719:1701
+<platform line 225, col 1 to line 225, col 14 of module PermissionManager>: 450:1302
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 208, col 22 to line 208, col 42 of module PermissionManager: 12967
+  line 225, col 22 to line 225, col 42 of module PermissionManager: 2153
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 208, col 22 to line 208, col 29 of module PermissionManager: 11266
+  |line 225, col 22 to line 225, col 29 of module PermissionManager: 1727
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 209, col 22 to line 209, col 58 of module PermissionManager: 1701
+  line 226, col 31 to line 226, col 49 of module PermissionManager: 426
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 210, col 22 to line 212, col 53 of module PermissionManager: 1701
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2772:0 @!@!@
-<install line 214, col 1 to line 214, col 13 of module PermissionManager>: 1570:3286
-@!@!@ENDMSG 2772 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 214, col 21 to line 214, col 40 of module PermissionManager: 12513
+  line 227, col 36 to line 232, col 70 of module PermissionManager: 201
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 214, col 21 to line 214, col 28 of module PermissionManager: 11264
+  line 233, col 39 to line 233, col 76 of module PermissionManager: 225
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 215, col 30 to line 215, col 48 of module PermissionManager: 1249
+  line 234, col 39 to line 234, col 66 of module PermissionManager: 225
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 216, col 35 to line 221, col 69 of module PermissionManager: 855
+  line 235, col 28 to line 235, col 59 of module PermissionManager: 426
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 222, col 38 to line 222, col 73 of module PermissionManager: 394
+  line 236, col 31 to line 236, col 48 of module PermissionManager: 426
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 223, col 38 to line 223, col 65 of module PermissionManager: 394
+  line 237, col 45 to line 241, col 96 of module PermissionManager: 225
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 224, col 27 to line 224, col 58 of module PermissionManager: 1249
+  line 242, col 45 to line 242, col 76 of module PermissionManager: 225
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 225, col 30 to line 225, col 47 of module PermissionManager: 1249
+  line 243, col 45 to line 243, col 69 of module PermissionManager: 225
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 226, col 44 to line 230, col 95 of module PermissionManager: 394
+  line 245, col 47 to line 252, col 81 of module PermissionManager: 450
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 231, col 44 to line 231, col 75 of module PermissionManager: 394
+  line 244, col 54 to line 244, col 64 of module PermissionManager: 225
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 232, col 44 to line 232, col 68 of module PermissionManager: 394
+  line 253, col 45 to line 253, col 58 of module PermissionManager: 450
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 234, col 46 to line 241, col 80 of module PermissionManager: 788
+  line 254, col 39 to line 254, col 76 of module PermissionManager: 201
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 233, col 53 to line 233, col 63 of module PermissionManager: 394
+  line 255, col 39 to line 255, col 79 of module PermissionManager: 201
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 242, col 44 to line 242, col 57 of module PermissionManager: 788
+  line 256, col 28 to line 256, col 41 of module PermissionManager: 876
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 243, col 38 to line 243, col 73 of module PermissionManager: 855
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 244, col 38 to line 244, col 78 of module PermissionManager: 855
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 245, col 27 to line 245, col 40 of module PermissionManager: 2037
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 246, col 21 to line 247, col 62 of module PermissionManager: 3286
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2772:0 @!@!@
-<update line 249, col 1 to line 249, col 12 of module PermissionManager>: 1856:5964
-@!@!@ENDMSG 2772 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 249, col 20 to line 249, col 38 of module PermissionManager: 12436
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 249, col 20 to line 249, col 27 of module PermissionManager: 11262
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 250, col 29 to line 250, col 46 of module PermissionManager: 1176
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 251, col 40 to line 251, col 82 of module PermissionManager: 634
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 252, col 43 to line 252, col 85 of module PermissionManager: 632
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 252, col 52 to line 252, col 85 of module PermissionManager: 634
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 253, col 34 to line 253, col 74 of module PermissionManager: 542
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 254, col 26 to line 254, col 63 of module PermissionManager: 1808
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 254, col 32 to line 254, col 63 of module PermissionManager: 1810
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 255, col 26 to line 255, col 57 of module PermissionManager: 1808
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 256, col 35 to line 256, col 52 of module PermissionManager: 1174
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 257, col 40 to line 258, col 91 of module PermissionManager: 632
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 259, col 40 to line 260, col 56 of module PermissionManager: 542
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 261, col 32 to line 261, col 69 of module PermissionManager: 1806
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 262, col 32 to line 262, col 63 of module PermissionManager: 1806
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 264, col 34 to line 271, col 68 of module PermissionManager: 2348
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 263, col 41 to line 263, col 51 of module PermissionManager: 1174
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 272, col 32 to line 272, col 45 of module PermissionManager: 2348
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 273, col 20 to line 274, col 75 of module PermissionManager: 5962
+  line 257, col 22 to line 258, col 57 of module PermissionManager: 1302
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2774:0 @!@!@
-<TypeOK line 291, col 1 to line 291, col 6 of module PermissionManager>
+<TypeOK line 275, col 1 to line 275, col 6 of module PermissionManager>
 @!@!@ENDMSG 2774 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 291, col 11 to line 295, col 52 of module PermissionManager: 8390
+  line 275, col 11 to line 278, col 52 of module PermissionManager: 1182
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2774:0 @!@!@
-<Action line 302, col 20 to line 305, col 76 of module PermissionManager>
+<Action line 280, col 18 to line 283, col 68 of module PermissionManager>
 @!@!@ENDMSG 2774 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 302, col 20 to line 305, col 76 of module PermissionManager: 8390
+  line 280, col 18 to line 283, col 68 of module PermissionManager: 1182
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 302, col 22 to line 305, col 75 of module PermissionManager: 8390
+  |line 280, col 20 to line 283, col 67 of module PermissionManager: 1182
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 302, col 25 to line 305, col 75 of module PermissionManager: 8390
+  ||line 280, col 23 to line 283, col 67 of module PermissionManager: 1182
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 302, col 59 to line 305, col 75 of module PermissionManager: 16778
+  |||line 280, col 57 to line 283, col 67 of module PermissionManager: 2361
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 303, col 25 to line 305, col 75 of module PermissionManager: 33555
+  ||||line 281, col 23 to line 283, col 67 of module PermissionManager: 4719
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||||line 303, col 28 to line 303, col 57 of module PermissionManager: 33555
+  |||||line 281, col 26 to line 281, col 73 of module PermissionManager: 4719
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||||line 304, col 28 to line 304, col 68 of module PermissionManager: 8337
+  |||||line 282, col 26 to line 282, col 66 of module PermissionManager: 4147
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||||line 305, col 28 to line 305, col 75 of module PermissionManager: 366
+  |||||line 283, col 26 to line 283, col 67 of module PermissionManager: 110
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 302, col 77 to line 302, col 87 of module PermissionManager: 16778
+  ||||line 280, col 75 to line 280, col 85 of module PermissionManager: 2361
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 302, col 44 to line 302, col 55 of module PermissionManager: 8390
+  |||line 280, col 42 to line 280, col 53 of module PermissionManager: 1182
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2202:0 @!@!@
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(15) at 2023-03-18 21:02:59: 20,823 states generated (618,504 s/min), 8,390 distinct states found (249,207 ds/min), 2,757 states left on queue.
+Progress(16) at 2023-03-20 09:32:36: 2,982 states generated (126,803 s/min), 1,182 distinct states found (50,262 ds/min), 313 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
-20823 states generated, 8390 distinct states found, 2757 states left on queue.
+2982 states generated, 1182 distinct states found, 313 states left on queue.
 @!@!@ENDMSG 2199 @!@!@
 @!@!@STARTMSG 2194:0 @!@!@
-The depth of the complete state graph search is 15.
+The depth of the complete state graph search is 16.
 @!@!@ENDMSG 2194 @!@!@
 @!@!@STARTMSG 2268:0 @!@!@
-The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 8 and the 95th percentile is 4).
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 6 and the 95th percentile is 3).
 @!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 2031ms at (2023-03-18 21:02:59)
+Finished in 1422ms at (2023-03-20 09:32:36)
 @!@!@ENDMSG 2186 @!@!@

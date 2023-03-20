@@ -2,13 +2,13 @@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 5 and seed -5976051531986168584 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 5496] (Windows 8 6.2 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 84 and seed 490361300087462110 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 408] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
 @!@!@ENDMSG 2220 @!@!@
-Parsing file C:\Users\Amirhosein\git\access-control-management\spec\CustomPermissionManager.toolbox\Model_1\MC.tla
-Parsing file C:\Users\Amirhosein\git\access-control-management\spec\CustomPermissionManager.toolbox\Model_1\CustomPermissionManager.tla
+Parsing file G:\repos\access-control-management\spec\CustomPermissionManager.toolbox\Model_1\MC.tla
+Parsing file G:\repos\access-control-management\spec\CustomPermissionManager.toolbox\Model_1\CustomPermissionManager.tla
 Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\TLC.tla
 Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Naturals.tla
 Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Sequences.tla
@@ -23,7 +23,7 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2023-03-03 20:50:42)
+Starting... (2023-03-20 09:43:04)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2212:0 @!@!@
 Implied-temporal checking--satisfiability problem has 1 branches.
@@ -32,7 +32,7 @@ Implied-temporal checking--satisfiability problem has 1 branches.
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2023-03-03 20:50:43.
+Finished computing initial states: 1 distinct state generated at 2023-03-20 09:43:04.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2110:1 @!@!@
 Invariant UserAgreed is violated.
@@ -137,7 +137,7 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2023-03-03 20:50:43
+The coverage statistics at 2023-03-20 09:43:05
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
 <Init line 80, col 1 to line 80, col 4 of module CustomPermissionManager>: 2:2
@@ -146,154 +146,154 @@ The coverage statistics at 2023-03-03 20:50:43
   line 81, col 9 to line 89, col 48 of module CustomPermissionManager: 2
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<l1 line 91, col 1 to line 91, col 8 of module CustomPermissionManager>: 74:172
+<l1 line 91, col 1 to line 91, col 8 of module CustomPermissionManager>: 59:118
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 91, col 16 to line 91, col 30 of module CustomPermissionManager: 500
+  line 91, col 16 to line 91, col 30 of module CustomPermissionManager: 362
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 91, col 16 to line 91, col 23 of module CustomPermissionManager: 380
+  |line 91, col 16 to line 91, col 23 of module CustomPermissionManager: 284
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 92, col 19 to line 92, col 54 of module CustomPermissionManager: 120
+  line 92, col 19 to line 92, col 54 of module CustomPermissionManager: 78
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 93, col 27 to line 93, col 74 of module CustomPermissionManager: 24
+  line 93, col 27 to line 93, col 74 of module CustomPermissionManager: 12
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 94, col 27 to line 94, col 74 of module CustomPermissionManager: 24
+  line 94, col 27 to line 94, col 74 of module CustomPermissionManager: 12
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 95, col 27 to line 95, col 74 of module CustomPermissionManager: 24
+  line 95, col 27 to line 95, col 74 of module CustomPermissionManager: 12
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 96, col 27 to line 96, col 77 of module CustomPermissionManager: 24
+  line 96, col 27 to line 96, col 77 of module CustomPermissionManager: 12
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 97, col 27 to line 97, col 63 of module CustomPermissionManager: 24
+  line 97, col 27 to line 97, col 63 of module CustomPermissionManager: 12
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 98, col 30 to line 98, col 64 of module CustomPermissionManager: 96
+  line 98, col 30 to line 98, col 64 of module CustomPermissionManager: 66
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 99, col 38 to line 99, col 85 of module CustomPermissionManager: 21
+  line 99, col 38 to line 99, col 85 of module CustomPermissionManager: 11
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 100, col 38 to line 100, col 85 of module CustomPermissionManager: 21
+  line 100, col 38 to line 100, col 85 of module CustomPermissionManager: 11
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 101, col 38 to line 101, col 85 of module CustomPermissionManager: 21
+  line 101, col 38 to line 101, col 85 of module CustomPermissionManager: 11
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 102, col 38 to line 102, col 88 of module CustomPermissionManager: 21
+  line 102, col 38 to line 102, col 88 of module CustomPermissionManager: 11
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 103, col 38 to line 103, col 74 of module CustomPermissionManager: 21
+  line 103, col 38 to line 103, col 74 of module CustomPermissionManager: 11
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 104, col 41 to line 104, col 64 of module CustomPermissionManager: 75
+  line 104, col 41 to line 104, col 64 of module CustomPermissionManager: 55
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 105, col 49 to line 105, col 107 of module CustomPermissionManager: 23
+  line 105, col 49 to line 105, col 107 of module CustomPermissionManager: 15
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 106, col 49 to line 106, col 69 of module CustomPermissionManager: 23
+  line 106, col 49 to line 106, col 69 of module CustomPermissionManager: 15
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 107, col 46 to line 110, col 120 of module CustomPermissionManager: 52
+  line 107, col 46 to line 110, col 120 of module CustomPermissionManager: 40
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 111, col 38 to line 111, col 85 of module CustomPermissionManager: 127
+  line 111, col 38 to line 111, col 85 of module CustomPermissionManager: 95
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 112, col 38 to line 112, col 85 of module CustomPermissionManager: 127
+  line 112, col 38 to line 112, col 85 of module CustomPermissionManager: 95
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 113, col 38 to line 113, col 85 of module CustomPermissionManager: 127
+  line 113, col 38 to line 113, col 85 of module CustomPermissionManager: 95
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 114, col 38 to line 114, col 88 of module CustomPermissionManager: 127
+  line 114, col 38 to line 114, col 88 of module CustomPermissionManager: 95
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 115, col 16 to line 115, col 47 of module CustomPermissionManager: 172
+  line 115, col 16 to line 115, col 47 of module CustomPermissionManager: 118
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<install line 119, col 1 to line 119, col 13 of module CustomPermissionManager>: 9:41
+<install line 119, col 1 to line 119, col 13 of module CustomPermissionManager>: 11:40
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 119, col 21 to line 119, col 40 of module CustomPermissionManager: 414
+  line 119, col 21 to line 119, col 40 of module CustomPermissionManager: 317
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 119, col 21 to line 119, col 28 of module CustomPermissionManager: 373
+  |line 119, col 21 to line 119, col 28 of module CustomPermissionManager: 277
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 120, col 21 to line 120, col 66 of module CustomPermissionManager: 41
+  line 120, col 21 to line 120, col 66 of module CustomPermissionManager: 40
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 121, col 21 to line 121, col 58 of module CustomPermissionManager: 41
+  line 121, col 21 to line 121, col 58 of module CustomPermissionManager: 40
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 122, col 21 to line 122, col 79 of module CustomPermissionManager: 41
+  line 122, col 21 to line 122, col 79 of module CustomPermissionManager: 40
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<platform line 124, col 1 to line 124, col 14 of module CustomPermissionManager>: 194:802
+<platform line 124, col 1 to line 124, col 14 of module CustomPermissionManager>: 152:605
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 124, col 22 to line 124, col 42 of module CustomPermissionManager: 581
+  line 124, col 22 to line 124, col 42 of module CustomPermissionManager: 434
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 124, col 22 to line 124, col 29 of module CustomPermissionManager: 371
+  |line 124, col 22 to line 124, col 29 of module CustomPermissionManager: 275
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 125, col 31 to line 125, col 48 of module CustomPermissionManager: 213
+  line 125, col 31 to line 125, col 48 of module CustomPermissionManager: 160
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 126, col 42 to line 126, col 84 of module CustomPermissionManager: 86
+  line 126, col 42 to line 126, col 84 of module CustomPermissionManager: 64
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 127, col 45 to line 127, col 87 of module CustomPermissionManager: 83
+  line 127, col 45 to line 127, col 87 of module CustomPermissionManager: 63
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 127, col 54 to line 127, col 87 of module CustomPermissionManager: 86
+  |line 127, col 54 to line 127, col 87 of module CustomPermissionManager: 64
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 128, col 36 to line 128, col 76 of module CustomPermissionManager: 127
+  line 128, col 36 to line 128, col 76 of module CustomPermissionManager: 96
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 129, col 28 to line 129, col 65 of module CustomPermissionManager: 296
+  line 129, col 28 to line 129, col 65 of module CustomPermissionManager: 223
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 129, col 34 to line 129, col 65 of module CustomPermissionManager: 299
+  |line 129, col 34 to line 129, col 65 of module CustomPermissionManager: 224
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 130, col 28 to line 130, col 54 of module CustomPermissionManager: 296
+  line 130, col 28 to line 130, col 54 of module CustomPermissionManager: 223
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 131, col 37 to line 131, col 54 of module CustomPermissionManager: 210
+  line 131, col 37 to line 131, col 54 of module CustomPermissionManager: 159
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 132, col 42 to line 133, col 93 of module CustomPermissionManager: 83
+  line 132, col 42 to line 133, col 93 of module CustomPermissionManager: 63
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 134, col 42 to line 135, col 58 of module CustomPermissionManager: 127
+  line 134, col 42 to line 135, col 58 of module CustomPermissionManager: 96
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 136, col 34 to line 136, col 71 of module CustomPermissionManager: 293
+  line 136, col 34 to line 136, col 71 of module CustomPermissionManager: 222
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 137, col 34 to line 137, col 60 of module CustomPermissionManager: 293
+  line 137, col 34 to line 137, col 60 of module CustomPermissionManager: 222
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 138, col 31 to line 147, col 47 of module CustomPermissionManager: 210
+  line 138, col 31 to line 147, col 47 of module CustomPermissionManager: 159
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 148, col 22 to line 148, col 69 of module CustomPermissionManager: 799
+  line 148, col 22 to line 148, col 69 of module CustomPermissionManager: 604
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
 <Terminating line 153, col 1 to line 153, col 11 of module CustomPermissionManager>: 0:0
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 153, col 19 to line 153, col 56 of module CustomPermissionManager: 180
+  line 153, col 19 to line 153, col 56 of module CustomPermissionManager: 134
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 154, col 19 to line 154, col 32 of module CustomPermissionManager: 0
@@ -302,62 +302,62 @@ The coverage statistics at 2023-03-03 20:50:43
 <TypeOK line 167, col 1 to line 167, col 6 of module CustomPermissionManager>
 @!@!@ENDMSG 2774 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 167, col 11 to line 170, col 52 of module CustomPermissionManager: 278
+  line 167, col 11 to line 170, col 52 of module CustomPermissionManager: 223
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2774:0 @!@!@
 <Action line 172, col 18 to line 176, col 57 of module CustomPermissionManager>
 @!@!@ENDMSG 2774 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 172, col 18 to line 176, col 57 of module CustomPermissionManager: 278
+  line 172, col 18 to line 176, col 57 of module CustomPermissionManager: 223
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 172, col 20 to line 176, col 56 of module CustomPermissionManager: 278
+  |line 172, col 20 to line 176, col 56 of module CustomPermissionManager: 223
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 172, col 23 to line 176, col 56 of module CustomPermissionManager: 278
+  ||line 172, col 23 to line 176, col 56 of module CustomPermissionManager: 223
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 172, col 47 to line 176, col 56 of module CustomPermissionManager: 555
+  |||line 172, col 47 to line 176, col 56 of module CustomPermissionManager: 445
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 172, col 47 to line 172, col 66 of module CustomPermissionManager: 555
+  ||||line 172, col 47 to line 172, col 66 of module CustomPermissionManager: 445
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 173, col 26 to line 176, col 56 of module CustomPermissionManager: 138
+  ||||line 173, col 26 to line 176, col 56 of module CustomPermissionManager: 121
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||||line 174, col 29 to line 176, col 56 of module CustomPermissionManager: 274
+  |||||line 174, col 29 to line 176, col 56 of module CustomPermissionManager: 242
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||||line 174, col 32 to line 174, col 36 of module CustomPermissionManager: 274
+  ||||||line 174, col 32 to line 174, col 36 of module CustomPermissionManager: 242
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||||line 175, col 32 to line 175, col 53 of module CustomPermissionManager: 138
+  ||||||line 175, col 32 to line 175, col 53 of module CustomPermissionManager: 121
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||||line 176, col 32 to line 176, col 56 of module CustomPermissionManager: 29
+  ||||||line 176, col 32 to line 176, col 56 of module CustomPermissionManager: 22
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||||line 173, col 35 to line 173, col 46 of module CustomPermissionManager: 138
+  |||||line 173, col 35 to line 173, col 46 of module CustomPermissionManager: 121
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 172, col 32 to line 172, col 43 of module CustomPermissionManager: 278
+  |||line 172, col 32 to line 172, col 43 of module CustomPermissionManager: 223
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2202:0 @!@!@
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(9) at 2023-03-03 20:50:43: 985 states generated (39,797 s/min), 278 distinct states found (11,232 ds/min), 93 states left on queue.
+Progress(8) at 2023-03-20 09:43:05: 737 states generated (32,466 s/min), 223 distinct states found (9,823 ds/min), 87 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
-985 states generated, 278 distinct states found, 93 states left on queue.
+737 states generated, 223 distinct states found, 87 states left on queue.
 @!@!@ENDMSG 2199 @!@!@
 @!@!@STARTMSG 2194:0 @!@!@
-The depth of the complete state graph search is 9.
+The depth of the complete state graph search is 8.
 @!@!@ENDMSG 2194 @!@!@
 @!@!@STARTMSG 2268:0 @!@!@
 The average outdegree of the complete state graph is 2 (minimum is 0, the maximum 5 and the 95th percentile is 4).
 @!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 1500ms at (2023-03-03 20:50:43)
+Finished in 1375ms at (2023-03-20 09:43:05)
 @!@!@ENDMSG 2186 @!@!@

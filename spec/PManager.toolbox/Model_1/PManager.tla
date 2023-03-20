@@ -1,13 +1,13 @@
 ------------------------------ MODULE PManager ------------------------------
 EXTENDS Naturals, Sequences
 
-CONSTANTS P, A, CP
+CONSTANTS A, P
 
-ASSUME P \in Nat
 ASSUME A \in Nat
+ASSUME P \in Nat
 
-Permissions == 1..P
 Applications == 1..A
+Permissions == 1..P
 
 GRANT == "GRANT"
 DENY == "DENY"
@@ -15,73 +15,121 @@ NULL == "NULL"
 ALLOW == "ALLOW"
 REJECT == "REJECT"
 NORMAL == "NORMAL"
-DANGEROUS == "DANGEROUS"
+SENSITIVE == "SENSITIVE"
 
-Boolean == { TRUE, FALSE }
-UserConsent == { ALLOW, REJECT, NULL }
-CustomPermission == { NORMAL, DANGEROUS, NULL }
 PermissionRequestDecision == { GRANT, DENY, NULL }
+CustomPermission == { NORMAL, SENSITIVE, NULL }
+UserConsent == { ALLOW, REJECT, NULL }
+Boolean == { TRUE, FALSE }
 
 (***       this is a comment containing the PlusCal code *
+
 --algorithm PermissionManager
 {
-    variables installed = [p \in Applications |-> FALSE];
-              appUriPerms = [i \in Applications |-> NULL];
-              appCustomPerms = [i \in Applications |-> NULL];
+    variables appCustomPerms = [i \in Applications |-> [i2 \in Applications |-> NULL]];
               appPerms = [i \in Applications |-> [p \in Permissions |-> NULL]];
-              permsInUse = [a \in Applications |-> [i \in Permissions |-> FALSE]];              
+              CP = [a \in Applications |-> NULL];
+              cpUserConsent = [a \in Applications |-> [aa \in Applications |-> NULL]];
               appPermConsents = [a \in Applications |-> [i \in Permissions |-> NULL]];
-
-    define { appInstalled(app) == installed[app] = TRUE };
+              permsInUse = [a \in Applications |-> [i \in Permissions |-> FALSE]];
+              installed = [p \in Applications |-> FALSE];
     
-    macro arbitraryDecision(app, perm) { either { appPerms[app][perm] := GRANT; appPermConsents[app][perm] := ALLOW; }
-                                         or { appPerms[app][perm] := DENY; appPermConsents[app][perm] := REJECT; } }
-
-    macro uninstallApp(app) { installed[app] := FALSE; }
-
-    macro defineCP(app) { either { appCustomPerms[app] := NORMAL; }
-                          or { appCustomPerms[app] := DANGEROUS; } }
+    procedure installApp(app) { INSTALL_APP: installed[app] := TRUE; return; }
+    
+    procedure defineCP(app) { DEFINE_CP: either { CP[app] := NORMAL; }
+                                         or { CP[app] := SENSITIVE; };
+                                         return; }
                           
-    macro defineUriPerm(app) { with (n \in CP) { appUriPerms[app] := n; } }
-
-    macro askUserPermission(app, perm) { either { appPerms[app][perm] := GRANT; appPermConsents[app][perm] := ALLOW; }
-                                         or { appPerms[app][perm] := DENY; appPermConsents[app][perm] := REJECT; } }
-    
-    macro updateApp(app) { if(appCustomPerms[app] = NULL) { defineCP(app); }
-                           else { appCustomPerms[app] := NULL; }}
-    
-    (*macro revokePermissions(app) { appPerms[app] := [i \in Permissions |-> NULL]; }*)
-    
-    procedure ask(app, perm) { l1: if(appPerms[app][perm] = GRANT) { permsInUse[app][perm] := TRUE; return }
-                                   else if(appPerms[app][perm] = DENY) { permsInUse[app][perm] := FALSE; return }
-                                   else { l2: call makeDecision(app, perm); l3: if(appPerms[app][perm] = GRANT) { permsInUse[app][perm] := TRUE; }; l4: return; } }
-    
-    procedure installApp(app) {l5: installed[app] := TRUE; return}
-    procedure uninstallApp(app) { l6: installed[app] := FALSE; permsInUse[app] := [p \in Permissions |-> FALSE]; appPermConsents[app] := [p \in Permissions |-> NULL]; return; }
-    procedure makeDecision(app, perm) { l7: either { askUserPermission(app, perm); return } 
-                                            or { arbitraryDecision(app, perm); return}; }
-
-    fair process (a \in Applications)
+    procedure arbitraryDecision(app, perm) { ARBITRARY_DECISION: either { appPerms[app][perm] := GRANT; appPermConsents[app][perm] := ALLOW; }
+                                                                 or { appPerms[app][perm] := DENY; appPermConsents[app][perm] := REJECT; };
+                                                                 return; }
+               
+    procedure askUser(a1, a2) { ASK_THE_USER: either { appCustomPerms[a1][a2] := GRANT; cpUserConsent[a1][a2] := ALLOW; }
+                                              or { appCustomPerms[a1][a2] := DENY; cpUserConsent[a1][a2] := REJECT; };
+                                              return; }
+               
+    procedure updateApp(app) { UPDATE_THE_APP: if(CP[app] = NULL) { call defineCP(app); }
+                                               else { CP[app] := NULL; };
+                               returning:      return; }
+               
+    procedure askPermission(app, perm)
     {
-        platform:- while (TRUE)
-                   {
-                    if(~appInstalled(self)) { call installApp(self); }
-                    else
-                    {
-                        either { call uninstallApp(self); }
+        ASK_PERMISSION: either
+                        {
+                            appPerms[app][perm] := GRANT;
+                            appPermConsents[app][perm] := ALLOW;
+                        }
                         or
                         {
-                            either { updateApp(self); }
-                            or
-                            {
-                                either { if(appCustomPerms[self] = NULL) { defineCP(self); } }
+                            appPerms[app][perm] := DENY;
+                            appPermConsents[app][perm] := REJECT;
+                        };
+                        return;
+    }
+    
+    procedure askTheUser(app, perm)
+    {
+        ASK_USER: if(appPerms[app][perm] = GRANT) { permsInUse[app][perm] := TRUE; return }
+                  else if(appPerms[app][perm] = DENY) { permsInUse[app][perm] := FALSE; return }
+                  else
+                  {
+                      make_decision: call makeDecision(app, perm);
+                      using_perm: if(appPerms[app][perm] = GRANT) { permsInUse[app][perm] := TRUE; };
+                      return;
+                  }
+    }
+    
+    procedure ask(a1, a2)
+    {
+        ASK_: if(appCustomPerms[a1][a2] = GRANT) { return; }
+
+              else if(appCustomPerms[a1][a2] = DENY) { return; }
+    
+              else
+              {
+                  if(CP[a2] = NORMAL) { appCustomPerms[a1][a2] := GRANT; };
+                  else call askUser(a1, a2);
+                  
+                  return;
+              }
+    }
+    
+    procedure makeDecision(app, perm)
+    {
+        MAKE_DECISION: either { call askPermission(app, perm); return }
+                       or { call arbitraryDecision(app, perm); return};
+    }
+    
+    procedure uninstallApp(app)
+    {
+        UNINSTALL_APP: installed[app] := FALSE;
+                       permsInUse[app] := [p \in Permissions |-> FALSE];
+                       appPermConsents[app] := [p \in Permissions |-> NULL];
+                       return;
+    }
+    
+    fair process (a \in Applications)
+    {
+        PLATFORM:- while (TRUE)
+                   {
+                    if(installed[self] = TRUE)
+                    {
+                        either { call updateApp(self); }
+                        or { either { call uninstallApp(self); }
+                             or
+                             {
+                                either { if(CP[self] = NULL) { call defineCP(self); } }
                                 or
                                 {
-                                    either { with (p \in Permissions) { call ask(self, p); } }
-                                    or { if(appUriPerms[self] = NULL) { defineUriPerm(self); } }
+                                    either { with (application \in (Applications \ {self})) { call ask(self, application); } }
+                                    or { with (p \in Permissions) { call askTheUser(self, p); } }
                                 }
-                            }
-                        }
+                             }
+                           }
+                    }
+                    else
+                    {
+                        call installApp(self);
                     }
                    };
     }
@@ -89,234 +137,415 @@ PermissionRequestDecision == { GRANT, DENY, NULL }
 
     this ends the comment containing the PlusCal code
 *************)             
-\* BEGIN TRANSLATION (chksum(pcal) = "1b230fd4" /\ chksum(tla) = "3f25b1a6")
-\* Parameter app of procedure ask at line 55 col 19 changed to app_
-\* Parameter perm of procedure ask at line 55 col 24 changed to perm_
-\* Parameter app of procedure installApp at line 59 col 26 changed to app_i
-\* Parameter app of procedure uninstallApp at line 60 col 28 changed to app_u
+\* BEGIN TRANSLATION (chksum(pcal) = "d3e14110" /\ chksum(tla) = "194014a4")
+\* Parameter app of procedure installApp at line 37 col 26 changed to app_
+\* Parameter app of procedure defineCP at line 39 col 24 changed to app_d
+\* Parameter app of procedure arbitraryDecision at line 43 col 33 changed to app_a
+\* Parameter perm of procedure arbitraryDecision at line 43 col 38 changed to perm_
+\* Parameter a1 of procedure askUser at line 47 col 23 changed to a1_
+\* Parameter a2 of procedure askUser at line 47 col 27 changed to a2_
+\* Parameter app of procedure updateApp at line 51 col 25 changed to app_u
+\* Parameter app of procedure askPermission at line 55 col 29 changed to app_as
+\* Parameter perm of procedure askPermission at line 55 col 34 changed to perm_a
+\* Parameter app of procedure askTheUser at line 70 col 26 changed to app_ask
+\* Parameter perm of procedure askTheUser at line 70 col 31 changed to perm_as
+\* Parameter app of procedure makeDecision at line 97 col 28 changed to app_m
 CONSTANT defaultInitValue
-VARIABLES installed, appUriPerms, appCustomPerms, appPerms, permsInUse, 
-          appPermConsents, pc, stack
+VARIABLES appCustomPerms, appPerms, CP, cpUserConsent, appPermConsents, 
+          permsInUse, installed, pc, stack, app_, app_d, app_a, perm_, a1_, 
+          a2_, app_u, app_as, perm_a, app_ask, perm_as, a1, a2, app_m, perm, 
+          app
 
-(* define statement *)
-appInstalled(app) == installed[app] = TRUE
-
-VARIABLES app_, perm_, app_i, app_u, app, perm
-
-vars == << installed, appUriPerms, appCustomPerms, appPerms, permsInUse, 
-           appPermConsents, pc, stack, app_, perm_, app_i, app_u, app, perm
-        >>
+vars == << appCustomPerms, appPerms, CP, cpUserConsent, appPermConsents, 
+           permsInUse, installed, pc, stack, app_, app_d, app_a, perm_, a1_, 
+           a2_, app_u, app_as, perm_a, app_ask, perm_as, a1, a2, app_m, perm, 
+           app >>
 
 ProcSet == (Applications)
 
 Init == (* Global variables *)
-        /\ installed = [p \in Applications |-> FALSE]
-        /\ appUriPerms = [i \in Applications |-> NULL]
-        /\ appCustomPerms = [i \in Applications |-> NULL]
+        /\ appCustomPerms = [i \in Applications |-> [i2 \in Applications |-> NULL]]
         /\ appPerms = [i \in Applications |-> [p \in Permissions |-> NULL]]
-        /\ permsInUse = [a \in Applications |-> [i \in Permissions |-> FALSE]]
+        /\ CP = [a \in Applications |-> NULL]
+        /\ cpUserConsent = [a \in Applications |-> [aa \in Applications |-> NULL]]
         /\ appPermConsents = [a \in Applications |-> [i \in Permissions |-> NULL]]
-        (* Procedure ask *)
-        /\ app_ = [ self \in ProcSet |-> defaultInitValue]
-        /\ perm_ = [ self \in ProcSet |-> defaultInitValue]
+        /\ permsInUse = [a \in Applications |-> [i \in Permissions |-> FALSE]]
+        /\ installed = [p \in Applications |-> FALSE]
         (* Procedure installApp *)
-        /\ app_i = [ self \in ProcSet |-> defaultInitValue]
-        (* Procedure uninstallApp *)
+        /\ app_ = [ self \in ProcSet |-> defaultInitValue]
+        (* Procedure defineCP *)
+        /\ app_d = [ self \in ProcSet |-> defaultInitValue]
+        (* Procedure arbitraryDecision *)
+        /\ app_a = [ self \in ProcSet |-> defaultInitValue]
+        /\ perm_ = [ self \in ProcSet |-> defaultInitValue]
+        (* Procedure askUser *)
+        /\ a1_ = [ self \in ProcSet |-> defaultInitValue]
+        /\ a2_ = [ self \in ProcSet |-> defaultInitValue]
+        (* Procedure updateApp *)
         /\ app_u = [ self \in ProcSet |-> defaultInitValue]
+        (* Procedure askPermission *)
+        /\ app_as = [ self \in ProcSet |-> defaultInitValue]
+        /\ perm_a = [ self \in ProcSet |-> defaultInitValue]
+        (* Procedure askTheUser *)
+        /\ app_ask = [ self \in ProcSet |-> defaultInitValue]
+        /\ perm_as = [ self \in ProcSet |-> defaultInitValue]
+        (* Procedure ask *)
+        /\ a1 = [ self \in ProcSet |-> defaultInitValue]
+        /\ a2 = [ self \in ProcSet |-> defaultInitValue]
         (* Procedure makeDecision *)
-        /\ app = [ self \in ProcSet |-> defaultInitValue]
+        /\ app_m = [ self \in ProcSet |-> defaultInitValue]
         /\ perm = [ self \in ProcSet |-> defaultInitValue]
+        (* Procedure uninstallApp *)
+        /\ app = [ self \in ProcSet |-> defaultInitValue]
         /\ stack = [self \in ProcSet |-> << >>]
-        /\ pc = [self \in ProcSet |-> "platform"]
+        /\ pc = [self \in ProcSet |-> "PLATFORM"]
 
-l1(self) == /\ pc[self] = "l1"
-            /\ IF appPerms[app_[self]][perm_[self]] = GRANT
-                  THEN /\ permsInUse' = [permsInUse EXCEPT ![app_[self]][perm_[self]] = TRUE]
+INSTALL_APP(self) == /\ pc[self] = "INSTALL_APP"
+                     /\ installed' = [installed EXCEPT ![app_[self]] = TRUE]
+                     /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                     /\ app_' = [app_ EXCEPT ![self] = Head(stack[self]).app_]
+                     /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                     /\ UNCHANGED << appCustomPerms, appPerms, CP, 
+                                     cpUserConsent, appPermConsents, 
+                                     permsInUse, app_d, app_a, perm_, a1_, a2_, 
+                                     app_u, app_as, perm_a, app_ask, perm_as, 
+                                     a1, a2, app_m, perm, app >>
+
+installApp(self) == INSTALL_APP(self)
+
+DEFINE_CP(self) == /\ pc[self] = "DEFINE_CP"
+                   /\ \/ /\ CP' = [CP EXCEPT ![app_d[self]] = NORMAL]
+                      \/ /\ CP' = [CP EXCEPT ![app_d[self]] = SENSITIVE]
+                   /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                   /\ app_d' = [app_d EXCEPT ![self] = Head(stack[self]).app_d]
+                   /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                   /\ UNCHANGED << appCustomPerms, appPerms, cpUserConsent, 
+                                   appPermConsents, permsInUse, installed, 
+                                   app_, app_a, perm_, a1_, a2_, app_u, app_as, 
+                                   perm_a, app_ask, perm_as, a1, a2, app_m, 
+                                   perm, app >>
+
+defineCP(self) == DEFINE_CP(self)
+
+ARBITRARY_DECISION(self) == /\ pc[self] = "ARBITRARY_DECISION"
+                            /\ \/ /\ appPerms' = [appPerms EXCEPT ![app_a[self]][perm_[self]] = GRANT]
+                                  /\ appPermConsents' = [appPermConsents EXCEPT ![app_a[self]][perm_[self]] = ALLOW]
+                               \/ /\ appPerms' = [appPerms EXCEPT ![app_a[self]][perm_[self]] = DENY]
+                                  /\ appPermConsents' = [appPermConsents EXCEPT ![app_a[self]][perm_[self]] = REJECT]
+                            /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                            /\ app_a' = [app_a EXCEPT ![self] = Head(stack[self]).app_a]
+                            /\ perm_' = [perm_ EXCEPT ![self] = Head(stack[self]).perm_]
+                            /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                            /\ UNCHANGED << appCustomPerms, CP, cpUserConsent, 
+                                            permsInUse, installed, app_, app_d, 
+                                            a1_, a2_, app_u, app_as, perm_a, 
+                                            app_ask, perm_as, a1, a2, app_m, 
+                                            perm, app >>
+
+arbitraryDecision(self) == ARBITRARY_DECISION(self)
+
+ASK_THE_USER(self) == /\ pc[self] = "ASK_THE_USER"
+                      /\ \/ /\ appCustomPerms' = [appCustomPerms EXCEPT ![a1_[self]][a2_[self]] = GRANT]
+                            /\ cpUserConsent' = [cpUserConsent EXCEPT ![a1_[self]][a2_[self]] = ALLOW]
+                         \/ /\ appCustomPerms' = [appCustomPerms EXCEPT ![a1_[self]][a2_[self]] = DENY]
+                            /\ cpUserConsent' = [cpUserConsent EXCEPT ![a1_[self]][a2_[self]] = REJECT]
+                      /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                      /\ a1_' = [a1_ EXCEPT ![self] = Head(stack[self]).a1_]
+                      /\ a2_' = [a2_ EXCEPT ![self] = Head(stack[self]).a2_]
+                      /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                      /\ UNCHANGED << appPerms, CP, appPermConsents, 
+                                      permsInUse, installed, app_, app_d, 
+                                      app_a, perm_, app_u, app_as, perm_a, 
+                                      app_ask, perm_as, a1, a2, app_m, perm, 
+                                      app >>
+
+askUser(self) == ASK_THE_USER(self)
+
+UPDATE_THE_APP(self) == /\ pc[self] = "UPDATE_THE_APP"
+                        /\ IF CP[app_u[self]] = NULL
+                              THEN /\ /\ app_d' = [app_d EXCEPT ![self] = app_u[self]]
+                                      /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "defineCP",
+                                                                               pc        |->  "returning",
+                                                                               app_d     |->  app_d[self] ] >>
+                                                                           \o stack[self]]
+                                   /\ pc' = [pc EXCEPT ![self] = "DEFINE_CP"]
+                                   /\ CP' = CP
+                              ELSE /\ CP' = [CP EXCEPT ![app_u[self]] = NULL]
+                                   /\ pc' = [pc EXCEPT ![self] = "returning"]
+                                   /\ UNCHANGED << stack, app_d >>
+                        /\ UNCHANGED << appCustomPerms, appPerms, 
+                                        cpUserConsent, appPermConsents, 
+                                        permsInUse, installed, app_, app_a, 
+                                        perm_, a1_, a2_, app_u, app_as, perm_a, 
+                                        app_ask, perm_as, a1, a2, app_m, perm, 
+                                        app >>
+
+returning(self) == /\ pc[self] = "returning"
+                   /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                   /\ app_u' = [app_u EXCEPT ![self] = Head(stack[self]).app_u]
+                   /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                   /\ UNCHANGED << appCustomPerms, appPerms, CP, cpUserConsent, 
+                                   appPermConsents, permsInUse, installed, 
+                                   app_, app_d, app_a, perm_, a1_, a2_, app_as, 
+                                   perm_a, app_ask, perm_as, a1, a2, app_m, 
+                                   perm, app >>
+
+updateApp(self) == UPDATE_THE_APP(self) \/ returning(self)
+
+ASK_PERMISSION(self) == /\ pc[self] = "ASK_PERMISSION"
+                        /\ \/ /\ appPerms' = [appPerms EXCEPT ![app_as[self]][perm_a[self]] = GRANT]
+                              /\ appPermConsents' = [appPermConsents EXCEPT ![app_as[self]][perm_a[self]] = ALLOW]
+                           \/ /\ appPerms' = [appPerms EXCEPT ![app_as[self]][perm_a[self]] = DENY]
+                              /\ appPermConsents' = [appPermConsents EXCEPT ![app_as[self]][perm_a[self]] = REJECT]
+                        /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                        /\ app_as' = [app_as EXCEPT ![self] = Head(stack[self]).app_as]
+                        /\ perm_a' = [perm_a EXCEPT ![self] = Head(stack[self]).perm_a]
+                        /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                        /\ UNCHANGED << appCustomPerms, CP, cpUserConsent, 
+                                        permsInUse, installed, app_, app_d, 
+                                        app_a, perm_, a1_, a2_, app_u, app_ask, 
+                                        perm_as, a1, a2, app_m, perm, app >>
+
+askPermission(self) == ASK_PERMISSION(self)
+
+ASK_USER(self) == /\ pc[self] = "ASK_USER"
+                  /\ IF appPerms[app_ask[self]][perm_as[self]] = GRANT
+                        THEN /\ permsInUse' = [permsInUse EXCEPT ![app_ask[self]][perm_as[self]] = TRUE]
+                             /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                             /\ app_ask' = [app_ask EXCEPT ![self] = Head(stack[self]).app_ask]
+                             /\ perm_as' = [perm_as EXCEPT ![self] = Head(stack[self]).perm_as]
+                             /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                        ELSE /\ IF appPerms[app_ask[self]][perm_as[self]] = DENY
+                                   THEN /\ permsInUse' = [permsInUse EXCEPT ![app_ask[self]][perm_as[self]] = FALSE]
+                                        /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                                        /\ app_ask' = [app_ask EXCEPT ![self] = Head(stack[self]).app_ask]
+                                        /\ perm_as' = [perm_as EXCEPT ![self] = Head(stack[self]).perm_as]
+                                        /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                                   ELSE /\ pc' = [pc EXCEPT ![self] = "make_decision"]
+                                        /\ UNCHANGED << permsInUse, stack, 
+                                                        app_ask, perm_as >>
+                  /\ UNCHANGED << appCustomPerms, appPerms, CP, cpUserConsent, 
+                                  appPermConsents, installed, app_, app_d, 
+                                  app_a, perm_, a1_, a2_, app_u, app_as, 
+                                  perm_a, a1, a2, app_m, perm, app >>
+
+make_decision(self) == /\ pc[self] = "make_decision"
+                       /\ /\ app_m' = [app_m EXCEPT ![self] = app_ask[self]]
+                          /\ perm' = [perm EXCEPT ![self] = perm_as[self]]
+                          /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "makeDecision",
+                                                                   pc        |->  "using_perm",
+                                                                   app_m     |->  app_m[self],
+                                                                   perm      |->  perm[self] ] >>
+                                                               \o stack[self]]
+                       /\ pc' = [pc EXCEPT ![self] = "MAKE_DECISION"]
+                       /\ UNCHANGED << appCustomPerms, appPerms, CP, 
+                                       cpUserConsent, appPermConsents, 
+                                       permsInUse, installed, app_, app_d, 
+                                       app_a, perm_, a1_, a2_, app_u, app_as, 
+                                       perm_a, app_ask, perm_as, a1, a2, app >>
+
+using_perm(self) == /\ pc[self] = "using_perm"
+                    /\ IF appPerms[app_ask[self]][perm_as[self]] = GRANT
+                          THEN /\ permsInUse' = [permsInUse EXCEPT ![app_ask[self]][perm_as[self]] = TRUE]
+                          ELSE /\ TRUE
+                               /\ UNCHANGED permsInUse
+                    /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                    /\ app_ask' = [app_ask EXCEPT ![self] = Head(stack[self]).app_ask]
+                    /\ perm_as' = [perm_as EXCEPT ![self] = Head(stack[self]).perm_as]
+                    /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                    /\ UNCHANGED << appCustomPerms, appPerms, CP, 
+                                    cpUserConsent, appPermConsents, installed, 
+                                    app_, app_d, app_a, perm_, a1_, a2_, app_u, 
+                                    app_as, perm_a, a1, a2, app_m, perm, app >>
+
+askTheUser(self) == ASK_USER(self) \/ make_decision(self)
+                       \/ using_perm(self)
+
+ASK_(self) == /\ pc[self] = "ASK_"
+              /\ IF appCustomPerms[a1[self]][a2[self]] = GRANT
+                    THEN /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                         /\ a1' = [a1 EXCEPT ![self] = Head(stack[self]).a1]
+                         /\ a2' = [a2 EXCEPT ![self] = Head(stack[self]).a2]
+                         /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                         /\ UNCHANGED << appCustomPerms, a1_, a2_ >>
+                    ELSE /\ IF appCustomPerms[a1[self]][a2[self]] = DENY
+                               THEN /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                                    /\ a1' = [a1 EXCEPT ![self] = Head(stack[self]).a1]
+                                    /\ a2' = [a2 EXCEPT ![self] = Head(stack[self]).a2]
+                                    /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                                    /\ UNCHANGED << appCustomPerms, a1_, a2_ >>
+                               ELSE /\ IF CP[a2[self]] = NORMAL
+                                          THEN /\ appCustomPerms' = [appCustomPerms EXCEPT ![a1[self]][a2[self]] = GRANT]
+                                               /\ pc' = [pc EXCEPT ![self] = "Error"]
+                                               /\ UNCHANGED << stack, a1_, a2_ >>
+                                          ELSE /\ /\ a1_' = [a1_ EXCEPT ![self] = a1[self]]
+                                                  /\ a2_' = [a2_ EXCEPT ![self] = a2[self]]
+                                                  /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "askUser",
+                                                                                           pc        |->  Head(stack[self]).pc,
+                                                                                           a1_       |->  a1_[self],
+                                                                                           a2_       |->  a2_[self] ] >>
+                                                                                       \o Tail(stack[self])]
+                                               /\ pc' = [pc EXCEPT ![self] = "ASK_THE_USER"]
+                                               /\ UNCHANGED appCustomPerms
+                                    /\ UNCHANGED << a1, a2 >>
+              /\ UNCHANGED << appPerms, CP, cpUserConsent, appPermConsents, 
+                              permsInUse, installed, app_, app_d, app_a, perm_, 
+                              app_u, app_as, perm_a, app_ask, perm_as, app_m, 
+                              perm, app >>
+
+ask(self) == ASK_(self)
+
+MAKE_DECISION(self) == /\ pc[self] = "MAKE_DECISION"
+                       /\ \/ /\ /\ app_as' = [app_as EXCEPT ![self] = app_m[self]]
+                                /\ perm_a' = [perm_a EXCEPT ![self] = perm[self]]
+                                /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "askPermission",
+                                                                         pc        |->  Head(stack[self]).pc,
+                                                                         app_as    |->  app_as[self],
+                                                                         perm_a    |->  perm_a[self] ] >>
+                                                                     \o Tail(stack[self])]
+                             /\ pc' = [pc EXCEPT ![self] = "ASK_PERMISSION"]
+                             /\ UNCHANGED <<app_a, perm_>>
+                          \/ /\ /\ app_a' = [app_a EXCEPT ![self] = app_m[self]]
+                                /\ perm_' = [perm_ EXCEPT ![self] = perm[self]]
+                                /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "arbitraryDecision",
+                                                                         pc        |->  Head(stack[self]).pc,
+                                                                         app_a     |->  app_a[self],
+                                                                         perm_     |->  perm_[self] ] >>
+                                                                     \o Tail(stack[self])]
+                             /\ pc' = [pc EXCEPT ![self] = "ARBITRARY_DECISION"]
+                             /\ UNCHANGED <<app_as, perm_a>>
+                       /\ UNCHANGED << appCustomPerms, appPerms, CP, 
+                                       cpUserConsent, appPermConsents, 
+                                       permsInUse, installed, app_, app_d, a1_, 
+                                       a2_, app_u, app_ask, perm_as, a1, a2, 
+                                       app_m, perm, app >>
+
+makeDecision(self) == MAKE_DECISION(self)
+
+UNINSTALL_APP(self) == /\ pc[self] = "UNINSTALL_APP"
+                       /\ installed' = [installed EXCEPT ![app[self]] = FALSE]
+                       /\ permsInUse' = [permsInUse EXCEPT ![app[self]] = [p \in Permissions |-> FALSE]]
+                       /\ appPermConsents' = [appPermConsents EXCEPT ![app[self]] = [p \in Permissions |-> NULL]]
                        /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
-                       /\ app_' = [app_ EXCEPT ![self] = Head(stack[self]).app_]
-                       /\ perm_' = [perm_ EXCEPT ![self] = Head(stack[self]).perm_]
+                       /\ app' = [app EXCEPT ![self] = Head(stack[self]).app]
                        /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
-                  ELSE /\ IF appPerms[app_[self]][perm_[self]] = DENY
-                             THEN /\ permsInUse' = [permsInUse EXCEPT ![app_[self]][perm_[self]] = FALSE]
-                                  /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
-                                  /\ app_' = [app_ EXCEPT ![self] = Head(stack[self]).app_]
-                                  /\ perm_' = [perm_ EXCEPT ![self] = Head(stack[self]).perm_]
-                                  /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
-                             ELSE /\ pc' = [pc EXCEPT ![self] = "l2"]
-                                  /\ UNCHANGED << permsInUse, stack, app_, 
-                                                  perm_ >>
-            /\ UNCHANGED << installed, appUriPerms, appCustomPerms, appPerms, 
-                            appPermConsents, app_i, app_u, app, perm >>
+                       /\ UNCHANGED << appCustomPerms, appPerms, CP, 
+                                       cpUserConsent, app_, app_d, app_a, 
+                                       perm_, a1_, a2_, app_u, app_as, perm_a, 
+                                       app_ask, perm_as, a1, a2, app_m, perm >>
 
-l2(self) == /\ pc[self] = "l2"
-            /\ /\ app' = [app EXCEPT ![self] = app_[self]]
-               /\ perm' = [perm EXCEPT ![self] = perm_[self]]
-               /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "makeDecision",
-                                                        pc        |->  "l3",
-                                                        app       |->  app[self],
-                                                        perm      |->  perm[self] ] >>
-                                                    \o stack[self]]
-            /\ pc' = [pc EXCEPT ![self] = "l7"]
-            /\ UNCHANGED << installed, appUriPerms, appCustomPerms, appPerms, 
-                            permsInUse, appPermConsents, app_, perm_, app_i, 
-                            app_u >>
+uninstallApp(self) == UNINSTALL_APP(self)
 
-l3(self) == /\ pc[self] = "l3"
-            /\ IF appPerms[app_[self]][perm_[self]] = GRANT
-                  THEN /\ permsInUse' = [permsInUse EXCEPT ![app_[self]][perm_[self]] = TRUE]
-                  ELSE /\ TRUE
-                       /\ UNCHANGED permsInUse
-            /\ pc' = [pc EXCEPT ![self] = "l4"]
-            /\ UNCHANGED << installed, appUriPerms, appCustomPerms, appPerms, 
-                            appPermConsents, stack, app_, perm_, app_i, app_u, 
-                            app, perm >>
-
-l4(self) == /\ pc[self] = "l4"
-            /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
-            /\ app_' = [app_ EXCEPT ![self] = Head(stack[self]).app_]
-            /\ perm_' = [perm_ EXCEPT ![self] = Head(stack[self]).perm_]
-            /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
-            /\ UNCHANGED << installed, appUriPerms, appCustomPerms, appPerms, 
-                            permsInUse, appPermConsents, app_i, app_u, app, 
-                            perm >>
-
-ask(self) == l1(self) \/ l2(self) \/ l3(self) \/ l4(self)
-
-l5(self) == /\ pc[self] = "l5"
-            /\ installed' = [installed EXCEPT ![app_i[self]] = TRUE]
-            /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
-            /\ app_i' = [app_i EXCEPT ![self] = Head(stack[self]).app_i]
-            /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
-            /\ UNCHANGED << appUriPerms, appCustomPerms, appPerms, permsInUse, 
-                            appPermConsents, app_, perm_, app_u, app, perm >>
-
-installApp(self) == l5(self)
-
-l6(self) == /\ pc[self] = "l6"
-            /\ installed' = [installed EXCEPT ![app_u[self]] = FALSE]
-            /\ permsInUse' = [permsInUse EXCEPT ![app_u[self]] = [p \in Permissions |-> FALSE]]
-            /\ appPermConsents' = [appPermConsents EXCEPT ![app_u[self]] = [p \in Permissions |-> NULL]]
-            /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
-            /\ app_u' = [app_u EXCEPT ![self] = Head(stack[self]).app_u]
-            /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
-            /\ UNCHANGED << appUriPerms, appCustomPerms, appPerms, app_, perm_, 
-                            app_i, app, perm >>
-
-uninstallApp(self) == l6(self)
-
-l7(self) == /\ pc[self] = "l7"
-            /\ \/ /\ \/ /\ appPerms' = [appPerms EXCEPT ![app[self]][perm[self]] = GRANT]
-                        /\ appPermConsents' = [appPermConsents EXCEPT ![app[self]][perm[self]] = ALLOW]
-                     \/ /\ appPerms' = [appPerms EXCEPT ![app[self]][perm[self]] = DENY]
-                        /\ appPermConsents' = [appPermConsents EXCEPT ![app[self]][perm[self]] = REJECT]
-                  /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
-                  /\ app' = [app EXCEPT ![self] = Head(stack[self]).app]
-                  /\ perm' = [perm EXCEPT ![self] = Head(stack[self]).perm]
-                  /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
-               \/ /\ \/ /\ appPerms' = [appPerms EXCEPT ![app[self]][perm[self]] = GRANT]
-                        /\ appPermConsents' = [appPermConsents EXCEPT ![app[self]][perm[self]] = ALLOW]
-                     \/ /\ appPerms' = [appPerms EXCEPT ![app[self]][perm[self]] = DENY]
-                        /\ appPermConsents' = [appPermConsents EXCEPT ![app[self]][perm[self]] = REJECT]
-                  /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
-                  /\ app' = [app EXCEPT ![self] = Head(stack[self]).app]
-                  /\ perm' = [perm EXCEPT ![self] = Head(stack[self]).perm]
-                  /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
-            /\ UNCHANGED << installed, appUriPerms, appCustomPerms, permsInUse, 
-                            app_, perm_, app_i, app_u >>
-
-makeDecision(self) == l7(self)
-
-platform(self) == /\ pc[self] = "platform"
-                  /\ IF ~appInstalled(self)
-                        THEN /\ /\ app_i' = [app_i EXCEPT ![self] = self]
-                                /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "installApp",
-                                                                         pc        |->  "platform",
-                                                                         app_i     |->  app_i[self] ] >>
-                                                                     \o stack[self]]
-                             /\ pc' = [pc EXCEPT ![self] = "l5"]
-                             /\ UNCHANGED << appUriPerms, appCustomPerms, app_, 
-                                             perm_, app_u >>
-                        ELSE /\ \/ /\ /\ app_u' = [app_u EXCEPT ![self] = self]
-                                      /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "uninstallApp",
-                                                                               pc        |->  "platform",
+PLATFORM(self) == /\ pc[self] = "PLATFORM"
+                  /\ IF installed[self] = TRUE
+                        THEN /\ \/ /\ /\ app_u' = [app_u EXCEPT ![self] = self]
+                                      /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "updateApp",
+                                                                               pc        |->  "PLATFORM",
                                                                                app_u     |->  app_u[self] ] >>
                                                                            \o stack[self]]
-                                   /\ pc' = [pc EXCEPT ![self] = "l6"]
-                                   /\ UNCHANGED <<appUriPerms, appCustomPerms, app_, perm_>>
-                                \/ /\ \/ /\ IF appCustomPerms[self] = NULL
-                                               THEN /\ \/ /\ appCustomPerms' = [appCustomPerms EXCEPT ![self] = NORMAL]
-                                                       \/ /\ appCustomPerms' = [appCustomPerms EXCEPT ![self] = DANGEROUS]
-                                               ELSE /\ appCustomPerms' = [appCustomPerms EXCEPT ![self] = NULL]
-                                         /\ pc' = [pc EXCEPT ![self] = "platform"]
-                                         /\ UNCHANGED <<appUriPerms, stack, app_, perm_>>
-                                      \/ /\ \/ /\ IF appCustomPerms[self] = NULL
-                                                     THEN /\ \/ /\ appCustomPerms' = [appCustomPerms EXCEPT ![self] = NORMAL]
-                                                             \/ /\ appCustomPerms' = [appCustomPerms EXCEPT ![self] = DANGEROUS]
-                                                     ELSE /\ TRUE
-                                                          /\ UNCHANGED appCustomPerms
-                                               /\ pc' = [pc EXCEPT ![self] = "platform"]
-                                               /\ UNCHANGED <<appUriPerms, stack, app_, perm_>>
-                                            \/ /\ \/ /\ \E p \in Permissions:
-                                                          /\ /\ app_' = [app_ EXCEPT ![self] = self]
-                                                             /\ perm_' = [perm_ EXCEPT ![self] = p]
-                                                             /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "ask",
-                                                                                                      pc        |->  "platform",
-                                                                                                      app_      |->  app_[self],
-                                                                                                      perm_     |->  perm_[self] ] >>
+                                   /\ pc' = [pc EXCEPT ![self] = "UPDATE_THE_APP"]
+                                   /\ UNCHANGED <<app_d, app_ask, perm_as, a1, a2, app>>
+                                \/ /\ \/ /\ /\ app' = [app EXCEPT ![self] = self]
+                                            /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "uninstallApp",
+                                                                                     pc        |->  "PLATFORM",
+                                                                                     app       |->  app[self] ] >>
+                                                                                 \o stack[self]]
+                                         /\ pc' = [pc EXCEPT ![self] = "UNINSTALL_APP"]
+                                         /\ UNCHANGED <<app_d, app_ask, perm_as, a1, a2>>
+                                      \/ /\ \/ /\ IF CP[self] = NULL
+                                                     THEN /\ /\ app_d' = [app_d EXCEPT ![self] = self]
+                                                             /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "defineCP",
+                                                                                                      pc        |->  "PLATFORM",
+                                                                                                      app_d     |->  app_d[self] ] >>
                                                                                                   \o stack[self]]
-                                                          /\ pc' = [pc EXCEPT ![self] = "l1"]
-                                                     /\ UNCHANGED appUriPerms
-                                                  \/ /\ IF appUriPerms[self] = NULL
-                                                           THEN /\ \E n \in CP:
-                                                                     appUriPerms' = [appUriPerms EXCEPT ![self] = n]
-                                                           ELSE /\ TRUE
-                                                                /\ UNCHANGED appUriPerms
-                                                     /\ pc' = [pc EXCEPT ![self] = "platform"]
-                                                     /\ UNCHANGED <<stack, app_, perm_>>
-                                               /\ UNCHANGED appCustomPerms
+                                                          /\ pc' = [pc EXCEPT ![self] = "DEFINE_CP"]
+                                                     ELSE /\ pc' = [pc EXCEPT ![self] = "PLATFORM"]
+                                                          /\ UNCHANGED << stack, 
+                                                                          app_d >>
+                                               /\ UNCHANGED <<app_ask, perm_as, a1, a2>>
+                                            \/ /\ \/ /\ \E application \in (Applications \ {self}):
+                                                          /\ /\ a1' = [a1 EXCEPT ![self] = self]
+                                                             /\ a2' = [a2 EXCEPT ![self] = application]
+                                                             /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "ask",
+                                                                                                      pc        |->  "PLATFORM",
+                                                                                                      a1        |->  a1[self],
+                                                                                                      a2        |->  a2[self] ] >>
+                                                                                                  \o stack[self]]
+                                                          /\ pc' = [pc EXCEPT ![self] = "ASK_"]
+                                                     /\ UNCHANGED <<app_ask, perm_as>>
+                                                  \/ /\ \E p \in Permissions:
+                                                          /\ /\ app_ask' = [app_ask EXCEPT ![self] = self]
+                                                             /\ perm_as' = [perm_as EXCEPT ![self] = p]
+                                                             /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "askTheUser",
+                                                                                                      pc        |->  "PLATFORM",
+                                                                                                      app_ask   |->  app_ask[self],
+                                                                                                      perm_as   |->  perm_as[self] ] >>
+                                                                                                  \o stack[self]]
+                                                          /\ pc' = [pc EXCEPT ![self] = "ASK_USER"]
+                                                     /\ UNCHANGED <<a1, a2>>
+                                               /\ app_d' = app_d
+                                         /\ app' = app
                                    /\ app_u' = app_u
-                             /\ app_i' = app_i
-                  /\ UNCHANGED << installed, appPerms, permsInUse, 
-                                  appPermConsents, app, perm >>
+                             /\ app_' = app_
+                        ELSE /\ /\ app_' = [app_ EXCEPT ![self] = self]
+                                /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "installApp",
+                                                                         pc        |->  "PLATFORM",
+                                                                         app_      |->  app_[self] ] >>
+                                                                     \o stack[self]]
+                             /\ pc' = [pc EXCEPT ![self] = "INSTALL_APP"]
+                             /\ UNCHANGED << app_d, app_u, app_ask, perm_as, 
+                                             a1, a2, app >>
+                  /\ UNCHANGED << appCustomPerms, appPerms, CP, cpUserConsent, 
+                                  appPermConsents, permsInUse, installed, 
+                                  app_a, perm_, a1_, a2_, app_as, perm_a, 
+                                  app_m, perm >>
 
-a(self) == platform(self)
+a(self) == PLATFORM(self)
 
-Next == (\E self \in ProcSet:  \/ ask(self) \/ installApp(self)
-                               \/ uninstallApp(self) \/ makeDecision(self))
+Next == (\E self \in ProcSet:  \/ installApp(self) \/ defineCP(self)
+                               \/ arbitraryDecision(self) \/ askUser(self)
+                               \/ updateApp(self) \/ askPermission(self)
+                               \/ askTheUser(self) \/ ask(self)
+                               \/ makeDecision(self) \/ uninstallApp(self))
            \/ (\E self \in Applications: a(self))
 
 Spec == /\ Init /\ [][Next]_vars
-        /\ \A self \in Applications : /\ WF_vars((pc[self] # "platform") /\ a(self))
-                                      /\ WF_vars(installApp(self))
+        /\ \A self \in Applications : /\ WF_vars((pc[self] # "PLATFORM") /\ a(self))
+                                      /\ WF_vars(updateApp(self))
                                       /\ WF_vars(uninstallApp(self))
+                                      /\ WF_vars(defineCP(self))
                                       /\ WF_vars(ask(self))
+                                      /\ WF_vars(askTheUser(self))
+                                      /\ WF_vars(installApp(self))
+                                      /\ WF_vars(askUser(self))
+                                      /\ WF_vars(arbitraryDecision(self))
+                                      /\ WF_vars(askPermission(self))
                                       /\ WF_vars(makeDecision(self))
 
 \* END TRANSLATION
 
-TypeOK == /\ appPerms \in [Applications -> [Permissions -> PermissionRequestDecision]]
+TypeOK == /\ appCustomPerms \in [Applications -> [Applications -> PermissionRequestDecision]]
+          /\ CP \in [Applications -> CustomPermission]
+          /\ cpUserConsent \in [Applications -> [Applications -> UserConsent]]
+          /\ installed \in [Applications -> Boolean]
+          /\ appPerms \in [Applications -> [Permissions -> PermissionRequestDecision]]
           /\ appPermConsents \in [Applications -> [Permissions -> UserConsent]]
           /\ permsInUse \in [Applications -> [Permissions -> Boolean]]
-          /\ appCustomPerms \in [Applications -> CustomPermission]
-          /\ installed \in [Applications -> Boolean]
 
-UserAgreed == [] ~(/\ \E application \in Applications : \E permission \in Permissions :
+UserAgreed == [] ~(/\ \E m \in Applications : CP[m] = SENSITIVE \* Li and Tuncay (yes, simultaneously)
+                      /\ \E n \in Applications :
+                            /\ m # n
+                            /\ appCustomPerms[n][m] = GRANT
+                            /\ cpUserConsent[n][m] # ALLOW)
+                            
+UserAgreed2 == [] ~(/\ \E application \in Applications : \E permission \in Permissions : \* Bagheri
                       /\ appPermConsents[application][permission] # ALLOW
                       /\ appPerms[application][permission] = GRANT
                       /\ permsInUse[application][permission] = TRUE)
 
-CpUserAgreed == [] ~(/\ \E application \in Applications : \E permission \in Permissions :
-                        /\ appCustomPerms[application] = DANGEROUS
-                        /\ appPerms[application][permission] = GRANT
-                        /\ permsInUse[application][permission] = TRUE
-                        /\ appPermConsents[application][permission] # ALLOW)
-
-ABC == TRUE
-
 Authorized == [] ~(/\ \E application \in Applications : \E permission \in Permissions :
                       /\ appPerms[application][permission] # GRANT
-                      /\ permsInUse[application][permission] = TRUE)
-                      
+                      /\ permsInUse[application][permission] = TRUE)               
 =============================================================================
 \* Modification History
-\* Last modified Mon Mar 20 05:45:25 GMT+03:30 2023 by Amirhosein
+\* Last modified Mon Mar 20 12:24:30 GMT+03:30 2023 by Amirhosein
