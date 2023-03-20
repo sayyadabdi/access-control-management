@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.lamport.tla.toolbox.tool.tlc.modelCheck">
+    <stringAttribute key="TLCCmdLineParameters" value=""/>
+    <intAttribute key="collectCoverage" value="1"/>
     <stringAttribute key="configurationName" value="Model_1"/>
+    <booleanAttribute key="deferLiveness" value="false"/>
+    <intAttribute key="dfidDepth" value="100"/>
+    <booleanAttribute key="dfidMode" value="false"/>
     <intAttribute key="distributedFPSetCount" value="0"/>
     <stringAttribute key="distributedNetworkInterface" value="192.168.1.10"/>
     <intAttribute key="distributedNodesCount" value="1"/>
     <stringAttribute key="distributedTLC" value="off"/>
-    <intAttribute key="fpIndex" value="65"/>
+    <stringAttribute key="distributedTLCVMArgs" value=""/>
+    <intAttribute key="fpBits" value="1"/>
+    <intAttribute key="fpIndex" value="48"/>
+    <booleanAttribute key="fpIndexRandom" value="true"/>
     <intAttribute key="maxHeapSize" value="25"/>
+    <intAttribute key="maxSetSize" value="1000000"/>
+    <booleanAttribute key="mcMode" value="true"/>
     <stringAttribute key="modelBehaviorInit" value=""/>
     <stringAttribute key="modelBehaviorNext" value=""/>
     <stringAttribute key="modelBehaviorSpec" value="Spec"/>
     <intAttribute key="modelBehaviorSpecType" value="1"/>
-    <stringAttribute key="modelBehaviorVars" value="app_i, permsInUse, app_u, app_, appPerms, pc, perm, appCP, app, perm_, installed, stack, appPermConsents"/>
+    <stringAttribute key="modelBehaviorVars" value="app_i, permsInUse, app_u, app_, appPerms, pc, appUriPerms, perm, app, perm_, installed, appCustomPerms, stack, appPermConsents"/>
     <stringAttribute key="modelComments" value=""/>
     <booleanAttribute key="modelCorrectnessCheckDeadlock" value="true"/>
     <listAttribute key="modelCorrectnessInvariants">
         <listEntry value="1TypeOK"/>
     </listAttribute>
     <listAttribute key="modelCorrectnessProperties">
-        <listEntry value="0UserAgreed"/>
-        <listEntry value="1CpUserAgreed"/>
-        <listEntry value="1Authorized"/>
+        <listEntry value="1UserAgreed"/>
+        <listEntry value="0CpUserAgreed"/>
+        <listEntry value="0Authorized"/>
     </listAttribute>
     <intAttribute key="modelEditorOpenTabs" value="12"/>
     <stringAttribute key="modelExpressionEval" value=""/>
@@ -28,10 +38,17 @@
         <listEntry value="defaultInitValue;;defaultInitValue;1;0"/>
         <listEntry value="A;;2;0;0"/>
         <listEntry value="P;;2;0;0"/>
+        <listEntry value="CP;;{&quot;NAME1&quot;, &quot;NAME2&quot;};0;0"/>
     </listAttribute>
     <intAttribute key="modelVersion" value="20191005"/>
     <intAttribute key="numberOfWorkers" value="4"/>
+    <booleanAttribute key="recover" value="false"/>
     <stringAttribute key="result.mail.address" value=""/>
+    <intAttribute key="simuAril" value="-1"/>
+    <intAttribute key="simuDepth" value="100"/>
+    <intAttribute key="simuSeed" value="-1"/>
     <stringAttribute key="specName" value="PManager"/>
     <stringAttribute key="tlcResourcesProfile" value="local custom"/>
+    <stringAttribute key="view" value=""/>
+    <booleanAttribute key="visualizeStateGraph" value="false"/>
 </launchConfiguration>
