@@ -2,7 +2,7 @@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 112 and seed -3486343575909742887 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 2928] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 104 and seed -5035383783841912082 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 10460] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
@@ -24,13 +24,13 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2023-03-22 16:29:32)
+Starting... (2023-03-22 16:19:07)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2189:0 @!@!@
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2023-03-22 16:29:32.
+Finished computing initial states: 1 distinct state generated at 2023-03-22 16:19:07.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2110:1 @!@!@
 Invariant UriPermConsent is violated.
@@ -43,11 +43,14 @@ The behavior up to this point is:
 /\ app_a = <<defaultInitValue, defaultInitValue>>
 /\ app_d = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_m = <<defaultInitValue, defaultInitValue>>
 /\ app_s = <<defaultInitValue, defaultInitValue>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
 /\ app_ = <<defaultInitValue, defaultInitValue>>
 /\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"PLATFORM", "PLATFORM">>
+/\ perm_a = <<defaultInitValue, defaultInitValue>>
+/\ perm_as = <<defaultInitValue, defaultInitValue>>
 /\ a1_ = <<defaultInitValue, defaultInitValue>>
 /\ CP = <<"NULL", "NULL">>
 /\ perm = <<defaultInitValue, defaultInitValue>>
@@ -56,6 +59,7 @@ The behavior up to this point is:
 /\ perm_ = <<defaultInitValue, defaultInitValue>>
 /\ installed = <<FALSE, FALSE>>
 /\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ app_as = <<defaultInitValue, defaultInitValue>>
 /\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ stack = <<<<>>, <<>>>>
 /\ a1 = <<defaultInitValue, defaultInitValue>>
@@ -64,15 +68,18 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-2: <PLATFORM line 371, col 19 to line 432, col 75 of module PManager>
+2: <PLATFORM line 454, col 19 to line 516, col 63 of module PManager>
 /\ app_a = <<defaultInitValue, defaultInitValue>>
 /\ app_d = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_m = <<defaultInitValue, defaultInitValue>>
 /\ app_s = <<defaultInitValue, defaultInitValue>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
 /\ app_ = <<1, defaultInitValue>>
 /\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"INSTALL_APP", "PLATFORM">>
+/\ perm_a = <<defaultInitValue, defaultInitValue>>
+/\ perm_as = <<defaultInitValue, defaultInitValue>>
 /\ a1_ = <<defaultInitValue, defaultInitValue>>
 /\ CP = <<"NULL", "NULL">>
 /\ perm = <<defaultInitValue, defaultInitValue>>
@@ -81,6 +88,7 @@ The behavior up to this point is:
 /\ perm_ = <<defaultInitValue, defaultInitValue>>
 /\ installed = <<FALSE, FALSE>>
 /\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ app_as = <<defaultInitValue, defaultInitValue>>
 /\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ stack = <<<<[pc |-> "PLATFORM", app_ |-> defaultInitValue, procedure |-> "installApp"]>>, <<>>>>
 /\ a1 = <<defaultInitValue, defaultInitValue>>
@@ -89,15 +97,18 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-3: <INSTALL_APP line 182, col 22 to line 190, col 57 of module PManager>
+3: <INSTALL_APP line 214, col 22 to line 223, col 49 of module PManager>
 /\ app_a = <<defaultInitValue, defaultInitValue>>
 /\ app_d = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_m = <<defaultInitValue, defaultInitValue>>
 /\ app_s = <<defaultInitValue, defaultInitValue>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
 /\ app_ = <<defaultInitValue, defaultInitValue>>
 /\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"PLATFORM", "PLATFORM">>
+/\ perm_a = <<defaultInitValue, defaultInitValue>>
+/\ perm_as = <<defaultInitValue, defaultInitValue>>
 /\ a1_ = <<defaultInitValue, defaultInitValue>>
 /\ CP = <<"NULL", "NULL">>
 /\ perm = <<defaultInitValue, defaultInitValue>>
@@ -106,6 +117,7 @@ The behavior up to this point is:
 /\ perm_ = <<defaultInitValue, defaultInitValue>>
 /\ installed = <<TRUE, FALSE>>
 /\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ app_as = <<defaultInitValue, defaultInitValue>>
 /\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ stack = <<<<>>, <<>>>>
 /\ a1 = <<defaultInitValue, defaultInitValue>>
@@ -114,115 +126,18 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-4: <PLATFORM line 371, col 19 to line 432, col 75 of module PManager>
-/\ app_a = <<1, defaultInitValue>>
+4: <PLATFORM line 454, col 19 to line 516, col 63 of module PManager>
+/\ app_a = <<defaultInitValue, defaultInitValue>>
 /\ app_d = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_m = <<defaultInitValue, defaultInitValue>>
 /\ app_s = <<defaultInitValue, defaultInitValue>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
 /\ app_ = <<defaultInitValue, defaultInitValue>>
 /\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"ASK_PERMISSION", "PLATFORM">>
-/\ a1_ = <<defaultInitValue, defaultInitValue>>
-/\ CP = <<"NULL", "NULL">>
-/\ perm = <<1, defaultInitValue>>
-/\ a2_ = <<defaultInitValue, defaultInitValue>>
-/\ app = <<defaultInitValue, defaultInitValue>>
-/\ perm_ = <<defaultInitValue, defaultInitValue>>
-/\ installed = <<TRUE, FALSE>>
-/\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ stack = <<<<[pc |-> "PLATFORM", app_a |-> defaultInitValue, perm |-> defaultInitValue, procedure |-> "askPermission"]>>, <<>>>>
-/\ a1 = <<defaultInitValue, defaultInitValue>>
-/\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ a2 = <<defaultInitValue, defaultInitValue>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-5: <ASK_PERMISSION line 268, col 25 to line 288, col 54 of module PManager>
-/\ app_a = <<1, defaultInitValue>>
-/\ app_d = <<defaultInitValue, defaultInitValue>>
-/\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
-/\ app_s = <<defaultInitValue, defaultInitValue>>
-/\ app_u = <<defaultInitValue, defaultInitValue>>
-/\ app_ = <<defaultInitValue, defaultInitValue>>
-/\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ pc = <<"MAKE_DECISION", "PLATFORM">>
-/\ a1_ = <<defaultInitValue, defaultInitValue>>
-/\ CP = <<"NULL", "NULL">>
-/\ perm = <<1, defaultInitValue>>
-/\ a2_ = <<defaultInitValue, defaultInitValue>>
-/\ app = <<defaultInitValue, defaultInitValue>>
-/\ perm_ = <<defaultInitValue, defaultInitValue>>
-/\ installed = <<TRUE, FALSE>>
-/\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ stack = <<<<[pc |-> "PLATFORM", app_a |-> defaultInitValue, perm |-> defaultInitValue, procedure |-> "askPermission"]>>, <<>>>>
-/\ a1 = <<defaultInitValue, defaultInitValue>>
-/\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ a2 = <<defaultInitValue, defaultInitValue>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-6: <MAKE_DECISION line 290, col 24 to line 302, col 73 of module PManager>
-/\ app_a = <<1, defaultInitValue>>
-/\ app_d = <<defaultInitValue, defaultInitValue>>
-/\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
-/\ app_s = <<1, defaultInitValue>>
-/\ app_u = <<defaultInitValue, defaultInitValue>>
-/\ app_ = <<defaultInitValue, defaultInitValue>>
-/\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ pc = <<"SYSTEM_ARBITRARY_DECISION", "PLATFORM">>
-/\ a1_ = <<defaultInitValue, defaultInitValue>>
-/\ CP = <<"NULL", "NULL">>
-/\ perm = <<1, defaultInitValue>>
-/\ a2_ = <<defaultInitValue, defaultInitValue>>
-/\ app = <<defaultInitValue, defaultInitValue>>
-/\ perm_ = <<1, defaultInitValue>>
-/\ installed = <<TRUE, FALSE>>
-/\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ stack = <<<<[pc |-> "USING_PERM", app_s |-> defaultInitValue, perm_ |-> defaultInitValue, procedure |-> "systemArbitraryDecision"], [pc |-> "PLATFORM", app_a |-> defaultInitValue, perm |-> defaultInitValue, procedure |-> "askPermission"]>>, <<>>>>
-/\ a1 = <<defaultInitValue, defaultInitValue>>
-/\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ a2 = <<defaultInitValue, defaultInitValue>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-7: <SYSTEM_ARBITRARY_DECISION line 207, col 36 to line 220, col 71 of module PManager>
-/\ app_a = <<1, defaultInitValue>>
-/\ app_d = <<defaultInitValue, defaultInitValue>>
-/\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
-/\ app_s = <<defaultInitValue, defaultInitValue>>
-/\ app_u = <<defaultInitValue, defaultInitValue>>
-/\ app_ = <<defaultInitValue, defaultInitValue>>
-/\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
-/\ pc = <<"USING_PERM", "PLATFORM">>
-/\ a1_ = <<defaultInitValue, defaultInitValue>>
-/\ CP = <<"NULL", "NULL">>
-/\ perm = <<1, defaultInitValue>>
-/\ a2_ = <<defaultInitValue, defaultInitValue>>
-/\ app = <<defaultInitValue, defaultInitValue>>
-/\ perm_ = <<defaultInitValue, defaultInitValue>>
-/\ installed = <<TRUE, FALSE>>
-/\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ stack = <<<<[pc |-> "PLATFORM", app_a |-> defaultInitValue, perm |-> defaultInitValue, procedure |-> "askPermission"]>>, <<>>>>
-/\ a1 = <<defaultInitValue, defaultInitValue>>
-/\ appPermConsents = <<<<"ALLOW", "NULL">>, <<"NULL", "NULL">>>>
-/\ a2 = <<defaultInitValue, defaultInitValue>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-8: <USING_PERM line 304, col 21 to line 316, col 46 of module PManager>
-/\ app_a = <<defaultInitValue, defaultInitValue>>
-/\ app_d = <<defaultInitValue, defaultInitValue>>
-/\ permsInUse = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
-/\ app_s = <<defaultInitValue, defaultInitValue>>
-/\ app_u = <<defaultInitValue, defaultInitValue>>
-/\ app_ = <<defaultInitValue, defaultInitValue>>
-/\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
-/\ pc = <<"PLATFORM", "PLATFORM">>
+/\ perm_a = <<defaultInitValue, defaultInitValue>>
+/\ perm_as = <<1, defaultInitValue>>
 /\ a1_ = <<defaultInitValue, defaultInitValue>>
 /\ CP = <<"NULL", "NULL">>
 /\ perm = <<defaultInitValue, defaultInitValue>>
@@ -231,6 +146,152 @@ The behavior up to this point is:
 /\ perm_ = <<defaultInitValue, defaultInitValue>>
 /\ installed = <<TRUE, FALSE>>
 /\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ app_as = <<1, defaultInitValue>>
+/\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ stack = <<<<[pc |-> "PLATFORM", app_as |-> defaultInitValue, perm_as |-> defaultInitValue, procedure |-> "askPermission"]>>, <<>>>>
+/\ a1 = <<defaultInitValue, defaultInitValue>>
+/\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ a2 = <<defaultInitValue, defaultInitValue>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+5: <ASK_PERMISSION line 322, col 25 to line 343, col 46 of module PManager>
+/\ app_a = <<defaultInitValue, defaultInitValue>>
+/\ app_d = <<defaultInitValue, defaultInitValue>>
+/\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_m = <<defaultInitValue, defaultInitValue>>
+/\ app_s = <<defaultInitValue, defaultInitValue>>
+/\ app_u = <<defaultInitValue, defaultInitValue>>
+/\ app_ = <<defaultInitValue, defaultInitValue>>
+/\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ pc = <<"make_decision", "PLATFORM">>
+/\ perm_a = <<defaultInitValue, defaultInitValue>>
+/\ perm_as = <<1, defaultInitValue>>
+/\ a1_ = <<defaultInitValue, defaultInitValue>>
+/\ CP = <<"NULL", "NULL">>
+/\ perm = <<defaultInitValue, defaultInitValue>>
+/\ a2_ = <<defaultInitValue, defaultInitValue>>
+/\ app = <<defaultInitValue, defaultInitValue>>
+/\ perm_ = <<defaultInitValue, defaultInitValue>>
+/\ installed = <<TRUE, FALSE>>
+/\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ app_as = <<1, defaultInitValue>>
+/\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ stack = <<<<[pc |-> "PLATFORM", app_as |-> defaultInitValue, perm_as |-> defaultInitValue, procedure |-> "askPermission"]>>, <<>>>>
+/\ a1 = <<defaultInitValue, defaultInitValue>>
+/\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ a2 = <<defaultInitValue, defaultInitValue>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+6: <make_decision line 345, col 24 to line 358, col 70 of module PManager>
+/\ app_a = <<defaultInitValue, defaultInitValue>>
+/\ app_d = <<defaultInitValue, defaultInitValue>>
+/\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_m = <<1, defaultInitValue>>
+/\ app_s = <<defaultInitValue, defaultInitValue>>
+/\ app_u = <<defaultInitValue, defaultInitValue>>
+/\ app_ = <<defaultInitValue, defaultInitValue>>
+/\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ pc = <<"MAKE_DECISION", "PLATFORM">>
+/\ perm_a = <<defaultInitValue, defaultInitValue>>
+/\ perm_as = <<1, defaultInitValue>>
+/\ a1_ = <<defaultInitValue, defaultInitValue>>
+/\ CP = <<"NULL", "NULL">>
+/\ perm = <<1, defaultInitValue>>
+/\ a2_ = <<defaultInitValue, defaultInitValue>>
+/\ app = <<defaultInitValue, defaultInitValue>>
+/\ perm_ = <<defaultInitValue, defaultInitValue>>
+/\ installed = <<TRUE, FALSE>>
+/\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ app_as = <<1, defaultInitValue>>
+/\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ stack = <<<<[pc |-> "using_perm", app_m |-> defaultInitValue, perm |-> defaultInitValue, procedure |-> "makeDecision"], [pc |-> "PLATFORM", app_as |-> defaultInitValue, perm_as |-> defaultInitValue, procedure |-> "askPermission"]>>, <<>>>>
+/\ a1 = <<defaultInitValue, defaultInitValue>>
+/\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ a2 = <<defaultInitValue, defaultInitValue>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+7: <MAKE_DECISION line 413, col 24 to line 436, col 51 of module PManager>
+/\ app_a = <<1, defaultInitValue>>
+/\ app_d = <<defaultInitValue, defaultInitValue>>
+/\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_m = <<1, defaultInitValue>>
+/\ app_s = <<defaultInitValue, defaultInitValue>>
+/\ app_u = <<defaultInitValue, defaultInitValue>>
+/\ app_ = <<defaultInitValue, defaultInitValue>>
+/\ appPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ pc = <<"ASK_USER_CONSENT", "PLATFORM">>
+/\ perm_a = <<1, defaultInitValue>>
+/\ perm_as = <<1, defaultInitValue>>
+/\ a1_ = <<defaultInitValue, defaultInitValue>>
+/\ CP = <<"NULL", "NULL">>
+/\ perm = <<1, defaultInitValue>>
+/\ a2_ = <<defaultInitValue, defaultInitValue>>
+/\ app = <<defaultInitValue, defaultInitValue>>
+/\ perm_ = <<defaultInitValue, defaultInitValue>>
+/\ installed = <<TRUE, FALSE>>
+/\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ app_as = <<1, defaultInitValue>>
+/\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ stack = <<<<[pc |-> "using_perm", app_a |-> defaultInitValue, perm_a |-> defaultInitValue, procedure |-> "askUserConsent"], [pc |-> "PLATFORM", app_as |-> defaultInitValue, perm_as |-> defaultInitValue, procedure |-> "askPermission"]>>, <<>>>>
+/\ a1 = <<defaultInitValue, defaultInitValue>>
+/\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ a2 = <<defaultInitValue, defaultInitValue>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+8: <ASK_USER_CONSENT line 305, col 27 to line 318, col 48 of module PManager>
+/\ app_a = <<defaultInitValue, defaultInitValue>>
+/\ app_d = <<defaultInitValue, defaultInitValue>>
+/\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_m = <<1, defaultInitValue>>
+/\ app_s = <<defaultInitValue, defaultInitValue>>
+/\ app_u = <<defaultInitValue, defaultInitValue>>
+/\ app_ = <<defaultInitValue, defaultInitValue>>
+/\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
+/\ pc = <<"using_perm", "PLATFORM">>
+/\ perm_a = <<defaultInitValue, defaultInitValue>>
+/\ perm_as = <<1, defaultInitValue>>
+/\ a1_ = <<defaultInitValue, defaultInitValue>>
+/\ CP = <<"NULL", "NULL">>
+/\ perm = <<1, defaultInitValue>>
+/\ a2_ = <<defaultInitValue, defaultInitValue>>
+/\ app = <<defaultInitValue, defaultInitValue>>
+/\ perm_ = <<defaultInitValue, defaultInitValue>>
+/\ installed = <<TRUE, FALSE>>
+/\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ app_as = <<1, defaultInitValue>>
+/\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ stack = <<<<[pc |-> "PLATFORM", app_as |-> defaultInitValue, perm_as |-> defaultInitValue, procedure |-> "askPermission"]>>, <<>>>>
+/\ a1 = <<defaultInitValue, defaultInitValue>>
+/\ appPermConsents = <<<<"ALLOW", "NULL">>, <<"NULL", "NULL">>>>
+/\ a2 = <<defaultInitValue, defaultInitValue>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+9: <using_perm line 360, col 21 to line 372, col 78 of module PManager>
+/\ app_a = <<defaultInitValue, defaultInitValue>>
+/\ app_d = <<defaultInitValue, defaultInitValue>>
+/\ permsInUse = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_m = <<1, defaultInitValue>>
+/\ app_s = <<defaultInitValue, defaultInitValue>>
+/\ app_u = <<defaultInitValue, defaultInitValue>>
+/\ app_ = <<defaultInitValue, defaultInitValue>>
+/\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
+/\ pc = <<"PLATFORM", "PLATFORM">>
+/\ perm_a = <<defaultInitValue, defaultInitValue>>
+/\ perm_as = <<defaultInitValue, defaultInitValue>>
+/\ a1_ = <<defaultInitValue, defaultInitValue>>
+/\ CP = <<"NULL", "NULL">>
+/\ perm = <<1, defaultInitValue>>
+/\ a2_ = <<defaultInitValue, defaultInitValue>>
+/\ app = <<defaultInitValue, defaultInitValue>>
+/\ perm_ = <<defaultInitValue, defaultInitValue>>
+/\ installed = <<TRUE, FALSE>>
+/\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ app_as = <<defaultInitValue, defaultInitValue>>
 /\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ stack = <<<<>>, <<>>>>
 /\ a1 = <<defaultInitValue, defaultInitValue>>
@@ -239,23 +300,27 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-9: <PLATFORM line 371, col 19 to line 432, col 75 of module PManager>
+10: <PLATFORM line 454, col 19 to line 516, col 63 of module PManager>
 /\ app_a = <<defaultInitValue, defaultInitValue>>
 /\ app_d = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_m = <<1, defaultInitValue>>
 /\ app_s = <<defaultInitValue, defaultInitValue>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
 /\ app_ = <<defaultInitValue, defaultInitValue>>
 /\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"UNINSTALL_APP", "PLATFORM">>
+/\ perm_a = <<defaultInitValue, defaultInitValue>>
+/\ perm_as = <<defaultInitValue, defaultInitValue>>
 /\ a1_ = <<defaultInitValue, defaultInitValue>>
 /\ CP = <<"NULL", "NULL">>
-/\ perm = <<defaultInitValue, defaultInitValue>>
+/\ perm = <<1, defaultInitValue>>
 /\ a2_ = <<defaultInitValue, defaultInitValue>>
 /\ app = <<1, defaultInitValue>>
 /\ perm_ = <<defaultInitValue, defaultInitValue>>
 /\ installed = <<TRUE, FALSE>>
 /\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ app_as = <<defaultInitValue, defaultInitValue>>
 /\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ stack = << << [ pc |-> "PLATFORM",
         app |-> defaultInitValue,
@@ -267,23 +332,27 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-10: <UNINSTALL_APP line 357, col 24 to line 367, col 44 of module PManager>
+11: <UNINSTALL_APP line 440, col 24 to line 450, col 78 of module PManager>
 /\ app_a = <<defaultInitValue, defaultInitValue>>
 /\ app_d = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_m = <<1, defaultInitValue>>
 /\ app_s = <<defaultInitValue, defaultInitValue>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
 /\ app_ = <<defaultInitValue, defaultInitValue>>
 /\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"PLATFORM", "PLATFORM">>
+/\ perm_a = <<defaultInitValue, defaultInitValue>>
+/\ perm_as = <<defaultInitValue, defaultInitValue>>
 /\ a1_ = <<defaultInitValue, defaultInitValue>>
 /\ CP = <<"NULL", "NULL">>
-/\ perm = <<defaultInitValue, defaultInitValue>>
+/\ perm = <<1, defaultInitValue>>
 /\ a2_ = <<defaultInitValue, defaultInitValue>>
 /\ app = <<defaultInitValue, defaultInitValue>>
 /\ perm_ = <<defaultInitValue, defaultInitValue>>
 /\ installed = <<FALSE, FALSE>>
 /\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ app_as = <<defaultInitValue, defaultInitValue>>
 /\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ stack = <<<<>>, <<>>>>
 /\ a1 = <<defaultInitValue, defaultInitValue>>
@@ -292,23 +361,27 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-11: <PLATFORM line 371, col 19 to line 432, col 75 of module PManager>
+12: <PLATFORM line 454, col 19 to line 516, col 63 of module PManager>
 /\ app_a = <<defaultInitValue, defaultInitValue>>
 /\ app_d = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_m = <<1, defaultInitValue>>
 /\ app_s = <<defaultInitValue, defaultInitValue>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
 /\ app_ = <<1, defaultInitValue>>
 /\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"INSTALL_APP", "PLATFORM">>
+/\ perm_a = <<defaultInitValue, defaultInitValue>>
+/\ perm_as = <<defaultInitValue, defaultInitValue>>
 /\ a1_ = <<defaultInitValue, defaultInitValue>>
 /\ CP = <<"NULL", "NULL">>
-/\ perm = <<defaultInitValue, defaultInitValue>>
+/\ perm = <<1, defaultInitValue>>
 /\ a2_ = <<defaultInitValue, defaultInitValue>>
 /\ app = <<defaultInitValue, defaultInitValue>>
 /\ perm_ = <<defaultInitValue, defaultInitValue>>
 /\ installed = <<FALSE, FALSE>>
 /\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ app_as = <<defaultInitValue, defaultInitValue>>
 /\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ stack = <<<<[pc |-> "PLATFORM", app_ |-> defaultInitValue, procedure |-> "installApp"]>>, <<>>>>
 /\ a1 = <<defaultInitValue, defaultInitValue>>
@@ -317,40 +390,18 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-12: <INSTALL_APP line 182, col 22 to line 190, col 57 of module PManager>
+13: <INSTALL_APP line 214, col 22 to line 223, col 49 of module PManager>
 /\ app_a = <<defaultInitValue, defaultInitValue>>
 /\ app_d = <<defaultInitValue, defaultInitValue>>
 /\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_m = <<1, defaultInitValue>>
 /\ app_s = <<defaultInitValue, defaultInitValue>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
 /\ app_ = <<defaultInitValue, defaultInitValue>>
 /\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
 /\ pc = <<"PLATFORM", "PLATFORM">>
-/\ a1_ = <<defaultInitValue, defaultInitValue>>
-/\ CP = <<"NULL", "NULL">>
-/\ perm = <<defaultInitValue, defaultInitValue>>
-/\ a2_ = <<defaultInitValue, defaultInitValue>>
-/\ app = <<defaultInitValue, defaultInitValue>>
-/\ perm_ = <<defaultInitValue, defaultInitValue>>
-/\ installed = <<TRUE, FALSE>>
-/\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ stack = <<<<>>, <<>>>>
-/\ a1 = <<defaultInitValue, defaultInitValue>>
-/\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ a2 = <<defaultInitValue, defaultInitValue>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-13: <PLATFORM line 371, col 19 to line 432, col 75 of module PManager>
-/\ app_a = <<1, defaultInitValue>>
-/\ app_d = <<defaultInitValue, defaultInitValue>>
-/\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
-/\ app_s = <<defaultInitValue, defaultInitValue>>
-/\ app_u = <<defaultInitValue, defaultInitValue>>
-/\ app_ = <<defaultInitValue, defaultInitValue>>
-/\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
-/\ pc = <<"ASK_PERMISSION", "PLATFORM">>
+/\ perm_a = <<defaultInitValue, defaultInitValue>>
+/\ perm_as = <<defaultInitValue, defaultInitValue>>
 /\ a1_ = <<defaultInitValue, defaultInitValue>>
 /\ CP = <<"NULL", "NULL">>
 /\ perm = <<1, defaultInitValue>>
@@ -359,31 +410,65 @@ The behavior up to this point is:
 /\ perm_ = <<defaultInitValue, defaultInitValue>>
 /\ installed = <<TRUE, FALSE>>
 /\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ app_as = <<defaultInitValue, defaultInitValue>>
 /\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ stack = <<<<[pc |-> "PLATFORM", app_a |-> defaultInitValue, perm |-> defaultInitValue, procedure |-> "askPermission"]>>, <<>>>>
+/\ stack = <<<<>>, <<>>>>
 /\ a1 = <<defaultInitValue, defaultInitValue>>
 /\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ a2 = <<defaultInitValue, defaultInitValue>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-14: <ASK_PERMISSION line 268, col 25 to line 288, col 54 of module PManager>
+14: <PLATFORM line 454, col 19 to line 516, col 63 of module PManager>
 /\ app_a = <<defaultInitValue, defaultInitValue>>
 /\ app_d = <<defaultInitValue, defaultInitValue>>
-/\ permsInUse = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ permsInUse = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_m = <<1, defaultInitValue>>
 /\ app_s = <<defaultInitValue, defaultInitValue>>
 /\ app_u = <<defaultInitValue, defaultInitValue>>
 /\ app_ = <<defaultInitValue, defaultInitValue>>
 /\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
-/\ pc = <<"PLATFORM", "PLATFORM">>
+/\ pc = <<"ASK_PERMISSION", "PLATFORM">>
+/\ perm_a = <<defaultInitValue, defaultInitValue>>
+/\ perm_as = <<1, defaultInitValue>>
 /\ a1_ = <<defaultInitValue, defaultInitValue>>
 /\ CP = <<"NULL", "NULL">>
-/\ perm = <<defaultInitValue, defaultInitValue>>
+/\ perm = <<1, defaultInitValue>>
 /\ a2_ = <<defaultInitValue, defaultInitValue>>
 /\ app = <<defaultInitValue, defaultInitValue>>
 /\ perm_ = <<defaultInitValue, defaultInitValue>>
 /\ installed = <<TRUE, FALSE>>
 /\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ app_as = <<1, defaultInitValue>>
+/\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ stack = <<<<[pc |-> "PLATFORM", app_as |-> defaultInitValue, perm_as |-> defaultInitValue, procedure |-> "askPermission"]>>, <<>>>>
+/\ a1 = <<defaultInitValue, defaultInitValue>>
+/\ appPermConsents = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ a2 = <<defaultInitValue, defaultInitValue>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+15: <ASK_PERMISSION line 322, col 25 to line 343, col 46 of module PManager>
+/\ app_a = <<defaultInitValue, defaultInitValue>>
+/\ app_d = <<defaultInitValue, defaultInitValue>>
+/\ permsInUse = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ app_m = <<1, defaultInitValue>>
+/\ app_s = <<defaultInitValue, defaultInitValue>>
+/\ app_u = <<defaultInitValue, defaultInitValue>>
+/\ app_ = <<defaultInitValue, defaultInitValue>>
+/\ appPerms = <<<<"GRANT", "NULL">>, <<"NULL", "NULL">>>>
+/\ pc = <<"PLATFORM", "PLATFORM">>
+/\ perm_a = <<defaultInitValue, defaultInitValue>>
+/\ perm_as = <<defaultInitValue, defaultInitValue>>
+/\ a1_ = <<defaultInitValue, defaultInitValue>>
+/\ CP = <<"NULL", "NULL">>
+/\ perm = <<1, defaultInitValue>>
+/\ a2_ = <<defaultInitValue, defaultInitValue>>
+/\ app = <<defaultInitValue, defaultInitValue>>
+/\ perm_ = <<defaultInitValue, defaultInitValue>>
+/\ installed = <<TRUE, FALSE>>
+/\ appCustomPerms = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ app_as = <<defaultInitValue, defaultInitValue>>
 /\ cpUserConsent = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
 /\ stack = <<<<>>, <<>>>>
 /\ a1 = <<defaultInitValue, defaultInitValue>>
@@ -392,538 +477,595 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2023-03-22 16:29:33
+The coverage statistics at 2023-03-22 16:19:09
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
-<Init line 151, col 1 to line 151, col 4 of module PManager>: 2:2
+<Init line 177, col 1 to line 177, col 4 of module PManager>: 2:2
 @!@!@ENDMSG 2773 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 152, col 9 to line 180, col 49 of module PManager: 2
+  line 178, col 9 to line 212, col 49 of module PManager: 2
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<INSTALL_APP line 182, col 1 to line 182, col 17 of module PManager>: 85:1244
+<INSTALL_APP line 214, col 1 to line 214, col 17 of module PManager>: 40:1272
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 182, col 25 to line 182, col 48 of module PManager: 27472
+  line 214, col 25 to line 214, col 48 of module PManager: 25031
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 182, col 25 to line 182, col 32 of module PManager: 26228
+  |line 214, col 25 to line 214, col 32 of module PManager: 23759
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 183, col 25 to line 183, col 76 of module PManager: 1244
+  line 215, col 25 to line 215, col 76 of module PManager: 1272
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 184, col 25 to line 184, col 72 of module PManager: 1244
+  line 216, col 25 to line 216, col 72 of module PManager: 1272
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 185, col 25 to line 185, col 78 of module PManager: 1244
+  line 217, col 25 to line 217, col 78 of module PManager: 1272
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 186, col 25 to line 186, col 75 of module PManager: 1244
+  line 218, col 25 to line 218, col 75 of module PManager: 1272
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 187, col 25 to line 190, col 57 of module PManager: 1244
+  line 219, col 25 to line 223, col 49 of module PManager: 1272
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<DEFINE_CP line 194, col 1 to line 194, col 15 of module PManager>: 1158:3740
+<DEFINE_CP line 227, col 1 to line 227, col 15 of module PManager>: 948:3144
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 194, col 23 to line 194, col 44 of module PManager: 28096
+  line 227, col 23 to line 227, col 44 of module PManager: 25329
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 194, col 23 to line 194, col 30 of module PManager: 26226
+  |line 227, col 23 to line 227, col 30 of module PManager: 23757
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 195, col 23 to line 196, col 72 of module PManager: 1870
+  line 228, col 23 to line 229, col 72 of module PManager: 1572
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 197, col 23 to line 197, col 70 of module PManager: 3740
+  line 230, col 23 to line 230, col 70 of module PManager: 3144
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 198, col 23 to line 198, col 79 of module PManager: 3740
+  line 231, col 23 to line 231, col 79 of module PManager: 3144
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 199, col 23 to line 199, col 73 of module PManager: 3740
+  line 232, col 23 to line 232, col 73 of module PManager: 3144
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 200, col 23 to line 203, col 74 of module PManager: 3740
+  line 233, col 23 to line 237, col 62 of module PManager: 3144
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<SYSTEM_ARBITRARY_DECISION line 207, col 1 to line 207, col 31 of module PManager>: 1770:2994
+<SYSTEM_ARBITRARY_DECISION line 241, col 1 to line 241, col 31 of module PManager>: 60:1496
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 207, col 39 to line 207, col 76 of module PManager: 27723
+  line 241, col 39 to line 241, col 76 of module PManager: 24505
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 207, col 39 to line 207, col 46 of module PManager: 26226
+  |line 241, col 39 to line 241, col 46 of module PManager: 23757
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 208, col 39 to line 211, col 124 of module PManager: 1497
+  line 242, col 39 to line 245, col 124 of module PManager: 748
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 212, col 39 to line 212, col 86 of module PManager: 2994
+  line 246, col 39 to line 246, col 86 of module PManager: 1496
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 213, col 39 to line 213, col 95 of module PManager: 2994
+  line 247, col 39 to line 247, col 95 of module PManager: 1496
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 214, col 39 to line 214, col 95 of module PManager: 2994
+  line 248, col 39 to line 248, col 95 of module PManager: 1496
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 215, col 39 to line 215, col 89 of module PManager: 2994
+  line 249, col 39 to line 249, col 89 of module PManager: 1496
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 216, col 39 to line 220, col 71 of module PManager: 2994
+  line 250, col 39 to line 255, col 74 of module PManager: 1496
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<ASK_CP_FROM_USER line 224, col 1 to line 224, col 22 of module PManager>: 628:1712
+<ASK_CP_FROM_USER line 259, col 1 to line 259, col 22 of module PManager>: 562:1540
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 224, col 30 to line 224, col 58 of module PManager: 27081
+  line 259, col 30 to line 259, col 58 of module PManager: 24527
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 224, col 30 to line 224, col 37 of module PManager: 26225
+  |line 259, col 30 to line 259, col 37 of module PManager: 23757
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 225, col 30 to line 228, col 107 of module PManager: 856
+  line 260, col 30 to line 263, col 107 of module PManager: 770
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 229, col 30 to line 229, col 77 of module PManager: 1712
+  line 264, col 30 to line 264, col 77 of module PManager: 1540
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 230, col 30 to line 230, col 80 of module PManager: 1712
+  line 265, col 30 to line 265, col 80 of module PManager: 1540
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 231, col 30 to line 231, col 80 of module PManager: 1712
+  line 266, col 30 to line 266, col 80 of module PManager: 1540
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 232, col 30 to line 232, col 80 of module PManager: 1712
+  line 267, col 30 to line 267, col 80 of module PManager: 1540
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 233, col 30 to line 236, col 48 of module PManager: 1712
+  line 268, col 30 to line 271, col 78 of module PManager: 1540
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<UPDATE_APP line 240, col 1 to line 240, col 16 of module PManager>: 772:2098
+<UPDATE_APP line 275, col 1 to line 275, col 16 of module PManager>: 547:1696
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 240, col 24 to line 240, col 46 of module PManager: 28323
+  line 275, col 24 to line 275, col 46 of module PManager: 25453
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 240, col 24 to line 240, col 31 of module PManager: 26225
+  |line 275, col 24 to line 275, col 31 of module PManager: 23757
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 241, col 27 to line 241, col 48 of module PManager: 2098
+  line 276, col 27 to line 276, col 48 of module PManager: 1696
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 242, col 32 to line 248, col 42 of module PManager: 1136
+  line 277, col 32 to line 283, col 42 of module PManager: 910
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 249, col 35 to line 249, col 73 of module PManager: 962
+  line 284, col 35 to line 284, col 73 of module PManager: 786
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 250, col 35 to line 250, col 73 of module PManager: 962
+  line 285, col 35 to line 285, col 73 of module PManager: 786
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 251, col 35 to line 251, col 62 of module PManager: 962
+  line 286, col 35 to line 286, col 62 of module PManager: 786
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 252, col 24 to line 255, col 75 of module PManager: 2098
+  line 287, col 24 to line 291, col 63 of module PManager: 1696
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<RETURNING line 257, col 1 to line 257, col 15 of module PManager>: 6:1204
+<RETURNING line 293, col 1 to line 293, col 15 of module PManager>: 6:1028
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 257, col 23 to line 257, col 44 of module PManager: 27429
+  line 293, col 23 to line 293, col 44 of module PManager: 24785
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 257, col 23 to line 257, col 30 of module PManager: 26225
+  |line 293, col 23 to line 293, col 30 of module PManager: 23757
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 258, col 23 to line 258, col 70 of module PManager: 1204
+  line 294, col 23 to line 294, col 70 of module PManager: 1028
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 259, col 23 to line 259, col 79 of module PManager: 1204
+  line 295, col 23 to line 295, col 79 of module PManager: 1028
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 260, col 23 to line 260, col 73 of module PManager: 1204
+  line 296, col 23 to line 296, col 73 of module PManager: 1028
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 261, col 23 to line 264, col 72 of module PManager: 1204
+  line 297, col 23 to line 301, col 62 of module PManager: 1028
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<ASK_PERMISSION line 268, col 1 to line 268, col 20 of module PManager>: 2115:4182
+<ASK_USER_CONSENT line 305, col 1 to line 305, col 22 of module PManager>: 909:1498
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 268, col 28 to line 268, col 54 of module PManager: 30405
+  line 305, col 30 to line 305, col 58 of module PManager: 24506
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 268, col 28 to line 268, col 35 of module PManager: 26225
+  |line 305, col 30 to line 305, col 37 of module PManager: 23757
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 269, col 31 to line 269, col 71 of module PManager: 4182
+  line 306, col 30 to line 309, col 116 of module PManager: 749
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 270, col 39 to line 270, col 105 of module PManager: 220
+  line 310, col 30 to line 310, col 77 of module PManager: 1498
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 270, col 53 to line 270, col 105 of module PManager: 222
+  line 311, col 30 to line 311, col 86 of module PManager: 1498
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 271, col 39 to line 271, col 86 of module PManager: 220
+  line 312, col 30 to line 312, col 89 of module PManager: 1498
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 271, col 45 to line 271, col 86 of module PManager: 222
+  line 313, col 30 to line 313, col 80 of module PManager: 1498
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 272, col 39 to line 272, col 95 of module PManager: 220
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 272, col 48 to line 272, col 95 of module PManager: 222
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 273, col 39 to line 273, col 92 of module PManager: 220
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 273, col 47 to line 273, col 92 of module PManager: 222
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 274, col 39 to line 274, col 89 of module PManager: 220
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  |line 274, col 48 to line 274, col 89 of module PManager: 222
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 275, col 42 to line 275, col 81 of module PManager: 3960
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 276, col 47 to line 280, col 100 of module PManager: 221
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 281, col 50 to line 281, col 92 of module PManager: 3739
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 282, col 50 to line 284, col 69 of module PManager: 3739
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 285, col 28 to line 288, col 54 of module PManager: 4180
+  line 314, col 30 to line 318, col 48 of module PManager: 1498
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<MAKE_DECISION line 290, col 1 to line 290, col 19 of module PManager>: 1359:2263
+<ASK_PERMISSION line 322, col 1 to line 322, col 20 of module PManager>: 1852:3393
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 290, col 27 to line 290, col 52 of module PManager: 28484
+  line 322, col 28 to line 322, col 54 of module PManager: 27145
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 290, col 27 to line 290, col 34 of module PManager: 26221
+  |line 322, col 28 to line 322, col 35 of module PManager: 23756
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 291, col 27 to line 297, col 78 of module PManager: 2263
+  line 323, col 31 to line 323, col 75 of module PManager: 3393
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 298, col 27 to line 298, col 81 of module PManager: 2263
+  line 324, col 39 to line 324, col 109 of module PManager: 101
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 299, col 27 to line 302, col 73 of module PManager: 2263
+  |line 324, col 53 to line 324, col 109 of module PManager: 105
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 325, col 39 to line 325, col 86 of module PManager: 101
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 325, col 45 to line 325, col 86 of module PManager: 105
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 326, col 39 to line 326, col 98 of module PManager: 101
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 326, col 49 to line 326, col 98 of module PManager: 105
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 327, col 39 to line 327, col 101 of module PManager: 101
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 327, col 50 to line 327, col 101 of module PManager: 105
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 328, col 39 to line 328, col 89 of module PManager: 101
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 328, col 48 to line 328, col 89 of module PManager: 105
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 329, col 42 to line 329, col 85 of module PManager: 3288
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 330, col 47 to line 334, col 100 of module PManager: 103
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 335, col 50 to line 335, col 92 of module PManager: 3185
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 336, col 50 to line 338, col 72 of module PManager: 3185
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 339, col 28 to line 343, col 46 of module PManager: 3389
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<USING_PERM line 304, col 1 to line 304, col 16 of module PManager>: 892:1505
+<make_decision line 345, col 1 to line 345, col 19 of module PManager>: 1282:2151
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 304, col 24 to line 304, col 46 of module PManager: 27725
+  line 345, col 27 to line 345, col 52 of module PManager: 25901
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 304, col 24 to line 304, col 31 of module PManager: 26220
+  |line 345, col 27 to line 345, col 34 of module PManager: 23750
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 305, col 27 to line 305, col 67 of module PManager: 1505
+  line 346, col 27 to line 352, col 78 of module PManager: 2151
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 306, col 32 to line 306, col 101 of module PManager: 753
+  line 353, col 27 to line 353, col 69 of module PManager: 2151
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 307, col 35 to line 307, col 38 of module PManager: 752
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 308, col 35 to line 308, col 54 of module PManager: 752
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 309, col 24 to line 309, col 71 of module PManager: 1505
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 310, col 24 to line 310, col 80 of module PManager: 1505
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 311, col 24 to line 311, col 77 of module PManager: 1505
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 312, col 24 to line 312, col 74 of module PManager: 1505
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 313, col 24 to line 316, col 46 of module PManager: 1505
+  line 354, col 27 to line 358, col 70 of module PManager: 2151
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<ASK_APP_CP line 321, col 1 to line 321, col 16 of module PManager>: 852:2098
+<using_perm line 360, col 1 to line 360, col 16 of module PManager>: 605:919
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 321, col 24 to line 321, col 46 of module PManager: 28317
+  line 360, col 24 to line 360, col 46 of module PManager: 24668
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 321, col 24 to line 321, col 31 of module PManager: 26219
+  |line 360, col 24 to line 360, col 31 of module PManager: 23749
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 322, col 27 to line 322, col 68 of module PManager: 2098
+  line 361, col 27 to line 361, col 71 of module PManager: 919
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 323, col 35 to line 323, col 82 of module PManager: 306
+  line 362, col 32 to line 362, col 105 of module PManager: 460
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 324, col 35 to line 324, col 82 of module PManager: 306
+  line 363, col 35 to line 363, col 38 of module PManager: 459
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 325, col 35 to line 325, col 82 of module PManager: 306
+  line 364, col 35 to line 364, col 54 of module PManager: 459
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 326, col 35 to line 326, col 85 of module PManager: 306
+  line 365, col 24 to line 365, col 71 of module PManager: 919
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 327, col 35 to line 327, col 74 of module PManager: 306
+  line 366, col 24 to line 366, col 83 of module PManager: 919
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 328, col 38 to line 328, col 78 of module PManager: 1792
+  line 367, col 24 to line 367, col 86 of module PManager: 919
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 329, col 46 to line 329, col 93 of module PManager: 304
+  line 368, col 24 to line 368, col 74 of module PManager: 919
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 330, col 46 to line 330, col 93 of module PManager: 304
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 331, col 46 to line 331, col 93 of module PManager: 304
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 332, col 46 to line 332, col 96 of module PManager: 304
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 333, col 46 to line 334, col 64 of module PManager: 304
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 335, col 49 to line 335, col 69 of module PManager: 1488
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 336, col 57 to line 336, col 127 of module PManager: 330
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 337, col 57 to line 337, col 91 of module PManager: 330
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 338, col 57 to line 339, col 80 of module PManager: 330
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 340, col 57 to line 346, col 114 of module PManager: 1158
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 347, col 57 to line 347, col 102 of module PManager: 1158
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 348, col 57 to line 348, col 80 of module PManager: 1158
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 349, col 46 to line 349, col 67 of module PManager: 1488
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 350, col 24 to line 353, col 42 of module PManager: 2098
+  line 369, col 24 to line 372, col 78 of module PManager: 919
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<UNINSTALL_APP line 357, col 1 to line 357, col 19 of module PManager>: 919:2099
+<ASK_APP_CP line 377, col 1 to line 377, col 16 of module PManager>: 647:1696
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 357, col 27 to line 357, col 52 of module PManager: 28318
+  line 377, col 24 to line 377, col 46 of module PManager: 25444
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 357, col 27 to line 357, col 34 of module PManager: 26219
+  |line 377, col 24 to line 377, col 31 of module PManager: 23748
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 358, col 27 to line 358, col 78 of module PManager: 2099
+  line 378, col 27 to line 378, col 68 of module PManager: 1696
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 359, col 27 to line 359, col 104 of module PManager: 2099
+  line 379, col 35 to line 379, col 82 of module PManager: 298
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 360, col 27 to line 360, col 113 of module PManager: 2099
+  line 380, col 35 to line 380, col 82 of module PManager: 298
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 361, col 27 to line 361, col 74 of module PManager: 2099
+  line 381, col 35 to line 381, col 82 of module PManager: 298
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 362, col 27 to line 362, col 77 of module PManager: 2099
+  line 382, col 35 to line 382, col 85 of module PManager: 298
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 363, col 27 to line 363, col 77 of module PManager: 2099
+  line 383, col 35 to line 383, col 74 of module PManager: 298
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 364, col 27 to line 367, col 44 of module PManager: 2099
+  line 384, col 38 to line 384, col 78 of module PManager: 1398
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 385, col 46 to line 385, col 93 of module PManager: 298
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 386, col 46 to line 386, col 93 of module PManager: 298
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 387, col 46 to line 387, col 93 of module PManager: 298
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 388, col 46 to line 388, col 96 of module PManager: 298
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 389, col 46 to line 390, col 64 of module PManager: 298
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 391, col 49 to line 391, col 69 of module PManager: 1100
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 392, col 57 to line 392, col 127 of module PManager: 242
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 393, col 57 to line 393, col 91 of module PManager: 242
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 394, col 57 to line 395, col 80 of module PManager: 242
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 396, col 57 to line 402, col 114 of module PManager: 858
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 403, col 57 to line 403, col 102 of module PManager: 858
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 404, col 57 to line 404, col 80 of module PManager: 858
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 405, col 46 to line 405, col 67 of module PManager: 1100
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 406, col 24 to line 409, col 72 of module PManager: 1696
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<PLATFORM line 371, col 1 to line 371, col 14 of module PManager>: 10653:22044
+<MAKE_DECISION line 413, col 1 to line 413, col 19 of module PManager>: 1677:2746
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 371, col 22 to line 371, col 42 of module PManager: 31322
+  line 413, col 27 to line 413, col 52 of module PManager: 25121
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 371, col 22 to line 371, col 29 of module PManager: 26213
+  |line 413, col 27 to line 413, col 34 of module PManager: 23748
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 372, col 25 to line 372, col 46 of module PManager: 5109
+  line 414, col 33 to line 420, col 90 of module PManager: 1373
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 373, col 39 to line 377, col 90 of module PManager: 3387
+  line 421, col 33 to line 421, col 78 of module PManager: 1373
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 378, col 39 to line 378, col 78 of module PManager: 3387
+  line 422, col 33 to line 422, col 58 of module PManager: 1373
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 379, col 39 to line 379, col 83 of module PManager: 3387
+  line 423, col 33 to line 429, col 90 of module PManager: 1373
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 380, col 45 to line 384, col 96 of module PManager: 3387
+  line 430, col 33 to line 430, col 87 of module PManager: 1373
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 385, col 45 to line 385, col 87 of module PManager: 3387
+  line 431, col 33 to line 431, col 59 of module PManager: 1373
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 386, col 45 to line 386, col 84 of module PManager: 3387
+  line 432, col 27 to line 436, col 51 of module PManager: 2746
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<UNINSTALL_APP line 440, col 1 to line 440, col 19 of module PManager>: 771:1697
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 440, col 27 to line 440, col 52 of module PManager: 25444
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 387, col 54 to line 387, col 68 of module PManager: 3387
+  |line 440, col 27 to line 440, col 34 of module PManager: 23747
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 388, col 59 to line 393, col 100 of module PManager: 1887
+  line 441, col 27 to line 441, col 78 of module PManager: 1697
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 394, col 62 to line 394, col 99 of module PManager: 1500
+  line 442, col 27 to line 442, col 104 of module PManager: 1697
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 395, col 62 to line 396, col 82 of module PManager: 1500
+  line 443, col 27 to line 443, col 113 of module PManager: 1697
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 397, col 51 to line 397, col 83 of module PManager: 3387
+  line 444, col 27 to line 444, col 74 of module PManager: 1697
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 398, col 57 to line 406, col 101 of module PManager: 3387
+  line 445, col 27 to line 445, col 77 of module PManager: 1697
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 407, col 57 to line 407, col 81 of module PManager: 3387
+  line 446, col 27 to line 446, col 77 of module PManager: 1697
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 409, col 59 to line 416, col 105 of module PManager: 6774
+  line 447, col 27 to line 450, col 78 of module PManager: 1697
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<PLATFORM line 454, col 1 to line 454, col 14 of module PManager>: 8603:18183
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 454, col 22 to line 454, col 42 of module PManager: 28237
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 408, col 66 to line 408, col 76 of module PManager: 3387
+  |line 454, col 22 to line 454, col 29 of module PManager: 23739
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 417, col 57 to line 417, col 76 of module PManager: 6774
+  line 455, col 25 to line 455, col 46 of module PManager: 4498
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 418, col 51 to line 418, col 64 of module PManager: 10161
+  line 456, col 39 to line 460, col 90 of module PManager: 2737
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 419, col 45 to line 419, col 54 of module PManager: 13548
+  line 461, col 39 to line 461, col 78 of module PManager: 2737
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 420, col 39 to line 420, col 52 of module PManager: 16935
+  line 462, col 39 to line 462, col 87 of module PManager: 2737
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 421, col 33 to line 421, col 44 of module PManager: 20322
+  line 463, col 45 to line 467, col 96 of module PManager: 2737
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 422, col 33 to line 426, col 84 of module PManager: 1722
+  line 468, col 45 to line 468, col 87 of module PManager: 2737
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 427, col 33 to line 427, col 73 of module PManager: 1722
+  line 469, col 45 to line 469, col 88 of module PManager: 2737
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 428, col 33 to line 429, col 51 of module PManager: 1722
+  line 470, col 54 to line 470, col 68 of module PManager: 2737
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 430, col 22 to line 432, col 75 of module PManager: 22044
+  line 471, col 59 to line 476, col 100 of module PManager: 1397
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 477, col 62 to line 477, col 99 of module PManager: 1340
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 478, col 62 to line 479, col 82 of module PManager: 1340
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 480, col 51 to line 480, col 87 of module PManager: 2737
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 481, col 57 to line 489, col 101 of module PManager: 2737
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 490, col 57 to line 490, col 85 of module PManager: 2737
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 492, col 59 to line 499, col 105 of module PManager: 5474
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 491, col 66 to line 491, col 76 of module PManager: 2737
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 500, col 57 to line 500, col 76 of module PManager: 5474
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 501, col 51 to line 501, col 64 of module PManager: 8211
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 502, col 45 to line 502, col 54 of module PManager: 10948
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 503, col 39 to line 503, col 52 of module PManager: 13685
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 504, col 33 to line 504, col 44 of module PManager: 16422
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 505, col 33 to line 509, col 84 of module PManager: 1761
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 510, col 33 to line 510, col 73 of module PManager: 1761
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 511, col 33 to line 512, col 55 of module PManager: 1761
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 513, col 22 to line 516, col 63 of module PManager: 18183
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2774:0 @!@!@
-<TypeOK line 456, col 1 to line 456, col 6 of module PManager>
+<TypeOK line 542, col 1 to line 542, col 6 of module PManager>
 @!@!@ENDMSG 2774 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 456, col 11 to line 462, col 70 of module PManager: 21210
+  line 542, col 11 to line 548, col 70 of module PManager: 18510
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2774:0 @!@!@
-<Action line 470, col 22 to line 473, col 72 of module PManager>
+<Action line 556, col 22 to line 559, col 72 of module PManager>
 @!@!@ENDMSG 2774 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 470, col 22 to line 473, col 72 of module PManager: 21210
+  line 556, col 22 to line 559, col 72 of module PManager: 18510
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 470, col 24 to line 473, col 71 of module PManager: 21210
+  |line 556, col 24 to line 559, col 71 of module PManager: 18510
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 470, col 27 to line 473, col 71 of module PManager: 21210
+  ||line 556, col 27 to line 559, col 71 of module PManager: 18510
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 470, col 61 to line 473, col 71 of module PManager: 42418
+  |||line 556, col 61 to line 559, col 71 of module PManager: 37018
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 471, col 27 to line 473, col 71 of module PManager: 84835
+  ||||line 557, col 27 to line 559, col 71 of module PManager: 74034
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||||line 471, col 30 to line 471, col 77 of module PManager: 84835
+  |||||line 557, col 30 to line 557, col 77 of module PManager: 74034
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||||line 472, col 30 to line 472, col 70 of module PManager: 79146
+  |||||line 558, col 30 to line 558, col 70 of module PManager: 71012
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||||line 473, col 30 to line 473, col 71 of module PManager: 420
+  |||||line 559, col 30 to line 559, col 71 of module PManager: 244
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 470, col 79 to line 470, col 89 of module PManager: 42418
+  ||||line 556, col 79 to line 556, col 89 of module PManager: 37018
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 470, col 46 to line 470, col 57 of module PManager: 21210
+  |||line 556, col 46 to line 556, col 57 of module PManager: 18510
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2774:0 @!@!@
-<Action line 475, col 18 to line 477, col 68 of module PManager>
+<Action line 561, col 18 to line 563, col 68 of module PManager>
 @!@!@ENDMSG 2774 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 475, col 18 to line 477, col 68 of module PManager: 21208
+  line 561, col 18 to line 563, col 68 of module PManager: 18506
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 475, col 20 to line 477, col 67 of module PManager: 21208
+  |line 561, col 20 to line 563, col 67 of module PManager: 18506
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 475, col 23 to line 477, col 67 of module PManager: 21208
+  ||line 561, col 23 to line 563, col 67 of module PManager: 18506
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 475, col 57 to line 477, col 67 of module PManager: 42416
+  |||line 561, col 57 to line 563, col 67 of module PManager: 37012
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 476, col 23 to line 477, col 67 of module PManager: 84832
+  ||||line 562, col 23 to line 563, col 67 of module PManager: 74024
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||||line 476, col 26 to line 476, col 66 of module PManager: 84832
+  |||||line 562, col 26 to line 562, col 66 of module PManager: 74024
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||||line 477, col 26 to line 477, col 67 of module PManager: 78725
+  |||||line 563, col 26 to line 563, col 67 of module PManager: 70762
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 475, col 75 to line 475, col 85 of module PManager: 42416
+  ||||line 561, col 75 to line 561, col 85 of module PManager: 37012
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 475, col 42 to line 475, col 53 of module PManager: 21208
+  |||line 561, col 42 to line 561, col 53 of module PManager: 18506
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2202:0 @!@!@
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(15) at 2023-03-22 16:29:33: 47,155 states generated (1,086,520 s/min), 21,210 distinct states found (488,709 ds/min), 8,102 states left on queue.
+Progress(15) at 2023-03-22 16:19:09: 42,429 states generated (952,390 s/min), 18,510 distinct states found (415,488 ds/min), 6,635 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
-47155 states generated, 21210 distinct states found, 8102 states left on queue.
+42429 states generated, 18510 distinct states found, 6635 states left on queue.
 @!@!@ENDMSG 2199 @!@!@
 @!@!@STARTMSG 2194:0 @!@!@
 The depth of the complete state graph search is 15.
@@ -932,5 +1074,5 @@ The depth of the complete state graph search is 15.
 The average outdegree of the complete state graph is 2 (minimum is 0, the maximum 11 and the 95th percentile is 6).
 @!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 2619ms at (2023-03-22 16:29:33)
+Finished in 2688ms at (2023-03-22 16:19:09)
 @!@!@ENDMSG 2186 @!@!@

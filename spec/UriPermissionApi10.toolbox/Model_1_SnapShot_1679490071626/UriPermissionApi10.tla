@@ -1,4 +1,4 @@
---------------------------- MODULE UriPermission ---------------------------
+--------------------------- MODULE UriPermissionApi10 ---------------------------
 EXTENDS Naturals, Sequences
 
 CONSTANTS A, P
@@ -66,7 +66,7 @@ PermissionRequestDecision == { GRANT, DENY, NULL }
         {
             if(installed[self] = TRUE)
             {
-                either { call uninstallApp(self); }
+                either { skip; }
                 or { with (p \in Permissions) { call askPermission(self, p); } }
             }
             else
@@ -79,7 +79,7 @@ PermissionRequestDecision == { GRANT, DENY, NULL }
 
     this ends the comment containing the PlusCal code
 *************)             
-\* BEGIN TRANSLATION (chksum(pcal) = "cceae3f5" /\ chksum(tla) = "5d2373e9")
+\* BEGIN TRANSLATION (chksum(pcal) = "e95ba755" /\ chksum(tla) = "e7d79bc7")
 \* Parameter app of procedure installApp at line 31 col 26 changed to app_
 \* Parameter app of procedure systemArbitraryDecision at line 33 col 39 changed to app_s
 \* Parameter perm of procedure systemArbitraryDecision at line 33 col 44 changed to perm_
@@ -196,13 +196,9 @@ uninstallApp(self) == UNINSTALL_APP(self)
 
 PLATFORM(self) == /\ pc[self] = "PLATFORM"
                   /\ IF installed[self] = TRUE
-                        THEN /\ \/ /\ /\ app' = [app EXCEPT ![self] = self]
-                                      /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "uninstallApp",
-                                                                               pc        |->  "PLATFORM",
-                                                                               app       |->  app[self] ] >>
-                                                                           \o stack[self]]
-                                   /\ pc' = [pc EXCEPT ![self] = "UNINSTALL_APP"]
-                                   /\ UNCHANGED <<app_a, perm>>
+                        THEN /\ \/ /\ TRUE
+                                   /\ pc' = [pc EXCEPT ![self] = "PLATFORM"]
+                                   /\ UNCHANGED <<stack, app_a, perm>>
                                 \/ /\ \E p \in Permissions:
                                         /\ /\ app_a' = [app_a EXCEPT ![self] = self]
                                            /\ perm' = [perm EXCEPT ![self] = p]
@@ -212,7 +208,6 @@ PLATFORM(self) == /\ pc[self] = "PLATFORM"
                                                                                     perm      |->  perm[self] ] >>
                                                                                 \o stack[self]]
                                         /\ pc' = [pc EXCEPT ![self] = "ASK_PERMISSION"]
-                                   /\ app' = app
                              /\ app_' = app_
                         ELSE /\ /\ app_' = [app_ EXCEPT ![self] = self]
                                 /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "installApp",
@@ -220,9 +215,9 @@ PLATFORM(self) == /\ pc[self] = "PLATFORM"
                                                                          app_      |->  app_[self] ] >>
                                                                      \o stack[self]]
                              /\ pc' = [pc EXCEPT ![self] = "INSTALL_APP"]
-                             /\ UNCHANGED << app_a, perm, app >>
+                             /\ UNCHANGED << app_a, perm >>
                   /\ UNCHANGED << installed, appPerms, permsInUse, 
-                                  appPermConsents, app_s, perm_ >>
+                                  appPermConsents, app_s, perm_, app >>
 
 a(self) == PLATFORM(self)
 
@@ -233,7 +228,6 @@ Next == (\E self \in ProcSet:  \/ installApp(self)
 
 Spec == /\ Init /\ [][Next]_vars
         /\ \A self \in Applications : /\ WF_vars((pc[self] # "PLATFORM") /\ a(self))
-                                      /\ WF_vars(uninstallApp(self))
                                       /\ WF_vars(askPermission(self))
                                       /\ WF_vars(installApp(self))
                                       /\ WF_vars(systemArbitraryDecision(self))
@@ -245,14 +239,12 @@ TypeOK == /\ installed \in [Applications -> Boolean]
           /\ appPermConsents \in [Applications -> [Permissions -> Consent]]
           /\ permsInUse \in [Applications -> [Permissions -> Boolean]]
 
-UriPermConsent == [] ~(/\ \E application \in Applications : \E permission \in Permissions : \* Bagheri
-                          /\ appPermConsents[application][permission] # ALLOW
-                          /\ appPerms[application][permission] = GRANT
-                          /\ permsInUse[application][permission] = TRUE)
-
 Authorized == [] ~(/\ \E application \in Applications : \E permission \in Permissions : \* System consent
                       /\ appPerms[application][permission] # GRANT
                       /\ permsInUse[application][permission] = TRUE)
+                      
+UP == INSTANCE UriPermission
+
+THEOREM Spec => UP!Spec
+
 =============================================================================
-\* Modification History
-\* Last modified Wed Mar 22 15:58:25 GMT+03:30 2023 by Amirhosein

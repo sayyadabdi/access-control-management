@@ -62,7 +62,7 @@ PermissionRequestDecision == { GRANT, DENY, NULL }
                         else { CP[app] := NULL; };
         RETURNING:      return;
     }
-    
+               
     procedure askPermission(app, perm)
     {
         ASK_PERMISSION:
@@ -90,7 +90,7 @@ PermissionRequestDecision == { GRANT, DENY, NULL }
                         return;
                     }
     }
-    
+        
     procedure uninstallApp(app)
     {
         UNINSTALL_APP: installed[app] := FALSE;
@@ -477,4 +477,4 @@ Authorized == [] ~(/\ \E application \in Applications : \E permission \in Permis
                       /\ permsInUse[application][permission] = TRUE)               
 =============================================================================
 \* Modification History
-\* Last modified Wed Mar 22 16:25:56 GMT+03:30 2023 by Amirhosein
+\* Last modified Wed Mar 22 16:15:11 GMT+03:30 2023 by Amirhosein

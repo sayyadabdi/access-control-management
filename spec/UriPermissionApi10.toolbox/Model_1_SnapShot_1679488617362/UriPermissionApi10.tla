@@ -1,4 +1,4 @@
---------------------------- MODULE UriPermission ---------------------------
+--------------------------- MODULE UriPermissionApi10 ---------------------------
 EXTENDS Naturals, Sequences
 
 CONSTANTS A, P
@@ -245,14 +245,12 @@ TypeOK == /\ installed \in [Applications -> Boolean]
           /\ appPermConsents \in [Applications -> [Permissions -> Consent]]
           /\ permsInUse \in [Applications -> [Permissions -> Boolean]]
 
-UriPermConsent == [] ~(/\ \E application \in Applications : \E permission \in Permissions : \* Bagheri
-                          /\ appPermConsents[application][permission] # ALLOW
-                          /\ appPerms[application][permission] = GRANT
-                          /\ permsInUse[application][permission] = TRUE)
-
 Authorized == [] ~(/\ \E application \in Applications : \E permission \in Permissions : \* System consent
                       /\ appPerms[application][permission] # GRANT
                       /\ permsInUse[application][permission] = TRUE)
+                      
+UP == INSTANCE UriPermission
+
+THEOREM Spec => UP!Spec
+
 =============================================================================
-\* Modification History
-\* Last modified Wed Mar 22 15:58:25 GMT+03:30 2023 by Amirhosein
