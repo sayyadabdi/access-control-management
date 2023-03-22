@@ -16,9 +16,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>UriPermission.tla</name>
+			<name>PManager.tla</name>
 			<type>1</type>
-			<location>G:/repos/access-control-management/spec/UriPermission.tla</location>
+			<location>G:/repos/access-control-management/spec/PManager.tla</location>
 		</link>
 		<link>
 			<name>UriPermissionApi10.tla</name>
