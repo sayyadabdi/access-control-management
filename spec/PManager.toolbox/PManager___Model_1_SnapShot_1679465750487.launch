@@ -2,7 +2,7 @@
 <launchConfiguration type="org.lamport.tla.toolbox.tool.tlc.modelCheck">
     <stringAttribute key="TLCCmdLineParameters" value=""/>
     <intAttribute key="collectCoverage" value="1"/>
-    <stringAttribute key="configurationName" value="Model_1_SnapShot_1679302493197"/>
+    <stringAttribute key="configurationName" value="Model_1_SnapShot_1679465750487"/>
     <booleanAttribute key="deferLiveness" value="false"/>
     <intAttribute key="dfidDepth" value="100"/>
     <booleanAttribute key="dfidMode" value="false"/>
@@ -12,7 +12,7 @@
     <stringAttribute key="distributedTLC" value="off"/>
     <stringAttribute key="distributedTLCVMArgs" value=""/>
     <intAttribute key="fpBits" value="1"/>
-    <intAttribute key="fpIndex" value="101"/>
+    <intAttribute key="fpIndex" value="64"/>
     <booleanAttribute key="fpIndexRandom" value="true"/>
     <intAttribute key="maxHeapSize" value="25"/>
     <intAttribute key="maxSetSize" value="1000000"/>
@@ -21,16 +21,16 @@
     <stringAttribute key="modelBehaviorNext" value=""/>
     <stringAttribute key="modelBehaviorSpec" value="Spec"/>
     <intAttribute key="modelBehaviorSpecType" value="1"/>
-    <stringAttribute key="modelBehaviorVars" value="permsInUse, app_m, app_, appPerms, pc, CP, perm, app, perm_, installed, appCustomPerms, cpUserConsent, stack, a1, appPermConsents, a2"/>
+    <stringAttribute key="modelBehaviorVars" value="app_a, app_d, permsInUse, app_m, app_s, app_u, app_, appPerms, pc, perm_a, perm_as, a1_, CP, perm, a2_, app, perm_, installed, appCustomPerms, app_as, cpUserConsent, stack, a1, appPermConsents, a2"/>
     <stringAttribute key="modelComments" value=""/>
     <booleanAttribute key="modelCorrectnessCheckDeadlock" value="false"/>
     <listAttribute key="modelCorrectnessInvariants">
         <listEntry value="1TypeOK"/>
     </listAttribute>
     <listAttribute key="modelCorrectnessProperties">
-        <listEntry value="1UserAgreed"/>
-        <listEntry value="0UserAgreed2"/>
-        <listEntry value="0Authorized"/>
+        <listEntry value="1CpConsent"/>
+        <listEntry value="0UriPermConsent"/>
+        <listEntry value="1Authorized"/>
     </listAttribute>
     <intAttribute key="modelEditorOpenTabs" value="12"/>
     <stringAttribute key="modelExpressionEval" value=""/>

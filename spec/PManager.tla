@@ -563,4 +563,4 @@ Authorized == [] ~(/\ \E application \in Applications : \E permission \in Permis
                       /\ permsInUse[application][permission] = TRUE)               
 =============================================================================
 \* Modification History
-\* Last modified Tue Mar 21 11:03:25 GMT+03:30 2023 by Amirhosein
+\* Last modified Wed Mar 22 09:45:36 GMT+03:30 2023 by Amirhosein
