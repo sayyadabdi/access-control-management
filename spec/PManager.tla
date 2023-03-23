@@ -429,24 +429,6 @@ PLATFORM(self) == /\ pc[self] = "PLATFORM"
 
 a(self) == PLATFORM(self)
 
-Next == (\E self \in ProcSet:  \/ installApp(self) \/ defineCP(self)
-                               \/ askCpFromUser(self) \/ updateApp(self)
-                               \/ askAppCP(self) \/ uninstallApp(self)
-                               \/ systemArbitraryDecision(self)
-                               \/ askPermission(self))
-           \/ (\E self \in Applications: a(self))
-
-Spec == /\ Init /\ [][Next]_vars
-        /\ \A self \in Applications : /\ WF_vars((pc[self] # "PLATFORM") /\ a(self))
-                                      /\ WF_vars(updateApp(self))
-                                      /\ WF_vars(uninstallApp(self))
-                                      /\ WF_vars(defineCP(self))
-                                      /\ WF_vars(askAppCP(self))
-                                      /\ WF_vars(askPermission(self))
-                                      /\ WF_vars(installApp(self))
-                                      /\ WF_vars(askCpFromUser(self))
-                                      /\ WF_vars(systemArbitraryDecision(self))
-
 \* END TRANSLATION
 
 TypeOK == /\ appCustomPerms \in [Applications -> [Applications -> PermissionRequestDecision]]
@@ -470,7 +452,25 @@ UriPermConsent == [] ~(/\ \E application \in Applications : \E permission \in Pe
 
 Authorized == [] ~(/\ \E application \in Applications : \E permission \in Permissions : \* System consent
                       /\ appPerms[application][permission] # GRANT
-                      /\ permsInUse[application][permission] = TRUE)               
+                      /\ permsInUse[application][permission] = TRUE)
+
+Next == (\E self \in ProcSet:  \/ installApp(self) \/ defineCP(self)
+                               \/ askCpFromUser(self) \/ updateApp(self)
+                               \/ askAppCP(self) \/ uninstallApp(self)
+                               \/ systemArbitraryDecision(self)
+                               \/ askPermission(self))
+           \/ (\E self \in Applications: a(self))
+
+Spec == /\ Init /\ [][Next]_vars /\ TypeOK /\ Authorized /\ CpConsent /\ UriPermConsent
+        /\ \A self \in Applications : /\ WF_vars((pc[self] # "PLATFORM") /\ a(self))
+                                      /\ WF_vars(updateApp(self))
+                                      /\ WF_vars(uninstallApp(self))
+                                      /\ WF_vars(defineCP(self))
+                                      /\ WF_vars(askAppCP(self))
+                                      /\ WF_vars(askPermission(self))
+                                      /\ WF_vars(installApp(self))
+                                      /\ WF_vars(askCpFromUser(self))
+                                      /\ WF_vars(systemArbitraryDecision(self))
 =============================================================================
 \* Modification History
-\* Last modified Wed Mar 22 18:53:48 GMT+03:30 2023 by Amirhosein
+\* Last modified Thu Mar 23 05:40:35 GMT+03:30 2023 by Amirhosein
