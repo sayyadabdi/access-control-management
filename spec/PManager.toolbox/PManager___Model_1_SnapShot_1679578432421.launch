@@ -2,7 +2,7 @@
 <launchConfiguration type="org.lamport.tla.toolbox.tool.tlc.modelCheck">
     <stringAttribute key="TLCCmdLineParameters" value=""/>
     <intAttribute key="collectCoverage" value="1"/>
-    <stringAttribute key="configurationName" value="Model_1_SnapShot_1679489121771"/>
+    <stringAttribute key="configurationName" value="Model_1_SnapShot_1679578432421"/>
     <booleanAttribute key="deferLiveness" value="false"/>
     <intAttribute key="dfidDepth" value="100"/>
     <booleanAttribute key="dfidMode" value="false"/>
@@ -12,7 +12,7 @@
     <stringAttribute key="distributedTLC" value="off"/>
     <stringAttribute key="distributedTLCVMArgs" value=""/>
     <intAttribute key="fpBits" value="1"/>
-    <intAttribute key="fpIndex" value="122"/>
+    <intAttribute key="fpIndex" value="88"/>
     <booleanAttribute key="fpIndexRandom" value="true"/>
     <intAttribute key="maxHeapSize" value="25"/>
     <intAttribute key="maxSetSize" value="1000000"/>
@@ -21,14 +21,14 @@
     <stringAttribute key="modelBehaviorNext" value=""/>
     <stringAttribute key="modelBehaviorSpec" value="Spec"/>
     <intAttribute key="modelBehaviorSpecType" value="1"/>
-    <stringAttribute key="modelBehaviorVars" value="app_a, app_d, permsInUse, app_s, app_u, app_, appPerms, pc, a1_, CP, perm, a2_, app, perm_, installed, appCustomPerms, cpUserConsent, stack, a1, appPermConsents, a2"/>
+    <stringAttribute key="modelBehaviorVars" value="app_d, uri, permsInUse, app_s, app_u, mode, app_, appPerms, pc, app_un, a1_, manifest, CP, perm, cpConsent, a2_, app, perm_, installed, appCustomPerms, stack, a1, appPermConsents, a2"/>
     <stringAttribute key="modelComments" value=""/>
     <booleanAttribute key="modelCorrectnessCheckDeadlock" value="false"/>
     <listAttribute key="modelCorrectnessInvariants">
         <listEntry value="1TypeOK"/>
     </listAttribute>
     <listAttribute key="modelCorrectnessProperties">
-        <listEntry value="0CpConsent"/>
+        <listEntry value="1CpConsent"/>
         <listEntry value="1UriPermConsent"/>
         <listEntry value="1Authorized"/>
     </listAttribute>
@@ -38,6 +38,7 @@
         <listEntry value="defaultInitValue;;defaultInitValue;1;0"/>
         <listEntry value="A;;2;0;0"/>
         <listEntry value="P;;2;0;0"/>
+        <listEntry value="Uris;;{&quot;U1&quot;, &quot;U2&quot;};0;0"/>
     </listAttribute>
     <intAttribute key="modelVersion" value="20191005"/>
     <intAttribute key="numberOfWorkers" value="4"/>
