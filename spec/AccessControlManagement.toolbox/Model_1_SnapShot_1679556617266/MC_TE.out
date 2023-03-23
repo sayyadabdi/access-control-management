@@ -1,0 +1,184 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 33 and seed 5576943366318160759 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 11100] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file G:\repos\access-control-management\spec\AccessControlManagement.toolbox\Model_1\MC.tla
+Parsing file G:\repos\access-control-management\spec\AccessControlManagement.toolbox\Model_1\AccessControlManagement.tla
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\TLC.tla
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Naturals.tla
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Sequences.tla
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\FiniteSets.tla
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module AccessControlManagement
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module MC
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2023-03-23 11:00:14)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2190:0 @!@!@
+Finished computing initial states: 1 distinct state generated at 2023-03-23 11:00:15.
+@!@!@ENDMSG 2190 @!@!@
+@!@!@STARTMSG 2109:1 @!@!@
+Successor state is not completely specified by action ask of the next-state relation. The following variable is not assigned: ACL.
+
+@!@!@ENDMSG 2109 @!@!@
+@!@!@STARTMSG 2121:1 @!@!@
+The behavior up to this point is:
+@!@!@ENDMSG 2121 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+1: <Initial predicate>
+/\ ACL = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ Resource = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+2: <ask line 27, col 14 to line 31, col 41 of module AccessControlManagement>
+/\ ACL = <<<<"ALLOW", "NULL">>, <<"NULL", "NULL">>>>
+/\ Resource = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+3: <ask line 27, col 14 to line 31, col 41 of module AccessControlManagement>
+/\ ACL = null
+/\ Resource = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2023-03-23 11:00:15
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2773:0 @!@!@
+<Init line 37, col 1 to line 37, col 4 of module AccessControlManagement>: 2:2
+@!@!@ENDMSG 2773 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 37, col 9 to line 38, col 62 of module AccessControlManagement: 2
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<use line 23, col 1 to line 23, col 9 of module AccessControlManagement>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 23, col 17 to line 23, col 33 of module AccessControlManagement: 6
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 24, col 17 to line 24, col 85 of module AccessControlManagement: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 25, col 17 to line 25, col 33 of module AccessControlManagement: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<ask line 27, col 1 to line 27, col 9 of module AccessControlManagement>: 12:26
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 27, col 17 to line 27, col 32 of module AccessControlManagement: 12
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 18, col 20 to line 18, col 35 of module AccessControlManagement: 14
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 18, col 20 to line 18, col 28 of module AccessControlManagement: 7
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 18, col 32 to line 18, col 35 of module AccessControlManagement: 7
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 20, col 20 to line 20, col 70 of module AccessControlManagement: 21
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 21, col 23 to line 21, col 44 of module AccessControlManagement: 21
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 19, col 29 to line 19, col 35 of module AccessControlManagement: 7
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 28, col 32 to line 28, col 32 of module AccessControlManagement: 7
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 28, col 35 to line 28, col 35 of module AccessControlManagement: 7
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 29, col 25 to line 29, col 46 of module AccessControlManagement: 42
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 31, col 20 to line 31, col 41 of module AccessControlManagement: 1
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<clear line 33, col 1 to line 33, col 5 of module AccessControlManagement>: 0:1
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 34, col 10 to line 35, col 64 of module AccessControlManagement: 1
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2774:0 @!@!@
+<TypeOK line 15, col 1 to line 15, col 6 of module AccessControlManagement>
+@!@!@ENDMSG 2774 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 15, col 11 to line 16, col 73 of module AccessControlManagement: 13
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 15, col 14 to line 16, col 73 of module AccessControlManagement: 13
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 15, col 29 to line 16, col 73 of module AccessControlManagement: 26
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 15, col 45 to line 16, col 73 of module AccessControlManagement: 52
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 15, col 38 to line 15, col 42 of module AccessControlManagement: 26
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 15, col 23 to line 15, col 26 of module AccessControlManagement: 13
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2774:0 @!@!@
+<Action line 46, col 18 to line 48, col 43 of module AccessControlManagement>
+@!@!@ENDMSG 2774 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 46, col 18 to line 48, col 43 of module AccessControlManagement: 13
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 46, col 20 to line 48, col 42 of module AccessControlManagement: 13
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 46, col 23 to line 48, col 42 of module AccessControlManagement: 13
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 46, col 39 to line 48, col 42 of module AccessControlManagement: 26
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 47, col 23 to line 48, col 42 of module AccessControlManagement: 52
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 46, col 48 to line 46, col 52 of module AccessControlManagement: 26
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 46, col 32 to line 46, col 35 of module AccessControlManagement: 13
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2202:0 @!@!@
+End of statistics.
+@!@!@ENDMSG 2202 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(3) at 2023-03-23 11:00:15: 24 states generated (1,171 s/min), 13 distinct states found (634 ds/min), 8 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+24 states generated, 13 distinct states found, 8 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2194:0 @!@!@
+The depth of the complete state graph search is 3.
+@!@!@ENDMSG 2194 @!@!@
+@!@!@STARTMSG 2268:0 @!@!@
+The average outdegree of the complete state graph is 8 (minimum is 8, the maximum 8 and the 95th percentile is 8).
+@!@!@ENDMSG 2268 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 1238ms at (2023-03-23 11:00:15)
+@!@!@ENDMSG 2186 @!@!@

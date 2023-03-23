@@ -1,13 +1,7 @@
 --------------------------- MODULE UriPermission ---------------------------
 EXTENDS Naturals, Sequences
 
-CONSTANTS A, P
- 
-ASSUME A \in Nat
-ASSUME P \in Nat
-
-Permissions == 1..P
-Applications == 1..A
+CONSTANTS Apps, Perms
 
 NULL == "NULL"
 DENY == "DENY"
@@ -16,17 +10,17 @@ ALLOW == "ALLOW"
 REJECT == "REJECT"
 
 Boolean == { TRUE, FALSE }
-Consent == { ALLOW, REJECT, NULL }
+Consent == { ALLOW, REJECT }
 PermissionRequestDecision == { GRANT, DENY, NULL }
 
 (***       this is a comment containing the PlusCal code *
 
 --algorithm PermissionManager
 {
-    variables installed = [p \in Applications |-> FALSE];
-              appPerms = [i \in Applications |-> [p \in Permissions |-> NULL]];
-              permsInUse = [a \in Applications |-> [i \in Permissions |-> FALSE]];
-              appPermConsents = [a \in Applications |-> [i \in Permissions |-> NULL]];
+    variables installed = [p \in Apps |-> FALSE];
+              appPerms = [i \in Apps |-> [p \in Perms |-> NULL]];
+              permsInUse = [a \in Apps |-> [i \in Perms |-> FALSE]];
+              appPermConsents = [a \in Apps |-> [i \in Perms |-> NULL]];
     
     procedure installApp(app) { INSTALL_APP: installed[app] := TRUE; return; }
     
@@ -53,21 +47,22 @@ PermissionRequestDecision == { GRANT, DENY, NULL }
     
     procedure uninstallApp(app)
     {
-        UNINSTALL_APP: installed[app] := FALSE;
-                       appPerms[app] := [p \in Permissions |-> NULL];
-                       permsInUse[app] := [p \in Permissions |-> FALSE];
-                       appPermConsents[app] := [p \in Permissions |-> NULL];
+        CLEARING:    \*appPerms[app] := [p \in Perms |-> NULL];
+                       permsInUse[app] := [p \in Perms |-> FALSE];
+                       appPermConsents[app] := [p \in Perms |-> NULL];
+
+        UNINSTALL_APP: installed[app] := FALSE;    
                        return;
     }
     
-    fair process (a \in Applications)
+    fair process (a \in Apps)
     {
         PLATFORM:- while (TRUE)
         {
             if(installed[self] = TRUE)
             {
                 either { call uninstallApp(self); }
-                or { with (p \in Permissions) { call askPermission(self, p); } }
+                or { with (p \in Perms) { call askPermission(self, p); } }
             }
             else
             {
@@ -79,11 +74,11 @@ PermissionRequestDecision == { GRANT, DENY, NULL }
 
     this ends the comment containing the PlusCal code
 *************)             
-\* BEGIN TRANSLATION (chksum(pcal) = "cceae3f5" /\ chksum(tla) = "5d2373e9")
-\* Parameter app of procedure installApp at line 31 col 26 changed to app_
-\* Parameter app of procedure systemArbitraryDecision at line 33 col 39 changed to app_s
-\* Parameter perm of procedure systemArbitraryDecision at line 33 col 44 changed to perm_
-\* Parameter app of procedure askPermission at line 41 col 29 changed to app_a
+\* BEGIN TRANSLATION (chksum(pcal) = "dd0069d8" /\ chksum(tla) = "ad4c64d5")
+\* Parameter app of procedure installApp at line 25 col 26 changed to app_
+\* Parameter app of procedure systemArbitraryDecision at line 27 col 39 changed to app_s
+\* Parameter perm of procedure systemArbitraryDecision at line 27 col 44 changed to perm_
+\* Parameter app of procedure askPermission at line 35 col 29 changed to app_a
 CONSTANT defaultInitValue
 VARIABLES installed, appPerms, permsInUse, appPermConsents, pc, stack, app_, 
           app_s, perm_, app_a, perm, app
@@ -91,13 +86,13 @@ VARIABLES installed, appPerms, permsInUse, appPermConsents, pc, stack, app_,
 vars == << installed, appPerms, permsInUse, appPermConsents, pc, stack, app_, 
            app_s, perm_, app_a, perm, app >>
 
-ProcSet == (Applications)
+ProcSet == (Apps)
 
 Init == (* Global variables *)
-        /\ installed = [p \in Applications |-> FALSE]
-        /\ appPerms = [i \in Applications |-> [p \in Permissions |-> NULL]]
-        /\ permsInUse = [a \in Applications |-> [i \in Permissions |-> FALSE]]
-        /\ appPermConsents = [a \in Applications |-> [i \in Permissions |-> NULL]]
+        /\ installed = [p \in Apps |-> FALSE]
+        /\ appPerms = [i \in Apps |-> [p \in Perms |-> NULL]]
+        /\ permsInUse = [a \in Apps |-> [i \in Perms |-> FALSE]]
+        /\ appPermConsents = [a \in Apps |-> [i \in Perms |-> NULL]]
         (* Procedure installApp *)
         /\ app_ = [ self \in ProcSet |-> defaultInitValue]
         (* Procedure systemArbitraryDecision *)
@@ -182,17 +177,22 @@ USING_PERM(self) == /\ pc[self] = "USING_PERM"
 askPermission(self) == ASK_PERMISSION(self) \/ MAKE_DECISION(self)
                           \/ USING_PERM(self)
 
+CLEARING(self) == /\ pc[self] = "CLEARING"
+                  /\ permsInUse' = [permsInUse EXCEPT ![app[self]] = [p \in Perms |-> FALSE]]
+                  /\ appPermConsents' = [appPermConsents EXCEPT ![app[self]] = [p \in Perms |-> NULL]]
+                  /\ pc' = [pc EXCEPT ![self] = "UNINSTALL_APP"]
+                  /\ UNCHANGED << installed, appPerms, stack, app_, app_s, 
+                                  perm_, app_a, perm, app >>
+
 UNINSTALL_APP(self) == /\ pc[self] = "UNINSTALL_APP"
                        /\ installed' = [installed EXCEPT ![app[self]] = FALSE]
-                       /\ appPerms' = [appPerms EXCEPT ![app[self]] = [p \in Permissions |-> NULL]]
-                       /\ permsInUse' = [permsInUse EXCEPT ![app[self]] = [p \in Permissions |-> FALSE]]
-                       /\ appPermConsents' = [appPermConsents EXCEPT ![app[self]] = [p \in Permissions |-> NULL]]
                        /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
                        /\ app' = [app EXCEPT ![self] = Head(stack[self]).app]
                        /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
-                       /\ UNCHANGED << app_, app_s, perm_, app_a, perm >>
+                       /\ UNCHANGED << appPerms, permsInUse, appPermConsents, 
+                                       app_, app_s, perm_, app_a, perm >>
 
-uninstallApp(self) == UNINSTALL_APP(self)
+uninstallApp(self) == CLEARING(self) \/ UNINSTALL_APP(self)
 
 PLATFORM(self) == /\ pc[self] = "PLATFORM"
                   /\ IF installed[self] = TRUE
@@ -201,9 +201,9 @@ PLATFORM(self) == /\ pc[self] = "PLATFORM"
                                                                                pc        |->  "PLATFORM",
                                                                                app       |->  app[self] ] >>
                                                                            \o stack[self]]
-                                   /\ pc' = [pc EXCEPT ![self] = "UNINSTALL_APP"]
+                                   /\ pc' = [pc EXCEPT ![self] = "CLEARING"]
                                    /\ UNCHANGED <<app_a, perm>>
-                                \/ /\ \E p \in Permissions:
+                                \/ /\ \E p \in Perms:
                                         /\ /\ app_a' = [app_a EXCEPT ![self] = self]
                                            /\ perm' = [perm EXCEPT ![self] = p]
                                            /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "askPermission",
@@ -229,30 +229,37 @@ a(self) == PLATFORM(self)
 Next == (\E self \in ProcSet:  \/ installApp(self)
                                \/ systemArbitraryDecision(self)
                                \/ askPermission(self) \/ uninstallApp(self))
-           \/ (\E self \in Applications: a(self))
+           \/ (\E self \in Apps: a(self))
 
 Spec == /\ Init /\ [][Next]_vars
-        /\ \A self \in Applications : /\ WF_vars((pc[self] # "PLATFORM") /\ a(self))
-                                      /\ WF_vars(uninstallApp(self))
-                                      /\ WF_vars(askPermission(self))
-                                      /\ WF_vars(installApp(self))
-                                      /\ WF_vars(systemArbitraryDecision(self))
+        /\ \A self \in Apps : /\ WF_vars((pc[self] # "PLATFORM") /\ a(self))
+                              /\ WF_vars(uninstallApp(self))
+                              /\ WF_vars(askPermission(self))
+                              /\ WF_vars(installApp(self))
+                              /\ WF_vars(systemArbitraryDecision(self))
 
 \* END TRANSLATION
 
-TypeOK == /\ installed \in [Applications -> Boolean]
-          /\ appPerms \in [Applications -> [Permissions -> PermissionRequestDecision]]
-          /\ appPermConsents \in [Applications -> [Permissions -> Consent]]
-          /\ permsInUse \in [Applications -> [Permissions -> Boolean]]
+TypeOK == /\ installed \in [Apps -> Boolean]
+          /\ appPerms \in [Apps -> [Perms -> PermissionRequestDecision]]
+          /\ appPermConsents \in [Apps -> [Perms -> Consent \cup { NULL }]]
+          /\ permsInUse \in [Apps -> [Perms -> Boolean]]
 
-UriPermConsent == [] ~(/\ \E application \in Applications : \E permission \in Permissions : \* Bagheri
+UriPermConsent == [] ~(/\ \E application \in Apps : \E permission \in Perms : \* Bagheri
                           /\ appPermConsents[application][permission] # ALLOW
                           /\ appPerms[application][permission] = GRANT
                           /\ permsInUse[application][permission] = TRUE)
 
-Authorized == [] ~(/\ \E application \in Applications : \E permission \in Permissions : \* System consent
+Authorized == [] ~(/\ \E application \in Apps : \E permission \in Perms : \* System consent
                       /\ appPerms[application][permission] # GRANT
                       /\ permsInUse[application][permission] = TRUE)
+                      
+ACL == appPermConsents
+Resource == permsInUse
+                      
+ACM == INSTANCE AccessControlManagement
+
+THEOREM Spec => ACM!Spec
 =============================================================================
 \* Modification History
-\* Last modified Wed Mar 22 15:58:25 GMT+03:30 2023 by Amirhosein
+\* Last modified Thu Mar 23 11:33:54 GMT+03:30 2023 by Amirhosein

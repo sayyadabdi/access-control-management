@@ -16,6 +16,11 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>AccessControlManagement.tla</name>
+			<type>1</type>
+			<location>G:/repos/access-control-management/spec/AccessControlManagement.tla</location>
+		</link>
+		<link>
 			<name>UriPermission.tla</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/UriPermission.tla</locationURI>
