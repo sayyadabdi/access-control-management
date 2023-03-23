@@ -47,11 +47,10 @@ PermissionRequestDecision == { GRANT, DENY, NULL }
     
     procedure uninstallApp(app)
     {
-        CLEARING:    \*appPerms[app] := [p \in Perms |-> NULL];
-                       permsInUse[app] := [p \in Perms |-> FALSE];
+        \*PATCH:         permsInUse[app] := [p \in Perms |-> FALSE];  
+        CLEARING:      appPerms[app] := [p \in Perms |-> NULL];
                        appPermConsents[app] := [p \in Perms |-> NULL];
-
-        UNINSTALL_APP: installed[app] := FALSE;    
+        UNINSTALL_APP: installed[app] := FALSE;
                        return;
     }
     
@@ -74,7 +73,7 @@ PermissionRequestDecision == { GRANT, DENY, NULL }
 
     this ends the comment containing the PlusCal code
 *************)             
-\* BEGIN TRANSLATION (chksum(pcal) = "dd0069d8" /\ chksum(tla) = "ad4c64d5")
+\* BEGIN TRANSLATION (chksum(pcal) = "1eb5eaf7" /\ chksum(tla) = "30718465")
 \* Parameter app of procedure installApp at line 25 col 26 changed to app_
 \* Parameter app of procedure systemArbitraryDecision at line 27 col 39 changed to app_s
 \* Parameter perm of procedure systemArbitraryDecision at line 27 col 44 changed to perm_
@@ -178,10 +177,10 @@ askPermission(self) == ASK_PERMISSION(self) \/ MAKE_DECISION(self)
                           \/ USING_PERM(self)
 
 CLEARING(self) == /\ pc[self] = "CLEARING"
-                  /\ permsInUse' = [permsInUse EXCEPT ![app[self]] = [p \in Perms |-> FALSE]]
+                  /\ appPerms' = [appPerms EXCEPT ![app[self]] = [p \in Perms |-> NULL]]
                   /\ appPermConsents' = [appPermConsents EXCEPT ![app[self]] = [p \in Perms |-> NULL]]
                   /\ pc' = [pc EXCEPT ![self] = "UNINSTALL_APP"]
-                  /\ UNCHANGED << installed, appPerms, stack, app_, app_s, 
+                  /\ UNCHANGED << installed, permsInUse, stack, app_, app_s, 
                                   perm_, app_a, perm, app >>
 
 UNINSTALL_APP(self) == /\ pc[self] = "UNINSTALL_APP"
@@ -262,4 +261,4 @@ ACM == INSTANCE AccessControlManagement
 THEOREM Spec => ACM!Spec
 =============================================================================
 \* Modification History
-\* Last modified Thu Mar 23 14:10:50 GMT+03:30 2023 by Amirhosein
+\* Last modified Thu Mar 23 12:53:41 GMT+03:30 2023 by Amirhosein

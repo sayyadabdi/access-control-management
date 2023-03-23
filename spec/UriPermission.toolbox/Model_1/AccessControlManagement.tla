@@ -28,15 +28,11 @@ ask(a, p) == IF ACL[a][p] = NULL
              ELSE
                 /\ UNCHANGED <<ACL, Resource>>
 
-clear == /\ ACL' = [a \in Apps |-> [p \in Perms |-> NULL]]
-         /\ Resource' = [a \in Apps |-> [p \in Perms |-> FALSE]]
-
 Init == /\ ACL = [a \in Apps |-> [p \in Perms |-> NULL]]
         /\ Resource = [a \in Apps |-> [p \in Perms |-> FALSE]]
 
 Next == \/ \E a \in Apps : \E p \in Perms: \/ ask(a, p)
                                            \/ use(a, p)
-        \/ clear
 
 vars == <<ACL, Resource>>
 
@@ -48,5 +44,5 @@ Spec == Init /\ [][Next]_vars /\ Authorized
 
 =============================================================================
 \* Modification History
-\* Last modified Thu Mar 23 11:19:24 GMT+03:30 2023 by Amirhosein
+\* Last modified Thu Mar 23 14:10:47 GMT+03:30 2023 by Amirhosein
 \* Created Thu Mar 23 07:45:26 GMT+03:30 2023 by Amirhosein

@@ -2,24 +2,24 @@
 EXTENDS UriPermission, TLC
 
 \* CONSTANT definitions @modelParameterConstants:0Apps
-const_1679568059444595000 == 
+const_1679563505866570000 == 
 {1, 2}
 ----
 
 \* CONSTANT definitions @modelParameterConstants:1Perms
-const_1679568059444596000 == 
-{1}
+const_1679563505866571000 == 
+{1, 2}
 ----
 
 \* CONSTANT definitions @modelParameterConstants:2defaultInitValue
-const_1679568059444597000 == 
-2
+const_1679563505866572000 == 
+1
 ----
 
 \* PROPERTY definition @modelCorrectnessProperties:0
-prop_1679568059444599000 ==
+prop_1679563505866574000 ==
 ACM!Spec
 ----
 =============================================================================
 \* Modification History
-\* Created Thu Mar 23 14:10:59 GMT+03:30 2023 by Amirhosein
+\* Created Thu Mar 23 12:55:05 GMT+03:30 2023 by Amirhosein

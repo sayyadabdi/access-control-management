@@ -1,0 +1,619 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 104 and seed -6584474771742661505 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 8796] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file G:\repos\access-control-management\spec\UriPermission.toolbox\Model_1\MC.tla
+Parsing file G:\repos\access-control-management\spec\UriPermission.toolbox\Model_1\UriPermission.tla
+Warning: symbols were renamed.
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\TLC.tla
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Naturals.tla
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Sequences.tla
+Parsing file G:\repos\access-control-management\spec\UriPermission.toolbox\Model_1\AccessControlManagement.tla
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\FiniteSets.tla
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module AccessControlManagement
+Semantic processing of module UriPermission
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module MC
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2023-03-23 12:57:18)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2190:0 @!@!@
+Finished computing initial states: 1 distinct state generated at 2023-03-23 12:57:19.
+@!@!@ENDMSG 2190 @!@!@
+@!@!@STARTMSG 2112:1 @!@!@
+Action property line 47, col 17 to line 47, col 29 of module AccessControlManagement is violated.
+@!@!@ENDMSG 2112 @!@!@
+@!@!@STARTMSG 2121:1 @!@!@
+The behavior up to this point is:
+@!@!@ENDMSG 2121 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+1: <Initial predicate>
+/\ app_a = <<1, 1>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 1>>
+/\ app_ = <<1, 1>>
+/\ appPerms = <<<<"NULL">>, <<"NULL">>>>
+/\ pc = <<"PLATFORM", "PLATFORM">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<FALSE, FALSE>>
+/\ stack = <<<<>>, <<>>>>
+/\ appPermConsents = <<<<"NULL">>, <<"NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+2: <PLATFORM line 202, col 19 to line 230, col 66 of module UriPermission>
+/\ app_a = <<1, 1>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 1>>
+/\ app_ = <<1, 2>>
+/\ appPerms = <<<<"NULL">>, <<"NULL">>>>
+/\ pc = <<"PLATFORM", "INSTALL_APP">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<FALSE, FALSE>>
+/\ stack = <<<<>>, <<[pc |-> "PLATFORM", app_ |-> 1, procedure |-> "installApp"]>>>>
+/\ appPermConsents = <<<<"NULL">>, <<"NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+3: <INSTALL_APP line 108, col 22 to line 114, col 70 of module UriPermission>
+/\ app_a = <<1, 1>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 1>>
+/\ app_ = <<1, 1>>
+/\ appPerms = <<<<"NULL">>, <<"NULL">>>>
+/\ pc = <<"PLATFORM", "PLATFORM">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<FALSE, TRUE>>
+/\ stack = <<<<>>, <<>>>>
+/\ appPermConsents = <<<<"NULL">>, <<"NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+4: <PLATFORM line 202, col 19 to line 230, col 66 of module UriPermission>
+/\ app_a = <<1, 1>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 1>>
+/\ app_ = <<1, 1>>
+/\ appPerms = <<<<"NULL">>, <<"NULL">>>>
+/\ pc = <<"INSTALL_APP", "PLATFORM">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<FALSE, TRUE>>
+/\ stack = <<<<[pc |-> "PLATFORM", app_ |-> 1, procedure |-> "installApp"]>>, <<>>>>
+/\ appPermConsents = <<<<"NULL">>, <<"NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+5: <INSTALL_APP line 108, col 22 to line 114, col 70 of module UriPermission>
+/\ app_a = <<1, 1>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 1>>
+/\ app_ = <<1, 1>>
+/\ appPerms = <<<<"NULL">>, <<"NULL">>>>
+/\ pc = <<"PLATFORM", "PLATFORM">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<TRUE, TRUE>>
+/\ stack = <<<<>>, <<>>>>
+/\ appPermConsents = <<<<"NULL">>, <<"NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+6: <PLATFORM line 202, col 19 to line 230, col 66 of module UriPermission>
+/\ app_a = <<1, 1>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 1>>
+/\ app_ = <<1, 1>>
+/\ appPerms = <<<<"NULL">>, <<"NULL">>>>
+/\ pc = <<"ASK_PERMISSION", "PLATFORM">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<TRUE, TRUE>>
+/\ stack = <<<<[pc |-> "PLATFORM", app_a |-> 1, perm |-> 1, procedure |-> "askPermission"]>>, <<>>>>
+/\ appPermConsents = <<<<"NULL">>, <<"NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+7: <ASK_PERMISSION line 132, col 25 to line 150, col 66 of module UriPermission>
+/\ app_a = <<1, 1>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 1>>
+/\ app_ = <<1, 1>>
+/\ appPerms = <<<<"NULL">>, <<"NULL">>>>
+/\ pc = <<"MAKE_DECISION", "PLATFORM">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<TRUE, TRUE>>
+/\ stack = <<<<[pc |-> "PLATFORM", app_a |-> 1, perm |-> 1, procedure |-> "askPermission"]>>, <<>>>>
+/\ appPermConsents = <<<<"NULL">>, <<"NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+8: <MAKE_DECISION line 152, col 24 to line 162, col 81 of module UriPermission>
+/\ app_a = <<1, 1>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 1>>
+/\ app_ = <<1, 1>>
+/\ appPerms = <<<<"NULL">>, <<"NULL">>>>
+/\ pc = <<"SYSTEM_ARBITRARY_DECISION", "PLATFORM">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<TRUE, TRUE>>
+/\ stack = <<<<[pc |-> "USING_PERM", app_s |-> 1, perm_ |-> 1, procedure |-> "systemArbitraryDecision"], [pc |-> "PLATFORM", app_a |-> 1, perm |-> 1, procedure |-> "askPermission"]>>, <<>>>>
+/\ appPermConsents = <<<<"NULL">>, <<"NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+9: <SYSTEM_ARBITRARY_DECISION line 118, col 36 to line 128, col 70 of module UriPermission>
+/\ app_a = <<1, 1>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 1>>
+/\ app_ = <<1, 1>>
+/\ appPerms = <<<<"DENY">>, <<"NULL">>>>
+/\ pc = <<"USING_PERM", "PLATFORM">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<TRUE, TRUE>>
+/\ stack = <<<<[pc |-> "PLATFORM", app_a |-> 1, perm |-> 1, procedure |-> "askPermission"]>>, <<>>>>
+/\ appPermConsents = <<<<"REJECT">>, <<"NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+10: <USING_PERM line 164, col 21 to line 174, col 56 of module UriPermission>
+/\ app_a = <<1, 1>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 1>>
+/\ app_ = <<1, 1>>
+/\ appPerms = <<<<"DENY">>, <<"NULL">>>>
+/\ pc = <<"PLATFORM", "PLATFORM">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<TRUE, TRUE>>
+/\ stack = <<<<>>, <<>>>>
+/\ appPermConsents = <<<<"REJECT">>, <<"NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+11: <PLATFORM line 202, col 19 to line 230, col 66 of module UriPermission>
+/\ app_a = <<1, 1>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 1>>
+/\ app_ = <<1, 1>>
+/\ appPerms = <<<<"DENY">>, <<"NULL">>>>
+/\ pc = <<"PATCH", "PLATFORM">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<TRUE, TRUE>>
+/\ stack = <<<<[pc |-> "PLATFORM", app |-> 1, procedure |-> "uninstallApp"]>>, <<>>>>
+/\ appPermConsents = <<<<"REJECT">>, <<"NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+12: <PLATFORM line 202, col 19 to line 230, col 66 of module UriPermission>
+/\ app_a = <<1, 2>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 1>>
+/\ app_ = <<1, 1>>
+/\ appPerms = <<<<"DENY">>, <<"NULL">>>>
+/\ pc = <<"PATCH", "ASK_PERMISSION">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<TRUE, TRUE>>
+/\ stack = <<<<[pc |-> "PLATFORM", app |-> 1, procedure |-> "uninstallApp"]>>, <<[pc |-> "PLATFORM", app_a |-> 1, perm |-> 1, procedure |-> "askPermission"]>>>>
+/\ appPermConsents = <<<<"REJECT">>, <<"NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+13: <ASK_PERMISSION line 132, col 25 to line 150, col 66 of module UriPermission>
+/\ app_a = <<1, 2>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 1>>
+/\ app_ = <<1, 1>>
+/\ appPerms = <<<<"DENY">>, <<"NULL">>>>
+/\ pc = <<"PATCH", "MAKE_DECISION">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<TRUE, TRUE>>
+/\ stack = <<<<[pc |-> "PLATFORM", app |-> 1, procedure |-> "uninstallApp"]>>, <<[pc |-> "PLATFORM", app_a |-> 1, perm |-> 1, procedure |-> "askPermission"]>>>>
+/\ appPermConsents = <<<<"REJECT">>, <<"NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+14: <MAKE_DECISION line 152, col 24 to line 162, col 81 of module UriPermission>
+/\ app_a = <<1, 2>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 2>>
+/\ app_ = <<1, 1>>
+/\ appPerms = <<<<"DENY">>, <<"NULL">>>>
+/\ pc = <<"PATCH", "SYSTEM_ARBITRARY_DECISION">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<TRUE, TRUE>>
+/\ stack = <<<<[pc |-> "PLATFORM", app |-> 1, procedure |-> "uninstallApp"]>>, <<[pc |-> "USING_PERM", app_s |-> 1, perm_ |-> 1, procedure |-> "systemArbitraryDecision"], [pc |-> "PLATFORM", app_a |-> 1, perm |-> 1, procedure |-> "askPermission"]>>>>
+/\ appPermConsents = <<<<"REJECT">>, <<"NULL">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+15: <SYSTEM_ARBITRARY_DECISION line 118, col 36 to line 128, col 70 of module UriPermission>
+/\ app_a = <<1, 2>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 1>>
+/\ app_ = <<1, 1>>
+/\ appPerms = <<<<"DENY">>, <<"DENY">>>>
+/\ pc = <<"PATCH", "USING_PERM">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<TRUE, TRUE>>
+/\ stack = <<<<[pc |-> "PLATFORM", app |-> 1, procedure |-> "uninstallApp"]>>, <<[pc |-> "PLATFORM", app_a |-> 1, perm |-> 1, procedure |-> "askPermission"]>>>>
+/\ appPermConsents = <<<<"REJECT">>, <<"REJECT">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+16: <PATCH line 179, col 16 to line 184, col 50 of module UriPermission>
+/\ app_a = <<1, 2>>
+/\ permsInUse = <<<<FALSE>>, <<FALSE>>>>
+/\ app_s = <<1, 1>>
+/\ app_ = <<1, 1>>
+/\ appPerms = <<<<"DENY">>, <<"DENY">>>>
+/\ pc = <<"CLEARING", "USING_PERM">>
+/\ perm = <<1, 1>>
+/\ app = <<1, 1>>
+/\ perm_ = <<1, 1>>
+/\ installed = <<TRUE, TRUE>>
+/\ stack = <<<<[pc |-> "PLATFORM", app |-> 1, procedure |-> "uninstallApp"]>>, <<[pc |-> "PLATFORM", app_a |-> 1, perm |-> 1, procedure |-> "askPermission"]>>>>
+/\ appPermConsents = <<<<"NULL">>, <<"REJECT">>>>
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2023-03-23 12:57:19
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2773:0 @!@!@
+<Init line 90, col 1 to line 90, col 4 of module UriPermission>: 2:2
+@!@!@ENDMSG 2773 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 91, col 9 to line 106, col 49 of module UriPermission: 2
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<INSTALL_APP line 108, col 1 to line 108, col 17 of module UriPermission>: 5:40
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 108, col 25 to line 108, col 48 of module UriPermission: 616
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 108, col 25 to line 108, col 32 of module UriPermission: 576
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 109, col 25 to line 109, col 76 of module UriPermission: 40
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 110, col 25 to line 110, col 72 of module UriPermission: 40
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 111, col 25 to line 111, col 78 of module UriPermission: 40
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 112, col 25 to line 112, col 75 of module UriPermission: 40
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 113, col 25 to line 114, col 70 of module UriPermission: 40
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<SYSTEM_ARBITRARY_DECISION line 118, col 1 to line 118, col 31 of module UriPermission>: 39:76
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 118, col 39 to line 118, col 76 of module UriPermission: 612
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 118, col 39 to line 118, col 46 of module UriPermission: 574
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 119, col 39 to line 122, col 124 of module UriPermission: 38
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 123, col 39 to line 123, col 86 of module UriPermission: 76
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 124, col 39 to line 124, col 95 of module UriPermission: 76
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 125, col 39 to line 125, col 95 of module UriPermission: 76
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 126, col 39 to line 126, col 89 of module UriPermission: 76
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 127, col 39 to line 128, col 70 of module UriPermission: 76
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<ASK_PERMISSION line 132, col 1 to line 132, col 20 of module UriPermission>: 20:80
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 132, col 28 to line 132, col 54 of module UriPermission: 652
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 132, col 28 to line 132, col 35 of module UriPermission: 572
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 133, col 31 to line 133, col 71 of module UriPermission: 80
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 134, col 36 to line 138, col 89 of module UriPermission: 20
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 139, col 42 to line 139, col 81 of module UriPermission: 60
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 140, col 47 to line 144, col 100 of module UriPermission: 20
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 145, col 50 to line 145, col 92 of module UriPermission: 40
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 146, col 50 to line 148, col 69 of module UriPermission: 40
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 149, col 28 to line 150, col 66 of module UriPermission: 80
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<MAKE_DECISION line 152, col 1 to line 152, col 19 of module UriPermission>: 27:40
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 152, col 27 to line 152, col 52 of module UriPermission: 610
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 152, col 27 to line 152, col 34 of module UriPermission: 570
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 153, col 27 to line 159, col 78 of module UriPermission: 40
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 160, col 27 to line 160, col 81 of module UriPermission: 40
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 161, col 27 to line 162, col 81 of module UriPermission: 40
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<USING_PERM line 164, col 1 to line 164, col 16 of module UriPermission>: 31:57
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 164, col 24 to line 164, col 46 of module UriPermission: 625
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 164, col 24 to line 164, col 31 of module UriPermission: 568
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 165, col 27 to line 165, col 67 of module UriPermission: 57
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 166, col 32 to line 166, col 101 of module UriPermission: 28
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 167, col 35 to line 167, col 38 of module UriPermission: 29
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 168, col 35 to line 168, col 54 of module UriPermission: 29
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 169, col 24 to line 169, col 71 of module UriPermission: 57
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 170, col 24 to line 170, col 80 of module UriPermission: 57
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 171, col 24 to line 171, col 77 of module UriPermission: 57
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 172, col 24 to line 172, col 74 of module UriPermission: 57
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 173, col 24 to line 174, col 56 of module UriPermission: 57
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<PATCH line 179, col 1 to line 179, col 11 of module UriPermission>: 42:83
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 179, col 19 to line 179, col 36 of module UriPermission: 646
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 179, col 19 to line 179, col 26 of module UriPermission: 567
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 180, col 19 to line 180, col 90 of module UriPermission: 79
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 180, col 33 to line 180, col 90 of module UriPermission: 83
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 181, col 19 to line 181, col 99 of module UriPermission: 79
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 181, col 38 to line 181, col 99 of module UriPermission: 83
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 182, col 19 to line 182, col 56 of module UriPermission: 79
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 182, col 25 to line 182, col 56 of module UriPermission: 83
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 183, col 19 to line 184, col 50 of module UriPermission: 79
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<CLEARING line 186, col 1 to line 186, col 14 of module UriPermission>: 21:70
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 186, col 22 to line 186, col 42 of module UriPermission: 632
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 186, col 22 to line 186, col 29 of module UriPermission: 562
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 187, col 22 to line 187, col 88 of module UriPermission: 70
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 188, col 22 to line 188, col 64 of module UriPermission: 70
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 189, col 22 to line 190, col 80 of module UriPermission: 70
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<UNINSTALL_APP line 192, col 1 to line 192, col 19 of module UriPermission>: 0:36
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 192, col 27 to line 192, col 52 of module UriPermission: 598
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 192, col 27 to line 192, col 34 of module UriPermission: 562
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 193, col 27 to line 193, col 78 of module UriPermission: 36
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 194, col 27 to line 194, col 74 of module UriPermission: 36
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 195, col 27 to line 195, col 77 of module UriPermission: 36
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 196, col 27 to line 196, col 77 of module UriPermission: 36
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 197, col 27 to line 198, col 73 of module UriPermission: 36
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<PLATFORM line 202, col 1 to line 202, col 14 of module UriPermission>: 118:215
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 202, col 22 to line 202, col 42 of module UriPermission: 683
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 202, col 22 to line 202, col 29 of module UriPermission: 555
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 203, col 25 to line 203, col 46 of module UriPermission: 128
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 204, col 39 to line 208, col 90 of module UriPermission: 87
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 209, col 39 to line 209, col 73 of module UriPermission: 87
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 210, col 39 to line 210, col 63 of module UriPermission: 87
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 211, col 36 to line 220, col 48 of module UriPermission: 87
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 221, col 33 to line 221, col 44 of module UriPermission: 174
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 222, col 33 to line 226, col 84 of module UriPermission: 41
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 227, col 33 to line 227, col 73 of module UriPermission: 41
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 228, col 33 to line 228, col 64 of module UriPermission: 41
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 229, col 22 to line 230, col 66 of module UriPermission: 215
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2774:0 @!@!@
+<TypeOK line 248, col 1 to line 248, col 6 of module UriPermission>
+@!@!@ENDMSG 2774 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 248, col 11 to line 251, col 56 of module UriPermission: 304
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2774:0 @!@!@
+<Action line 265, col 1 to line 265, col 39 of module UriPermission>
+@!@!@ENDMSG 2774 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 265, col 1 to line 265, col 39 of module UriPermission: 1548
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 265, col 1 to line 265, col 39 of module UriPermission: 978
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 265, col 1 to line 265, col 39 of module UriPermission: 2876
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 265, col 1 to line 265, col 39 of module UriPermission: 978
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 43, col 18 to line 45, col 43 of module AccessControlManagement: 304
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 43, col 20 to line 45, col 42 of module AccessControlManagement: 304
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 43, col 23 to line 45, col 42 of module AccessControlManagement: 304
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 43, col 39 to line 45, col 42 of module AccessControlManagement: 608
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 44, col 23 to line 45, col 42 of module AccessControlManagement: 608
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||line 44, col 26 to line 44, col 46 of module AccessControlManagement: 608
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||line 45, col 26 to line 45, col 42 of module AccessControlManagement: 80
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 43, col 48 to line 43, col 52 of module AccessControlManagement: 608
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 43, col 32 to line 43, col 35 of module AccessControlManagement: 304
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2202:0 @!@!@
+End of statistics.
+@!@!@ENDMSG 2202 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(16) at 2023-03-23 12:57:19: 673 states generated (26,152 s/min), 304 distinct states found (11,813 ds/min), 26 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+673 states generated, 304 distinct states found, 26 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2194:0 @!@!@
+The depth of the complete state graph search is 16.
+@!@!@ENDMSG 2194 @!@!@
+@!@!@STARTMSG 2268:0 @!@!@
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 4 and the 95th percentile is 3).
+@!@!@ENDMSG 2268 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 1558ms at (2023-03-23 12:57:19)
+@!@!@ENDMSG 2186 @!@!@
