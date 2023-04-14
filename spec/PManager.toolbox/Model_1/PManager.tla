@@ -77,6 +77,7 @@ UriPermModeFlag == {FLAG_GRANT_READ_URI_PERMISSION, FLAG_GRANT_WRITE_URI_PERMISS
     
     procedure uninstallApp(app)
     {   \* Device.uninstallPackage => PM.runUninstall => PM.deletePackage => PackageManagerService.deletePackage => ... PackageManagerService.updatePermissionsLP
+        \* says nothing about URI permissions and the deleted package is lost upon entering updatePermissionsLP
         UNINSTALL_APP: installed[app] := FALSE;
                        permsInUse[app] := [p \in Permissions |-> FALSE];
                        appPermConsents[app] := [p \in Permissions |-> NULL];
@@ -136,15 +137,15 @@ UriPermModeFlag == {FLAG_GRANT_READ_URI_PERMISSION, FLAG_GRANT_WRITE_URI_PERMISS
 
     this ends the comment containing the PlusCal code
 *************)             
-\* BEGIN TRANSLATION (chksum(pcal) = "c289dd5b" /\ chksum(tla) = "3c8541fd")
+\* BEGIN TRANSLATION (chksum(pcal) = "c289dd5b" /\ chksum(tla) = "2bd339e2")
 \* Parameter app of procedure installApp at line 42 col 26 changed to app_
 \* Parameter app of procedure defineCP at line 44 col 24 changed to app_d
 \* Parameter a1 of procedure askCpFromUser at line 48 col 29 changed to a1_
 \* Parameter a2 of procedure askCpFromUser at line 48 col 33 changed to a2_
 \* Parameter app of procedure updateApp at line 56 col 25 changed to app_u
 \* Parameter app of procedure uninstallApp at line 78 col 28 changed to app_un
-\* Parameter app of procedure systemArbitraryDecision at line 86 col 39 changed to app_s
-\* Parameter perm of procedure systemArbitraryDecision at line 86 col 44 changed to perm_
+\* Parameter app of procedure systemArbitraryDecision at line 87 col 39 changed to app_s
+\* Parameter perm of procedure systemArbitraryDecision at line 87 col 44 changed to perm_
 CONSTANT defaultInitValue
 VARIABLES CP, installed, appPerms, permsInUse, cpConsent, appPermConsents, 
           appCustomPerms, manifest, pc, stack, app_, app_d, a1_, a2_, app_u, 
@@ -522,4 +523,4 @@ Authorized == [] ~(/\ \E application \in Applications : \E permission \in Permis
                       /\ permsInUse[application][permission] = TRUE)
 =============================================================================
 \* Modification History
-\* Last modified Thu Mar 23 17:03:31 GMT+03:30 2023 by Amirhosein
+\* Last modified Wed Mar 29 21:48:42 GMT+03:30 2023 by Amirhosein

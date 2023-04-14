@@ -1,0 +1,1884 @@
+\batchmode %% Suppresses most terminal output.
+\documentclass{article}
+\usepackage{color}
+\definecolor{boxshade}{gray}{0.85}
+\setlength{\textwidth}{360pt}
+\setlength{\textheight}{541pt}
+\usepackage{latexsym}
+\usepackage{ifthen}
+% \usepackage{color}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SWITCHES                                                                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newboolean{shading} 
+\setboolean{shading}{false}
+\makeatletter
+ %% this is needed only when inserted into the file, not when
+ %% used as a package file.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                           %
+% DEFINITIONS OF SYMBOL-PRODUCING COMMANDS                                  %
+%                                                                           %
+%    TLA+      LaTeX                                                        %
+%    symbol    command                                                      %
+%    ------    -------                                                      %
+%    =>        \implies                                                     %
+%    <:        \ltcolon                                                     %
+%    :>        \colongt                                                     %
+%    ==        \defeq                                                       %
+%    ..        \dotdot                                                      %
+%    ::        \coloncolon                                                  %
+%    =|        \eqdash                                                      %
+%    ++        \pp                                                          %
+%    --        \mm                                                          %
+%    **        \stst                                                        %
+%    //        \slsl                                                        %
+%    ^         \ct                                                          %
+%    \A        \A                                                           %
+%    \E        \E                                                           %
+%    \AA       \AA                                                          %
+%    \EE       \EE                                                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\symlength}
+\newcommand{\implies}{\Rightarrow}
+\newcommand{\ltcolon}{\mathrel{<\!\!\mbox{:}}}
+\newcommand{\colongt}{\mathrel{\!\mbox{:}\!\!>}}
+\newcommand{\defeq}{\;\mathrel{\smash   %% keep this symbol from being too tall
+    {{\stackrel{\scriptscriptstyle\Delta}{=}}}}\;}
+\newcommand{\dotdot}{\mathrel{\ldotp\ldotp}}
+\newcommand{\coloncolon}{\mathrel{::\;}}
+\newcommand{\eqdash}{\mathrel = \joinrel \hspace{-.28em}|}
+\newcommand{\pp}{\mathbin{++}}
+\newcommand{\mm}{\mathbin{--}}
+\newcommand{\stst}{*\!*}
+\newcommand{\slsl}{/\!/}
+\newcommand{\ct}{\hat{\hspace{.4em}}}
+\newcommand{\A}{\forall}
+\newcommand{\E}{\exists}
+\renewcommand{\AA}{\makebox{$\raisebox{.05em}{\makebox[0pt][l]{%
+   $\forall\hspace{-.517em}\forall\hspace{-.517em}\forall$}}%
+   \forall\hspace{-.517em}\forall \hspace{-.517em}\forall\,$}}
+\newcommand{\EE}{\makebox{$\raisebox{.05em}{\makebox[0pt][l]{%
+   $\exists\hspace{-.517em}\exists\hspace{-.517em}\exists$}}%
+   \exists\hspace{-.517em}\exists\hspace{-.517em}\exists\,$}}
+\newcommand{\whileop}{\.{\stackrel
+  {\mbox{\raisebox{-.3em}[0pt][0pt]{$\scriptscriptstyle+\;\,$}}}%
+  {-\hspace{-.16em}\triangleright}}}
+
+% Commands are defined to produce the upper-case keywords.
+% Note that some have space after them.
+\newcommand{\ASSUME}{\textsc{assume }}
+\newcommand{\ASSUMPTION}{\textsc{assumption }}
+\newcommand{\AXIOM}{\textsc{axiom }}
+\newcommand{\BOOLEAN}{\textsc{boolean }}
+\newcommand{\CASE}{\textsc{case }}
+\newcommand{\CONSTANT}{\textsc{constant }}
+\newcommand{\CONSTANTS}{\textsc{constants }}
+\newcommand{\ELSE}{\settowidth{\symlength}{\THEN}%
+   \makebox[\symlength][l]{\textsc{ else}}}
+\newcommand{\EXCEPT}{\textsc{ except }}
+\newcommand{\EXTENDS}{\textsc{extends }}
+\newcommand{\FALSE}{\textsc{false}}
+\newcommand{\IF}{\textsc{if }}
+\newcommand{\IN}{\settowidth{\symlength}{\LET}%
+   \makebox[\symlength][l]{\textsc{in}}}
+\newcommand{\INSTANCE}{\textsc{instance }}
+\newcommand{\LET}{\textsc{let }}
+\newcommand{\LOCAL}{\textsc{local }}
+\newcommand{\MODULE}{\textsc{module }}
+\newcommand{\OTHER}{\textsc{other }}
+\newcommand{\STRING}{\textsc{string}}
+\newcommand{\THEN}{\textsc{ then }}
+\newcommand{\THEOREM}{\textsc{theorem }}
+\newcommand{\LEMMA}{\textsc{lemma }}
+\newcommand{\PROPOSITION}{\textsc{proposition }}
+\newcommand{\COROLLARY}{\textsc{corollary }}
+\newcommand{\TRUE}{\textsc{true}}
+\newcommand{\VARIABLE}{\textsc{variable }}
+\newcommand{\VARIABLES}{\textsc{variables }}
+\newcommand{\WITH}{\textsc{ with }}
+\newcommand{\WF}{\textrm{WF}}
+\newcommand{\SF}{\textrm{SF}}
+\newcommand{\CHOOSE}{\textsc{choose }}
+\newcommand{\ENABLED}{\textsc{enabled }}
+\newcommand{\UNCHANGED}{\textsc{unchanged }}
+\newcommand{\SUBSET}{\textsc{subset }}
+\newcommand{\UNION}{\textsc{union }}
+\newcommand{\DOMAIN}{\textsc{domain }}
+% Added for tla2tex
+\newcommand{\BY}{\textsc{by }}
+\newcommand{\OBVIOUS}{\textsc{obvious }}
+\newcommand{\HAVE}{\textsc{have }}
+\newcommand{\QED}{\textsc{qed }}
+\newcommand{\TAKE}{\textsc{take }}
+\newcommand{\DEF}{\textsc{ def }}
+\newcommand{\HIDE}{\textsc{hide }}
+\newcommand{\RECURSIVE}{\textsc{recursive }}
+\newcommand{\USE}{\textsc{use }}
+\newcommand{\DEFINE}{\textsc{define }}
+\newcommand{\PROOF}{\textsc{proof }}
+\newcommand{\WITNESS}{\textsc{witness }}
+\newcommand{\PICK}{\textsc{pick }}
+\newcommand{\DEFS}{\textsc{defs }}
+\newcommand{\PROVE}{\settowidth{\symlength}{\ASSUME}%
+   \makebox[\symlength][l]{\textsc{prove}}\@s{-4.1}}%
+  %% The \@s{-4.1) is a kludge added on 24 Oct 2009 [happy birthday, Ellen]
+  %% so the correct alignment occurs if the user types
+  %%   ASSUME X
+  %%   PROVE  Y
+  %% because it cancels the extra 4.1 pts added because of the 
+  %% extra space after the PROVE.  This seems to works OK.
+  %% However, the 4.1 equals Parameters.LaTeXLeftSpace(1) and
+  %% should be changed if that method ever changes.
+\newcommand{\SUFFICES}{\textsc{suffices }}
+\newcommand{\NEW}{\textsc{new }}
+\newcommand{\LAMBDA}{\textsc{lambda }}
+\newcommand{\STATE}{\textsc{state }}
+\newcommand{\ACTION}{\textsc{action }}
+\newcommand{\TEMPORAL}{\textsc{temporal }}
+\newcommand{\ONLY}{\textsc{only }}              %% added by LL on 2 Oct 2009
+\newcommand{\OMITTED}{\textsc{omitted }}        %% added by LL on 31 Oct 2009
+\newcommand{\@pfstepnum}[2]{\ensuremath{\langle#1\rangle}\textrm{#2}}
+\newcommand{\bang}{\@s{1}\mbox{\small !}\@s{1}}
+%% We should format || differently in PlusCal code than in TLA+ formulas.
+\newcommand{\p@barbar}{\ifpcalsymbols
+   \,\,\rule[-.25em]{.075em}{1em}\hspace*{.2em}\rule[-.25em]{.075em}{1em}\,\,%
+   \else \,||\,\fi}
+%% PlusCal keywords
+\newcommand{\p@fair}{\textbf{fair }}
+\newcommand{\p@semicolon}{\textbf{\,; }}
+\newcommand{\p@algorithm}{\textbf{algorithm }}
+\newcommand{\p@mmfair}{\textbf{-{}-fair }}
+\newcommand{\p@mmalgorithm}{\textbf{-{}-algorithm }}
+\newcommand{\p@assert}{\textbf{assert }}
+\newcommand{\p@await}{\textbf{await }}
+\newcommand{\p@begin}{\textbf{begin }}
+\newcommand{\p@end}{\textbf{end }}
+\newcommand{\p@call}{\textbf{call }}
+\newcommand{\p@define}{\textbf{define }}
+\newcommand{\p@do}{\textbf{ do }}
+\newcommand{\p@either}{\textbf{either }}
+\newcommand{\p@or}{\textbf{or }}
+\newcommand{\p@goto}{\textbf{goto }}
+\newcommand{\p@if}{\textbf{if }}
+\newcommand{\p@then}{\,\,\textbf{then }}
+\newcommand{\p@else}{\ifcsyntax \textbf{else } \else \,\,\textbf{else }\fi}
+\newcommand{\p@elsif}{\,\,\textbf{elsif }}
+\newcommand{\p@macro}{\textbf{macro }}
+\newcommand{\p@print}{\textbf{print }}
+\newcommand{\p@procedure}{\textbf{procedure }}
+\newcommand{\p@process}{\textbf{process }}
+\newcommand{\p@return}{\textbf{return}}
+\newcommand{\p@skip}{\textbf{skip}}
+\newcommand{\p@variable}{\textbf{variable }}
+\newcommand{\p@variables}{\textbf{variables }}
+\newcommand{\p@while}{\textbf{while }}
+\newcommand{\p@when}{\textbf{when }}
+\newcommand{\p@with}{\textbf{with }}
+\newcommand{\p@lparen}{\textbf{(\,\,}}
+\newcommand{\p@rparen}{\textbf{\,\,) }}   
+\newcommand{\p@lbrace}{\textbf{\{\,\,}}   
+\newcommand{\p@rbrace}{\textbf{\,\,\} }}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% REDEFINE STANDARD COMMANDS TO MAKE THEM FORMAT BETTER %
+%                                                       %
+% We redefine \in and \notin                            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\_}{\rule{.4em}{.06em}\hspace{.05em}}
+\newlength{\equalswidth}
+\let\oldin=\in
+\let\oldnotin=\notin
+\renewcommand{\in}{%
+   {\settowidth{\equalswidth}{$\.{=}$}\makebox[\equalswidth][c]{$\oldin$}}}
+\renewcommand{\notin}{%
+   {\settowidth{\equalswidth}{$\.{=}$}\makebox[\equalswidth]{$\oldnotin$}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                  %
+% HORIZONTAL BARS:                                 %
+%                                                  %
+%   \moduleLeftDash    |~~~~~~~~~~                 %
+%   \moduleRightDash    ~~~~~~~~~~|                %
+%   \midbar            |----------|                %
+%   \bottombar         |__________|                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\charwidth}\settowidth{\charwidth}{{\small\tt M}}
+\newlength{\boxrulewd}\setlength{\boxrulewd}{.4pt}
+\newlength{\boxlineht}\setlength{\boxlineht}{.5\baselineskip}
+\newcommand{\boxsep}{\charwidth}
+\newlength{\boxruleht}\setlength{\boxruleht}{.5ex}
+\newlength{\boxruledp}\setlength{\boxruledp}{-\boxruleht}
+\addtolength{\boxruledp}{\boxrulewd}
+\newcommand{\boxrule}{\leaders\hrule height \boxruleht depth \boxruledp
+                      \hfill\mbox{}}
+\newcommand{\@computerule}{%
+  \setlength{\boxruleht}{.5ex}%
+  \setlength{\boxruledp}{-\boxruleht}%
+  \addtolength{\boxruledp}{\boxrulewd}}
+
+\newcommand{\bottombar}{\hspace{-\boxsep}%
+  \raisebox{-\boxrulewd}[0pt][0pt]{\rule[.5ex]{\boxrulewd}{\boxlineht}}%
+  \boxrule
+  \raisebox{-\boxrulewd}[0pt][0pt]{%
+      \rule[.5ex]{\boxrulewd}{\boxlineht}}\hspace{-\boxsep}\vspace{0pt}}
+
+\newcommand{\moduleLeftDash}%
+   {\hspace*{-\boxsep}%
+     \raisebox{-\boxlineht}[0pt][0pt]{\rule[.5ex]{\boxrulewd
+               }{\boxlineht}}%
+    \boxrule\hspace*{.4em }}
+
+\newcommand{\moduleRightDash}%
+    {\hspace*{.4em}\boxrule
+    \raisebox{-\boxlineht}[0pt][0pt]{\rule[.5ex]{\boxrulewd
+               }{\boxlineht}}\hspace{-\boxsep}}%\vspace{.2em}
+
+\newcommand{\midbar}{\hspace{-\boxsep}\raisebox{-.5\boxlineht}[0pt][0pt]{%
+   \rule[.5ex]{\boxrulewd}{\boxlineht}}\boxrule\raisebox{-.5\boxlineht%
+   }[0pt][0pt]{\rule[.5ex]{\boxrulewd}{\boxlineht}}\hspace{-\boxsep}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FORMATING COMMANDS                                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PLUSCAL SHADING                                                           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The TeX pcalshading switch is set on to cause PlusCal shading to be
+% performed.  This changes the behavior of the following commands and
+% environments to cause full-width shading to be performed on all lines.
+% 
+%   \tstrut \@x cpar mcom \@pvspace
+% 
+% The TeX pcalsymbols switch is turned on when typesetting a PlusCal algorithm,
+% whether or not shading is being performed.  It causes symbols (other than
+% parentheses and braces and PlusCal-only keywords) that should be typeset
+% differently depending on whether they are in an algorithm to be typeset
+% appropriately.  Currently, the only such symbol is "||".
+%
+% The TeX csyntax switch is turned on when typesetting a PlusCal algorithm in
+% c-syntax.  This allows symbols to be format differently in the two syntaxes.
+% The "else" keyword is the only one that is.
+
+\newif\ifpcalshading \pcalshadingfalse
+\newif\ifpcalsymbols \pcalsymbolsfalse
+\newif\ifcsyntax     \csyntaxtrue
+
+% The \@pvspace command makes a vertical space.  It uses \vspace
+% except with \ifpcalshading, in which case it sets \pvcalvspace
+% and the space is added by a following \@x command.
+%
+\newlength{\pcalvspace}\setlength{\pcalvspace}{0pt}%
+\newcommand{\@pvspace}[1]{%
+  \ifpcalshading
+     \par\global\setlength{\pcalvspace}{#1}%
+  \else
+     \par\vspace{#1}%
+  \fi
+}
+
+% The lcom environment was changed to set \lcomindent equal to
+% the indentation it produces.  This length is used by the
+% cpar environment to make shading extend for the full width
+% of the line.  This assumes that lcom environments are not
+% nested.  I hope TLATeX does not nest them.
+%
+\newlength{\lcomindent}%
+\setlength{\lcomindent}{0pt}%
+
+%\tstrut: A strut to produce inter-paragraph space in a comment.
+%\rstrut: A strut to extend the bottom of a one-line comment so
+%         there's no break in the shading between comments on 
+%         successive lines.
+\newcommand\tstrut%
+  {\raisebox{\vshadelen}{\raisebox{-.25em}{\rule{0pt}{1.15em}}}%
+   \global\setlength{\vshadelen}{0pt}}
+\newcommand\rstrut{\raisebox{-.25em}{\rule{0pt}{1.15em}}%
+ \global\setlength{\vshadelen}{0pt}}
+
+
+% \.{op} formats operator op in math mode with empty boxes on either side.
+% Used because TeX otherwise vary the amount of space it leaves around op.
+\renewcommand{\.}[1]{\ensuremath{\mbox{}#1\mbox{}}}
+
+% \@s{n} produces an n-point space
+\newcommand{\@s}[1]{\hspace{#1pt}}           
+
+% \@x{txt} starts a specification line in the beginning with txt
+% in the final LaTeX source.
+\newlength{\@xlen}
+\newcommand\xtstrut%
+  {\setlength{\@xlen}{1.05em}%
+   \addtolength{\@xlen}{\pcalvspace}%
+    \raisebox{\vshadelen}{\raisebox{-.25em}{\rule{0pt}{\@xlen}}}%
+   \global\setlength{\vshadelen}{0pt}%
+   \global\setlength{\pcalvspace}{0pt}}
+
+\newcommand{\@x}[1]{\par
+  \ifpcalshading
+  \makebox[0pt][l]{\shadebox{\xtstrut\hspace*{\textwidth}}}%
+  \fi
+  \mbox{$\mbox{}#1\mbox{}$}}  
+
+% \@xx{txt} continues a specification line with the text txt.
+\newcommand{\@xx}[1]{\mbox{$\mbox{}#1\mbox{}$}}  
+
+% \@y{cmt} produces a one-line comment.
+\newcommand{\@y}[1]{\mbox{\footnotesize\hspace{.65em}%
+  \ifthenelse{\boolean{shading}}{%
+      \shadebox{#1\hspace{-\the\lastskip}\rstrut}}%
+               {#1\hspace{-\the\lastskip}\rstrut}}}
+
+% \@z{cmt} produces a zero-width one-line comment.
+\newcommand{\@z}[1]{\makebox[0pt][l]{\footnotesize
+  \ifthenelse{\boolean{shading}}{%
+      \shadebox{#1\hspace{-\the\lastskip}\rstrut}}%
+               {#1\hspace{-\the\lastskip}\rstrut}}}
+
+
+% \@w{str} produces the TLA+ string "str".
+\newcommand{\@w}[1]{\textsf{``{#1}''}}             
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SHADING                                                                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\graymargin{1}
+  % The number of points of margin in the shaded box.
+
+% \definecolor{boxshade}{gray}{.85}
+% Defines the darkness of the shading: 1 = white, 0 = black
+% Added by TLATeX only if needed.
+
+% \shadebox{txt} puts txt in a shaded box.
+\newlength{\templena}
+\newlength{\templenb}
+\newsavebox{\tempboxa}
+\newcommand{\shadebox}[1]{{\setlength{\fboxsep}{\graymargin pt}%
+     \savebox{\tempboxa}{#1}%
+     \settoheight{\templena}{\usebox{\tempboxa}}%
+     \settodepth{\templenb}{\usebox{\tempboxa}}%
+     \hspace*{-\fboxsep}\raisebox{0pt}[\templena][\templenb]%
+        {\colorbox{boxshade}{\usebox{\tempboxa}}}\hspace*{-\fboxsep}}}
+
+% \vshade{n} makes an n-point inter-paragraph space, with
+%  shading if the `shading' flag is true.
+\newlength{\vshadelen}
+\setlength{\vshadelen}{0pt}
+\newcommand{\vshade}[1]{\ifthenelse{\boolean{shading}}%
+   {\global\setlength{\vshadelen}{#1pt}}%
+   {\vspace{#1pt}}}
+
+\newlength{\boxwidth}
+\newlength{\multicommentdepth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THE cpar ENVIRONMENT                                                      %
+% ^^^^^^^^^^^^^^^^^^^^                                                      %
+% The LaTeX input                                                           %
+%                                                                           %
+%   \begin{cpar}{pop}{nest}{isLabel}{d}{e}{arg6}                            %
+%     XXXXXXXXXXXXXXX                                                       %
+%     XXXXXXXXXXXXXXX                                                       %
+%     XXXXXXXXXXXXXXX                                                       %
+%   \end{cpar}                                                              %
+%                                                                           %
+% produces one of two possible results.  If isLabel is the letter "T",      %
+% it produces the following, where [label] is the result of typesetting     %
+% arg6 in an LR box, and d is is a number representing a distance in        %
+% points.                                                                   %
+%                                                                           %
+%   prevailing |<-- d -->[label]<- e ->XXXXXXXXXXXXXXX                      %
+%         left |                       XXXXXXXXXXXXXXX                      %
+%       margin |                       XXXXXXXXXXXXXXX                      %
+%                                                                           %
+% If isLabel is the letter "F", then it produces                            %
+%                                                                           %
+%   prevailing |<-- d -->XXXXXXXXXXXXXXXXXXXXXXX                            %
+%         left |         <- e ->XXXXXXXXXXXXXXXX                            %
+%       margin |                XXXXXXXXXXXXXXXX                            %
+%                                                                           %
+% where d and e are numbers representing distances in points.               %
+%                                                                           %
+% The prevailing left margin is the one in effect before the most recent    %
+% pop (argument 1) cpar environments with "T" as the nest argument, where   %
+% pop is a number \geq 0.                                                   %
+%                                                                           %
+% If the nest argument is the letter "T", then the prevailing left          %
+% margin is moved to the left of the second (and following) lines of        %
+% X's.  Otherwise, the prevailing left margin is left unchanged.            %
+%                                                                           %
+% An \unnest{n} command moves the prevailing left margin to where it was    %
+% before the most recent n cpar environments with "T" as the nesting        %
+% argument.                                                                 %
+%                                                                           %
+% The environment leaves no vertical space above or below it, or between    %
+% its paragraphs.  (TLATeX inserts the proper amount of vertical space.)    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcounter{pardepth}
+\setcounter{pardepth}{0}
+
+% \setgmargin{txt} defines \gmarginN to be txt, where N is \roman{pardepth}.
+% \thegmargin equals \gmarginN, where N is \roman{pardepth}.
+\newcommand{\setgmargin}[1]{%
+  \expandafter\xdef\csname gmargin\roman{pardepth}\endcsname{#1}}
+\newcommand{\thegmargin}{\csname gmargin\roman{pardepth}\endcsname}
+\newcommand{\gmargin}{0pt}
+
+\newsavebox{\tempsbox}
+
+\newlength{\@cparht}
+\newlength{\@cpardp}
+\newenvironment{cpar}[6]{%
+  \addtocounter{pardepth}{-#1}%
+  \ifthenelse{\boolean{shading}}{\par\begin{lrbox}{\tempsbox}%
+                                 \begin{minipage}[t]{\linewidth}}{}%
+  \begin{list}{}{%
+     \edef\temp{\thegmargin}
+     \ifthenelse{\equal{#3}{T}}%
+       {\settowidth{\leftmargin}{\hspace{\temp}\footnotesize #6\hspace{#5pt}}%
+        \addtolength{\leftmargin}{#4pt}}%
+       {\setlength{\leftmargin}{#4pt}%
+        \addtolength{\leftmargin}{#5pt}%
+        \addtolength{\leftmargin}{\temp}%
+        \setlength{\itemindent}{-#5pt}}%
+      \ifthenelse{\equal{#2}{T}}{\addtocounter{pardepth}{1}%
+                                 \setgmargin{\the\leftmargin}}{}%
+      \setlength{\labelwidth}{0pt}%
+      \setlength{\labelsep}{0pt}%
+      \setlength{\itemindent}{-\leftmargin}%
+      \setlength{\topsep}{0pt}%
+      \setlength{\parsep}{0pt}%
+      \setlength{\partopsep}{0pt}%
+      \setlength{\parskip}{0pt}%
+      \setlength{\itemsep}{0pt}
+      \setlength{\itemindent}{#4pt}%
+      \addtolength{\itemindent}{-\leftmargin}}%
+   \ifthenelse{\equal{#3}{T}}%
+      {\item[\tstrut\footnotesize \hspace{\temp}{#6}\hspace{#5pt}]
+        }%
+      {\item[\tstrut\hspace{\temp}]%
+         }%
+   \footnotesize}
+ {\hspace{-\the\lastskip}\tstrut
+ \end{list}%
+  \ifthenelse{\boolean{shading}}%
+          {\end{minipage}%
+           \end{lrbox}%
+           \ifpcalshading
+             \setlength{\@cparht}{\ht\tempsbox}%
+             \setlength{\@cpardp}{\dp\tempsbox}%
+             \addtolength{\@cparht}{.15em}%
+             \addtolength{\@cpardp}{.2em}%
+             \addtolength{\@cparht}{\@cpardp}%
+            % I don't know what's going on here.  I want to add a
+            % \pcalvspace high shaded line, but I don't know how to
+            % do it.  A little trial and error shows that the following
+            % does a reasonable job approximating that, eliminating
+            % the line if \pcalvspace is small.
+            \addtolength{\@cparht}{\pcalvspace}%
+             \ifdim \pcalvspace > .8em
+               \addtolength{\pcalvspace}{-.2em}%
+               \hspace*{-\lcomindent}%
+               \shadebox{\rule{0pt}{\pcalvspace}\hspace*{\textwidth}}\par
+               \global\setlength{\pcalvspace}{0pt}%
+               \fi
+             \hspace*{-\lcomindent}%
+             \makebox[0pt][l]{\raisebox{-\@cpardp}[0pt][0pt]{%
+                 \shadebox{\rule{0pt}{\@cparht}\hspace*{\textwidth}}}}%
+             \hspace*{\lcomindent}\usebox{\tempsbox}%
+             \par
+           \else
+             \shadebox{\usebox{\tempsbox}}\par
+           \fi}%
+           {}%
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THE ppar ENVIRONMENT                                                       %
+% ^^^^^^^^^^^^^^^^^^^^                                                       %
+% The environment                                                            %
+%                                                                            %
+%   \begin{ppar} ... \end{ppar}                                              %
+%                                                                            %
+% is equivalent to                                                           %
+%                                                                            %
+%   \begin{cpar}{0}{F}{F}{0}{0}{} ... \end{cpar}                             %
+%                                                                            %
+% The environment is put around each line of the output for a PlusCal        %
+% algorithm.                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newenvironment{ppar}{%
+%  \ifthenelse{\boolean{shading}}{\par\begin{lrbox}{\tempsbox}%
+%                                 \begin{minipage}[t]{\linewidth}}{}%
+%  \begin{list}{}{%
+%     \edef\temp{\thegmargin}
+%        \setlength{\leftmargin}{0pt}%
+%        \addtolength{\leftmargin}{\temp}%
+%        \setlength{\itemindent}{0pt}%
+%      \setlength{\labelwidth}{0pt}%
+%      \setlength{\labelsep}{0pt}%
+%      \setlength{\itemindent}{-\leftmargin}%
+%      \setlength{\topsep}{0pt}%
+%      \setlength{\parsep}{0pt}%
+%      \setlength{\partopsep}{0pt}%
+%      \setlength{\parskip}{0pt}%
+%      \setlength{\itemsep}{0pt}
+%      \setlength{\itemindent}{0pt}%
+%      \addtolength{\itemindent}{-\leftmargin}}%
+%      \item[\tstrut\hspace{\temp}]}%
+% {\hspace{-\the\lastskip}\tstrut
+% \end{list}%
+%  \ifthenelse{\boolean{shading}}{\end{minipage}  
+%                                 \end{lrbox}%
+%                                 \shadebox{\usebox{\tempsbox}}\par}{}%
+%  }
+
+ %%% TESTING
+ \newcommand{\xtest}[1]{\par
+ \makebox[0pt][l]{\shadebox{\xtstrut\hspace*{\textwidth}}}%
+ \mbox{$\mbox{}#1\mbox{}$}} 
+
+% \newcommand{\xxtest}[1]{\par
+% \makebox[0pt][l]{\shadebox{\xtstrut{#1}\hspace*{\textwidth}}}%
+% \mbox{$\mbox{}#1\mbox{}$}} 
+
+%\newlength{\pcalvspace}
+%\setlength{\pcalvspace}{0pt}
+% \newlength{\xxtestlen}
+% \setlength{\xxtestlen}{0pt}
+% \newcommand\xtstrut%
+%   {\setlength{\xxtestlen}{1.15em}%
+%    \addtolength{\xxtestlen}{\pcalvspace}%
+%     \raisebox{\vshadelen}{\raisebox{-.25em}{\rule{0pt}{\xxtestlen}}}%
+%    \global\setlength{\vshadelen}{0pt}%
+%    \global\setlength{\pcalvspace}{0pt}}
+   
+   %%%% TESTING
+   
+   %% The xcpar environment
+   %%  Note: overloaded use of \pcalvspace for testing.
+   %%
+%   \newlength{\xcparht}%
+%   \newlength{\xcpardp}%
+   
+%   \newenvironment{xcpar}[6]{%
+%  \addtocounter{pardepth}{-#1}%
+%  \ifthenelse{\boolean{shading}}{\par\begin{lrbox}{\tempsbox}%
+%                                 \begin{minipage}[t]{\linewidth}}{}%
+%  \begin{list}{}{%
+%     \edef\temp{\thegmargin}%
+%     \ifthenelse{\equal{#3}{T}}%
+%       {\settowidth{\leftmargin}{\hspace{\temp}\footnotesize #6\hspace{#5pt}}%
+%        \addtolength{\leftmargin}{#4pt}}%
+%       {\setlength{\leftmargin}{#4pt}%
+%        \addtolength{\leftmargin}{#5pt}%
+%        \addtolength{\leftmargin}{\temp}%
+%        \setlength{\itemindent}{-#5pt}}%
+%      \ifthenelse{\equal{#2}{T}}{\addtocounter{pardepth}{1}%
+%                                 \setgmargin{\the\leftmargin}}{}%
+%      \setlength{\labelwidth}{0pt}%
+%      \setlength{\labelsep}{0pt}%
+%      \setlength{\itemindent}{-\leftmargin}%
+%      \setlength{\topsep}{0pt}%
+%      \setlength{\parsep}{0pt}%
+%      \setlength{\partopsep}{0pt}%
+%      \setlength{\parskip}{0pt}%
+%      \setlength{\itemsep}{0pt}%
+%      \setlength{\itemindent}{#4pt}%
+%      \addtolength{\itemindent}{-\leftmargin}}%
+%   \ifthenelse{\equal{#3}{T}}%
+%      {\item[\xtstrut\footnotesize \hspace{\temp}{#6}\hspace{#5pt}]%
+%        }%
+%      {\item[\xtstrut\hspace{\temp}]%
+%         }%
+%   \footnotesize}
+% {\hspace{-\the\lastskip}\tstrut
+% \end{list}%
+%  \ifthenelse{\boolean{shading}}{\end{minipage}  
+%                                 \end{lrbox}%
+%                                 \setlength{\xcparht}{\ht\tempsbox}%
+%                                 \setlength{\xcpardp}{\dp\tempsbox}%
+%                                 \addtolength{\xcparht}{.15em}%
+%                                 \addtolength{\xcpardp}{.2em}%
+%                                 \addtolength{\xcparht}{\xcpardp}%
+%                                 \hspace*{-\lcomindent}%
+%                                 \makebox[0pt][l]{\raisebox{-\xcpardp}[0pt][0pt]{%
+%                                      \shadebox{\rule{0pt}{\xcparht}\hspace*{\textwidth}}}}%
+%                                 \hspace*{\lcomindent}\usebox{\tempsbox}%
+%                                 \par}{}%
+%  }
+%  
+% \newlength{\xmcomlen}
+%\newenvironment{xmcom}[1]{%
+%  \setcounter{pardepth}{0}%
+%  \hspace{.65em}%
+%  \begin{lrbox}{\alignbox}\sloppypar%
+%      \setboolean{shading}{false}%
+%      \setlength{\boxwidth}{#1pt}%
+%      \addtolength{\boxwidth}{-.65em}%
+%      \begin{minipage}[t]{\boxwidth}\footnotesize
+%      \parskip=0pt\relax}%
+%       {\end{minipage}\end{lrbox}%
+%       \setlength{\xmcomlen}{\textwidth}%
+%       \addtolength{\xmcomlen}{-\wd\alignbox}%
+%       \settodepth{\alignwidth}{\usebox{\alignbox}}%
+%       \global\setlength{\multicommentdepth}{\alignwidth}%
+%       \setlength{\boxwidth}{\alignwidth}%
+%       \global\addtolength{\alignwidth}{-\maxdepth}%
+%       \addtolength{\boxwidth}{.1em}%
+%       \raisebox{0pt}[0pt][0pt]{%
+%        \ifthenelse{\boolean{shading}}%
+%          {\hspace*{-\xmcomlen}\shadebox{\rule[-\boxwidth]{0pt}{0pt}%
+%                                 \hspace*{\xmcomlen}\usebox{\alignbox}}}%
+%          {\usebox{\alignbox}}}%
+%       \vspace*{\alignwidth}\pagebreak[0]\vspace{-\alignwidth}\par}
+% % a multi-line comment, whose first argument is its width in points.
+%  
+   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THE lcom ENVIRONMENT                                                       %
+% ^^^^^^^^^^^^^^^^^^^^                                                       %
+% A multi-line comment with no text to its left is typeset in an lcom        % 
+% environment, whose argument is a number representing the indentation       % 
+% of the left margin, in points.  All the text of the comment should be      % 
+% inside cpar environments.                                                  % 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{lcom}[1]{%
+  \setlength{\lcomindent}{#1pt} % Added for PlusCal handling.
+  \par\vspace{.2em}%
+  \sloppypar
+  \setcounter{pardepth}{0}%
+  \footnotesize
+  \begin{list}{}{%
+    \setlength{\leftmargin}{#1pt}
+    \setlength{\labelwidth}{0pt}%
+    \setlength{\labelsep}{0pt}%
+    \setlength{\itemindent}{0pt}%
+    \setlength{\topsep}{0pt}%
+    \setlength{\parsep}{0pt}%
+    \setlength{\partopsep}{0pt}%
+    \setlength{\parskip}{0pt}}
+    \item[]}%
+  {\end{list}\vspace{.3em}\setlength{\lcomindent}{0pt}%
+ }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THE mcom ENVIRONMENT AND \mutivspace COMMAND                              %
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^                              %
+%                                                                           %
+% A part of the spec containing a right-comment of the form                 %
+%                                                                           %
+%      xxxx (*************)                                                 %
+%      yyyy (* ccccccccc *)                                                 %
+%      ...  (* ccccccccc *)                                                 %
+%           (* ccccccccc *)                                                 %
+%           (* ccccccccc *)                                                 %
+%           (*************)                                                 %
+%                                                                           %
+% is typeset by                                                             %
+%                                                                           %
+%     XXXX \begin{mcom}{d}                                                  %
+%            CCCC ... CCC                                                   %
+%          \end{mcom}                                                       %
+%     YYYY ...                                                              %
+%     \multivspace{n}                                                       %
+%                                                                           %
+% where the number d is the width in points of the comment, n is the        %
+% number of xxxx, yyyy, ...  lines to the left of the comment.              %
+% All the text of the comment should be typeset in cpar environments.       %
+%                                                                           %
+% This puts the comment into a single box (so no page breaks can occur      %
+% within it).  The entire box is shaded iff the shading flag is true.       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\xmcomlen}%
+\newenvironment{mcom}[1]{%
+  \setcounter{pardepth}{0}%
+  \hspace{.65em}%
+  \begin{lrbox}{\alignbox}\sloppypar%
+      \setboolean{shading}{false}%
+      \setlength{\boxwidth}{#1pt}%
+      \addtolength{\boxwidth}{-.65em}%
+      \begin{minipage}[t]{\boxwidth}\footnotesize
+      \parskip=0pt\relax}%
+       {\end{minipage}\end{lrbox}%
+       \setlength{\xmcomlen}{\textwidth}%       % For PlusCal shading
+       \addtolength{\xmcomlen}{-\wd\alignbox}%  % For PlusCal shading
+       \settodepth{\alignwidth}{\usebox{\alignbox}}%
+       \global\setlength{\multicommentdepth}{\alignwidth}%
+       \setlength{\boxwidth}{\alignwidth}%      % For PlusCal shading
+       \global\addtolength{\alignwidth}{-\maxdepth}%
+       \addtolength{\boxwidth}{.1em}%           % For PlusCal shading
+      \raisebox{0pt}[0pt][0pt]{%
+        \ifthenelse{\boolean{shading}}%
+          {\ifpcalshading
+             \hspace*{-\xmcomlen}%
+             \shadebox{\rule[-\boxwidth]{0pt}{0pt}\hspace*{\xmcomlen}%
+                          \usebox{\alignbox}}%
+           \else
+             \shadebox{\usebox{\alignbox}}
+           \fi
+          }%
+          {\usebox{\alignbox}}}%
+       \vspace*{\alignwidth}\pagebreak[0]\vspace{-\alignwidth}\par}
+ % a multi-line comment, whose first argument is its width in points.
+
+
+% \multispace{n} produces the vertical space indicated by "|"s in 
+% this situation
+%   
+%     xxxx (*************)
+%     xxxx (* ccccccccc *)
+%      |   (* ccccccccc *)
+%      |   (* ccccccccc *)
+%      |   (* ccccccccc *)
+%      |   (*************)
+%
+% where n is the number of "xxxx" lines.
+\newcommand{\multivspace}[1]{\addtolength{\multicommentdepth}{-#1\baselineskip}%
+ \addtolength{\multicommentdepth}{1.2em}%
+ \ifthenelse{\lengthtest{\multicommentdepth > 0pt}}%
+    {\par\vspace{\multicommentdepth}\par}{}}
+
+%\newenvironment{hpar}[2]{%
+%  \begin{list}{}{\setlength{\leftmargin}{#1pt}%
+%                 \addtolength{\leftmargin}{#2pt}%
+%                 \setlength{\itemindent}{-#2pt}%
+%                 \setlength{\topsep}{0pt}%
+%                 \setlength{\parsep}{0pt}%
+%                 \setlength{\partopsep}{0pt}%
+%                 \setlength{\parskip}{0pt}%
+%                 \addtolength{\labelsep}{0pt}}%
+%  \item[]\footnotesize}{\end{list}}
+%    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    % Typesets a sequence of paragraphs like this:                         %
+%    %                                                                      %
+%    %      left |<-- d1 --> XXXXXXXXXXXXXXXXXXXXXXXX                       %
+%    %    margin |           <- d2 -> XXXXXXXXXXXXXXX                       %
+%    %           |                    XXXXXXXXXXXXXXX                       %
+%    %           |                                                          %
+%    %           |                    XXXXXXXXXXXXXXX                       %
+%    %           |                    XXXXXXXXXXXXXXX                       %
+%    %                                                                      %
+%    % where d1 = #1pt and d2 = #2pt, but with no vspace between            %
+%    % paragraphs.                                                          %
+%    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Commands for repeated characters that produce dashes.              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \raisedDash{wd}{ht}{thk} makes a horizontal line wd characters wide, 
+% raised a distance ht ex's above the baseline, with a thickness of 
+% thk em's.
+\newcommand{\raisedDash}[3]{\raisebox{#2ex}{\setlength{\alignwidth}{.5em}%
+  \rule{#1\alignwidth}{#3em}}}
+
+% The following commands take a single argument n and produce the
+% output for n repeated characters, as follows
+%   \cdash:    -
+%   \tdash:    ~
+%   \ceqdash:  =
+%   \usdash:   _
+\newcommand{\cdash}[1]{\raisedDash{#1}{.5}{.04}}
+\newcommand{\usdash}[1]{\raisedDash{#1}{0}{.04}}
+\newcommand{\ceqdash}[1]{\raisedDash{#1}{.5}{.08}}
+\newcommand{\tdash}[1]{\raisedDash{#1}{1}{.08}}
+
+\newlength{\spacewidth}
+\setlength{\spacewidth}{.2em}
+\newcommand{\e}[1]{\hspace{#1\spacewidth}}
+%% \e{i} produces space corresponding to i input spaces.
+
+
+%% Alignment-file Commands
+
+\newlength{\alignboxwidth}
+\newlength{\alignwidth}
+\newsavebox{\alignbox}
+
+% \al{i}{j}{txt} is used in the alignment file to put "%{i}{j}{wd}"
+% in the log file, where wd is the width of the line up to that point,
+% and txt is the following text.
+\newcommand{\al}[3]{%
+  \typeout{\%{#1}{#2}{\the\alignwidth}}%
+  \cl{#3}}
+
+%% \cl{txt} continues a specification line in the alignment file
+%% with text txt.
+\newcommand{\cl}[1]{%
+  \savebox{\alignbox}{\mbox{$\mbox{}#1\mbox{}$}}%
+  \settowidth{\alignboxwidth}{\usebox{\alignbox}}%
+  \addtolength{\alignwidth}{\alignboxwidth}%
+  \usebox{\alignbox}}
+
+% \fl{txt} in the alignment file begins a specification line that
+% starts with the text txt.
+\newcommand{\fl}[1]{%
+  \par
+  \savebox{\alignbox}{\mbox{$\mbox{}#1\mbox{}$}}%
+  \settowidth{\alignwidth}{\usebox{\alignbox}}%
+  \usebox{\alignbox}}
+
+
+
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ordinarily, TeX typesets letters in math mode in a special math italic    %
+% font.  This makes it typeset "it" to look like the product of the         %
+% variables i and t, rather than like the word "it".  The following         %
+% commands tell TeX to use an ordinary italic font instead.                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifx\documentclass\undefined
+\else
+  \DeclareSymbolFont{tlaitalics}{\encodingdefault}{cmr}{m}{it}
+  \let\itfam\symtlaitalics
+\fi
+
+\makeatletter
+\newcommand{\tlx@c}{\c@tlx@ctr\advance\c@tlx@ctr\@ne}
+\newcounter{tlx@ctr}
+\c@tlx@ctr=\itfam \multiply\c@tlx@ctr"100\relax \advance\c@tlx@ctr "7061\relax
+\mathcode`a=\tlx@c \mathcode`b=\tlx@c \mathcode`c=\tlx@c \mathcode`d=\tlx@c
+\mathcode`e=\tlx@c \mathcode`f=\tlx@c \mathcode`g=\tlx@c \mathcode`h=\tlx@c
+\mathcode`i=\tlx@c \mathcode`j=\tlx@c \mathcode`k=\tlx@c \mathcode`l=\tlx@c
+\mathcode`m=\tlx@c \mathcode`n=\tlx@c \mathcode`o=\tlx@c \mathcode`p=\tlx@c
+\mathcode`q=\tlx@c \mathcode`r=\tlx@c \mathcode`s=\tlx@c \mathcode`t=\tlx@c
+\mathcode`u=\tlx@c \mathcode`v=\tlx@c \mathcode`w=\tlx@c \mathcode`x=\tlx@c
+\mathcode`y=\tlx@c \mathcode`z=\tlx@c
+\c@tlx@ctr=\itfam \multiply\c@tlx@ctr"100\relax \advance\c@tlx@ctr "7041\relax
+\mathcode`A=\tlx@c \mathcode`B=\tlx@c \mathcode`C=\tlx@c \mathcode`D=\tlx@c
+\mathcode`E=\tlx@c \mathcode`F=\tlx@c \mathcode`G=\tlx@c \mathcode`H=\tlx@c
+\mathcode`I=\tlx@c \mathcode`J=\tlx@c \mathcode`K=\tlx@c \mathcode`L=\tlx@c
+\mathcode`M=\tlx@c \mathcode`N=\tlx@c \mathcode`O=\tlx@c \mathcode`P=\tlx@c
+\mathcode`Q=\tlx@c \mathcode`R=\tlx@c \mathcode`S=\tlx@c \mathcode`T=\tlx@c
+\mathcode`U=\tlx@c \mathcode`V=\tlx@c \mathcode`W=\tlx@c \mathcode`X=\tlx@c
+\mathcode`Y=\tlx@c \mathcode`Z=\tlx@c
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                THE describe ENVIRONMENT                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+% It is like the description environment except it takes an argument
+% ARG that should be the text of the widest label.  It adjusts the
+% indentation so each item with label LABEL produces
+%%      LABEL             blah blah blah
+%%      <- width of ARG ->blah blah blah
+%%                        blah blah blah
+\newenvironment{describe}[1]%
+   {\begin{list}{}{\settowidth{\labelwidth}{#1}%
+            \setlength{\labelsep}{.5em}%
+            \setlength{\leftmargin}{\labelwidth}% 
+            \addtolength{\leftmargin}{\labelsep}%
+            \addtolength{\leftmargin}{\parindent}%
+            \def\makelabel##1{\rm ##1\hfill}}%
+            \setlength{\topsep}{0pt}}%% 
+                % Sets \topsep to 0 to reduce vertical space above
+                % and below embedded displayed equations
+   {\end{list}}
+
+%   For tlatex.TeX
+\usepackage{verbatim}
+\makeatletter
+\def\tla{\let\%\relax%
+         \@bsphack
+         \typeout{\%{\the\linewidth}}%
+             \let\do\@makeother\dospecials\catcode`\^^M\active
+             \let\verbatim@startline\relax
+             \let\verbatim@addtoline\@gobble
+             \let\verbatim@processline\relax
+             \let\verbatim@finish\relax
+             \verbatim@}
+\let\endtla=\@esphack
+
+\let\pcal=\tla
+\let\endpcal=\endtla
+\let\ppcal=\tla
+\let\endppcal=\endtla
+
+% The tlatex environment is used by TLATeX.TeX to typeset TLA+.
+% TLATeX.TLA starts its files by writing a \tlatex command.  This
+% command/environment sets \parindent to 0 and defines \% to its
+% standard definition because the writing of the log files is messed up
+% if \% is defined to be something else.  It also executes
+% \@computerule to determine the dimensions for the TLA horizonatl
+% bars.
+\newenvironment{tlatex}{\@computerule%
+                        \setlength{\parindent}{0pt}%
+                       \makeatletter\chardef\%=`\%}{}
+
+
+% The notla environment produces no output.  You can turn a 
+% tla environment to a notla environment to prevent tlatex.TeX from
+% re-formatting the environment.
+
+\def\notla{\let\%\relax%
+         \@bsphack
+             \let\do\@makeother\dospecials\catcode`\^^M\active
+             \let\verbatim@startline\relax
+             \let\verbatim@addtoline\@gobble
+             \let\verbatim@processline\relax
+             \let\verbatim@finish\relax
+             \verbatim@}
+\let\endnotla=\@esphack
+
+\let\nopcal=\notla
+\let\endnopcal=\endnotla
+\let\noppcal=\notla
+\let\endnoppcal=\endnotla
+
+%%%%%%%%%%%%%%%%%%%%%%%% end of tlatex.sty file %%%%%%%%%%%%%%%%%%%%%%% 
+% last modified on Fri  3 August 2012 at 14:23:49 PST by lamport
+
+\begin{document}
+\tlatex
+\setboolean{shading}{true}
+\@x{}\moduleLeftDash\@xx{ {\MODULE} PManager}\moduleRightDash\@xx{}%
+\@x{ {\EXTENDS} Naturals ,\, Sequences}%
+\@pvspace{8.0pt}%
+\@x{ {\CONSTANTS} A ,\, P ,\, Uris}%
+\@pvspace{8.0pt}%
+\@x{ {\ASSUME} A\@s{0.37} \.{\in} Nat}%
+\@x{ {\ASSUME} P \.{\in} Nat}%
+\@pvspace{8.0pt}%
+\@x{ Permissions \.{\defeq} 1 \.{\dotdot} P}%
+\@x{ Applications \.{\defeq} 1 \.{\dotdot} A}%
+\@pvspace{8.0pt}%
+\@x{ NULL\@s{3.72} \.{\defeq}\@w{NULL}}%
+\@x{ DENY \.{\defeq}\@w{DENY}}%
+\@x{ GRANT\@s{0.83} \.{\defeq}\@w{GRANT}}%
+\@x{ ALLOW \.{\defeq}\@w{ALLOW}}%
+\@x{ REJECT\@s{3.31} \.{\defeq}\@w{REJECT}}%
+\@x{ NORMAL \.{\defeq}\@w{NORMAL}}%
+\@x{ SENSITIVE \.{\defeq}\@w{SENSITIVE}}%
+\@pvspace{8.0pt}%
+ \@x{ FLAG\_GRANT\_READ\_URI\_PERMISSION
+ \.{\defeq}\@w{FLAG\_GRANT\_READ\_URI\_PERMISSION}}%
+ \@x{ FLAG\_GRANT\_WRITE\_URI\_PERMISSION
+ \.{\defeq}\@w{FLAG\_GRANT\_WRITE\_URI\_PERMISSION}}%
+\@pvspace{8.0pt}%
+\@x{ Boolean\@s{1.57} \.{\defeq} \{ {\TRUE} ,\, {\FALSE} \}}%
+\@x{ Consent \.{\defeq} \{ ALLOW ,\, REJECT ,\, NULL \}}%
+\@x{ CustomPermission \.{\defeq} \{ NORMAL ,\, SENSITIVE ,\, NULL \}}%
+\@x{ PermissionRequestDecision \.{\defeq} \{ GRANT ,\, DENY ,\, NULL \}}%
+ \@x{ UriPermModeFlag \.{\defeq} \{ FLAG\_GRANT\_READ\_URI\_PERMISSION ,\,
+ FLAG\_GRANT\_WRITE\_URI\_PERMISSION \}}%
+\@pvspace{8.0pt}%
+\begin{lcom}{5.0}%
+\begin{cpar}{0}{F}{F}{0}{0}{}%
+ \ensuremath{\.{\stst}\@s{17.5}this} is a comment containing the
+ \ensuremath{PlusCal} code *
+\end{cpar}%
+\end{lcom}%
+\pcalsymbolstrue
+\pcalshadingtrue
+\csyntaxtrue
+\@x{ {\p@mmalgorithm} PermissionManager}%
+\@x{ {\p@lbrace}}%
+ \@x{\@s{16.4} {\p@variables} CP \.{=} [ a \.{\in} Applications \.{\mapsto}
+ NULL ] {\p@semicolon}}%
+ \@x{\@s{64.16} installed \.{=} [ p \.{\in} Applications \.{\mapsto} {\FALSE}
+ ] {\p@semicolon}}%
+ \@x{\@s{64.16} appPerms \.{=} [ i \.{\in} Applications \.{\mapsto} [ p
+ \.{\in} Permissions \.{\mapsto} NULL ] ] {\p@semicolon}}%
+ \@x{\@s{64.16} permsInUse \.{=} [ a \.{\in} Applications \.{\mapsto} [
+ i\@s{1.05} \.{\in} Permissions \.{\mapsto} {\FALSE} ] ]\@s{2.29}
+ {\p@semicolon}}%
+ \@x{\@s{64.16} cpConsent \.{=} [ a \.{\in} Applications \.{\mapsto} [ aa
+ \.{\in} Applications \.{\mapsto} NULL ] ] {\p@semicolon}}%
+ \@x{\@s{64.16} appPermConsents \.{=} [ a \.{\in} Applications \.{\mapsto} [
+ i\@s{0.90} \.{\in} Permissions \.{\mapsto} NULL ] ] {\p@semicolon}}%
+ \@x{\@s{64.16} appCustomPerms \.{=} [ i \.{\in} Applications \.{\mapsto} [ i2
+ \.{\in} Applications \.{\mapsto} NULL ] ] {\p@semicolon}}%
+ \@x{\@s{64.16} manifest \.{=} [ i \.{\in} Applications \.{\mapsto} NULL ]
+ {\p@semicolon}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{16.4} {\p@procedure} installApp {\p@lparen} app {\p@rparen}
+ {\p@lbrace} INSTALL\_APP\@s{.5}\textrm{:}\@s{3} installed [ app ] \.{:=}
+ {\TRUE}\@s{27.48} {\p@semicolon} {\p@return} {\p@semicolon} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{16.4} {\p@procedure} defineCP {\p@lparen} app {\p@rparen} {\p@lbrace}
+ DEFINE\_CP\@s{.5}\textrm{:}\@s{3} {\p@either} {\p@lbrace} CP [ app ] \.{:=}
+ NORMAL {\p@semicolon} {\p@rbrace}}%
+ \@x{\@s{222.98} {\p@or} {\p@lbrace} CP [ app ] \.{:=} SENSITIVE
+ {\p@semicolon} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{222.98} {\p@return} {\p@semicolon} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+\@x{\@s{16.4} {\p@procedure} askCpFromUser {\p@lparen} a1 ,\, a2 {\p@rparen}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+\@x{\@s{32.8} ASK\_CP\_FROM\_USER\@s{.5}\textrm{:}\@s{3}}%
+ \@x{\@s{32.8} {\p@either} {\p@lbrace} appCustomPerms [ a1 ] [ a2 ] \.{:=}
+ GRANT {\p@semicolon} cpConsent [ a1 ] [ a2 ] \.{:=} ALLOW {\p@semicolon}
+ {\p@rbrace}}%
+ \@x{\@s{32.8} {\p@or} {\p@lbrace} appCustomPerms [ a1 ] [ a2 ] \.{:=} DENY
+ {\p@semicolon} cpConsent [ a1 ] [ a2 ] \.{:=} REJECT {\p@semicolon}
+ {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{32.8} {\p@return} {\p@semicolon}}%
+\@x{\@s{16.4} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+\@x{\@s{16.4} {\p@procedure} updateApp {\p@lparen} app {\p@rparen}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+ \@x{\@s{32.8} UPDATE\_APP\@s{.5}\textrm{:}\@s{3} {\p@either} {\p@lbrace} CP [
+ app ] \.{:=} NULL {\p@semicolon} {\p@rbrace}}%
+ \@x{\@s{108.92} {\p@or} {\p@lbrace} {\p@call} defineCP ( app ) {\p@semicolon}
+ {\p@rbrace} {\p@semicolon}}%
+ \@x{\@s{32.8} RETURNING\@s{.5}\textrm{:}\@s{3}\@s{24.97} {\p@return}
+ {\p@semicolon}}%
+\@x{\@s{16.4} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+\@x{\@s{16.4} {\p@procedure} askAppCP {\p@lparen} a1 ,\, a2 {\p@rparen}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+ \@x{\@s{32.8} ASK\_APP\_CP\@s{.5}\textrm{:}\@s{3} {\p@if} {\p@lparen}
+ appCustomPerms [ a1 ] [ a2 ] \.{=} GRANT {\p@rparen} {\p@lbrace} {\p@return}
+ {\p@semicolon} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{107.26} {\p@else} {\p@if} {\p@lparen} appCustomPerms [ a1 ] [ a2 ]
+ \.{=} DENY {\p@rparen} {\p@lbrace} {\p@return} {\p@semicolon} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+\@x{\@s{107.26} {\p@else}}%
+\@x{\@s{107.26} {\p@lbrace}}%
+ \@x{\@s{123.66} {\p@if} {\p@lparen} CP [ a2 ] \.{=} NORMAL {\p@rparen}
+ {\p@lbrace} appCustomPerms [ a1 ] [ a2 ] \.{:=} GRANT {\p@semicolon}
+ {\p@rbrace} {\p@semicolon}}%
+ \@x{\@s{123.66} {\p@else} {\p@call} askCpFromUser ( a1 ,\, a2 )
+ {\p@semicolon}}%
+\@pvspace{8.0pt}%
+\@x{\@s{123.66} {\p@return} {\p@semicolon}}%
+\@x{\@s{107.26} {\p@rbrace}}%
+\@x{\@s{16.4} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+\@x{\@s{16.4} {\p@procedure} uninstallApp {\p@lparen} app {\p@rparen}}%
+\@x{\@s{16.4} {\p@lbrace}\@s{8.2}}%
+\@y{\@s{0}%
+ \ensuremath{Device.uninstallPackage \.{\implies} PM.runUninstall
+ \.{\implies} PM.deletePackage \.{\implies}
+ PackageManagerService.deletePackage \.{\implies}} \.{\dots}
+ \ensuremath{PackageManagerService.updatePermissionsLP
+}}%
+\@xx{}%
+\@x{\@s{34.18}}%
+\@y{\@s{0}%
+ says nothing about \ensuremath{URI} permissions and the deleted package is
+ lost upon entering \ensuremath{updatePermissionsLP
+}}%
+\@xx{}%
+ \@x{\@s{34.18} UNINSTALL\_APP\@s{.5}\textrm{:}\@s{3} installed [ app ] \.{:=}
+ {\FALSE} {\p@semicolon}}%
+ \@x{\@s{125.13} permsInUse [ app ] \.{:=} [ p \.{\in} Permissions \.{\mapsto}
+ {\FALSE} ] {\p@semicolon}}%
+ \@x{\@s{125.13} appPermConsents [ app ] \.{:=} [ p \.{\in} Permissions
+ \.{\mapsto} NULL ] {\p@semicolon}}%
+\@x{\@s{125.13} {\p@return} {\p@semicolon}}%
+\@x{\@s{16.4} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{16.4} {\p@procedure} systemArbitraryDecision {\p@lparen} app ,\, perm
+ {\p@rparen}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+\@x{\@s{32.8} SYSTEM\_ARBITRARY\_DECISION\@s{.5}\textrm{:}\@s{3}}%
+ \@x{\@s{32.8} {\p@either} {\p@lbrace} appPerms [ app ] [ perm ] \.{:=} GRANT
+ {\p@semicolon} appPermConsents [ app ] [ perm ] \.{:=} ALLOW {\p@semicolon}
+ {\p@rbrace}}%
+ \@x{\@s{32.8} {\p@or} {\p@lbrace} appPerms [ app ] [ perm ] \.{:=} DENY
+ {\p@semicolon} appPermConsents [ app ] [ perm ] \.{:=} REJECT {\p@semicolon}
+ {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{32.8} {\p@return} {\p@semicolon}}%
+\@x{\@s{16.4} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{16.4} {\p@procedure} grantUriPermission {\p@lparen} app ,\, uri ,\,
+ mode ,\, perm {\p@rparen}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+ \@x{\@s{32.8} CHECKING\_PERMISSION\_URI\@s{.5}\textrm{:}\@s{3} {\p@if}
+ {\p@lparen} manifest [ app ] \.{\neq} uri {\p@rparen} {\p@return}
+ {\p@semicolon}}%
+\@pvspace{8.0pt}%
+\@x{\@s{32.8} ASK\_PERMISSION\@s{.5}\textrm{:}\@s{3}}%
+ \@x{\@s{32.8} {\p@if} {\p@lparen} appPerms [ app ] [ perm ] \.{=} GRANT
+ {\p@rparen} {\p@lbrace} permsInUse [ app ] [ perm ] \.{:=} {\TRUE}
+ {\p@semicolon} {\p@return} {\p@rbrace}}%
+ \@x{\@s{32.8} {\p@else} {\p@if} {\p@lparen} appPerms [ app ] [ perm ] \.{=}
+ DENY {\p@rparen} {\p@lbrace} permsInUse [ app ] [ perm ] \.{:=} {\FALSE}
+ {\p@semicolon} {\p@return} {\p@rbrace}}%
+\@x{\@s{32.8} {\p@else}}%
+\@x{\@s{32.8} {\p@lbrace}}%
+ \@x{\@s{49.19} MAKE\_DECISION\@s{.5}\textrm{:}\@s{3} {\p@call}
+ systemArbitraryDecision ( app ,\, perm ) {\p@semicolon}}%
+ \@x{\@s{49.19} USING\_PERM\@s{.5}\textrm{:}\@s{3} {\p@if} {\p@lparen}
+ appPerms [ app ] [ perm ] \.{=} GRANT {\p@rparen} {\p@lbrace} permsInUse [
+ app ] [ perm ] \.{:=} {\TRUE} {\p@semicolon} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{49.19} {\p@return} {\p@semicolon}}%
+\@x{\@s{32.8} {\p@rbrace}}%
+\@x{\@s{16.4} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{16.4} {\p@fair} {\p@process} {\p@lparen} a \.{\in} Applications
+ {\p@rparen}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+ \@x{\@s{32.8} PLATFORM\@s{.5}\textrm{:-}\@s{3} {\p@while} {\p@lparen} {\TRUE}
+ {\p@rparen}}%
+\@x{\@s{32.8} {\p@lbrace}}%
+ \@x{\@s{49.19} {\p@if} {\p@lparen} installed [ self ] \.{=} {\TRUE}
+ {\p@rparen}}%
+\@x{\@s{49.19} {\p@lbrace}}%
+ \@x{\@s{65.6} {\p@either} {\p@lbrace} {\p@call} updateApp ( self )
+ {\p@semicolon} {\p@rbrace}}%
+ \@x{\@s{65.6} {\p@or} {\p@lbrace} {\p@either} {\p@lbrace} {\p@call}
+ uninstallApp ( self ) {\p@semicolon} {\p@rbrace}}%
+\@x{\@s{89.50} {\p@or}}%
+\@x{\@s{89.50} {\p@lbrace}}%
+ \@x{\@s{101.80} {\p@either} {\p@lbrace} {\p@if} {\p@lparen} CP [ self ] \.{=}
+ NULL {\p@rparen} {\p@lbrace} {\p@call} defineCP ( self ) {\p@semicolon}
+ {\p@rbrace} {\p@rbrace}}%
+\@x{\@s{101.80} {\p@or}}%
+\@x{\@s{101.80} {\p@lbrace}}%
+ \@x{\@s{118.20} {\p@either} {\p@lbrace} {\p@with} {\p@lparen} application
+ \.{\in} ( Applications \.{\,\backslash\,} \{ self \} ) {\p@rparen}
+ {\p@lbrace} {\p@call} askAppCP ( self ,\, application ) {\p@semicolon}
+ {\p@rbrace} {\p@rbrace}}%
+ \@x{\@s{118.20} {\p@or} {\p@lbrace} {\p@with} {\p@lparen} a \.{\in}
+ Applications \.{\,\backslash\,} \{ self \} {\p@rparen} {\p@lbrace} {\p@with}
+ {\p@lparen} u \.{\in} Uris {\p@rparen} {\p@lbrace} {\p@with} {\p@lparen} p
+ \.{\in} Permissions {\p@rparen} {\p@lbrace} {\p@call} grantUriPermission ( a
+ ,\, u ,\, FLAG\_GRANT\_WRITE\_URI\_PERMISSION ,\, p ) {\p@semicolon}
+ {\p@rbrace} {\p@rbrace} {\p@rbrace} {\p@rbrace}}%
+\@x{\@s{101.80} {\p@rbrace}}%
+\@x{\@s{89.50} {\p@rbrace}}%
+\@x{\@s{79.91} {\p@rbrace}}%
+\@x{\@s{49.19} {\p@rbrace}}%
+\@x{\@s{49.19} {\p@else}}%
+\@x{\@s{49.19} {\p@lbrace}}%
+ \@x{\@s{65.6} {\p@with} {\p@lparen} u \.{\in} Uris {\p@rparen} {\p@lbrace}
+ manifest [ self ] \.{:=} u {\p@semicolon} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{65.6} {\p@call} installApp ( self ) {\p@semicolon}}%
+\@x{\@s{49.19} {\p@rbrace}}%
+\@x{\@s{32.8} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{16.4} {\p@rbrace}}%
+\@x{ {\p@rbrace}}%
+\@y{}%
+\@xx{}%
+\pcalshadingfalse \pcalsymbolsfalse
+\begin{lcom}{0}%
+\begin{cpar}{0}{T}{F}{10.0}{0}{}%
+this ends the comment containing the \ensuremath{PlusCal} code
+\end{cpar}%
+\begin{cpar}{1}{F}{F}{0}{0}{}%
+************
+\end{cpar}%
+\end{lcom}%
+\@x{}%
+\@y{\@s{0}%
+ BEGIN TRANSLATION (\ensuremath{chksum(pcal) \.{=}} ``\ensuremath{c289dd5b}''
+ \ensuremath{\.{\land} chksum(tla) \.{=}} ``\ensuremath{2bd339e2}'')
+}%
+\@xx{}%
+\@x{}%
+\@y{\@s{0}%
+ Parameter \ensuremath{app} of procedure \ensuremath{installApp} at line 42
+ col 26 changed to \ensuremath{app\_
+}}%
+\@xx{}%
+\@x{}%
+\@y{\@s{0}%
+ Parameter \ensuremath{app} of procedure \ensuremath{defineCP} at line 44 col
+ 24 changed to \ensuremath{app\_d
+}}%
+\@xx{}%
+\@x{}%
+\@y{\@s{0}%
+ Parameter \ensuremath{a1} of procedure \ensuremath{askCpFromUser} at line 48
+ col 29 changed to \ensuremath{a1\_
+}}%
+\@xx{}%
+\@x{}%
+\@y{\@s{0}%
+ Parameter \ensuremath{a2} of procedure \ensuremath{askCpFromUser} at line 48
+ col 33 changed to \ensuremath{a2\_
+}}%
+\@xx{}%
+\@x{}%
+\@y{\@s{0}%
+ Parameter \ensuremath{app} of procedure \ensuremath{updateApp} at line 56
+ col 25 changed to \ensuremath{app\_u
+}}%
+\@xx{}%
+\@x{}%
+\@y{\@s{0}%
+ Parameter \ensuremath{app} of procedure \ensuremath{uninstallApp} at line 78
+ col 28 changed to \ensuremath{app\_un
+}}%
+\@xx{}%
+\@x{}%
+\@y{\@s{0}%
+ Parameter \ensuremath{app} of procedure \ensuremath{systemArbitraryDecision}
+ at line 87 col 39 changed to \ensuremath{app\_s
+}}%
+\@xx{}%
+\@x{}%
+\@y{\@s{0}%
+ Parameter \ensuremath{perm} of procedure
+ \ensuremath{systemArbitraryDecision} at line 87 col 44 changed to
+ \ensuremath{perm\_
+}}%
+\@xx{}%
+\@x{ {\CONSTANT} defaultInitValue}%
+ \@x{ {\VARIABLES} CP ,\, installed ,\, appPerms ,\, permsInUse ,\, cpConsent
+ ,\, appPermConsents ,\,}%
+ \@x{\@s{51.42} appCustomPerms ,\, manifest ,\, pc ,\, stack ,\, app\_ ,\,
+ app\_d ,\, a1\_ ,\, a2\_ ,\, app\_u ,\,}%
+ \@x{\@s{51.42} a1 ,\, a2 ,\, app\_un ,\, app\_s ,\, perm\_ ,\, app ,\, uri
+ ,\, mode ,\, perm}%
+\@pvspace{8.0pt}%
+ \@x{ vars \.{\defeq} {\langle} CP ,\, installed ,\, appPerms ,\, permsInUse
+ ,\, cpConsent ,\, appPermConsents ,\,}%
+ \@x{\@s{41.61} appCustomPerms ,\, manifest ,\, pc ,\, stack ,\, app\_ ,\,
+ app\_d ,\, a1\_ ,\, a2\_ ,\, app\_u ,\,}%
+ \@x{\@s{41.61} a1 ,\, a2 ,\, app\_un ,\, app\_s ,\, perm\_ ,\, app ,\, uri
+ ,\, mode ,\, perm {\rangle}}%
+\@pvspace{8.0pt}%
+\@x{ ProcSet \.{\defeq} ( Applications )}%
+\@pvspace{8.0pt}%
+\@x{ Init \.{\defeq}}%
+\@y{\@s{0}%
+ Global variables
+}%
+\@xx{}%
+ \@x{\@s{35.70} \.{\land} CP \.{=} [ a \.{\in} Applications \.{\mapsto} NULL
+ ]}%
+ \@x{\@s{35.70} \.{\land} installed \.{=} [ p \.{\in} Applications \.{\mapsto}
+ {\FALSE} ]}%
+ \@x{\@s{35.70} \.{\land} appPerms \.{=} [ i \.{\in} Applications \.{\mapsto}
+ [ p \.{\in} Permissions \.{\mapsto} NULL ] ]}%
+ \@x{\@s{35.70} \.{\land} permsInUse \.{=} [ a \.{\in} Applications
+ \.{\mapsto} [ i\@s{1.05} \.{\in} Permissions \.{\mapsto} {\FALSE} ] ]}%
+ \@x{\@s{35.70} \.{\land} cpConsent \.{=} [ a \.{\in} Applications \.{\mapsto}
+ [ aa \.{\in} Applications \.{\mapsto} NULL ] ]}%
+ \@x{\@s{35.70} \.{\land} appPermConsents \.{=} [ a \.{\in} Applications
+ \.{\mapsto} [ i\@s{0.90} \.{\in} Permissions \.{\mapsto} NULL ] ]}%
+ \@x{\@s{35.70} \.{\land} appCustomPerms \.{=} [ i \.{\in} Applications
+ \.{\mapsto} [ i2 \.{\in} Applications \.{\mapsto} NULL ] ]}%
+ \@x{\@s{35.70} \.{\land} manifest \.{=} [ i \.{\in} Applications \.{\mapsto}
+ NULL ]}%
+\@x{\@s{35.70}}%
+\@y{\@s{0}%
+ Procedure \ensuremath{installApp
+}}%
+\@xx{}%
+ \@x{\@s{35.70} \.{\land} app\_ \.{=} [ self \.{\in} ProcSet \.{\mapsto}
+ defaultInitValue ]}%
+\@x{\@s{35.70}}%
+\@y{\@s{0}%
+ Procedure \ensuremath{defineCP
+}}%
+\@xx{}%
+ \@x{\@s{35.70} \.{\land} app\_d \.{=} [ self \.{\in} ProcSet \.{\mapsto}
+ defaultInitValue ]}%
+\@x{\@s{35.70}}%
+\@y{\@s{0}%
+ Procedure \ensuremath{askCpFromUser
+}}%
+\@xx{}%
+ \@x{\@s{35.70} \.{\land} a1\_ \.{=} [ self \.{\in} ProcSet \.{\mapsto}
+ defaultInitValue ]}%
+ \@x{\@s{35.70} \.{\land} a2\_ \.{=} [ self \.{\in} ProcSet \.{\mapsto}
+ defaultInitValue ]}%
+\@x{\@s{35.70}}%
+\@y{\@s{0}%
+ Procedure \ensuremath{updateApp
+}}%
+\@xx{}%
+ \@x{\@s{35.70} \.{\land} app\_u \.{=} [ self \.{\in} ProcSet \.{\mapsto}
+ defaultInitValue ]}%
+\@x{\@s{35.70}}%
+\@y{\@s{0}%
+ Procedure \ensuremath{askAppCP
+}}%
+\@xx{}%
+ \@x{\@s{35.70} \.{\land} a1 \.{=} [ self \.{\in} ProcSet \.{\mapsto}
+ defaultInitValue ]}%
+ \@x{\@s{35.70} \.{\land} a2 \.{=} [ self \.{\in} ProcSet \.{\mapsto}
+ defaultInitValue ]}%
+\@x{\@s{35.70}}%
+\@y{\@s{0}%
+ Procedure \ensuremath{uninstallApp
+}}%
+\@xx{}%
+ \@x{\@s{35.70} \.{\land} app\_un \.{=} [ self \.{\in} ProcSet \.{\mapsto}
+ defaultInitValue ]}%
+\@x{\@s{35.70}}%
+\@y{\@s{0}%
+ Procedure \ensuremath{systemArbitraryDecision
+}}%
+\@xx{}%
+ \@x{\@s{35.70} \.{\land} app\_s\@s{1.48} \.{=} [ self \.{\in} ProcSet
+ \.{\mapsto} defaultInitValue ]}%
+ \@x{\@s{35.70} \.{\land} perm\_ \.{=} [ self \.{\in} ProcSet \.{\mapsto}
+ defaultInitValue ]}%
+\@x{\@s{35.70}}%
+\@y{\@s{0}%
+ Procedure \ensuremath{grantUriPermission
+}}%
+\@xx{}%
+ \@x{\@s{35.70} \.{\land} app \.{=} [ self \.{\in} ProcSet \.{\mapsto}
+ defaultInitValue ]}%
+ \@x{\@s{35.70} \.{\land} uri\@s{2.29} \.{=} [ self \.{\in} ProcSet
+ \.{\mapsto} defaultInitValue ]}%
+ \@x{\@s{35.70} \.{\land} mode \.{=} [ self \.{\in} ProcSet \.{\mapsto}
+ defaultInitValue ]}%
+ \@x{\@s{35.70} \.{\land} perm\@s{0.87} \.{=} [ self \.{\in} ProcSet
+ \.{\mapsto} defaultInitValue ]}%
+ \@x{\@s{35.70} \.{\land} stack \.{=} [ self\@s{0.44} \.{\in} ProcSet
+ \.{\mapsto} {\langle} {\rangle} ]}%
+ \@x{\@s{35.70} \.{\land} pc \.{=} [ self \.{\in} ProcSet
+ \.{\mapsto}\@w{PLATFORM} ]}%
+\@pvspace{8.0pt}%
+ \@x{ INSTALL\_APP ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{INSTALL\_APP}}%
+ \@x{\@s{112.89} \.{\land} installed \.{'} \.{=} [ installed {\EXCEPT} {\bang}
+ [ app\_ [ self ] ] \.{=} {\TRUE} ]}%
+ \@x{\@s{112.89} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . pc ]}%
+ \@x{\@s{112.89} \.{\land} app\_ \.{'} \.{=} [ app\_ {\EXCEPT} {\bang} [ self
+ ] \.{=} Head ( stack [ self ] ) . app\_ ]}%
+ \@x{\@s{112.89} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} Tail ( stack [ self ] ) ]}%
+ \@x{\@s{112.89} \.{\land} {\UNCHANGED} {\langle} CP ,\, appPerms ,\,
+ permsInUse ,\, cpConsent ,\,}%
+\@x{\@s{186.48} appPermConsents ,\, appCustomPerms ,\, manifest ,\,}%
+ \@x{\@s{186.48} app\_d ,\, a1\_ ,\, a2\_ ,\, app\_u ,\, a1 ,\, a2 ,\, app\_un
+ ,\,}%
+ \@x{\@s{186.48} app\_s ,\, perm\_ ,\, app ,\, uri ,\, mode ,\, perm
+ {\rangle}}%
+\@pvspace{8.0pt}%
+\@x{ installApp ( self ) \.{\defeq} INSTALL\_APP ( self )}%
+\@pvspace{8.0pt}%
+ \@x{ DEFINE\_CP ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{DEFINE\_CP}}%
+ \@x{\@s{102.69} \.{\land} \.{\lor} \.{\land} CP \.{'} \.{=} [ CP {\EXCEPT}
+ {\bang} [ app\_d [ self ] ] \.{=} NORMAL ]}%
+ \@x{\@s{113.80} \.{\lor} \.{\land} CP \.{'} \.{=} [ CP {\EXCEPT} {\bang} [
+ app\_d [ self ] ] \.{=} SENSITIVE ]}%
+ \@x{\@s{102.69} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . pc ]}%
+ \@x{\@s{102.69} \.{\land} app\_d \.{'} \.{=} [ app\_d {\EXCEPT} {\bang} [
+ self ] \.{=} Head ( stack [ self ] ) . app\_d ]}%
+ \@x{\@s{102.69} \.{\land} stack \.{'}\@s{3.81} \.{=} [ stack {\EXCEPT}
+ {\bang} [ self ]\@s{3.81} \.{=} Tail ( stack [ self ] ) ]}%
+ \@x{\@s{102.69} \.{\land} {\UNCHANGED} {\langle} installed ,\, appPerms ,\,
+ permsInUse ,\, cpConsent ,\,}%
+\@x{\@s{176.28} appPermConsents ,\, appCustomPerms ,\, manifest ,\,}%
+ \@x{\@s{176.28} app\_ ,\, a1\_ ,\, a2\_ ,\, app\_u ,\, a1 ,\, a2 ,\, app\_un
+ ,\,}%
+ \@x{\@s{176.28} app\_s ,\, perm\_ ,\, app ,\, uri ,\, mode ,\, perm
+ {\rangle}}%
+\@pvspace{8.0pt}%
+\@x{ defineCP ( self ) \.{\defeq} DEFINE\_CP ( self )}%
+\@pvspace{8.0pt}%
+ \@x{ ASK\_CP\_FROM\_USER ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{ASK\_CP\_FROM\_USER}}%
+ \@x{\@s{153.11} \.{\land} \.{\lor} \.{\land} appCustomPerms \.{'} \.{=} [
+ appCustomPerms {\EXCEPT} {\bang} [ a1\_ [ self ] ] [ a2\_ [ self ] ] \.{=}
+ GRANT ]}%
+ \@x{\@s{175.33} \.{\land} cpConsent \.{'} \.{=} [ cpConsent {\EXCEPT} {\bang}
+ [ a1\_ [ self ] ] [ a2\_ [ self ] ] \.{=} ALLOW ]}%
+ \@x{\@s{164.22} \.{\lor} \.{\land} appCustomPerms \.{'} \.{=} [
+ appCustomPerms {\EXCEPT} {\bang} [ a1\_ [ self ] ] [ a2\_ [ self ] ] \.{=}
+ DENY ]}%
+ \@x{\@s{175.33} \.{\land} cpConsent \.{'} \.{=} [ cpConsent {\EXCEPT} {\bang}
+ [ a1\_ [ self ] ] [ a2\_ [ self ] ] \.{=} REJECT ]}%
+ \@x{\@s{153.11} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . pc ]}%
+ \@x{\@s{153.11} \.{\land} a1\_ \.{'} \.{=} [ a1\_ {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . a1\_ ]}%
+ \@x{\@s{153.11} \.{\land} a2\_ \.{'} \.{=} [ a2\_ {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . a2\_ ]}%
+ \@x{\@s{153.11} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} Tail ( stack [ self ] ) ]}%
+ \@x{\@s{153.11} \.{\land} {\UNCHANGED} {\langle} CP ,\, installed ,\,
+ appPerms ,\, permsInUse ,\,}%
+\@x{\@s{226.70} appPermConsents ,\, manifest ,\, app\_ ,\,}%
+\@x{\@s{226.70} app\_d ,\, app\_u ,\, a1 ,\, a2 ,\, app\_un ,\, app\_s ,\,}%
+\@x{\@s{226.70} perm\_ ,\, app ,\, uri ,\, mode ,\, perm {\rangle}}%
+\@pvspace{8.0pt}%
+\@x{ askCpFromUser ( self ) \.{\defeq} ASK\_CP\_FROM\_USER ( self )}%
+\@pvspace{8.0pt}%
+ \@x{ UPDATE\_APP ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{UPDATE\_APP}}%
+ \@x{\@s{112.94} \.{\land} \.{\lor} \.{\land} CP \.{'} \.{=} [ CP {\EXCEPT}
+ {\bang} [ app\_u [ self ] ] \.{=} NULL ]}%
+ \@x{\@s{135.16} \.{\land} pc \.{'}\@s{5.19} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{RETURNING} ]}%
+\@x{\@s{135.16} \.{\land} {\UNCHANGED} {\langle} stack ,\, app\_d {\rangle}}%
+ \@x{\@s{124.05} \.{\lor} \.{\land} \.{\land} app\_d \.{'} \.{=} [ app\_d
+ {\EXCEPT} {\bang} [ self ] \.{=} app\_u [ self ] ]}%
+ \@x{\@s{146.27} \.{\land} stack \.{'}\@s{3.81} \.{=} [ stack {\EXCEPT}
+ {\bang} [ self ]\@s{3.81} \.{=} {\langle} [ procedure
+ \.{\mapsto}\@s{4.1}\@w{defineCP} ,\,}%
+\@x{\@s{318.09} pc\@s{33.24} \.{\mapsto}\@s{2.21}\@w{RETURNING} ,\,}%
+ \@x{\@s{318.09} app\_d\@s{14.51} \.{\mapsto}\@s{4.1} app\_d [ self ] ]
+ {\rangle}}%
+\@x{\@s{315.53} \.{\circ} stack [ self ] ]}%
+ \@x{\@s{135.16} \.{\land} pc \.{'}\@s{5.19} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{DEFINE\_CP} ]}%
+\@x{\@s{135.16} \.{\land} CP \.{'} \.{=} CP}%
+ \@x{\@s{112.94} \.{\land} {\UNCHANGED} {\langle} installed ,\, appPerms ,\,
+ permsInUse ,\, cpConsent ,\,}%
+\@x{\@s{186.53} appPermConsents ,\, appCustomPerms ,\, manifest ,\,}%
+ \@x{\@s{186.53} app\_ ,\, a1\_ ,\, a2\_ ,\, app\_u ,\, a1 ,\, a2 ,\, app\_un
+ ,\,}%
+ \@x{\@s{186.53} app\_s ,\, perm\_ ,\, app ,\, uri ,\, mode ,\, perm
+ {\rangle}}%
+\@pvspace{8.0pt}%
+\@x{ RETURNING ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{RETURNING}}%
+ \@x{\@s{106.38} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . pc ]}%
+ \@x{\@s{106.38} \.{\land} app\_u \.{'} \.{=} [ app\_u {\EXCEPT} {\bang} [
+ self ] \.{=} Head ( stack [ self ] ) . app\_u ]}%
+ \@x{\@s{106.38} \.{\land} stack \.{'}\@s{3.79} \.{=} [ stack {\EXCEPT}
+ {\bang} [ self ]\@s{3.79} \.{=} Tail ( stack [ self ] ) ]}%
+ \@x{\@s{106.38} \.{\land} {\UNCHANGED} {\langle} CP ,\, installed ,\,
+ appPerms ,\, permsInUse ,\,}%
+\@x{\@s{179.97} cpConsent ,\, appPermConsents ,\, appCustomPerms ,\,}%
+ \@x{\@s{179.97} manifest ,\, app\_ ,\, app\_d ,\, a1\_ ,\, a2\_ ,\, a1 ,\, a2
+ ,\,}%
+ \@x{\@s{179.97} app\_un ,\, app\_s ,\, perm\_ ,\, app ,\, uri ,\, mode ,\,
+ perm {\rangle}}%
+\@pvspace{8.0pt}%
+ \@x{ updateApp ( self )\@s{16.89} \.{\defeq} UPDATE\_APP ( self ) \.{\lor}
+ RETURNING ( self )}%
+\@pvspace{8.0pt}%
+ \@x{ ASK\_APP\_CP ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{ASK\_APP\_CP}}%
+ \@x{\@s{111.28} \.{\land} {\IF} appCustomPerms [ a1 [ self ] ] [ a2 [ self ]
+ ] \.{=} GRANT}%
+ \@x{\@s{134.55} \.{\THEN} \.{\land} pc \.{'}\@s{1.11} \.{=} [ pc {\EXCEPT}
+ {\bang} [ self ]\@s{1.11} \.{=} Head ( stack [ self ] ) . pc ]}%
+ \@x{\@s{165.86} \.{\land} a1 \.{'} \.{=} [ a1 {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . a1 ]}%
+ \@x{\@s{165.86} \.{\land} a2 \.{'} \.{=} [ a2 {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . a2 ]}%
+ \@x{\@s{165.86} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} Tail ( stack [ self ] ) ]}%
+ \@x{\@s{165.86} \.{\land} {\UNCHANGED} {\langle} appCustomPerms ,\, a1\_ ,\,
+ a2\_ {\rangle}}%
+ \@x{\@s{134.55} \.{\ELSE} \.{\land} {\IF} appCustomPerms [ a1 [ self ] ] [ a2
+ [ self ] ] \.{=} DENY}%
+ \@x{\@s{189.12} \.{\THEN} \.{\land} pc \.{'}\@s{1.11} \.{=} [ pc {\EXCEPT}
+ {\bang} [ self ]\@s{1.11} \.{=} Head ( stack [ self ] ) . pc ]}%
+ \@x{\@s{220.43} \.{\land} a1 \.{'} \.{=} [ a1 {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . a1 ]}%
+ \@x{\@s{220.43} \.{\land} a2 \.{'} \.{=} [ a2 {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . a2 ]}%
+ \@x{\@s{220.43} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} Tail ( stack [ self ] ) ]}%
+\@x{\@s{220.43} \.{\land} {\UNCHANGED} {\langle} appCustomPerms ,\, a1\_ ,\,}%
+\@x{\@s{294.02} a2\_ {\rangle}}%
+\@x{\@s{189.12} \.{\ELSE} \.{\land} {\IF} CP [ a2 [ self ] ] \.{=} NORMAL}%
+ \@x{\@s{243.70} \.{\THEN} \.{\land} appCustomPerms \.{'} \.{=} [
+ appCustomPerms {\EXCEPT} {\bang} [ a1 [ self ] ] [ a2 [ self ] ] \.{=} GRANT
+ ]}%
+ \@x{\@s{275.01} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{Error} ]}%
+\@x{\@s{275.01} \.{\land} {\UNCHANGED} {\langle} stack ,\,}%
+\@x{\@s{348.60} a1\_ ,\, a2\_ {\rangle}}%
+ \@x{\@s{243.70} \.{\ELSE} \.{\land} \.{\land} a1\_ \.{'} \.{=} [ a1\_
+ {\EXCEPT} {\bang} [ self ] \.{=} a1 [ self ] ]}%
+ \@x{\@s{286.12} \.{\land} a2\_ \.{'} \.{=} [ a2\_ {\EXCEPT} {\bang} [ self ]
+ \.{=} a2 [ self ] ]}%
+ \@x{\@s{286.12} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} {\langle} [ procedure \.{\mapsto}\@s{4.1}\@w{askCpFromUser} ,\,}%
+ \@x{\@s{450.32} pc\@s{31.36} \.{\mapsto}\@s{4.10} Head ( stack [ self ] ) .
+ pc ,\,}%
+\@x{\@s{450.32} a1\_\@s{25.75} \.{\mapsto}\@s{4.1} a1\_ [ self ] ,\,}%
+\@x{\@s{450.32} a2\_\@s{25.75} \.{\mapsto}\@s{4.1} a2\_ [ self ] ] {\rangle}}%
+\@x{\@s{447.76} \.{\circ} Tail ( stack [ self ] ) ]}%
+ \@x{\@s{275.01} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{ASK\_CP\_FROM\_USER} ]}%
+\@x{\@s{275.01} \.{\land} {\UNCHANGED} appCustomPerms}%
+\@x{\@s{220.43} \.{\land} {\UNCHANGED} {\langle} a1 ,\, a2 {\rangle}}%
+ \@x{\@s{111.28} \.{\land} {\UNCHANGED} {\langle} CP ,\, installed ,\,
+ appPerms ,\, permsInUse ,\,}%
+\@x{\@s{184.87} cpConsent ,\, appPermConsents ,\, manifest ,\, app\_ ,\,}%
+ \@x{\@s{184.87} app\_d ,\, app\_u ,\, app\_un ,\, app\_s ,\, perm\_ ,\, app
+ ,\,}%
+\@x{\@s{184.87} uri ,\, mode ,\, perm {\rangle}}%
+\@pvspace{8.0pt}%
+\@x{ askAppCP ( self ) \.{\defeq} ASK\_APP\_CP ( self )}%
+\@pvspace{8.0pt}%
+ \@x{ UNINSTALL\_APP ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{UNINSTALL\_APP}}%
+ \@x{\@s{127.76} \.{\land} installed \.{'} \.{=} [ installed {\EXCEPT} {\bang}
+ [ app\_un [ self ] ] \.{=} {\FALSE} ]}%
+ \@x{\@s{127.76} \.{\land} permsInUse \.{'} \.{=} [ permsInUse {\EXCEPT}
+ {\bang} [ app\_un [ self ] ] \.{=} [ p \.{\in} Permissions \.{\mapsto}
+ {\FALSE} ] ]}%
+ \@x{\@s{127.76} \.{\land} appPermConsents \.{'} \.{=} [ appPermConsents
+ {\EXCEPT} {\bang} [ app\_un [ self ] ] \.{=} [ p \.{\in} Permissions
+ \.{\mapsto} NULL ] ]}%
+ \@x{\@s{127.76} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . pc ]}%
+ \@x{\@s{127.76} \.{\land} app\_un \.{'} \.{=} [ app\_un {\EXCEPT} {\bang} [
+ self ] \.{=} Head ( stack [ self ] ) . app\_un ]}%
+ \@x{\@s{127.76} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} Tail ( stack [ self ] ) ]}%
+ \@x{\@s{127.76} \.{\land} {\UNCHANGED} {\langle} CP ,\, appPerms ,\,
+ cpConsent ,\, appCustomPerms ,\,}%
+ \@x{\@s{201.35} manifest ,\, app\_ ,\, app\_d ,\, a1\_ ,\, a2\_ ,\, app\_u
+ ,\,}%
+\@x{\@s{201.35} a1 ,\, a2 ,\, app\_s ,\, perm\_ ,\, app ,\, uri ,\, mode ,\,}%
+\@x{\@s{201.35} perm {\rangle}}%
+\@pvspace{8.0pt}%
+\@x{ uninstallApp ( self ) \.{\defeq} UNINSTALL\_APP ( self )}%
+\@pvspace{8.0pt}%
+ \@x{ SYSTEM\_ARBITRARY\_DECISION ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{SYSTEM\_ARBITRARY\_DECISION}}%
+ \@x{\@s{210.28} \.{\land} \.{\lor} \.{\land} appPerms \.{'} \.{=} [ appPerms
+ {\EXCEPT} {\bang} [ app\_s [ self ] ] [ perm\_ [ self ] ] \.{=} GRANT ]}%
+ \@x{\@s{232.50} \.{\land} appPermConsents \.{'} \.{=} [ appPermConsents
+ {\EXCEPT} {\bang} [ app\_s [ self ] ] [ perm\_ [ self ] ] \.{=} ALLOW ]}%
+ \@x{\@s{221.39} \.{\lor} \.{\land} appPerms \.{'} \.{=} [ appPerms {\EXCEPT}
+ {\bang} [ app\_s [ self ] ] [ perm\_ [ self ] ] \.{=} DENY ]}%
+ \@x{\@s{232.50} \.{\land} appPermConsents \.{'} \.{=} [ appPermConsents
+ {\EXCEPT} {\bang} [ app\_s [ self ] ] [ perm\_ [ self ] ] \.{=} REJECT ]}%
+ \@x{\@s{210.28} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . pc ]}%
+ \@x{\@s{210.28} \.{\land} app\_s \.{'}\@s{1.48} \.{=} [ app\_s {\EXCEPT}
+ {\bang} [ self ]\@s{1.48} \.{=} Head ( stack [ self ] ) . app\_s ]}%
+ \@x{\@s{210.28} \.{\land} perm\_ \.{'} \.{=} [ perm\_ {\EXCEPT} {\bang} [
+ self ] \.{=} Head ( stack [ self ] ) . perm\_ ]}%
+ \@x{\@s{210.28} \.{\land} stack \.{'}\@s{4.06} \.{=} [ stack {\EXCEPT}
+ {\bang} [ self ]\@s{4.06} \.{=} Tail ( stack [ self ] ) ]}%
+ \@x{\@s{210.28} \.{\land} {\UNCHANGED} {\langle} CP ,\, installed ,\,
+ permsInUse ,\,}%
+\@x{\@s{283.87} cpConsent ,\, appCustomPerms ,\,}%
+\@x{\@s{283.87} manifest ,\, app\_ ,\, app\_d ,\, a1\_ ,\,}%
+\@x{\@s{283.87} a2\_ ,\, app\_u ,\, a1 ,\, a2 ,\, app\_un ,\,}%
+\@x{\@s{283.87} app ,\, uri ,\, mode ,\, perm {\rangle}}%
+\@pvspace{8.0pt}%
+ \@x{ systemArbitraryDecision ( self )\@s{43.43} \.{\defeq}
+ SYSTEM\_ARBITRARY\_DECISION ( self )}%
+\@pvspace{8.0pt}%
+ \@x{ CHECKING\_PERMISSION\_URI ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{CHECKING\_PERMISSION\_URI}}%
+ \@x{\@s{193.89} \.{\land} {\IF} manifest [ app [ self ] ] \.{\neq} uri [ self
+ ]}%
+ \@x{\@s{217.16} \.{\THEN} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=} Head ( stack [ self ] ) . pc ]}%
+ \@x{\@s{248.47} \.{\land} app \.{'} \.{=} [ app {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . app ]}%
+ \@x{\@s{248.47} \.{\land} uri \.{'}\@s{2.29} \.{=} [ uri {\EXCEPT} {\bang} [
+ self ]\@s{2.29} \.{=} Head ( stack [ self ] ) . uri ]}%
+ \@x{\@s{248.47} \.{\land} mode \.{'} \.{=} [ mode {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . mode ]}%
+ \@x{\@s{248.47} \.{\land} perm \.{'}\@s{0.87} \.{=} [ perm {\EXCEPT} {\bang}
+ [ self ]\@s{0.87} \.{=} Head ( stack [ self ] ) . perm ]}%
+ \@x{\@s{248.47} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} Tail ( stack [ self ] ) ]}%
+ \@x{\@s{217.16} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{ASK\_PERMISSION} ]}%
+\@x{\@s{248.47} \.{\land} {\UNCHANGED} {\langle} stack ,\, app ,\, uri ,\,}%
+\@x{\@s{322.06} mode ,\, perm {\rangle}}%
+ \@x{\@s{193.89} \.{\land} {\UNCHANGED} {\langle} CP ,\, installed ,\,
+ appPerms ,\,}%
+\@x{\@s{267.48} permsInUse ,\, cpConsent ,\,}%
+\@x{\@s{267.48} appPermConsents ,\,}%
+\@x{\@s{267.48} appCustomPerms ,\, manifest ,\,}%
+\@x{\@s{267.48} app\_ ,\, app\_d ,\, a1\_ ,\, a2\_ ,\, app\_u ,\,}%
+\@x{\@s{267.48} a1 ,\, a2 ,\, app\_un ,\, app\_s ,\, perm\_ {\rangle}}%
+\@pvspace{8.0pt}%
+ \@x{ ASK\_PERMISSION ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{ASK\_PERMISSION}}%
+ \@x{\@s{135.31} \.{\land} {\IF} appPerms [ app [ self ] ] [ perm [ self ] ]
+ \.{=} GRANT}%
+ \@x{\@s{158.58} \.{\THEN} \.{\land} permsInUse \.{'} \.{=} [ permsInUse
+ {\EXCEPT} {\bang} [ app [ self ] ] [ perm [ self ] ] \.{=} {\TRUE} ]}%
+ \@x{\@s{189.89} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . pc ]}%
+ \@x{\@s{189.89} \.{\land} app \.{'} \.{=} [ app {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . app ]}%
+ \@x{\@s{189.89} \.{\land} uri \.{'}\@s{2.29} \.{=} [ uri {\EXCEPT} {\bang} [
+ self ]\@s{2.29} \.{=} Head ( stack [ self ] ) . uri ]}%
+ \@x{\@s{189.89} \.{\land} mode \.{'} \.{=} [ mode {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . mode ]}%
+ \@x{\@s{189.89} \.{\land} perm \.{'}\@s{0.87} \.{=} [ perm {\EXCEPT} {\bang}
+ [ self ]\@s{0.87} \.{=} Head ( stack [ self ] ) . perm ]}%
+ \@x{\@s{189.89} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} Tail ( stack [ self ] ) ]}%
+ \@x{\@s{158.58} \.{\ELSE} \.{\land} {\IF} appPerms [ app [ self ] ] [ perm [
+ self ] ] \.{=} DENY}%
+ \@x{\@s{213.15} \.{\THEN} \.{\land} permsInUse \.{'} \.{=} [ permsInUse
+ {\EXCEPT} {\bang} [ app [ self ] ] [ perm [ self ] ] \.{=} {\FALSE} ]}%
+ \@x{\@s{244.47} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . pc ]}%
+ \@x{\@s{244.47} \.{\land} app \.{'} \.{=} [ app {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . app ]}%
+ \@x{\@s{244.47} \.{\land} uri \.{'}\@s{2.29} \.{=} [ uri {\EXCEPT} {\bang} [
+ self ]\@s{2.29} \.{=} Head ( stack [ self ] ) . uri ]}%
+ \@x{\@s{244.47} \.{\land} mode \.{'} \.{=} [ mode {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . mode ]}%
+ \@x{\@s{244.47} \.{\land} perm \.{'}\@s{0.87} \.{=} [ perm {\EXCEPT} {\bang}
+ [ self ]\@s{0.87} \.{=} Head ( stack [ self ] ) . perm ]}%
+ \@x{\@s{244.47} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} Tail ( stack [ self ] ) ]}%
+ \@x{\@s{213.15} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{MAKE\_DECISION} ]}%
+\@x{\@s{244.47} \.{\land} {\UNCHANGED} {\langle} permsInUse ,\,}%
+\@x{\@s{318.05} stack ,\, app ,\, uri ,\,}%
+\@x{\@s{318.05} mode ,\, perm {\rangle}}%
+ \@x{\@s{135.31} \.{\land} {\UNCHANGED} {\langle} CP ,\, installed ,\,
+ appPerms ,\, cpConsent ,\,}%
+\@x{\@s{208.90} appPermConsents ,\, appCustomPerms ,\,}%
+ \@x{\@s{208.90} manifest ,\, app\_ ,\, app\_d ,\, a1\_ ,\, a2\_ ,\, app\_u
+ ,\,}%
+\@x{\@s{208.90} a1 ,\, a2 ,\, app\_un ,\, app\_s ,\, perm\_ {\rangle}}%
+\@pvspace{8.0pt}%
+ \@x{ MAKE\_DECISION ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{MAKE\_DECISION}}%
+ \@x{\@s{131.23} \.{\land} \.{\land} app\_s \.{'}\@s{1.48} \.{=} [ app\_s
+ {\EXCEPT} {\bang} [ self ]\@s{1.48} \.{=} app [ self ] ]}%
+ \@x{\@s{142.34} \.{\land} perm\_ \.{'} \.{=} [ perm\_ {\EXCEPT} {\bang} [
+ self ] \.{=} perm [ self ] ]}%
+ \@x{\@s{142.34} \.{\land} stack \.{'}\@s{4.06} \.{=} [ stack {\EXCEPT}
+ {\bang} [ self ]\@s{4.06} \.{=} {\langle} [ procedure
+ \.{\mapsto}\@s{4.1}\@w{systemArbitraryDecision} ,\,}%
+\@x{\@s{314.67} pc\@s{33.49} \.{\mapsto}\@s{1.96}\@w{USING\_PERM} ,\,}%
+\@x{\@s{314.67} app\_s\@s{17.88} \.{\mapsto}\@s{4.1} app\_s [ self ] ,\,}%
+ \@x{\@s{314.67} perm\_\@s{14.26} \.{\mapsto}\@s{4.1} perm\_ [ self ] ]
+ {\rangle}}%
+\@x{\@s{312.10} \.{\circ} stack [ self ] ]}%
+ \@x{\@s{131.23} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{SYSTEM\_ARBITRARY\_DECISION} ]}%
+ \@x{\@s{131.23} \.{\land} {\UNCHANGED} {\langle} CP ,\, installed ,\,
+ appPerms ,\, permsInUse ,\,}%
+\@x{\@s{204.82} cpConsent ,\, appPermConsents ,\,}%
+\@x{\@s{204.82} appCustomPerms ,\, manifest ,\, app\_ ,\, app\_d ,\,}%
+ \@x{\@s{204.82} a1\_ ,\, a2\_ ,\, app\_u ,\, a1 ,\, a2 ,\, app\_un ,\, app
+ ,\,}%
+\@x{\@s{204.82} uri ,\, mode ,\, perm {\rangle}}%
+\@pvspace{8.0pt}%
+ \@x{ USING\_PERM ( self ) \.{\defeq} \.{\land} pc [ self ]
+ \.{=}\@w{USING\_PERM}}%
+ \@x{\@s{112.01} \.{\land} {\IF} appPerms [ app [ self ] ] [ perm [ self ] ]
+ \.{=} GRANT}%
+ \@x{\@s{135.28} \.{\THEN} \.{\land} permsInUse \.{'} \.{=} [ permsInUse
+ {\EXCEPT} {\bang} [ app [ self ] ] [ perm [ self ] ] \.{=} {\TRUE} ]}%
+\@x{\@s{135.28} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{166.59} \.{\land} {\UNCHANGED} permsInUse}%
+ \@x{\@s{112.01} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . pc ]}%
+ \@x{\@s{112.01} \.{\land} app \.{'} \.{=} [ app {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . app ]}%
+ \@x{\@s{112.01} \.{\land} uri \.{'}\@s{2.29} \.{=} [ uri {\EXCEPT} {\bang} [
+ self ]\@s{2.29} \.{=} Head ( stack [ self ] ) . uri ]}%
+ \@x{\@s{112.01} \.{\land} mode \.{'} \.{=} [ mode {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . mode ]}%
+ \@x{\@s{112.01} \.{\land} perm \.{'}\@s{0.87} \.{=} [ perm {\EXCEPT} {\bang}
+ [ self ]\@s{0.87} \.{=} Head ( stack [ self ] ) . perm ]}%
+ \@x{\@s{112.01} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} Tail ( stack [ self ] ) ]}%
+ \@x{\@s{112.01} \.{\land} {\UNCHANGED} {\langle} CP ,\, installed ,\,
+ appPerms ,\, cpConsent ,\,}%
+\@x{\@s{185.60} appPermConsents ,\, appCustomPerms ,\, manifest ,\,}%
+ \@x{\@s{185.60} app\_ ,\, app\_d ,\, a1\_ ,\, a2\_ ,\, app\_u ,\, a1 ,\, a2
+ ,\,}%
+\@x{\@s{185.60} app\_un ,\, app\_s ,\, perm\_ {\rangle}}%
+\@pvspace{8.0pt}%
+ \@x{ grantUriPermission ( self ) \.{\defeq} CHECKING\_PERMISSION\_URI ( self
+ )}%
+\@x{\@s{142.06} \.{\lor} ASK\_PERMISSION ( self )}%
+ \@x{\@s{142.06} \.{\lor} MAKE\_DECISION ( self ) \.{\lor} USING\_PERM ( self
+ )}%
+\@pvspace{8.0pt}%
+\@x{ PLATFORM ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{PLATFORM}}%
+\@x{\@s{101.81} \.{\land} {\IF} installed [ self ] \.{=} {\TRUE}}%
+ \@x{\@s{125.07} \.{\THEN} \.{\land} \.{\lor} \.{\land} \.{\land} app\_u \.{'}
+ \.{=} [ app\_u {\EXCEPT} {\bang} [ self ] \.{=} self ]}%
+ \@x{\@s{189.72} \.{\land} stack \.{'}\@s{3.79} \.{=} [ stack {\EXCEPT}
+ {\bang} [ self ]\@s{3.79} \.{=} {\langle} [ procedure
+ \.{\mapsto}\@s{4.1}\@w{updateApp} ,\,}%
+\@x{\@s{361.52} pc\@s{33.23} \.{\mapsto}\@s{2.23}\@w{PLATFORM} ,\,}%
+ \@x{\@s{361.52} app\_u\@s{14.53} \.{\mapsto}\@s{4.1} app\_u [ self ] ]
+ {\rangle}}%
+\@x{\@s{358.95} \.{\circ} stack [ self ] ]}%
+ \@x{\@s{178.61} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{UPDATE\_APP} ]}%
+ \@x{\@s{178.61} \.{\land} {\UNCHANGED} {\langle} app\_d ,\, a1 ,\, a2 ,\,
+ app\_un ,\, app ,\, uri ,\, mode ,\, perm {\rangle}}%
+ \@x{\@s{167.50} \.{\lor} \.{\land} \.{\lor} \.{\land} \.{\land} app\_un \.{'}
+ \.{=} [ app\_un {\EXCEPT} {\bang} [ self ] \.{=} self ]}%
+ \@x{\@s{211.94} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} {\langle} [ procedure \.{\mapsto}\@s{4.1}\@w{uninstallApp} ,\,}%
+\@x{\@s{376.14} pc\@s{34.75} \.{\mapsto}\@s{0.70}\@w{PLATFORM} ,\,}%
+ \@x{\@s{376.14} app\_un\@s{8.90} \.{\mapsto}\@s{4.1} app\_un [ self ] ]
+ {\rangle}}%
+\@x{\@s{373.58} \.{\circ} stack [ self ] ]}%
+ \@x{\@s{200.83} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{UNINSTALL\_APP} ]}%
+ \@x{\@s{200.83} \.{\land} {\UNCHANGED} {\langle} app\_d ,\, a1 ,\, a2 ,\, app
+ ,\, uri ,\, mode ,\, perm {\rangle}}%
+ \@x{\@s{189.72} \.{\lor} \.{\land} \.{\lor} \.{\land} {\IF} CP [ self ] \.{=}
+ NULL}%
+ \@x{\@s{246.32} \.{\THEN} \.{\land} \.{\land} app\_d \.{'} \.{=} [ app\_d
+ {\EXCEPT} {\bang} [ self ] \.{=} self ]}%
+ \@x{\@s{288.74} \.{\land} stack \.{'}\@s{3.81} \.{=} [ stack {\EXCEPT}
+ {\bang} [ self ]\@s{3.81} \.{=} {\langle} [ procedure
+ \.{\mapsto}\@s{4.1}\@w{defineCP} ,\,}%
+\@x{\@s{460.56} pc\@s{33.24} \.{\mapsto}\@s{2.21}\@w{PLATFORM} ,\,}%
+ \@x{\@s{460.56} app\_d\@s{14.51} \.{\mapsto}\@s{4.1} app\_d [ self ] ]
+ {\rangle}}%
+\@x{\@s{458.00} \.{\circ} stack [ self ] ]}%
+ \@x{\@s{277.63} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{DEFINE\_CP} ]}%
+ \@x{\@s{246.32} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{PLATFORM} ]}%
+\@x{\@s{277.63} \.{\land} {\UNCHANGED} {\langle} stack ,\,}%
+\@x{\@s{351.22} app\_d {\rangle}}%
+ \@x{\@s{223.05} \.{\land} {\UNCHANGED} {\langle} a1 ,\, a2 ,\, app ,\, uri
+ ,\, mode ,\, perm {\rangle}}%
+ \@x{\@s{211.94} \.{\lor} \.{\land} \.{\lor} \.{\land} \E\, application
+ \.{\in} ( Applications \.{\,\backslash\,} \{ self \} ) \.{:}}%
+ \@x{\@s{264.58} \.{\land} \.{\land} a1 \.{'} \.{=} [ a1 {\EXCEPT} {\bang} [
+ self ] \.{=} self ]}%
+ \@x{\@s{275.70} \.{\land} a2 \.{'} \.{=} [ a2 {\EXCEPT} {\bang} [ self ]
+ \.{=} application ]}%
+ \@x{\@s{275.70} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} {\langle} [ procedure \.{\mapsto}\@s{4.1}\@w{askAppCP} ,\,}%
+\@x{\@s{439.90} pc\@s{31.36} \.{\mapsto}\@s{4.10}\@w{PLATFORM} ,\,}%
+\@x{\@s{439.90} a1\@s{30.25} \.{\mapsto}\@s{4.1} a1 [ self ] ,\,}%
+\@x{\@s{439.90} a2\@s{30.25} \.{\mapsto}\@s{4.1} a2 [ self ] ] {\rangle}}%
+\@x{\@s{437.33} \.{\circ} stack [ self ] ]}%
+ \@x{\@s{264.58} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{ASK\_APP\_CP} ]}%
+ \@x{\@s{245.27} \.{\land} {\UNCHANGED} {\langle} app ,\, uri ,\, mode ,\,
+ perm {\rangle}}%
+ \@x{\@s{234.16} \.{\lor} \.{\land} \E\, a \.{\in} Applications
+ \.{\,\backslash\,} \{ self \} \.{:}}%
+\@x{\@s{264.58} \E\, u \.{\in} Uris \.{:}}%
+\@x{\@s{272.78} \E\, p \.{\in} Permissions \.{:}}%
+ \@x{\@s{280.98} \.{\land} \.{\land} app \.{'} \.{=} [ app {\EXCEPT} {\bang} [
+ self ] \.{=} a ]}%
+ \@x{\@s{292.10} \.{\land} mode \.{'} \.{=} [ mode {\EXCEPT} {\bang} [ self ]
+ \.{=} FLAG\_GRANT\_WRITE\_URI\_PERMISSION ]}%
+ \@x{\@s{292.10} \.{\land} perm \.{'}\@s{0.87} \.{=} [ perm {\EXCEPT} {\bang}
+ [ self ]\@s{0.87} \.{=} p ]}%
+ \@x{\@s{292.10} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} {\langle} [ procedure \.{\mapsto}\@s{4.1}\@w{grantUriPermission}
+ ,\,}%
+\@x{\@s{456.30} pc\@s{33.97} \.{\mapsto}\@s{1.48}\@w{PLATFORM} ,\,}%
+\@x{\@s{456.30} app\@s{27.77} \.{\mapsto}\@s{4.1} app [ self ] ,\,}%
+\@x{\@s{456.30} uri\@s{30.07} \.{\mapsto}\@s{4.1} uri [ self ] ,\,}%
+\@x{\@s{456.30} mode\@s{20.5} \.{\mapsto}\@s{4.1} mode [ self ] ,\,}%
+\@x{\@s{456.30} perm\@s{18.76} \.{\mapsto}\@s{4.1} perm [ self ] ] {\rangle}}%
+\@x{\@s{453.73} \.{\circ} stack [ self ] ]}%
+ \@x{\@s{292.10} \.{\land} uri \.{'} \.{=} [ uri {\EXCEPT} {\bang} [ self ]
+ \.{=} u ]}%
+ \@x{\@s{280.98} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{CHECKING\_PERMISSION\_URI} ]}%
+\@x{\@s{245.27} \.{\land} {\UNCHANGED} {\langle} a1 ,\, a2 {\rangle}}%
+\@x{\@s{223.05} \.{\land} app\_d \.{'} \.{=} app\_d}%
+\@x{\@s{200.83} \.{\land} {\UNCHANGED} app\_un}%
+\@x{\@s{178.61} \.{\land} app\_u \.{'} \.{=} app\_u}%
+ \@x{\@s{156.39} \.{\land} {\UNCHANGED} {\langle} manifest ,\, app\_
+ {\rangle}}%
+\@x{\@s{125.07} \.{\ELSE} \.{\land} \E\, u \.{\in} Uris \.{:}}%
+ \@x{\@s{175.70} manifest \.{'} \.{=} [ manifest {\EXCEPT} {\bang} [ self ]
+ \.{=} u ]}%
+ \@x{\@s{156.39} \.{\land} \.{\land} app\_ \.{'} \.{=} [ app\_ {\EXCEPT}
+ {\bang} [ self ] \.{=} self ]}%
+ \@x{\@s{167.50} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} {\langle} [ procedure \.{\mapsto}\@s{4.1}\@w{installApp} ,\,}%
+\@x{\@s{331.70} pc\@s{31.36} \.{\mapsto}\@s{4.10}\@w{PLATFORM} ,\,}%
+ \@x{\@s{331.70} app\_\@s{20.66} \.{\mapsto}\@s{4.1} app\_ [ self ] ]
+ {\rangle}}%
+\@x{\@s{329.13} \.{\circ} stack [ self ] ]}%
+ \@x{\@s{156.39} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{INSTALL\_APP} ]}%
+ \@x{\@s{156.39} \.{\land} {\UNCHANGED} {\langle} app\_d ,\, app\_u ,\, a1 ,\,
+ a2 ,\, app\_un ,\, app ,\,}%
+\@x{\@s{229.97} uri ,\, mode ,\, perm {\rangle}}%
+ \@x{\@s{101.81} \.{\land} {\UNCHANGED} {\langle} CP ,\, installed ,\,
+ appPerms ,\, permsInUse ,\,}%
+\@x{\@s{175.40} cpConsent ,\, appPermConsents ,\, appCustomPerms ,\,}%
+\@x{\@s{175.40} a1\_ ,\, a2\_ ,\, app\_s ,\, perm\_ {\rangle}}%
+\@pvspace{8.0pt}%
+\@x{ a ( self ) \.{\defeq} PLATFORM ( self )}%
+\@pvspace{8.0pt}%
+ \@x{ Next \.{\defeq} ( \E\, self \.{\in} ProcSet \.{:}\@s{4.1} \.{\lor}
+ installApp ( self ) \.{\lor} defineCP ( self )}%
+\@x{\@s{127.32} \.{\lor} askCpFromUser ( self ) \.{\lor} updateApp ( self )}%
+\@x{\@s{127.32} \.{\lor} askAppCP ( self ) \.{\lor} uninstallApp ( self )}%
+\@x{\@s{127.32} \.{\lor} systemArbitraryDecision ( self )}%
+\@x{\@s{127.32} \.{\lor} grantUriPermission ( self ) )}%
+\@x{\@s{47.82} \.{\lor} ( \E\, self \.{\in} Applications \.{:} a ( self ) )}%
+\@pvspace{8.0pt}%
+ \@x{ Spec\@s{1.46} \.{\defeq} \.{\land} Init \.{\land} {\Box} [ Next ]_{
+ vars}}%
+ \@x{\@s{39.83} \.{\land} \A\, self \.{\in} Applications \.{:} \.{\land}
+ {\WF}_{ vars} ( ( pc [ self ] \.{\neq}\@w{PLATFORM} ) \.{\land} a ( self )
+ )}%
+\@x{\@s{150.77} \.{\land} {\WF}_{ vars} ( updateApp ( self ) )}%
+\@x{\@s{150.77} \.{\land} {\WF}_{ vars} ( uninstallApp ( self ) )}%
+\@x{\@s{150.77} \.{\land} {\WF}_{ vars} ( defineCP ( self ) )}%
+\@x{\@s{150.77} \.{\land} {\WF}_{ vars} ( askAppCP ( self ) )}%
+\@x{\@s{150.77} \.{\land} {\WF}_{ vars} ( grantUriPermission ( self ) )}%
+\@x{\@s{150.77} \.{\land} {\WF}_{ vars} ( installApp ( self ) )}%
+\@x{\@s{150.77} \.{\land} {\WF}_{ vars} ( askCpFromUser ( self ) )}%
+\@x{\@s{150.77} \.{\land} {\WF}_{ vars} ( systemArbitraryDecision ( self ) )}%
+\@pvspace{8.0pt}%
+\@x{}%
+\@y{\@s{0}%
+ END TRANSLATION
+}%
+\@xx{}%
+\@pvspace{8.0pt}%
+ \@x{ TypeOK \.{\defeq} \.{\land} appCustomPerms \.{\in} [ Applications
+ \.{\rightarrow} [ Applications \.{\rightarrow} PermissionRequestDecision ]
+ ]}%
+\@pvspace{8.0pt}%
+ \@x{ CpConsent \.{\defeq} {\Box} {\lnot} ( \.{\land} \E\, m \.{\in}
+ Applications \.{:} CP [ m ] \.{=} SENSITIVE}%
+\@x{\@s{96.76} \.{\land} \E\, n\@s{6.44} \.{\in} Applications \.{:}}%
+\@x{\@s{107.87} \.{\land} m \.{\neq} n}%
+\@x{\@s{107.87} \.{\land} appCustomPerms [ n ] [ m ] \.{=} GRANT}%
+\@x{\@s{111.88} \.{\land} cpConsent [ n ] [ m ] \.{\neq} ALLOW )}%
+\@pvspace{8.0pt}%
+ \@x{ UriPermConsent \.{\defeq} {\Box} {\lnot} ( \.{\land} \E\, application
+ \.{\in} Applications \.{:} \E\, permission \.{\in} Permissions \.{:}}%
+\@y{\@s{0}%
+ Bagheri
+}%
+\@xx{}%
+ \@x{\@s{122.99} \.{\land} appPermConsents [ application ] [ permission ]
+ \.{\neq} ALLOW}%
+ \@x{\@s{122.99} \.{\land} appPerms [ application ] [ permission ] \.{=}
+ GRANT}%
+ \@x{\@s{122.99} \.{\land} permsInUse [ application ] [ permission ] \.{=}
+ {\TRUE} )}%
+\@pvspace{8.0pt}%
+ \@x{ Authorized \.{\defeq} {\Box} {\lnot} ( \.{\land} \E\, application
+ \.{\in} Applications \.{:} \E\, permission \.{\in} Permissions \.{:}}%
+\@y{\@s{0}%
+ System consent
+}%
+\@xx{}%
+ \@x{\@s{95.72} \.{\land} appPerms [ application ] [ permission ] \.{\neq}
+ GRANT}%
+ \@x{\@s{95.72} \.{\land} permsInUse [ application ] [ permission ] \.{=}
+ {\TRUE} )}%
+\@x{}\bottombar\@xx{}%
+\setboolean{shading}{false}
+\begin{lcom}{0}%
+\begin{cpar}{0}{F}{F}{0}{0}{}%
+\ensuremath{\.{\,\backslash\,}}* Modification History
+\end{cpar}%
+\begin{cpar}{0}{F}{F}{0}{0}{}%
+ \ensuremath{\.{\,\backslash\,}}* Last modified \ensuremath{Wed}
+ \ensuremath{Mar} 29 21:46:56 \ensuremath{GMT}+03:30 2023 by
+ \ensuremath{Amirhosein
+}%
+\end{cpar}%
+\end{lcom}%
+\end{document}
