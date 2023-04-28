@@ -262,4 +262,4 @@ ACM == INSTANCE AccessControlManagement
 THEOREM Spec => ACM!Spec
 =============================================================================
 \* Modification History
-\* Last modified Thu Mar 23 14:10:50 GMT+03:30 2023 by Amirhosein
+\* Last modified Fri Apr 28 08:38:06 GMT+03:30 2023 by Amirhosein

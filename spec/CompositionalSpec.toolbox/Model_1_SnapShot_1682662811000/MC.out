@@ -1,0 +1,93 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 14 and seed -5948491683731160672 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 13552] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file G:\repos\access-control-management\spec\CompositionalSpec.toolbox\Model_1\MC.tla
+Parsing file G:\repos\access-control-management\spec\CompositionalSpec.toolbox\Model_1\CompositionalSpec.tla
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\TLC.tla
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Naturals.tla
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\Sequences.tla
+Parsing file G:\TLA+ Toolbox\plugins\org.lamport.tlatools_1.0.0.202012311918\tla2sany\StandardModules\FiniteSets.tla
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module CompositionalSpec
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module MC
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2023-04-28 09:50:09)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2102:1 @!@!@
+Attempted to check equality of the set {FALSE, TRUE} with the value:
+TRUE
+While working on the initial state:
+/\ m1_c1_vars = << [var1 |-> {FALSE, TRUE}, var2 |-> {FALSE, TRUE}],
+   [var1 |-> {FALSE, TRUE}, var2 |-> {FALSE, TRUE}] >>
+/\ m2_c1_vars = <<{FALSE, TRUE}, {FALSE, TRUE}>>
+/\ pc = <<"PLATFORM", "PLATFORM">>
+/\ m1_c2_vars = <<{FALSE, TRUE}, {FALSE, TRUE}>>
+
+@!@!@ENDMSG 2102 @!@!@
+@!@!@STARTMSG 2103:1 @!@!@
+The error occurred when TLC was evaluating the nested
+expressions at the following positions:
+0. Line 40, column 9 to line 43, column 49 in CompositionalSpec
+1. Line 40, column 12 to line 40, column 77 in CompositionalSpec
+2. Line 41, column 12 to line 41, column 48 in CompositionalSpec
+3. Line 42, column 12 to line 42, column 48 in CompositionalSpec
+4. Line 43, column 12 to line 43, column 49 in CompositionalSpec
+5. Line 11, column 1 to line 11, column 40 in MC
+6. Line 11, column 16 to line 11, column 40 in MC
+
+
+@!@!@ENDMSG 2103 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2023-04-28 09:50:10
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2773:0 @!@!@
+<Init line 39, col 1 to line 39, col 4 of module CompositionalSpec>: 2:2
+@!@!@ENDMSG 2773 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 40, col 9 to line 43, col 49 of module CompositionalSpec: 2
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<PLATFORM line 45, col 1 to line 45, col 14 of module CompositionalSpec>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 46, col 22 to line 46, col 74 of module CompositionalSpec: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 47, col 22 to line 47, col 59 of module CompositionalSpec: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 48, col 22 to line 48, col 59 of module CompositionalSpec: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2774:0 @!@!@
+<inv_16826628089639000 line 10, col 1 to line 10, col 21 of module MC>
+@!@!@ENDMSG 2774 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 11, col 1 to line 11, col 40 of module MC: 2
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2202:0 @!@!@
+End of statistics.
+@!@!@ENDMSG 2202 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(1) at 2023-04-28 09:50:10: 1 states generated (53 s/min), 1 distinct states found (53 ds/min), 1 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+1 states generated, 1 distinct states found, 1 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 1134ms at (2023-04-28 09:50:10)
+@!@!@ENDMSG 2186 @!@!@
