@@ -1,5 +1,6 @@
 package enums;
 
-public enum DatumType {
+public enum DatumType
+{
 	SystemState,
 }

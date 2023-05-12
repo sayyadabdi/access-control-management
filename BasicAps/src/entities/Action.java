@@ -1,5 +1,8 @@
 package entities;
 
-public class Action {
+import enums.ActionType;
 
+public class Action
+{
+	public ActionType type;
 }

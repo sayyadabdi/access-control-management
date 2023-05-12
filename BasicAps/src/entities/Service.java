@@ -1,5 +1,6 @@
 package entities;
 
-public class Service {
+public class Service
+{
 
 }

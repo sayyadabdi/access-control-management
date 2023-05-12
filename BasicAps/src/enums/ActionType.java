@@ -1,5 +1,6 @@
 package enums;
 
-public enum ActionType {
+public enum ActionType
+{
 	RecordAudio,
 }

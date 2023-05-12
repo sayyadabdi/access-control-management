@@ -1,10 +1,6 @@
 package enums;
 
-public enum PermissionType {
-	NORMAL,
-	SIGNATURE,
-	RUNTIME,
-	SPECIAL,
-	URI,
-	CUSTOM
+public enum PermissionType
+{
+	NORMAL, SIGNATURE, RUNTIME, SPECIAL, URI, CUSTOM
 }

@@ -1,5 +1,8 @@
 package entities;
 
-public class Datum {
+import enums.DatumType;
 
+public class Datum
+{
+	public DatumType type;
 }

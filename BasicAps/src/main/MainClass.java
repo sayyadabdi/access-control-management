@@ -1,10 +1,10 @@
 package main;
 
-public class MainClass {
+public class MainClass
+{
 
-	public static void main(String[] args) {
-		int a = 0;
-		
+	public static void main(String[] args)
+	{
 		System.out.println("Hello World!");
 	}
 }

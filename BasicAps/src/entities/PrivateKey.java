@@ -1,5 +1,6 @@
 package entities;
 
-public class PrivateKey {
+public class PrivateKey
+{
 
 }

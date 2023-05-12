@@ -10,7 +10,7 @@ public class Platform
 	public List<Action> actions;
 
 	public List<Permission> permissions;
-	
+
 	public List<PermissionGroup> permissionGroups;
 
 	public List<Application> applications;

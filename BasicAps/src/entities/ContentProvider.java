@@ -1,5 +1,6 @@
 package entities;
 
-public class ContentProvider {
+public class ContentProvider
+{
 
 }

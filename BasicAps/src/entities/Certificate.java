@@ -1,5 +1,6 @@
 package entities;
 
-public class Certificate {
+public class Certificate
+{
 
 }

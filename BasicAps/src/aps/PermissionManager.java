@@ -10,6 +10,9 @@ import enums.ConsentType;
 public class PermissionManager
 {
 
+	// Custom permissions (CPs) are unique unless packages are signed with the same certificate.
+	// The CP's definer should already be installed.
+	
 	private static PermissionManager instance;
 
 	private final Map<Application, Integer> installedApplications = new HashMap<>();
@@ -32,7 +35,7 @@ public class PermissionManager
 		{
 		case NORMAL:
 		{
-			if (app.manifest.permission.contains(perm))
+			if (app.manifest.permissions.contains(perm))
 				setPermission(app, perm, ConsentType.ALLOWED);
 			else
 				setPermission(app, perm, ConsentType.DENIED);
@@ -60,7 +63,7 @@ public class PermissionManager
 
 		case CUSTOM:
 		{
-
+			// Custom permissions are granted at run time.
 			break;
 		}
 		}

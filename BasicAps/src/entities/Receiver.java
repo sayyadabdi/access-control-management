@@ -1,5 +1,6 @@
 package entities;
 
-public class Receiver {
+public class Receiver
+{
 
 }
