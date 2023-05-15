@@ -2,14 +2,15 @@
 EXTENDS CompositionalSpec, TLC
 
 \* CONSTANT definitions @modelParameterConstants:0Apps
-const_168266437303918000 == 
+const_16841211413282000 == 
 {1, 2}
 ----
 
-\* PROPERTY definition @modelCorrectnessProperties:0
-prop_168266437303919000 ==
-[] ~(var1_ = TRUE)
+\* CONSTANT definitions @modelParameterConstants:1defaultInitValue
+const_16841211413283000 == 
+47
 ----
+
 =============================================================================
 \* Modification History
-\* Created Fri Apr 28 10:16:13 GMT+03:30 2023 by Amirhosein
+\* Created Mon May 15 06:55:41 GMT+03:30 2023 by Amirhosein
