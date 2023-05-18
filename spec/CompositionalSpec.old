@@ -7,7 +7,9 @@ EnvironmentId == "EnvironmentId"
 ApsId == "ApsId"
 MaxAllowedUpdates == 2
 
+(*** CONSTANTS ***)
 Null == "NULL"
+(*** END OF CONSTANTS ***)
 Boolean == { TRUE, FALSE, Null }
 
 RecordAudio == "RecordAudio"
@@ -103,7 +105,8 @@ ProtectionLevel == { PROTECTION_LEVEL_NORMAL, PROTECTION_LEVEL_SIGNATURE, PROTEC
             }
             or
             {
-             with (p \in Permissions) { call declarePermission(self, p); }
+             with (p \in Permissions) { call declarePermission(self, p); };
+             
             }
            }
           }
@@ -502,5 +505,5 @@ Termination == <>(\A self \in ProcSet: pc[self] = "Done")
 
 =============================================================================
 \* Modification History
-\* Last modified Thu May 18 07:23:01 GMT+03:30 2023 by Amirhosein
+\* Last modified Thu May 18 07:56:46 GMT+03:30 2023 by Amirhosein
 \* Created Fri Apr 28 08:40:56 GMT+03:30 2023 by Amirhosein

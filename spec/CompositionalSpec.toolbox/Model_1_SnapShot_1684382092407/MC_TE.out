@@ -2,7 +2,7 @@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 129 and seed 4698650915425617936 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 16808] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 57 and seed 6634098425638085240 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 2468] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
@@ -24,26 +24,26 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2023-05-18 07:25:04)
+Starting... (2023-05-18 07:24:44)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2189:0 @!@!@
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2023-05-18 07:25:04.
+Finished computing initial states: 1 distinct state generated at 2023-05-18 07:24:44.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(20) at 2023-05-18 07:25:07: 209,151 states generated (209,151 s/min), 63,222 distinct states found (63,222 ds/min), 8,479 states left on queue.
+Progress(20) at 2023-05-18 07:24:47: 190,851 states generated (190,851 s/min), 57,890 distinct states found (57,890 ds/min), 8,582 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2193:0 @!@!@
 Model checking completed. No error has been found.
   Estimates of the probability that TLC did not check all reachable states
   because two distinct states had the same fingerprint:
   calculated (optimistic):  val = 1.1E-9
-  based on the actual fingerprints:  val = 8.3E-10
+  based on the actual fingerprints:  val = 2.2E-10
 @!@!@ENDMSG 2193 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2023-05-18 07:25:10
+The coverage statistics at 2023-05-18 07:24:51
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
 <Init line 156, col 1 to line 156, col 4 of module CompositionalSpec>: 1:1
@@ -52,7 +52,7 @@ The coverage statistics at 2023-05-18 07:25:10
   line 157, col 9 to line 204, col 70 of module CompositionalSpec: 1
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<INSTALL_APP line 206, col 1 to line 206, col 17 of module CompositionalSpec>: 382:14592
+<INSTALL_APP line 206, col 1 to line 206, col 17 of module CompositionalSpec>: 523:14592
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 206, col 25 to line 206, col 48 of module CompositionalSpec: 384256
@@ -76,7 +76,7 @@ The coverage statistics at 2023-05-18 07:25:10
   line 211, col 25 to line 214, col 46 of module CompositionalSpec: 14592
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<UNINSTALL_APP line 218, col 1 to line 218, col 19 of module CompositionalSpec>: 6907:14592
+<UNINSTALL_APP line 218, col 1 to line 218, col 19 of module CompositionalSpec>: 6827:14592
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 218, col 27 to line 218, col 52 of module CompositionalSpec: 384256
@@ -100,7 +100,7 @@ The coverage statistics at 2023-05-18 07:25:10
   line 223, col 27 to line 226, col 57 of module CompositionalSpec: 14592
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<UPDATE_APP line 230, col 1 to line 230, col 16 of module CompositionalSpec>: 1982:9728
+<UPDATE_APP line 230, col 1 to line 230, col 16 of module CompositionalSpec>: 1999:9728
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 230, col 24 to line 230, col 46 of module CompositionalSpec: 379392
@@ -124,7 +124,7 @@ The coverage statistics at 2023-05-18 07:25:10
   line 235, col 24 to line 238, col 45 of module CompositionalSpec: 9728
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<TERMINATED line 242, col 1 to line 242, col 16 of module CompositionalSpec>: 14399:29184
+<TERMINATED line 242, col 1 to line 242, col 16 of module CompositionalSpec>: 14551:29184
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 242, col 24 to line 242, col 46 of module CompositionalSpec: 398848
@@ -148,7 +148,7 @@ The coverage statistics at 2023-05-18 07:25:10
   line 247, col 24 to line 250, col 45 of module CompositionalSpec: 29184
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<DECLARE_PERMISSION line 254, col 1 to line 254, col 24 of module CompositionalSpec>: 5008:29184
+<DECLARE_PERMISSION line 254, col 1 to line 254, col 24 of module CompositionalSpec>: 4906:29184
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 254, col 32 to line 254, col 62 of module CompositionalSpec: 398848
@@ -337,7 +337,7 @@ The coverage statistics at 2023-05-18 07:25:10
   line 378, col 39 to line 383, col 74 of module CompositionalSpec: 0
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<EnvBegin line 387, col 1 to line 387, col 8 of module CompositionalSpec>: 2:46208
+<EnvBegin line 387, col 1 to line 387, col 8 of module CompositionalSpec>: 1:46208
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 387, col 16 to line 387, col 45 of module CompositionalSpec: 138624
@@ -358,7 +358,7 @@ The coverage statistics at 2023-05-18 07:25:10
   line 392, col 16 to line 395, col 37 of module CompositionalSpec: 46208
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<AppBegin line 399, col 1 to line 399, col 14 of module CompositionalSpec>: 63730:131328
+<AppBegin line 399, col 1 to line 399, col 14 of module CompositionalSpec>: 63606:131328
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 399, col 22 to line 399, col 42 of module CompositionalSpec: 243200
@@ -442,7 +442,7 @@ The coverage statistics at 2023-05-18 07:25:10
   line 451, col 22 to line 453, col 62 of module CompositionalSpec: 131328
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<ApsBegin line 457, col 1 to line 457, col 8 of module CompositionalSpec>: 5:46208
+<ApsBegin line 457, col 1 to line 457, col 8 of module CompositionalSpec>: 2:46208
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 457, col 16 to line 457, col 37 of module CompositionalSpec: 138624
@@ -481,7 +481,7 @@ The coverage statistics at 2023-05-18 07:25:10
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(33) at 2023-05-18 07:25:10: 321,601 states generated (2,666,306 s/min), 92,416 distinct states found (766,195 ds/min), 0 states left on queue.
+Progress(33) at 2023-05-18 07:24:51: 321,601 states generated (2,505,981 s/min), 92,416 distinct states found (720,124 ds/min), 0 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
 321601 states generated, 92416 distinct states found, 0 states left on queue.
@@ -493,5 +493,5 @@ The depth of the complete state graph search is 33.
 The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 10 and the 95th percentile is 5).
 @!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 7244ms at (2023-05-18 07:25:10)
+Finished in 7706ms at (2023-05-18 07:24:51)
 @!@!@ENDMSG 2186 @!@!@

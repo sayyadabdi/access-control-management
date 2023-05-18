@@ -1,0 +1,760 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.10) (preloaded format=pdflatex 2023.3.27)  18 MAY 2023 19:36
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./CompositionalSpec.tex
+(CompositionalSpec.tex
+LaTeX2e <2022-06-01> patch level 5
+L3 programming layer <2022-09-28>
+(C:\Users\Amirhosein\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(C:\Users\Amirhosein\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(C:\Users\Amirhosein\AppData\Local\Programs\MiKTeX\tex/latex/graphics\color.sty
+Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
+
+(C:\Users\Amirhosein\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color
+.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 149.
+
+(C:\Users\Amirhosein\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdfte
+x.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+\stockwidth=\dimen139
+\stockheight=\dimen140
+)
+(C:\Users\Amirhosein\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor
+.ltx)) (C:\Users\Amirhosein\AppData\Local\Programs\MiKTeX\tex/latex/base\latexs
+ym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+) (C:\Users\Amirhosein\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+\symlength=\skip49
+\equalswidth=\skip50
+\charwidth=\skip51
+\boxrulewd=\skip52
+\boxlineht=\skip53
+\boxruleht=\skip54
+\boxruledp=\skip55
+\pcalvspace=\skip56
+\lcomindent=\skip57
+\@xlen=\skip58
+\templena=\skip59
+\templenb=\skip60
+\tempboxa=\box51
+\vshadelen=\skip61
+\boxwidth=\skip62
+\multicommentdepth=\skip63
+\c@pardepth=\count193
+\tempsbox=\box52
+\@cparht=\skip64
+\@cpardp=\skip65
+\xmcomlen=\skip66
+\spacewidth=\skip67
+\alignboxwidth=\skip68
+\alignwidth=\skip69
+\alignbox=\box53
+\symtlaitalics=\mathgroup5
+\c@tlx@ctr=\count194
+
+(C:\Users\Amirhosein\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty
+Package: verbatim 2020-07-07 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks16
+\verbatim@line=\toks17
+\verbatim@in@stream=\read2
+)
+(C:\Users\Amirhosein\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backen
+d-pdftex.def
+File: l3backend-pdftex.def 2022-09-28 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count195
+\l__pdf_internal_box=\box54
+) (CompositionalSpec.aux)
+\openout1 = `CompositionalSpec.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 939.
+LaTeX Font Info:    ... okay on input line 939.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 939.
+LaTeX Font Info:    ... okay on input line 939.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 939.
+LaTeX Font Info:    ... okay on input line 939.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 939.
+LaTeX Font Info:    ... okay on input line 939.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 939.
+LaTeX Font Info:    ... okay on input line 939.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 939.
+LaTeX Font Info:    ... okay on input line 939.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 939.
+LaTeX Font Info:    ... okay on input line 939.
+
+(C:\Users\Amirhosein\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-p
+df.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count196
+\scratchdimen=\dimen141
+\scratchbox=\box55
+\nofMPsegments=\count197
+\nofMParguments=\count198
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count199
+\MPscratchDim=\dimen142
+\MPnumerator=\count266
+\makeMPintoPDFobject=\count267
+\everyMPtoPDFconversion=\toks19
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 942.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 942.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 94
+2.
+(C:\Users\Amirhosein\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 954.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 954.
+
+Overfull \hbox (3.27406pt too wide) in paragraph at lines 976--978
+[][] 
+ []
+
+
+Overfull \hbox (8.83513pt too wide) in paragraph at lines 978--979
+[][] 
+ []
+
+
+Overfull \hbox (35.98717pt too wide) in paragraph at lines 995--997
+[][] 
+ []
+
+
+Overfull \hbox (75.99698pt too wide) in paragraph at lines 997--999
+[][] 
+ []
+
+
+Overfull \hbox (76.27478pt too wide) in paragraph at lines 999--1001
+[][] 
+ []
+
+
+Overfull \hbox (60.13757pt too wide) in paragraph at lines 1001--1002
+[][] 
+ []
+
+
+Overfull \hbox (47.65636pt too wide) in paragraph at lines 1002--1003
+[][] 
+ []
+
+
+Overfull \hbox (18.57332pt too wide) in paragraph at lines 1003--1004
+[][] 
+ []
+
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1
+018.
+(C:\Users\Amirhosein\AppData\Local\Programs\MiKTeX\tex/latex/base\omscmr.fd
+File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 1018.
+
+[1
+
+{C:/Users/Amirhosein/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+Overfull \hbox (136.18387pt too wide) in paragraph at lines 1045--1049
+[][][] 
+ []
+
+
+Overfull \hbox (164.50595pt too wide) in paragraph at lines 1049--1053
+[][][] 
+ []
+
+
+Overfull \hbox (276.88045pt too wide) in paragraph at lines 1053--1057
+[][][] 
+ []
+
+
+Overfull \hbox (145.70667pt too wide) in paragraph at lines 1057--1061
+[][][] 
+ []
+
+
+Overfull \hbox (223.54651pt too wide) in paragraph at lines 1061--1062
+[][][] 
+ []
+
+
+Overfull \hbox (44.37851pt too wide) in paragraph at lines 1088--1092
+[][][] 
+ []
+
+
+Overfull \hbox (261.3212pt too wide) in paragraph at lines 1092--1095
+[][][] 
+ []
+
+
+Overfull \hbox (16.67038pt too wide) in paragraph at lines 1095--1096
+[][][] 
+ []
+
+
+Overfull \hbox (24.08885pt too wide) in paragraph at lines 1096--1102
+[][][][][] 
+ []
+
+
+Overfull \hbox (8.86626pt too wide) in paragraph at lines 1102--1108
+[][][][][] 
+ []
+
+[2]
+Overfull \hbox (120.45634pt too wide) in paragraph at lines 1160--1162
+[][][] 
+ []
+
+[3]
+Overfull \hbox (31.55766pt too wide) in paragraph at lines 1242--1249
+[][][][] 
+ []
+
+
+Overfull \hbox (56.88097pt too wide) in paragraph at lines 1273--1275
+[][] 
+ []
+
+
+Overfull \hbox (49.66504pt too wide) in paragraph at lines 1275--1276
+[][] 
+ []
+
+[4]
+Overfull \hbox (90.32892pt too wide) in paragraph at lines 1378--1380
+[][] 
+ []
+
+
+Overfull \hbox (7.11703pt too wide) in paragraph at lines 1382--1384
+[][] 
+ []
+
+
+Overfull \hbox (17.7116pt too wide) in paragraph at lines 1386--1388
+[][] 
+ []
+
+
+Overfull \hbox (9.80028pt too wide) in paragraph at lines 1388--1389
+[][] 
+ []
+
+
+Overfull \hbox (113.79936pt too wide) in paragraph at lines 1396--1398
+[][] 
+ []
+
+
+Overfull \hbox (40.38835pt too wide) in paragraph at lines 1400--1402
+[][] 
+ []
+
+
+Overfull \hbox (6.37057pt too wide) in paragraph at lines 1402--1404
+[][] 
+ []
+
+
+Overfull \hbox (26.44781pt too wide) in paragraph at lines 1404--1406
+[][] 
+ []
+
+
+Overfull \hbox (24.67029pt too wide) in paragraph at lines 1406--1407
+[][] 
+ []
+
+
+Overfull \hbox (278.45999pt too wide) in paragraph at lines 1415--1417
+[][] 
+ []
+
+
+Overfull \hbox (40.49388pt too wide) in paragraph at lines 1419--1421
+[][] 
+ []
+
+
+Overfull \hbox (6.65265pt too wide) in paragraph at lines 1423--1425
+[][] 
+ []
+
+
+Overfull \hbox (17.82478pt too wide) in paragraph at lines 1425--1426
+[][] 
+ []
+
+
+Overfull \hbox (75.70435pt too wide) in paragraph at lines 1432--1434
+[][] 
+ []
+
+
+Overfull \hbox (20.71942pt too wide) in paragraph at lines 1436--1438
+[][] 
+ []
+
+
+Overfull \hbox (14.23079pt too wide) in paragraph at lines 1440--1442
+[][] 
+ []
+
+
+Overfull \hbox (18.55478pt too wide) in paragraph at lines 1442--1443
+[][] 
+ []
+
+[5]
+Overfull \hbox (143.18091pt too wide) in paragraph at lines 1449--1451
+[][] 
+ []
+
+
+Overfull \hbox (25.71928pt too wide) in paragraph at lines 1451--1453
+[][] 
+ []
+
+
+Overfull \hbox (76.2503pt too wide) in paragraph at lines 1453--1455
+[][] 
+ []
+
+
+Overfull \hbox (63.50795pt too wide) in paragraph at lines 1455--1457
+[][] 
+ []
+
+
+Overfull \hbox (34.62059pt too wide) in paragraph at lines 1457--1459
+[][] 
+ []
+
+
+Overfull \hbox (26.39037pt too wide) in paragraph at lines 1459--1460
+[][] 
+ []
+
+
+Overfull \hbox (31.01212pt too wide) in paragraph at lines 1460--1461
+[][] 
+ []
+
+
+Overfull \hbox (11.11687pt too wide) in paragraph at lines 1466--1468
+[][] 
+ []
+
+
+Overfull \hbox (43.9493pt too wide) in paragraph at lines 1468--1470
+[][] 
+ []
+
+
+Overfull \hbox (91.54276pt too wide) in paragraph at lines 1470--1472
+[][] 
+ []
+
+
+Overfull \hbox (58.5106pt too wide) in paragraph at lines 1472--1474
+[][] 
+ []
+
+
+Overfull \hbox (30.74847pt too wide) in paragraph at lines 1474--1475
+[][] 
+ []
+
+
+Overfull \hbox (23.22546pt too wide) in paragraph at lines 1475--1476
+[][] 
+ []
+
+
+Overfull \hbox (24.85966pt too wide) in paragraph at lines 1476--1477
+[][] 
+ []
+
+
+Overfull \hbox (264.59277pt too wide) in paragraph at lines 1484--1486
+[][] 
+ []
+
+
+Overfull \hbox (175.78929pt too wide) in paragraph at lines 1486--1488
+[][] 
+ []
+
+
+Overfull \hbox (222.61609pt too wide) in paragraph at lines 1488--1490
+[][] 
+ []
+
+
+Overfull \hbox (189.83061pt too wide) in paragraph at lines 1490--1491
+[][] 
+ []
+
+
+Overfull \hbox (72.59541pt too wide) in paragraph at lines 1491--1492
+[][] 
+ []
+
+
+Overfull \hbox (72.65285pt too wide) in paragraph at lines 1492--1493
+[][] 
+ []
+
+
+Overfull \hbox (71.82022pt too wide) in paragraph at lines 1493--1494
+[][] 
+ []
+
+
+Overfull \hbox (86.52475pt too wide) in paragraph at lines 1494--1495
+[][] 
+ []
+
+
+Overfull \hbox (64.92444pt too wide) in paragraph at lines 1495--1496
+[][] 
+ []
+
+
+Overfull \hbox (90.8062pt too wide) in paragraph at lines 1496--1497
+[][] 
+ []
+
+
+Overfull \hbox (87.45319pt too wide) in paragraph at lines 1497--1498
+[][] 
+ []
+
+
+Overfull \hbox (86.14203pt too wide) in paragraph at lines 1498--1499
+[][] 
+ []
+
+
+Overfull \hbox (35.21451pt too wide) in paragraph at lines 1499--1500
+[][] 
+ []
+
+
+Overfull \hbox (151.40797pt too wide) in paragraph at lines 1502--1503
+[][] 
+ []
+
+
+Overfull \hbox (25.30928pt too wide) in paragraph at lines 1507--1509
+[][] 
+ []
+
+
+Overfull \hbox (43.90712pt too wide) in paragraph at lines 1509--1511
+[][] 
+ []
+
+
+Overfull \hbox (34.21059pt too wide) in paragraph at lines 1511--1513
+[][] 
+ []
+
+
+Overfull \hbox (38.68394pt too wide) in paragraph at lines 1513--1514
+[][] 
+ []
+
+[6]
+Overfull \hbox (39.20235pt too wide) in paragraph at lines 1514--1515
+[][] 
+ []
+
+
+Overfull \hbox (4.3811pt too wide) in paragraph at lines 1529--1530
+[][] 
+ []
+
+
+Overfull \hbox (98.63045pt too wide) in paragraph at lines 1541--1542
+[][] 
+ []
+
+
+Overfull \hbox (99.47842pt too wide) in paragraph at lines 1542--1544
+[][] 
+ []
+
+
+Overfull \hbox (96.08865pt too wide) in paragraph at lines 1544--1545
+[][] 
+ []
+
+
+Overfull \hbox (36.35661pt too wide) in paragraph at lines 1545--1547
+[][] 
+ []
+
+
+Overfull \hbox (10.65721pt too wide) in paragraph at lines 1547--1549
+[][] 
+ []
+
+
+Overfull \hbox (18.78387pt too wide) in paragraph at lines 1551--1553
+[][] 
+ []
+
+
+Overfull \hbox (74.98691pt too wide) in paragraph at lines 1553--1556
+[][] 
+ []
+
+
+Overfull \hbox (191.23378pt too wide) in paragraph at lines 1556--1557
+[][] 
+ []
+
+
+Overfull \hbox (179.99843pt too wide) in paragraph at lines 1557--1559
+[][] 
+ []
+
+
+Overfull \hbox (178.47461pt too wide) in paragraph at lines 1559--1560
+[][] 
+ []
+
+
+Overfull \hbox (116.88661pt too wide) in paragraph at lines 1560--1562
+[][] 
+ []
+
+
+Overfull \hbox (100.56834pt too wide) in paragraph at lines 1562--1563
+[][] 
+ []
+
+
+Overfull \hbox (176.949pt too wide) in paragraph at lines 1565--1567
+[][] 
+ []
+
+
+Overfull \hbox (161.73521pt too wide) in paragraph at lines 1567--1569
+[][] 
+ []
+
+
+Overfull \hbox (254.17604pt too wide) in paragraph at lines 1569--1570
+[][] 
+ []
+
+
+Overfull \hbox (249.18845pt too wide) in paragraph at lines 1570--1572
+[][] 
+ []
+
+
+Overfull \hbox (252.64496pt too wide) in paragraph at lines 1572--1573
+[][] 
+ []
+
+
+Overfull \hbox (186.08661pt too wide) in paragraph at lines 1573--1575
+[][] 
+ []
+
+
+Overfull \hbox (163.34045pt too wide) in paragraph at lines 1575--1577
+[][] 
+ []
+
+
+Overfull \hbox (141.2441pt too wide) in paragraph at lines 1577--1578
+[][] 
+ []
+
+
+Overfull \hbox (58.82803pt too wide) in paragraph at lines 1578--1579
+[][] 
+ []
+
+
+Overfull \hbox (65.3823pt too wide) in paragraph at lines 1579--1580
+[][] 
+ []
+
+
+Overfull \hbox (86.66316pt too wide) in paragraph at lines 1582--1583
+[][] 
+ []
+
+
+Overfull \hbox (39.71033pt too wide) in paragraph at lines 1583--1584
+[][] 
+ []
+
+[7]
+Overfull \hbox (119.39108pt too wide) in paragraph at lines 1586--1587
+[][] 
+ []
+
+
+Overfull \hbox (30.28523pt too wide) in paragraph at lines 1603--1605
+[][] 
+ []
+
+
+Overfull \hbox (11.10115pt too wide) in paragraph at lines 1605--1607
+[][] 
+ []
+
+
+Overfull \hbox (160.37825pt too wide) in paragraph at lines 1607--1608
+[][] 
+ []
+
+
+Overfull \hbox (166.36307pt too wide) in paragraph at lines 1608--1609
+[][] 
+ []
+
+
+Overfull \hbox (127.49025pt too wide) in paragraph at lines 1609--1610
+[][] 
+ []
+
+
+Overfull \hbox (121.911pt too wide) in paragraph at lines 1610--1611
+[][] 
+ []
+
+
+Overfull \hbox (64.5666pt too wide) in paragraph at lines 1611--1613
+[][] 
+ []
+
+
+Overfull \hbox (86.33452pt too wide) in paragraph at lines 1613--1615
+[][] 
+ []
+
+
+Overfull \hbox (24.42847pt too wide) in paragraph at lines 1615--1616
+[][] 
+ []
+
+
+Overfull \hbox (16.90546pt too wide) in paragraph at lines 1616--1617
+[][] 
+ []
+
+
+Overfull \hbox (19.19241pt too wide) in paragraph at lines 1617--1618
+[][] 
+ []
+
+
+Overfull \hbox (66.58044pt too wide) in paragraph at lines 1624--1625
+[][] 
+ []
+
+
+Overfull \hbox (65.65845pt too wide) in paragraph at lines 1625--1627
+[][] 
+ []
+
+
+Overfull \hbox (57.99707pt too wide) in paragraph at lines 1627--1628
+[][] 
+ []
+
+
+Overfull \hbox (2.5466pt too wide) in paragraph at lines 1628--1630
+[][] 
+ []
+
+
+Overfull \hbox (14.42772pt too wide) in paragraph at lines 1632--1633
+[][] 
+ []
+
+
+Overfull \hbox (7.84381pt too wide) in paragraph at lines 1633--1634
+[][] 
+ []
+
+
+Overfull \hbox (4.0111pt too wide) in paragraph at lines 1650--1651
+[][] 
+ []
+
+[8] [9] (CompositionalSpec.aux) ) 
+Here is how much of TeX's memory you used:
+ 1423 strings out of 475385
+ 22525 string characters out of 2774547
+ 401040 words of memory out of 3000000
+ 22831 multiletter control sequences out of 15000+600000
+ 475293 words of font info for 51 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 34i,10n,40p,241b,308s stack positions out of 10000i,1000n,20000p,200000b,80000s
+<C:/Users/Amirhosein/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Users/Amirhosein/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Amirhos
+ein/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C
+:/Users/Amirhosein/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmmi10.pfb><C:/Users/Amirhosein/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb><C:/Users/Amirhosein/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/Amirhosein/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Amirhosein/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Amirhose
+in/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/
+Users/Amirhosein/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/c
+msy10.pfb><C:/Users/Amirhosein/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmsy7.pfb><C:/Users/Amirhosein/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/Amirhosein/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Amirhosein/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti7.pfb><C:/Users/Amirho
+sein/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:
+/Users/Amirhosein/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/lat
+xfont/lasy10.pfb>
+Output written on CompositionalSpec.pdf (9 pages, 225866 bytes).
+PDF statistics:
+ 112 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
