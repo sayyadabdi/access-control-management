@@ -66,7 +66,7 @@ PermissionType == { PERMISSION_TYPE_NORMAL, PERMISSION_TYPE_SIGNATURE,
     \*procedure revokeUriPermission(app) { REVOKE_URI_PERMISSION: return; }
     \*procedure checkUriPermission(app) { CHECK_URI_PERMISSION: return; }
     procedure checkSelfPermission(app) { CHECK_SELF_PERMISSION: return; }
-    procedure shouldShowRequestPermissionRationale(app) { SHOULD_SHOW_REQUEST_PERMISSION_RATIONALE: return; }
+    \*procedure shouldShowRequestPermissionRationale(app) { SHOULD_SHOW_REQUEST_PERMISSION_RATIONALE: return; }
     procedure requestPermission(app) { REQUEST_PERMISSION: return; }
     \*procedure requestMultiplePermissions(app) { REQUEST_MULTIPLE_PERMISSIONS: return; }
     \*procedure removeUnusedPermissions(app) { REMOVE_UNUSED_PERMISSIONS: return; }
@@ -132,36 +132,34 @@ PermissionType == { PERMISSION_TYPE_NORMAL, PERMISSION_TYPE_SIGNATURE,
 }
 
 ***)
-\* BEGIN TRANSLATION (chksum(pcal) = "7be9e7d1" /\ chksum(tla) = "d9bf6943")
-\* Process variable i of process EnvNext at line 76 col 19 changed to i_
-\* Process variable i of process AppNext at line 85 col 19 changed to i_A
-\* Parameter app of procedure installApp at line 60 col 26 changed to app_
-\* Parameter app of procedure uninstallApp at line 61 col 28 changed to app_u
-\* Parameter app of procedure updateApp at line 62 col 25 changed to app_up
-\* Parameter app of procedure terminate at line 63 col 25 changed to app_t
-\* Parameter app of procedure declarePermission at line 64 col 33 changed to app_d
-\* Parameter app of procedure checkSelfPermission at line 69 col 35 changed to app_c
-\* Parameter app of procedure shouldShowRequestPermissionRationale at line 70 col 52 changed to app_s
+\* BEGIN TRANSLATION (chksum(pcal) = "3edc495" /\ chksum(tla) = "73f9ff49")
+\* Process variable i of process EnvNext at line 75 col 19 changed to i_
+\* Process variable i of process AppNext at line 84 col 19 changed to i_A
+\* Parameter app of procedure installApp at line 59 col 26 changed to app_
+\* Parameter app of procedure uninstallApp at line 60 col 28 changed to app_u
+\* Parameter app of procedure updateApp at line 61 col 25 changed to app_up
+\* Parameter app of procedure terminate at line 62 col 25 changed to app_t
+\* Parameter app of procedure declarePermission at line 63 col 33 changed to app_d
+\* Parameter app of procedure checkSelfPermission at line 68 col 35 changed to app_c
 CONSTANT defaultInitValue
 VARIABLES env_vars, app_vars, aps_vars, pc, stack, app_, app_u, app_up, app_t, 
-          app_d, perm, app_c, app_s, app, i_, i_A, i
+          app_d, perm, app_c, app, i_, i_A, i
 
 vars == << env_vars, app_vars, aps_vars, pc, stack, app_, app_u, app_up, 
-           app_t, app_d, perm, app_c, app_s, app, i_, i_A, i >>
+           app_t, app_d, perm, app_c, app, i_, i_A, i >>
 
 ProcSet == {EnvironmentId} \cup (Apps) \cup {ApsId}
 
 Init == (* Global variables *)
-        /\ env_vars = [actions |-> {},
+        /\ env_vars = [actions |-> {}, permission_groups |-> {},
                        applications |->
                         [a \in Apps |-> [installed |-> FALSE, version |-> 0, terminated |-> FALSE]],
-                         data |-> {}, permissions |-> [p \in Permissions |-> [a \in Apps |-> Null]],
-                         permission_groups |-> {}]
+                         data |-> {}, permissions |-> [p \in Permissions |-> [a \in Apps |-> Null]]]
         /\ app_vars = [a \in Apps |->
-                        [manifest |-> [p \in Permissions |-> Null],
-                         signature |-> {}, private_keys |-> {}, public_key |-> {},
-                         certificate |-> {}, package |-> {}, services |-> {},
-                         receivers |-> {}, activities |-> {}, content_providers |-> {}]]
+                       [manifest |-> [p \in Permissions |-> Null],
+                        signature |-> {}, private_keys |-> {}, public_key |-> {},
+                        certificate |-> {}, package |-> {}, services |-> {},
+                        receivers |-> {}, activities |-> {}, content_providers |-> {}]]
         /\ aps_vars = [permission_history |-> {}]
         (* Procedure installApp *)
         /\ app_ = [ self \in ProcSet |-> defaultInitValue]
@@ -176,8 +174,6 @@ Init == (* Global variables *)
         /\ perm = [ self \in ProcSet |-> defaultInitValue]
         (* Procedure checkSelfPermission *)
         /\ app_c = [ self \in ProcSet |-> defaultInitValue]
-        (* Procedure shouldShowRequestPermissionRationale *)
-        /\ app_s = [ self \in ProcSet |-> defaultInitValue]
         (* Procedure requestPermission *)
         /\ app = [ self \in ProcSet |-> defaultInitValue]
         (* Process EnvNext *)
@@ -197,8 +193,7 @@ INSTALL_APP(self) == /\ pc[self] = "INSTALL_APP"
                      /\ app_' = [app_ EXCEPT ![self] = Head(stack[self]).app_]
                      /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
                      /\ UNCHANGED << app_vars, aps_vars, app_u, app_up, app_t, 
-                                     app_d, perm, app_c, app_s, app, i_, i_A, 
-                                     i >>
+                                     app_d, perm, app_c, app, i_, i_A, i >>
 
 installApp(self) == INSTALL_APP(self)
 
@@ -208,8 +203,7 @@ UNINSTALL_APP(self) == /\ pc[self] = "UNINSTALL_APP"
                        /\ app_u' = [app_u EXCEPT ![self] = Head(stack[self]).app_u]
                        /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
                        /\ UNCHANGED << app_vars, aps_vars, app_, app_up, app_t, 
-                                       app_d, perm, app_c, app_s, app, i_, i_A, 
-                                       i >>
+                                       app_d, perm, app_c, app, i_, i_A, i >>
 
 uninstallApp(self) == UNINSTALL_APP(self)
 
@@ -219,7 +213,7 @@ UPDATE_APP(self) == /\ pc[self] = "UPDATE_APP"
                     /\ app_up' = [app_up EXCEPT ![self] = Head(stack[self]).app_up]
                     /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
                     /\ UNCHANGED << app_vars, aps_vars, app_, app_u, app_t, 
-                                    app_d, perm, app_c, app_s, app, i_, i_A, i >>
+                                    app_d, perm, app_c, app, i_, i_A, i >>
 
 updateApp(self) == UPDATE_APP(self)
 
@@ -229,7 +223,7 @@ TERMINATED(self) == /\ pc[self] = "TERMINATED"
                     /\ app_t' = [app_t EXCEPT ![self] = Head(stack[self]).app_t]
                     /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
                     /\ UNCHANGED << app_vars, aps_vars, app_, app_u, app_up, 
-                                    app_d, perm, app_c, app_s, app, i_, i_A, i >>
+                                    app_d, perm, app_c, app, i_, i_A, i >>
 
 terminate(self) == TERMINATED(self)
 
@@ -240,8 +234,8 @@ DECLARE_PERMISSION(self) == /\ pc[self] = "DECLARE_PERMISSION"
                             /\ perm' = [perm EXCEPT ![self] = Head(stack[self]).perm]
                             /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
                             /\ UNCHANGED << env_vars, aps_vars, app_, app_u, 
-                                            app_up, app_t, app_c, app_s, app, 
-                                            i_, i_A, i >>
+                                            app_up, app_t, app_c, app, i_, i_A, 
+                                            i >>
 
 declarePermission(self) == DECLARE_PERMISSION(self)
 
@@ -251,26 +245,9 @@ CHECK_SELF_PERMISSION(self) == /\ pc[self] = "CHECK_SELF_PERMISSION"
                                /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
                                /\ UNCHANGED << env_vars, app_vars, aps_vars, 
                                                app_, app_u, app_up, app_t, 
-                                               app_d, perm, app_s, app, i_, 
-                                               i_A, i >>
+                                               app_d, perm, app, i_, i_A, i >>
 
 checkSelfPermission(self) == CHECK_SELF_PERMISSION(self)
-
-SHOULD_SHOW_REQUEST_PERMISSION_RATIONALE(self) == /\ pc[self] = "SHOULD_SHOW_REQUEST_PERMISSION_RATIONALE"
-                                                  /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
-                                                  /\ app_s' = [app_s EXCEPT ![self] = Head(stack[self]).app_s]
-                                                  /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
-                                                  /\ UNCHANGED << env_vars, 
-                                                                  app_vars, 
-                                                                  aps_vars, 
-                                                                  app_, app_u, 
-                                                                  app_up, 
-                                                                  app_t, app_d, 
-                                                                  perm, app_c, 
-                                                                  app, i_, i_A, 
-                                                                  i >>
-
-shouldShowRequestPermissionRationale(self) == SHOULD_SHOW_REQUEST_PERMISSION_RATIONALE(self)
 
 REQUEST_PERMISSION(self) == /\ pc[self] = "REQUEST_PERMISSION"
                             /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
@@ -278,7 +255,7 @@ REQUEST_PERMISSION(self) == /\ pc[self] = "REQUEST_PERMISSION"
                             /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
                             /\ UNCHANGED << env_vars, app_vars, aps_vars, app_, 
                                             app_u, app_up, app_t, app_d, perm, 
-                                            app_c, app_s, i_, i_A, i >>
+                                            app_c, i_, i_A, i >>
 
 requestPermission(self) == REQUEST_PERMISSION(self)
 
@@ -288,8 +265,7 @@ EnvBegin == /\ pc[EnvironmentId] = "EnvBegin"
                        /\ pc' = [pc EXCEPT ![EnvironmentId] = "EnvBegin"]
                   ELSE /\ pc' = [pc EXCEPT ![EnvironmentId] = "Done"]
             /\ UNCHANGED << env_vars, app_vars, aps_vars, stack, app_, app_u, 
-                            app_up, app_t, app_d, perm, app_c, app_s, app, i_, 
-                            i_A, i >>
+                            app_up, app_t, app_d, perm, app_c, app, i_, i_A, i >>
 
 EnvNext == EnvBegin
 
@@ -331,7 +307,7 @@ AppBegin(self) == /\ pc[self] = "AppBegin"
                         ELSE /\ pc' = [pc EXCEPT ![self] = "Done"]
                              /\ UNCHANGED << stack, app_u, app_up, app_t >>
                   /\ UNCHANGED << env_vars, app_vars, aps_vars, app_, app_d, 
-                                  perm, app_c, app_s, app, i_, i_A, i >>
+                                  perm, app_c, app, i_, i_A, i >>
 
 DECLARING_PERMISSION(self) == /\ pc[self] = "DECLARING_PERMISSION"
                               /\ \E p \in Permissions:
@@ -345,7 +321,7 @@ DECLARING_PERMISSION(self) == /\ pc[self] = "DECLARING_PERMISSION"
                                    /\ pc' = [pc EXCEPT ![self] = "DECLARE_PERMISSION"]
                               /\ UNCHANGED << env_vars, app_vars, aps_vars, 
                                               app_, app_u, app_up, app_t, 
-                                              app_c, app_s, app, i_, i_A, i >>
+                                              app_c, app, i_, i_A, i >>
 
 INSTALLING_APP(self) == /\ pc[self] = "INSTALLING_APP"
                         /\ /\ app_' = [app_ EXCEPT ![self] = self]
@@ -355,8 +331,8 @@ INSTALLING_APP(self) == /\ pc[self] = "INSTALLING_APP"
                                                                 \o stack[self]]
                         /\ pc' = [pc EXCEPT ![self] = "INSTALL_APP"]
                         /\ UNCHANGED << env_vars, app_vars, aps_vars, app_u, 
-                                        app_up, app_t, app_d, perm, app_c, 
-                                        app_s, app, i_, i_A, i >>
+                                        app_up, app_t, app_d, perm, app_c, app, 
+                                        i_, i_A, i >>
 
 AppNext(self) == AppBegin(self) \/ DECLARING_PERMISSION(self)
                     \/ INSTALLING_APP(self)
@@ -367,8 +343,7 @@ ApsBegin == /\ pc[ApsId] = "ApsBegin"
                        /\ pc' = [pc EXCEPT ![ApsId] = "ApsBegin"]
                   ELSE /\ pc' = [pc EXCEPT ![ApsId] = "Done"]
             /\ UNCHANGED << env_vars, app_vars, aps_vars, stack, app_, app_u, 
-                            app_up, app_t, app_d, perm, app_c, app_s, app, i_, 
-                            i_A, i >>
+                            app_up, app_t, app_d, perm, app_c, app, i_, i_A, i >>
 
 ApsNext == ApsBegin
 
@@ -381,7 +356,6 @@ Next == EnvNext \/ ApsNext
                                      \/ updateApp(self) \/ terminate(self)
                                      \/ declarePermission(self)
                                      \/ checkSelfPermission(self)
-                                     \/ shouldShowRequestPermissionRationale(self)
                                      \/ requestPermission(self))
            \/ (\E self \in Apps: AppNext(self))
            \/ Terminating
@@ -402,5 +376,5 @@ Termination == <>(\A self \in ProcSet: pc[self] = "Done")
 
 =============================================================================
 \* Modification History
-\* Last modified Thu May 18 20:19:02 GMT+03:30 2023 by Amirhosein
+\* Last modified Fri May 19 09:38:58 GMT+03:30 2023 by Amirhosein
 \* Created Fri Apr 28 08:40:56 GMT+03:30 2023 by Amirhosein
