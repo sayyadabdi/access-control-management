@@ -2,6 +2,7 @@ package aps;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import entities.Application;
 import entities.Permission;
@@ -10,9 +11,10 @@ import enums.ConsentType;
 public class PermissionManager
 {
 
-	// Custom permissions (CPs) are unique unless packages are signed with the same certificate.
+	// Custom permissions (CPs) are unique unless packages are signed with the
+	// same certificate.
 	// The CP's definer should already be installed.
-	
+
 	private static PermissionManager instance;
 
 	private final Map<Application, Integer> installedApplications = new HashMap<>();
@@ -56,24 +58,14 @@ public class PermissionManager
 		}
 
 		case URI:
-		{
-
-			break;
-		}
-
 		case CUSTOM:
 		{
-			// Custom permissions are granted at run time.
+			checkUriOrCustomPermission(app, perm);
 			break;
 		}
 		}
 
 		return getPermission(app, perm);
-	}
-
-	public void askUser(Application app, Permission perm)
-	{
-
 	}
 
 	public static PermissionManager getInstance()
@@ -82,6 +74,40 @@ public class PermissionManager
 			instance = new PermissionManager();
 
 		return instance;
+	}
+
+	private void askUser(Application app, Permission perm)
+	{
+		randomPermissionResult(app, perm);
+	}
+
+	private void checkUriOrCustomPermission(Application app, Permission perm)
+	{
+		randomPermissionResult(app, perm);
+	}
+
+	private void randomPermissionResult(Application app, Permission perm)
+	{
+		Random rand = new Random();
+
+		int userDecision = rand.nextInt(4);
+
+		if (userDecision == 0)
+		{
+			setPermission(app, perm, ConsentType.ALLOWED);
+		}
+		else if (userDecision == 1)
+		{
+			setPermission(app, perm, ConsentType.DENIED);
+		}
+		else if (userDecision == 2)
+		{
+			setPermission(app, perm, ConsentType.ONLY_ONCE);
+		}
+		else if (userDecision == 3)
+		{
+			setPermission(app, perm, ConsentType.WHILE_USING_APP);
+		}
 	}
 
 	private Map<Permission, ConsentType> getAppPermissions(Application app)
