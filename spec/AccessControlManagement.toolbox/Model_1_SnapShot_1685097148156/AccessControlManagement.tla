@@ -50,23 +50,28 @@ ResourceStatus == { NULL, REQUESTED, ALLOWED, REJECTED, IN_USE }
     fair process (AcmNext \in Processes)
     variable Resource = 1;
     {
-        s0: while(TRUE)
+        AcmBegin:- while (TRUE)
         {
-         s1: Resource := 1;
-         s2: Acl2 := Acl;
-         either { a: Request(self, Resource); }
-         or { b: Decide(self, Resource); }
-         or { c: Revoke(self, Resource); }
-         or { d: Use(self, Resource); };
-         N: Resource := Resource + 1;
-         if(Resource \in Resources)
-          goto s1;
-        }
+
+         \*with(r \in Resources)
+         \*{
+         dsd: while(Resource \in Resources)
+         {
+          f: Acl2 := Acl;
+          H: either { a: Request(self, Resource); }
+          or { b: Decide(self, Resource); }
+          or { c: Revoke(self, Resource); }
+          or { d: Use(self, Resource); };
+          \*}
+          
+          J: Resource := Resource + 1;
+          }
+        };
     }
 }
 
 ***)
-\* BEGIN TRANSLATION (chksum(pcal) = "815326e1" /\ chksum(tla) = "5b152e55")
+\* BEGIN TRANSLATION (chksum(pcal) = "c3238dce" /\ chksum(tla) = "c811d9c5")
 VARIABLES Acl, Acl2, pc, Resource
 
 vars == << Acl, Acl2, pc, Resource >>
@@ -78,31 +83,36 @@ Init == (* Global variables *)
         /\ Acl2 = [a \in Processes |-> [r \in Resources |-> NULL]]
         (* Process AcmNext *)
         /\ Resource = [self \in Processes |-> 1]
-        /\ pc = [self \in ProcSet |-> "s0"]
+        /\ pc = [self \in ProcSet |-> "AcmBegin"]
 
-s0(self) == /\ pc[self] = "s0"
-            /\ pc' = [pc EXCEPT ![self] = "s1"]
-            /\ UNCHANGED << Acl, Acl2, Resource >>
+AcmBegin(self) == /\ pc[self] = "AcmBegin"
+                  /\ pc' = [pc EXCEPT ![self] = "dsd"]
+                  /\ UNCHANGED << Acl, Acl2, Resource >>
 
-s1(self) == /\ pc[self] = "s1"
-            /\ Resource' = [Resource EXCEPT ![self] = 1]
-            /\ pc' = [pc EXCEPT ![self] = "s2"]
-            /\ UNCHANGED << Acl, Acl2 >>
+dsd(self) == /\ pc[self] = "dsd"
+             /\ IF Resource[self] \in Resources
+                   THEN /\ pc' = [pc EXCEPT ![self] = "f"]
+                   ELSE /\ pc' = [pc EXCEPT ![self] = "AcmBegin"]
+             /\ UNCHANGED << Acl, Acl2, Resource >>
 
-s2(self) == /\ pc[self] = "s2"
-            /\ Acl2' = Acl
-            /\ \/ /\ pc' = [pc EXCEPT ![self] = "a"]
-               \/ /\ pc' = [pc EXCEPT ![self] = "b"]
-               \/ /\ pc' = [pc EXCEPT ![self] = "c"]
-               \/ /\ pc' = [pc EXCEPT ![self] = "d"]
-            /\ UNCHANGED << Acl, Resource >>
+f(self) == /\ pc[self] = "f"
+           /\ Acl2' = Acl
+           /\ pc' = [pc EXCEPT ![self] = "H"]
+           /\ UNCHANGED << Acl, Resource >>
+
+H(self) == /\ pc[self] = "H"
+           /\ \/ /\ pc' = [pc EXCEPT ![self] = "a"]
+              \/ /\ pc' = [pc EXCEPT ![self] = "b"]
+              \/ /\ pc' = [pc EXCEPT ![self] = "c"]
+              \/ /\ pc' = [pc EXCEPT ![self] = "d"]
+           /\ UNCHANGED << Acl, Acl2, Resource >>
 
 a(self) == /\ pc[self] = "a"
            /\ IF Acl[self][Resource[self]] = NULL
                  THEN /\ Acl' = [Acl EXCEPT ![self][Resource[self]] = REQUESTED]
                  ELSE /\ TRUE
                       /\ Acl' = Acl
-           /\ pc' = [pc EXCEPT ![self] = "N"]
+           /\ pc' = [pc EXCEPT ![self] = "J"]
            /\ UNCHANGED << Acl2, Resource >>
 
 b(self) == /\ pc[self] = "b"
@@ -113,7 +123,7 @@ b(self) == /\ pc[self] = "b"
                               ELSE /\ Acl' = [Acl EXCEPT ![self][Resource[self]] = REJECTED]
                  ELSE /\ TRUE
                       /\ Acl' = Acl
-           /\ pc' = [pc EXCEPT ![self] = "N"]
+           /\ pc' = [pc EXCEPT ![self] = "J"]
            /\ UNCHANGED << Acl2, Resource >>
 
 c(self) == /\ pc[self] = "c"
@@ -121,7 +131,7 @@ c(self) == /\ pc[self] = "c"
                  THEN /\ Acl' = [Acl EXCEPT ![self][Resource[self]] = NULL]
                  ELSE /\ TRUE
                       /\ Acl' = Acl
-           /\ pc' = [pc EXCEPT ![self] = "N"]
+           /\ pc' = [pc EXCEPT ![self] = "J"]
            /\ UNCHANGED << Acl2, Resource >>
 
 d(self) == /\ pc[self] = "d"
@@ -129,23 +139,21 @@ d(self) == /\ pc[self] = "d"
                  THEN /\ Acl' = [Acl EXCEPT ![self][Resource[self]] = IN_USE]
                  ELSE /\ TRUE
                       /\ Acl' = Acl
-           /\ pc' = [pc EXCEPT ![self] = "N"]
+           /\ pc' = [pc EXCEPT ![self] = "J"]
            /\ UNCHANGED << Acl2, Resource >>
 
-N(self) == /\ pc[self] = "N"
+J(self) == /\ pc[self] = "J"
            /\ Resource' = [Resource EXCEPT ![self] = Resource[self] + 1]
-           /\ IF Resource'[self] \in Resources
-                 THEN /\ pc' = [pc EXCEPT ![self] = "s1"]
-                 ELSE /\ pc' = [pc EXCEPT ![self] = "s0"]
+           /\ pc' = [pc EXCEPT ![self] = "dsd"]
            /\ UNCHANGED << Acl, Acl2 >>
 
-AcmNext(self) == s0(self) \/ s1(self) \/ s2(self) \/ a(self) \/ b(self)
-                    \/ c(self) \/ d(self) \/ N(self)
+AcmNext(self) == AcmBegin(self) \/ dsd(self) \/ f(self) \/ H(self)
+                    \/ a(self) \/ b(self) \/ c(self) \/ d(self) \/ J(self)
 
 Next == (\E self \in Processes: AcmNext(self))
 
 Spec == /\ Init /\ [][Next]_vars
-        /\ \A self \in Processes : WF_vars(AcmNext(self))
+        /\ \A self \in Processes : WF_vars((pc[self] # "AcmBegin") /\ AcmNext(self))
 
 \* END TRANSLATION 
 
@@ -162,5 +170,5 @@ AcmLiveness == <> (\E p \in Processes:
 
 =============================================================================
 \* Modification History
-\* Last modified Fri May 26 14:22:47 GMT+03:30 2023 by Amirhosein
+\* Last modified Fri May 26 14:02:19 GMT+03:30 2023 by Amirhosein
 \* Created Thu Mar 23 07:45:26 GMT+03:30 2023 by Amirhosein

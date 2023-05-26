@@ -1,48 +1,169 @@
 ---------------------- MODULE AccessControlManagement ----------------------
 EXTENDS Naturals, Sequences
 
-CONSTANTS Apps, Perms
+CONSTANTS Processes, Resources
 
 NULL == "NULL"
-ALLOW == "ALLOW"
-REJECT == "REJECT"
+ALLOWED == "ALLOWED"
+REJECTED == "REJECTED"
+REQUESTED == "REQUESTED"
+IN_USE == "IN_USE"
 
 Boolean == { TRUE, FALSE }
-Consent == { ALLOW, REJECT }
+ResourceStatus == { NULL, REQUESTED, ALLOWED, REJECTED, IN_USE }
 
-VARIABLE ACL, Resource
+(***--algorithm AccessControlManagement
+{
+    variables Acl = [a \in Processes |-> [r \in Resources |-> NULL]];
+              Acl2 = [a \in Processes |-> [r \in Resources |-> NULL]];
+        
+    macro Request(p, r)
+    {
+     if(Acl[p][r] = NULL)
+      Acl[p][r] := REQUESTED;
+    }
 
-TypeOK == /\ \A a \in Apps: \A p \in Perms: /\ ACL[a][p] \in Consent \cup { NULL }
-                                            /\ Resource[a][p] \in Boolean
+    macro Decide(p, r)
+    {
+     if(Acl[p][r] = REQUESTED)
+      with(b \in Boolean)
+      {
+       if(b = TRUE)
+        Acl[p][r] := ALLOWED;
+       else
+        Acl[p][r] := REJECTED;
+      }
+    }
+    
+    macro Revoke(p, r)
+    {
+     if(Acl[p][r] = ALLOWED)
+      Acl[p][r] := NULL;
+    }
+    
+    macro Use(p, r)
+    {
+     if(Acl[p][r] = ALLOWED)
+      Acl[p][r] := IN_USE;
+    }
+        
+    fair process (AcmNext \in Processes)
+    variable Resource = 1;
+    {
+        s0: while(TRUE)
+        {
+         s1: Resource := 1;
+         s2: Acl2 := Acl;
+         
+         either { a: Request(self, Resource); }
+         or { b: Decide(self, Resource); }
+         or { c: Revoke(self, Resource); }
+         or { d: Use(self, Resource); };
+         
+         N: Resource := Resource + 1;
+         
+         if(Resource \in Resources)
+          goto s1;
+        }
+    }
+}
 
-decide(a, p) == /\ \E c \in Consent:
-                   ACL' = [ACL EXCEPT ![a] = [ACL[a] EXCEPT ![p] = c]]
-                   
-use(a, p) == /\ ACL[a][p] = ALLOW
-             /\ Resource' = [Resource EXCEPT ![a] = [Resource[a] EXCEPT ![p] = TRUE]]
-             /\ UNCHANGED <<ACL>>
-                   
-ask(a, p) == IF ACL[a][p] = NULL
-                THEN /\ decide(a, p)
-                     /\ UNCHANGED <<Resource>>
-             ELSE
-                /\ UNCHANGED <<ACL, Resource>>
+***)
+\* BEGIN TRANSLATION (chksum(pcal) = "815326e1" /\ chksum(tla) = "5b152e55")
+VARIABLES Acl, Acl2, pc, Resource
 
-Init == /\ ACL = [a \in Apps |-> [p \in Perms |-> NULL]]
-        /\ Resource = [a \in Apps |-> [p \in Perms |-> FALSE]]
+vars == << Acl, Acl2, pc, Resource >>
 
-Next == \/ \E a \in Apps : \E p \in Perms: \/ ask(a, p)
-                                           \/ use(a, p)
+ProcSet == (Processes)
 
-vars == <<ACL, Resource>>
+Init == (* Global variables *)
+        /\ Acl = [a \in Processes |-> [r \in Resources |-> NULL]]
+        /\ Acl2 = [a \in Processes |-> [r \in Resources |-> NULL]]
+        (* Process AcmNext *)
+        /\ Resource = [self \in Processes |-> 1]
+        /\ pc = [self \in ProcSet |-> "s0"]
 
-Authorized == [] ~(/\ \E a \in Apps : \E p \in Perms :
-                      /\ Resource[a][p] = TRUE
-                      /\ ACL[a][p] # ALLOW)
+s0(self) == /\ pc[self] = "s0"
+            /\ pc' = [pc EXCEPT ![self] = "s1"]
+            /\ UNCHANGED << Acl, Acl2, Resource >>
 
-Spec == Init /\ [][Next]_vars /\ Authorized
+s1(self) == /\ pc[self] = "s1"
+            /\ Resource' = [Resource EXCEPT ![self] = 1]
+            /\ pc' = [pc EXCEPT ![self] = "s2"]
+            /\ UNCHANGED << Acl, Acl2 >>
+
+s2(self) == /\ pc[self] = "s2"
+            /\ Acl2' = Acl
+            /\ \/ /\ pc' = [pc EXCEPT ![self] = "a"]
+               \/ /\ pc' = [pc EXCEPT ![self] = "b"]
+               \/ /\ pc' = [pc EXCEPT ![self] = "c"]
+               \/ /\ pc' = [pc EXCEPT ![self] = "d"]
+            /\ UNCHANGED << Acl, Resource >>
+
+a(self) == /\ pc[self] = "a"
+           /\ IF Acl[self][Resource[self]] = NULL
+                 THEN /\ Acl' = [Acl EXCEPT ![self][Resource[self]] = REQUESTED]
+                 ELSE /\ TRUE
+                      /\ Acl' = Acl
+           /\ pc' = [pc EXCEPT ![self] = "N"]
+           /\ UNCHANGED << Acl2, Resource >>
+
+b(self) == /\ pc[self] = "b"
+           /\ IF Acl[self][Resource[self]] = REQUESTED
+                 THEN /\ \E b \in Boolean:
+                           IF b = TRUE
+                              THEN /\ Acl' = [Acl EXCEPT ![self][Resource[self]] = ALLOWED]
+                              ELSE /\ Acl' = [Acl EXCEPT ![self][Resource[self]] = REJECTED]
+                 ELSE /\ TRUE
+                      /\ Acl' = Acl
+           /\ pc' = [pc EXCEPT ![self] = "N"]
+           /\ UNCHANGED << Acl2, Resource >>
+
+c(self) == /\ pc[self] = "c"
+           /\ IF Acl[self][Resource[self]] = ALLOWED
+                 THEN /\ Acl' = [Acl EXCEPT ![self][Resource[self]] = NULL]
+                 ELSE /\ TRUE
+                      /\ Acl' = Acl
+           /\ pc' = [pc EXCEPT ![self] = "N"]
+           /\ UNCHANGED << Acl2, Resource >>
+
+d(self) == /\ pc[self] = "d"
+           /\ IF Acl[self][Resource[self]] = ALLOWED
+                 THEN /\ Acl' = [Acl EXCEPT ![self][Resource[self]] = IN_USE]
+                 ELSE /\ TRUE
+                      /\ Acl' = Acl
+           /\ pc' = [pc EXCEPT ![self] = "N"]
+           /\ UNCHANGED << Acl2, Resource >>
+
+N(self) == /\ pc[self] = "N"
+           /\ Resource' = [Resource EXCEPT ![self] = Resource[self] + 1]
+           /\ IF Resource'[self] \in Resources
+                 THEN /\ pc' = [pc EXCEPT ![self] = "s1"]
+                 ELSE /\ pc' = [pc EXCEPT ![self] = "s0"]
+           /\ UNCHANGED << Acl, Acl2 >>
+
+AcmNext(self) == s0(self) \/ s1(self) \/ s2(self) \/ a(self) \/ b(self)
+                    \/ c(self) \/ d(self) \/ N(self)
+
+Next == (\E self \in Processes: AcmNext(self))
+
+Spec == /\ Init /\ [][Next]_vars
+        /\ \A self \in Processes : WF_vars(AcmNext(self))
+
+\* END TRANSLATION 
+
+AcmTypeOK == /\ Acl \in [Processes -> [Resources -> ResourceStatus]]
+             /\ Acl2 \in [Processes -> [Resources -> ResourceStatus]]
+
+AcmConsistent == ~(\E p \in Processes:
+                   \E r \in Resources:
+                        Acl[p][r] = IN_USE /\ Acl2[p][r] # ALLOWED /\ Acl2[p][r] # IN_USE)
+
+AcmLiveness == <> (\E p \in Processes:
+                   \E r \in Resources:
+                        Acl[p][r] = REQUESTED ~> Acl[p][r] = ALLOWED \/ Acl[p][r] = REJECTED)
 
 =============================================================================
 \* Modification History
-\* Last modified Thu Mar 23 14:10:47 GMT+03:30 2023 by Amirhosein
+\* Last modified Fri May 26 14:23:17 GMT+03:30 2023 by Amirhosein
 \* Created Thu Mar 23 07:45:26 GMT+03:30 2023 by Amirhosein
