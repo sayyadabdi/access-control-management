@@ -1,7 +1,5 @@
 \batchmode %% Suppresses most terminal output.
 \documentclass{article}
-\usepackage{color}
-\definecolor{boxshade}{gray}{0.85}
 \setlength{\textwidth}{360pt}
 \setlength{\textheight}{541pt}
 \usepackage{latexsym}
@@ -938,289 +936,91 @@
 
 \begin{document}
 \tlatex
-\setboolean{shading}{true}
-\@x{}\moduleLeftDash\@xx{ {\MODULE} CompositionalSpec}\moduleRightDash\@xx{}%
-\@x{ {\EXTENDS} Naturals ,\, Sequences ,\, TLC}%
+ \@x{}\moduleLeftDash\@xx{ {\MODULE}
+ AccessControlManagement}\moduleRightDash\@xx{}%
+\@x{ {\EXTENDS} Naturals ,\, Sequences}%
 \@pvspace{8.0pt}%
-\@x{ {\CONSTANT} Apps ,\, Permissions}%
+\@x{ {\CONSTANTS} Processes ,\, Resources}%
 \@pvspace{8.0pt}%
-\@x{ EnvironmentId \.{\defeq}\@w{EnvironmentId}}%
-\@x{ ApsId \.{\defeq}\@w{ApsId}}%
-\@x{ MaxAllowedUpdates \.{\defeq} 2}%
+\@x{ NULL \.{\defeq}\@w{NULL}}%
+\@x{ ALLOWED \.{\defeq}\@w{ALLOWED}}%
+\@x{ REJECTED \.{\defeq}\@w{REJECTED}}%
+\@x{ REQUESTED \.{\defeq}\@w{REQUESTED}}%
+\@x{ IN\_USE \.{\defeq}\@w{IN\_USE}}%
 \@pvspace{8.0pt}%
-\@x{}%
-\@y{%
- \ensuremath{\.{\stst} {\CONSTANTS} \.{\stst}
-}}%
-\@xx{}%
-\@x{ Null \.{\defeq}\@w{NULL}}%
-\@x{ PERMISSION\_DENIED \.{\defeq}\@w{PERMISSION\_DENIED}}%
-\@x{ PERMISSION\_ALLOWED \.{\defeq}\@w{PERMISSION\_ALLOWED}}%
-\@x{ PERMISSION\_ONLY\_ONCE \.{\defeq}\@w{PERMISSION\_ONLY\_ONCE}}%
- \@x{ PERMISSION\_WHILE\_USING\_APP
- \.{\defeq}\@w{PERMISSION\_WHILE\_USING\_APP}}%
-\@x{ ACTION\_RECORD\_AUDIO \.{\defeq}\@w{ACTION\_RECORD\_AUDIO}}%
-\@x{ DATUM\_SYSTEM\_STATE \.{\defeq}\@w{DATUM\_SYSTEM\_STATE}}%
-\@x{ PERMISSION\_TYPE\_URI \.{\defeq}\@w{PERMISSION\_TYPE\_URI}}%
-\@x{ PERMISSION\_TYPE\_CUSTOM \.{\defeq}\@w{PERMISSION\_TYPE\_CUSTOM}}%
- \@x{ PERMISSION\_TYPE\_NORMAL\@s{0.57}
- \.{\defeq}\@w{PERMISSION\_TYPE\_NORMAL}}%
-\@x{ PERMISSION\_TYPE\_RUNTIME \.{\defeq}\@w{PERMISSION\_TYPE\_RUNTIME}}%
- \@x{ PERMISSION\_TYPE\_SPECIAL\@s{5.96}
- \.{\defeq}\@w{PERMISSION\_TYPE\_SPECIAL}}%
-\@x{ PERMISSION\_TYPE\_SIGNATURE \.{\defeq}\@w{PERMISSION\_TYPE\_SIGNATURE}}%
-\@x{ PROTECTION\_LEVEL\_NORMAL \.{\defeq}\@w{PROTECTION\_LEVEL\_NORMAL}}%
- \@x{ PROTECTION\_LEVEL\_APP\_OP\@s{3.06}
- \.{\defeq}\@w{PROTECTION\_LEVEL\_APP\_OP}}%
- \@x{ PROTECTION\_LEVEL\_SIGNATURE\@s{4.45}
- \.{\defeq}\@w{PROTECTION\_LEVEL\_SIGNATURE}}%
- \@x{ PROTECTION\_LEVEL\_DANGEROUS
- \.{\defeq}\@w{PROTECTION\_LEVEL\_DANGEROUS}}%
-\@x{}%
-\@y{%
- \ensuremath{\.{\stst} END} OF CONSTANTS \ensuremath{\.{\stst}
-}}%
-\@xx{}%
-\@pvspace{8.0pt}%
-\@x{}%
-\@y{%
- \ensuremath{\.{\stst} ENUMS \.{\stst}
-}}%
-\@xx{}%
-\@x{ Boolean \.{\defeq} \{ {\TRUE} ,\, {\FALSE} ,\, Null \}}%
-\@x{ DatumType \.{\defeq} \{ DATUM\_SYSTEM\_STATE \}}%
-\@x{ ActionType \.{\defeq} \{ ACTION\_RECORD\_AUDIO \}}%
- \@x{ ConsentType \.{\defeq} \{ PERMISSION\_DENIED ,\, PERMISSION\_ALLOWED
- ,\,}%
-\@x{\@s{80.60} PERMISSION\_ONLY\_ONCE ,\, PERMISSION\_WHILE\_USING\_APP \}}%
- \@x{ ProtectionLevel \.{\defeq} \{ PROTECTION\_LEVEL\_NORMAL ,\,
- PROTECTION\_LEVEL\_SIGNATURE ,\,}%
- \@x{\@s{91.77} PROTECTION\_LEVEL\_DANGEROUS ,\, PROTECTION\_LEVEL\_APP\_OP
- \}}%
- \@x{ PermissionType \.{\defeq} \{ PERMISSION\_TYPE\_NORMAL ,\,
- PERMISSION\_TYPE\_SIGNATURE ,\,}%
-\@x{\@s{93.90} PERMISSION\_TYPE\_RUNTIME ,\, PERMISSION\_TYPE\_SPECIAL ,\,}%
-\@x{\@s{93.90} PERMISSION\_TYPE\_URI ,\, PERMISSION\_TYPE\_CUSTOM \}}%
-\@x{}%
-\@y{%
- \ensuremath{\.{\stst} END} OF \ensuremath{ENUMS \.{\stst}
-}}%
-\@xx{}%
+\@x{ Boolean \.{\defeq} \{ {\TRUE} ,\, {\FALSE} \}}%
+ \@x{ ResourceStatus \.{\defeq} \{ NULL ,\, REQUESTED ,\, ALLOWED ,\, REJECTED
+ ,\, IN\_USE \}}%
 \@pvspace{8.0pt}%
 \pcalsymbolstrue
-\pcalshadingtrue
 \csyntaxtrue
 \@x{}%
 \@z{%
  \ensuremath{\.{\stst}
 }}%
-\@xx{\@s{16.4} {\p@mmalgorithm} Universe}%
+\@xx{\@s{16.4} {\p@mmalgorithm} AccessControlManagement}%
 \@x{ {\p@lbrace}}%
-\@x{\@s{16.4} {\p@variables} env\_vars \.{=}}%
- \@x{\@s{16.4} [ actions \.{\mapsto} \{ \} ,\, permission\_groups \.{\mapsto}
- \{ \} ,\,}%
-\@x{\@s{19.17} applications \.{\mapsto}}%
- \@x{\@s{23.27} [ a \.{\in} Apps\@s{3.53} \.{\mapsto} [ installed \.{\mapsto}
- {\FALSE} ,\, version \.{\mapsto} 0 ,\, terminated \.{\mapsto} {\FALSE} ] ]
- ,\,}%
- \@x{\@s{26.05} data \.{\mapsto} \{ \} ,\, permissions \.{\mapsto} [ p \.{\in}
- Permissions \.{\mapsto} [ a \.{\in} Apps \.{\mapsto} Null ] ] ]
- {\p@semicolon}}%
+ \@x{\@s{16.4} {\p@variables} Acl \.{=} [ a \.{\in} Processes \.{\mapsto} [ r
+ \.{\in} Resources \.{\mapsto} NULL ] ] {\p@semicolon}}%
+ \@x{\@s{64.16} Acl2 \.{=} [ a \.{\in} Processes \.{\mapsto} [ r \.{\in}
+ Resources \.{\mapsto} NULL ] ] {\p@semicolon}}%
 \@pvspace{8.0pt}%
-\@x{\@s{16.4} app\_vars \.{=} [ a \.{\in} Apps \.{\mapsto}}%
- \@x{\@s{71.81} [ manifest \.{\mapsto} [ p \.{\in} Permissions \.{\mapsto}
- Null ] ,\,}%
- \@x{\@s{74.59} signature \.{\mapsto} \{ \} ,\, private\_keys \.{\mapsto} \{
- \} ,\, public\_key \.{\mapsto} \{ \} ,\,}%
- \@x{\@s{74.59} certificate \.{\mapsto} \{ \} ,\, package \.{\mapsto} \{ \}
- ,\, services \.{\mapsto} \{ \} ,\,}%
- \@x{\@s{74.59} receivers \.{\mapsto} \{ \} ,\, activities \.{\mapsto} \{ \}
- ,\, content\_providers \.{\mapsto} \{ \} ] ] {\p@semicolon}}%
-\@pvspace{8.0pt}%
- \@x{\@s{16.4} aps\_vars\@s{0.83} \.{=} [ permission\_history \.{\mapsto} \{
- \} ,\,}%
- \@x{\@s{71.81} app\_permissions \.{\mapsto} [ a \.{\in} Apps \.{\mapsto} [ p
- \.{\in} Permissions \.{\mapsto} Null ] ] ] {\p@semicolon}}%
-\@pvspace{8.0pt}%
-\@x{\@s{16.4} permission\_type \.{=} Null}%
-\@pvspace{8.0pt}%
- \@x{\@s{16.4} {\p@procedure} installApp ( app ) \{
- INSTALL\_APP\@s{.5}\textrm{:}\@s{3} env\_vars . applications [ app ] .
- installed \.{:=} {\TRUE} {\p@semicolon} {\p@return} {\p@semicolon} \}}%
- \@x{\@s{16.4} {\p@procedure} uninstallApp ( app ) \{
- UNINSTALL\_APP\@s{.5}\textrm{:}\@s{3} env\_vars . applications [ app ] .
- installed \.{:=} {\FALSE} {\p@semicolon} {\p@return} {\p@semicolon} \}}%
- \@x{\@s{16.4} {\p@procedure} updateApp ( app ) \{
- UPDATE\_APP\@s{.5}\textrm{:}\@s{3} env\_vars . applications [ app ] .
- version \.{:=} env\_vars . applications [ app ] . version \.{+} 1
- {\p@semicolon} {\p@return} {\p@semicolon} \}}%
- \@x{\@s{16.4} {\p@procedure} terminate ( app ) \{
- TERMINATED\@s{.5}\textrm{:}\@s{3} env\_vars . applications [ self ] .
- terminated \.{:=} {\TRUE} {\p@semicolon} {\p@return} {\p@semicolon} \}}%
- \@x{\@s{16.4} {\p@procedure} declarePermission ( app ,\, perm ) \{
- DECLARE\_PERMISSION\@s{.5}\textrm{:}\@s{3} app\_vars [ app ] . manifest [
- perm ] \.{:=} {\TRUE} {\p@semicolon} {\p@return} {\p@semicolon} \}}%
- \@x{\@s{16.4} {\p@procedure} revokePermission ( app ) \{
- REVOKE\_PERMISSION\@s{.5}\textrm{:}\@s{3} aps\_vars . app\_permissions [ app
- ] \.{:=} [ p \.{\in} Permissions \.{\mapsto} Null ] {\p@semicolon}
- {\p@return} {\p@semicolon} \}}%
-\@x{\@s{16.4} {\p@procedure} requestPermission ( app ,\, perm )}%
-\@x{\@s{16.4} \{}%
-\@x{\@s{20.5} REQUEST\_PERMISSION\@s{.5}\textrm{:}\@s{3}}%
- \@x{\@s{20.5} {\p@if} ( aps\_vars . app\_permissions [ app ] [ perm ]
- \.{\neq} Null )}%
-\@x{\@s{34.93} {\p@return} {\p@semicolon}}%
-\@pvspace{8.0pt}%
-\@x{\@s{20.5} SWITCH\_PERMISSION\@s{.5}\textrm{:}\@s{3}}%
-\@x{\@s{20.5} {\p@with} ( x \.{\in} PermissionType )}%
-\@x{\@s{20.5} \{}%
-\@x{\@s{24.6} permission\_type \.{:=} x {\p@semicolon}}%
-\@pvspace{8.0pt}%
- \@x{\@s{24.6} {\p@if} ( permission\_type \.{=} PERMISSION\_TYPE\_NORMAL
- \.{\lor} permission\_type \.{=} PERMISSION\_TYPE\_SIGNATURE}%
-\@x{\@s{39.03} \.{\lor} permission\_type \.{=} PERMISSION\_TYPE\_SPECIAL )}%
-\@x{\@s{24.6} \{}%
-\@x{\@s{28.7}}%
-\@y{\@s{0}%
- out of scope
-}%
-\@xx{}%
-\@x{\@s{28.7} {\p@skip} {\p@semicolon}}%
-\@x{\@s{24.6} \}}%
- \@x{\@s{24.6} {\p@else} {\p@if} ( permission\_type \.{=}
- PERMISSION\_TYPE\_RUNTIME \.{\lor} permission\_type \.{=}
- PERMISSION\_TYPE\_URI}%
-\@x{\@s{36.9} \.{\lor} permission\_type \.{=} PERMISSION\_TYPE\_CUSTOM )}%
-\@x{\@s{24.6} \{}%
-\@x{\@s{28.7} {\p@with} ( r \.{\in} \{ {\TRUE} ,\, {\FALSE} \} )}%
-\@x{\@s{28.7} \{}%
- \@x{\@s{32.8} aps\_vars . app\_permissions [ app ] [ perm ] \.{:=} Null
- {\p@semicolon}}%
-\@x{\@s{28.7} \}}%
-\@x{\@s{24.6} \}}%
-\@x{\@s{20.5} \} {\p@semicolon}}%
-\@x{\@s{20.5} {\p@return} {\p@semicolon}}%
-\@x{\@s{16.4} \}}%
-\@x{\@s{16.4}}%
-\@y{%
- procedure \ensuremath{grantUriPermission(app) \{ GRANT\_URI\_PERMISSION\.{:}
- return; \}
-}}%
-\@xx{}%
-\@x{\@s{16.4}}%
-\@y{%
- procedure \ensuremath{revokeUriPermission(app) \{
- REVOKE\_URI\_PERMISSION\.{:} return; \}
-}}%
-\@xx{}%
-\@x{\@s{16.4}}%
-\@y{%
- procedure \ensuremath{checkUriPermission(app) \{ CHECK\_URI\_PERMISSION\.{:}
- return; \}
-}}%
-\@xx{}%
-\@x{\@s{16.4}}%
-\@y{%
- procedure \ensuremath{checkSelfPermission(app) \{
- CHECK\_SELF\_PERMISSION\.{:} return; \}
-}}%
-\@xx{}%
-\@x{\@s{16.4}}%
-\@y{%
- procedure \ensuremath{shouldShowRequestPermissionRationale(app) \{
- SHOULD\_SHOW\_REQUEST\_PERMISSION\_RATIONALE\.{:} return; \}
-}}%
-\@xx{}%
-\@x{\@s{16.4}}%
-\@y{%
- procedure \ensuremath{requestMultiplePermissions(app) \{
- REQUEST\_MULTIPLE\_PERMISSIONS\.{:} return; \}
-}}%
-\@xx{}%
-\@x{\@s{16.4}}%
-\@y{%
- procedure \ensuremath{removeUnusedPermissions(app) \{
- REMOVE\_UNUSED\_PERMISSIONS\.{:} return; \}
-}}%
-\@xx{}%
-\@pvspace{8.0pt}%
-\@x{\@s{16.4} {\p@fair} {\p@process} ( EnvNext \.{=} EnvironmentId )}%
-\@x{\@s{32.8} {\p@variables} applications {\p@semicolon}}%
+\@x{\@s{16.4} {\p@macro} Request {\p@lparen} p ,\, r {\p@rparen}}%
 \@x{\@s{16.4} {\p@lbrace}}%
- \@x{\@s{32.8} EnvBegin\@s{.5}\textrm{:-}\@s{3} {\p@while} {\p@lparen} {\TRUE}
- {\p@rparen}}%
-\@x{\@s{32.8} {\p@lbrace}}%
-\@x{\@s{49.19} {\p@either} {\p@lbrace} {\p@skip} {\p@semicolon} {\p@rbrace}}%
-\@x{\@s{49.19} {\p@or}}%
-\@x{\@s{49.19} {\p@lbrace}}%
-\@x{\@s{57.39} {\p@with} {\p@lparen} a \.{\in} Apps {\p@rparen}}%
-\@x{\@s{57.39} {\p@lbrace}}%
-\@x{\@s{61.49} {\p@call} revokePermission ( a ) {\p@semicolon}}%
-\@x{\@s{57.39} {\p@rbrace}}%
-\@x{\@s{49.19} {\p@rbrace}}%
-\@x{\@s{32.8} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{20.5} {\p@if} {\p@lparen} Acl [ p ] [ r ] \.{=} NULL {\p@rparen}}%
+\@x{\@s{24.6} Acl [ p ] [ r ] \.{:=} REQUESTED {\p@semicolon}}%
 \@x{\@s{16.4} {\p@rbrace}}%
 \@pvspace{8.0pt}%
- \@x{\@s{16.4} {\p@fair} {\p@process} {\p@lparen} AppNext \.{\in} Apps
- {\p@rparen}}%
-\@x{\@s{32.8} {\p@variables} i {\p@semicolon}}%
+\@x{\@s{16.4} {\p@macro} Decide {\p@lparen} p ,\, r {\p@rparen}}%
 \@x{\@s{16.4} {\p@lbrace}}%
- \@x{\@s{32.8} AppBegin\@s{.5}\textrm{:-}\@s{3} {\p@while} {\p@lparen}
- env\_vars . applications [ self ] . terminated \.{\neq} {\TRUE} {\p@rparen}}%
-\@x{\@s{32.8} {\p@lbrace}}%
-\@x{\@s{36.89} {\p@either}}%
-\@x{\@s{36.89} {\p@lbrace}}%
-\@x{\@s{40.99} {\p@call} terminate ( self ) {\p@semicolon}}%
-\@x{\@s{36.89} {\p@rbrace}}%
-\@x{\@s{36.89} {\p@or}}%
-\@x{\@s{36.89} {\p@lbrace}}%
- \@x{\@s{40.99} {\p@if} {\p@lparen} env\_vars . applications [ self ] .
- installed \.{=} {\TRUE} {\p@rparen}}%
-\@x{\@s{40.99} {\p@lbrace}}%
-\@x{\@s{45.09} {\p@either}}%
-\@x{\@s{45.09} {\p@lbrace}}%
-\@x{\@s{53.29} {\p@call} uninstallApp ( self ) {\p@semicolon}}%
-\@x{\@s{45.09} {\p@rbrace}}%
-\@x{\@s{45.09} {\p@or}}%
-\@x{\@s{45.09} {\p@lbrace}}%
- \@x{\@s{49.19} {\p@if} {\p@lparen} env\_vars . applications [ self ] .
- version \.{<} MaxAllowedUpdates {\p@rparen}}%
-\@x{\@s{49.19} {\p@lbrace}}%
-\@x{\@s{53.29} {\p@call} updateApp ( self ) {\p@semicolon}}%
-\@x{\@s{49.19} {\p@rbrace}}%
-\@x{\@s{45.09} {\p@rbrace}}%
-\@x{\@s{40.99} {\p@rbrace}}%
-\@x{\@s{40.99} {\p@else}}%
-\@x{\@s{40.99} {\p@lbrace}}%
- \@x{\@s{45.09} DECLARING\_PERMISSION\@s{.5}\textrm{:}\@s{3} {\p@with}
- {\p@lparen} p \.{\in} Permissions {\p@rparen} {\p@lbrace} {\p@call}
- declarePermission ( self ,\, p ) {\p@semicolon} {\p@rbrace} {\p@semicolon}}%
- \@x{\@s{45.09} INSTALLING\_APP\@s{.5}\textrm{:}\@s{3} {\p@call} installApp (
- self ) {\p@semicolon}}%
-\@x{\@s{40.99} {\p@rbrace}}%
-\@x{\@s{36.89} {\p@rbrace}}%
-\@x{\@s{32.8} {\p@rbrace} {\p@semicolon}}%
+ \@x{\@s{20.5} {\p@if} {\p@lparen} Acl [ p ] [ r ] \.{=} REQUESTED
+ {\p@rparen}}%
+\@x{\@s{24.6} {\p@with} {\p@lparen} b \.{\in} Boolean {\p@rparen}}%
+\@x{\@s{24.6} {\p@lbrace}}%
+\@x{\@s{28.7} {\p@if} {\p@lparen} b \.{=} {\TRUE} {\p@rparen}}%
+\@x{\@s{32.8} Acl [ p ] [ r ] \.{:=} ALLOWED {\p@semicolon}}%
+\@x{\@s{28.7} {\p@else}}%
+\@x{\@s{32.8} Acl [ p ] [ r ] \.{:=} REJECTED {\p@semicolon}}%
+\@x{\@s{24.6} {\p@rbrace}}%
 \@x{\@s{16.4} {\p@rbrace}}%
 \@pvspace{8.0pt}%
- \@x{\@s{16.4} {\p@fair} {\p@process} {\p@lparen} ApsNext \.{=} ApsId
- {\p@rparen}}%
-\@x{\@s{32.8} {\p@variables} i {\p@semicolon}}%
+\@x{\@s{16.4} {\p@macro} Revoke {\p@lparen} p ,\, r {\p@rparen}}%
 \@x{\@s{16.4} {\p@lbrace}}%
- \@x{\@s{32.8} ApsBegin\@s{.5}\textrm{:-}\@s{3} {\p@while} {\p@lparen} {\TRUE}
+\@x{\@s{20.5} {\p@if} {\p@lparen} Acl [ p ] [ r ] \.{=} ALLOWED {\p@rparen}}%
+\@x{\@s{24.6} Acl [ p ] [ r ] \.{:=} NULL {\p@semicolon}}%
+\@x{\@s{16.4} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+\@x{\@s{16.4} {\p@macro} Use {\p@lparen} p ,\, r {\p@rparen}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+\@x{\@s{20.5} {\p@if} {\p@lparen} Acl [ p ] [ r ] \.{=} ALLOWED {\p@rparen}}%
+\@x{\@s{24.6} Acl [ p ] [ r ] \.{:=} IN\_USE {\p@semicolon}}%
+\@x{\@s{16.4} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{16.4} {\p@fair} {\p@process} {\p@lparen} AcmNext \.{\in} Processes
+ {\p@rparen}}%
+\@x{\@s{16.4} {\p@variable} Resource \.{=} 1 {\p@semicolon}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+ \@x{\@s{32.8} s0\@s{.5}\textrm{:}\@s{3} {\p@while} {\p@lparen} {\TRUE}
  {\p@rparen}}%
 \@x{\@s{32.8} {\p@lbrace}}%
-\@x{\@s{36.89} {\p@either} {\p@lbrace} {\p@skip} {\p@semicolon} {\p@rbrace}}%
-\@x{\@s{36.89} {\p@or}}%
-\@x{\@s{36.89} {\p@lbrace}}%
-\@x{\@s{40.99} {\p@with} {\p@lparen} a \.{\in} Apps {\p@rparen}}%
-\@x{\@s{40.99} {\p@lbrace}}%
-\@x{\@s{45.09} {\p@with} {\p@lparen} p \.{\in} Permissions {\p@rparen}}%
-\@x{\@s{45.09} {\p@lbrace}}%
-\@x{\@s{49.19} {\p@call} requestPermission ( a ,\, p ) {\p@semicolon}}%
-\@x{\@s{45.09} {\p@rbrace}}%
-\@x{\@s{40.99} {\p@rbrace}}%
-\@x{\@s{36.89} {\p@rbrace}}%
-\@x{\@s{32.8} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{36.89} s1\@s{.5}\textrm{:}\@s{3} Resource \.{:=} 1 {\p@semicolon}}%
+\@x{\@s{36.89} s2\@s{.5}\textrm{:}\@s{3} Acl2 \.{:=} Acl {\p@semicolon}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{36.89} {\p@either} {\p@lbrace} a\@s{.5}\textrm{:}\@s{3} Request (
+ self ,\, Resource ) {\p@semicolon} {\p@rbrace}}%
+ \@x{\@s{36.89} {\p@or} {\p@lbrace} b\@s{.5}\textrm{:}\@s{3} Decide ( self ,\,
+ Resource )\@s{14.64} {\p@semicolon} {\p@rbrace}}%
+ \@x{\@s{36.89} {\p@or} {\p@lbrace} c\@s{.5}\textrm{:}\@s{3} Revoke ( self ,\,
+ Resource )\@s{13.42} {\p@semicolon} {\p@rbrace}}%
+ \@x{\@s{36.89} {\p@or}\@s{1.03} {\p@lbrace} d\@s{.5}\textrm{:}\@s{3} Use (
+ self ,\, Resource )\@s{3.23} {\p@semicolon} {\p@rbrace} {\p@semicolon}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{36.89} N\@s{.5}\textrm{:}\@s{3} Resource \.{:=} Resource \.{+} 1
+ {\p@semicolon}}%
+\@pvspace{8.0pt}%
+\@x{\@s{36.89} {\p@if} {\p@lparen} Resource \.{\in} Resources {\p@rparen}}%
+\@x{\@s{40.99} {\p@goto} s1 {\p@semicolon}}%
+\@x{\@s{32.8} {\p@rbrace}}%
 \@x{\@s{16.4} {\p@rbrace}}%
 \@x{ {\p@rbrace}}%
 \@y{}%
@@ -1234,547 +1034,150 @@
 \end{lcom}%
 \@x{}%
 \@y{\@s{0}%
- BEGIN TRANSLATION (\ensuremath{chksum(pcal) \.{=}} ``\ensuremath{8e0c5402}''
- \ensuremath{\.{\land} chksum(tla) \.{=}} ``\ensuremath{9d9aef41}'')
+ BEGIN TRANSLATION (\ensuremath{chksum(pcal) \.{=}} ``\ensuremath{815326e1}''
+ \ensuremath{\.{\land} chksum(tla) \.{=}} ``\ensuremath{5b152e55}'')
 }%
 \@xx{}%
-\@x{}%
-\@y{\@s{0}%
- Process variable \ensuremath{i} of process \ensuremath{AppNext} at line 121
- col 19 changed to \ensuremath{i\_
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{0}%
- Parameter \ensuremath{app} of procedure \ensuremath{installApp} at line 62
- col 26 changed to \ensuremath{app\_
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{0}%
- Parameter \ensuremath{app} of procedure \ensuremath{uninstallApp} at line 63
- col 28 changed to \ensuremath{app\_u
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{0}%
- Parameter \ensuremath{app} of procedure \ensuremath{updateApp} at line 64
- col 25 changed to \ensuremath{app\_up
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{0}%
- Parameter \ensuremath{app} of procedure terminate at line 65 col 25 changed
- to \ensuremath{app\_t
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{0}%
- Parameter \ensuremath{app} of procedure \ensuremath{declarePermission} at
- line 66 col 33 changed to \ensuremath{app\_d
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{0}%
- Parameter \ensuremath{perm} of procedure \ensuremath{declarePermission} at
- line 66 col 38 changed to \ensuremath{perm\_
-}}%
-\@xx{}%
-\@x{}%
-\@y{\@s{0}%
- Parameter \ensuremath{app} of procedure \ensuremath{revokePermission} at
- line 67 col 32 changed to \ensuremath{app\_r
-}}%
-\@xx{}%
-\@x{ {\CONSTANT} defaultInitValue}%
- \@x{ {\VARIABLES} env\_vars ,\, app\_vars ,\, aps\_vars ,\, permission\_type
- ,\, pc ,\, stack ,\, app\_ ,\,}%
- \@x{\@s{51.42} app\_u ,\, app\_up ,\, app\_t ,\, app\_d ,\, perm\_ ,\, app\_r
- ,\, app ,\, perm ,\, applications ,\,}%
-\@x{\@s{51.42} i\_ ,\, i}%
+\@x{ {\VARIABLES} Acl ,\, Acl2 ,\, pc ,\, Resource}%
 \@pvspace{8.0pt}%
- \@x{ vars \.{\defeq} {\langle} env\_vars ,\, app\_vars ,\, aps\_vars ,\,
- permission\_type ,\, pc ,\, stack ,\, app\_ ,\,}%
- \@x{\@s{41.61} app\_u ,\, app\_up ,\, app\_t ,\, app\_d ,\, perm\_ ,\, app\_r
- ,\, app ,\, perm ,\, applications ,\,}%
-\@x{\@s{41.61} i\_ ,\, i {\rangle}}%
+\@x{ vars \.{\defeq} {\langle} Acl ,\, Acl2 ,\, pc ,\, Resource {\rangle}}%
 \@pvspace{8.0pt}%
- \@x{ ProcSet \.{\defeq} \{ EnvironmentId \} \.{\cup} ( Apps ) \.{\cup} \{
- ApsId \}}%
+\@x{ ProcSet \.{\defeq} ( Processes )}%
 \@pvspace{8.0pt}%
 \@x{ Init \.{\defeq}}%
 \@y{\@s{0}%
  Global variables
 }%
 \@xx{}%
- \@x{\@s{35.70} \.{\land} env\_vars\@s{0.06} \.{=} [ actions \.{\mapsto} \{ \}
- ,\, permission\_groups \.{\mapsto} \{ \} ,\,}%
-\@x{\@s{102.22} applications \.{\mapsto}}%
- \@x{\@s{106.32} [ a \.{\in} Apps\@s{3.53} \.{\mapsto} [ installed \.{\mapsto}
- {\FALSE} ,\, version \.{\mapsto} 0 ,\, terminated \.{\mapsto} {\FALSE} ] ]
- ,\,}%
- \@x{\@s{109.10} data \.{\mapsto} \{ \} ,\, permissions \.{\mapsto} [ p
- \.{\in} Permissions \.{\mapsto} [ a \.{\in} Apps \.{\mapsto} Null ] ] ]}%
-\@x{\@s{35.70} \.{\land} app\_vars \.{=} [ a \.{\in} Apps \.{\mapsto}}%
- \@x{\@s{102.22} [ manifest \.{\mapsto} [ p \.{\in} Permissions \.{\mapsto}
- Null ] ,\,}%
- \@x{\@s{105.00} signature \.{\mapsto} \{ \} ,\, private\_keys \.{\mapsto} \{
- \} ,\, public\_key \.{\mapsto} \{ \} ,\,}%
- \@x{\@s{105.00} certificate \.{\mapsto} \{ \} ,\, package \.{\mapsto} \{ \}
- ,\, services \.{\mapsto} \{ \} ,\,}%
- \@x{\@s{105.00} receivers \.{\mapsto} \{ \} ,\, activities \.{\mapsto} \{ \}
- ,\, content\_providers \.{\mapsto} \{ \} ] ]}%
- \@x{\@s{35.70} \.{\land} aps\_vars\@s{0.83} \.{=} [ permission\_history
- \.{\mapsto} \{ \} ,\,}%
- \@x{\@s{102.22} app\_permissions \.{\mapsto} [ a \.{\in} Apps \.{\mapsto} [ p
- \.{\in} Permissions \.{\mapsto} Null ] ] ]}%
-\@x{\@s{35.70} \.{\land} permission\_type \.{=} Null}%
+ \@x{\@s{35.70} \.{\land} Acl \.{=} [ a \.{\in} Processes \.{\mapsto} [ r
+ \.{\in} Resources \.{\mapsto} NULL ] ]}%
+ \@x{\@s{35.70} \.{\land} Acl2 \.{=} [ a \.{\in} Processes \.{\mapsto} [ r
+ \.{\in} Resources \.{\mapsto} NULL ] ]}%
 \@x{\@s{35.70}}%
 \@y{\@s{0}%
- Procedure \ensuremath{installApp
+ Process \ensuremath{AcmNext
 }}%
 \@xx{}%
- \@x{\@s{35.70} \.{\land} app\_ \.{=} [ self \.{\in} ProcSet \.{\mapsto}
- defaultInitValue ]}%
-\@x{\@s{35.70}}%
-\@y{\@s{0}%
- Procedure \ensuremath{uninstallApp
-}}%
-\@xx{}%
- \@x{\@s{35.70} \.{\land} app\_u \.{=} [ self \.{\in} ProcSet \.{\mapsto}
- defaultInitValue ]}%
-\@x{\@s{35.70}}%
-\@y{\@s{0}%
- Procedure \ensuremath{updateApp
-}}%
-\@xx{}%
- \@x{\@s{35.70} \.{\land} app\_up \.{=} [ self \.{\in} ProcSet \.{\mapsto}
- defaultInitValue ]}%
-\@x{\@s{35.70}}%
-\@y{\@s{0}%
- Procedure terminate
-}%
-\@xx{}%
- \@x{\@s{35.70} \.{\land} app\_t \.{=} [ self \.{\in} ProcSet \.{\mapsto}
- defaultInitValue ]}%
-\@x{\@s{35.70}}%
-\@y{\@s{0}%
- Procedure \ensuremath{declarePermission
-}}%
-\@xx{}%
- \@x{\@s{35.70} \.{\land} app\_d\@s{0.25} \.{=} [ self \.{\in} ProcSet
- \.{\mapsto} defaultInitValue ]}%
- \@x{\@s{35.70} \.{\land} perm\_ \.{=} [ self \.{\in} ProcSet \.{\mapsto}
- defaultInitValue ]}%
-\@x{\@s{35.70}}%
-\@y{\@s{0}%
- Procedure \ensuremath{revokePermission
-}}%
-\@xx{}%
- \@x{\@s{35.70} \.{\land} app\_r \.{=} [ self \.{\in} ProcSet \.{\mapsto}
- defaultInitValue ]}%
-\@x{\@s{35.70}}%
-\@y{\@s{0}%
- Procedure \ensuremath{requestPermission
-}}%
-\@xx{}%
- \@x{\@s{35.70} \.{\land} app \.{=} [ self \.{\in} ProcSet \.{\mapsto}
- defaultInitValue ]}%
- \@x{\@s{35.70} \.{\land} perm \.{=} [ self \.{\in} ProcSet \.{\mapsto}
- defaultInitValue ]}%
-\@x{\@s{35.70}}%
-\@y{\@s{0}%
- Process \ensuremath{EnvNext
-}}%
-\@xx{}%
-\@x{\@s{35.70} \.{\land} applications \.{=} defaultInitValue}%
-\@x{\@s{35.70}}%
-\@y{\@s{0}%
- Process \ensuremath{AppNext
-}}%
-\@xx{}%
- \@x{\@s{35.70} \.{\land} i\_ \.{=} [ self \.{\in} Apps \.{\mapsto}
- defaultInitValue ]}%
-\@x{\@s{35.70}}%
-\@y{\@s{0}%
- Process \ensuremath{ApsNext
-}}%
-\@xx{}%
-\@x{\@s{35.70} \.{\land} i \.{=} defaultInitValue}%
- \@x{\@s{35.70} \.{\land} stack \.{=} [ self \.{\in} ProcSet \.{\mapsto}
- {\langle} {\rangle} ]}%
- \@x{\@s{35.70} \.{\land} pc \.{=} [ self \.{\in} ProcSet \.{\mapsto} {\CASE}
- self \.{=} EnvironmentId \.{\rightarrow}\@w{EnvBegin}}%
- \@x{\@s{160.39} {\Box}\@s{10.30} self \.{\in} Apps
- \.{\rightarrow}\@w{AppBegin}}%
- \@x{\@s{160.39} {\Box}\@s{10.30} self \.{=} ApsId
- \.{\rightarrow}\@w{ApsBegin} ]}%
+ \@x{\@s{35.70} \.{\land} Resource \.{=} [ self \.{\in} Processes \.{\mapsto}
+ 1 ]}%
+ \@x{\@s{35.70} \.{\land} pc \.{=} [ self \.{\in} ProcSet \.{\mapsto}\@w{s0}
+ ]}%
 \@pvspace{8.0pt}%
- \@x{ INSTALL\_APP ( self ) \.{\defeq} \.{\land} pc [ self ]
- \.{=}\@w{INSTALL\_APP}}%
- \@x{\@s{112.89} \.{\land} env\_vars \.{'} \.{=} [ env\_vars {\EXCEPT} {\bang}
- . applications [ app\_ [ self ] ] . installed \.{=} {\TRUE} ]}%
- \@x{\@s{112.89} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=} Head ( stack [ self ] ) . pc ]}%
- \@x{\@s{112.89} \.{\land} app\_ \.{'} \.{=} [ app\_ {\EXCEPT} {\bang} [ self
- ] \.{=} Head ( stack [ self ] ) . app\_ ]}%
- \@x{\@s{112.89} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
- ] \.{=} Tail ( stack [ self ] ) ]}%
- \@x{\@s{112.89} \.{\land} {\UNCHANGED} {\langle} app\_vars ,\, aps\_vars ,\,
- permission\_type ,\,}%
- \@x{\@s{186.48} app\_u ,\, app\_up ,\, app\_t ,\, app\_d ,\, perm\_ ,\,
- app\_r ,\,}%
-\@x{\@s{186.48} app ,\, perm ,\, applications ,\, i\_ ,\, i {\rangle}}%
-\@pvspace{8.0pt}%
-\@x{ installApp ( self ) \.{\defeq} INSTALL\_APP ( self )}%
-\@pvspace{8.0pt}%
- \@x{ UNINSTALL\_APP ( self ) \.{\defeq} \.{\land} pc [ self ]
- \.{=}\@w{UNINSTALL\_APP}}%
- \@x{\@s{127.76} \.{\land} env\_vars \.{'} \.{=} [ env\_vars {\EXCEPT} {\bang}
- . applications [ app\_u [ self ] ] . installed \.{=} {\FALSE} ]}%
- \@x{\@s{127.76} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=} Head ( stack [ self ] ) . pc ]}%
- \@x{\@s{127.76} \.{\land} app\_u \.{'} \.{=} [ app\_u {\EXCEPT} {\bang} [
- self ] \.{=} Head ( stack [ self ] ) . app\_u ]}%
- \@x{\@s{127.76} \.{\land} stack \.{'}\@s{3.79} \.{=} [ stack {\EXCEPT}
- {\bang} [ self ]\@s{3.79} \.{=} Tail ( stack [ self ] ) ]}%
- \@x{\@s{127.76} \.{\land} {\UNCHANGED} {\langle} app\_vars ,\, aps\_vars ,\,
- permission\_type ,\,}%
-\@x{\@s{201.35} app\_ ,\, app\_up ,\, app\_t ,\, app\_d ,\, perm\_ ,\,}%
- \@x{\@s{201.35} app\_r ,\, app ,\, perm ,\, applications ,\, i\_ ,\, i
+\@x{ s0 ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{s0}}%
+ \@x{\@s{53.00} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{s1} ]}%
+ \@x{\@s{53.00} \.{\land} {\UNCHANGED} {\langle} Acl ,\, Acl2 ,\, Resource
  {\rangle}}%
 \@pvspace{8.0pt}%
-\@x{ uninstallApp ( self ) \.{\defeq} UNINSTALL\_APP ( self )}%
+\@x{ s1 ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{s1}}%
+ \@x{\@s{53.00} \.{\land} Resource \.{'} \.{=} [ Resource {\EXCEPT} {\bang} [
+ self ] \.{=} 1 ]}%
+ \@x{\@s{53.00} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{s2} ]}%
+\@x{\@s{53.00} \.{\land} {\UNCHANGED} {\langle} Acl ,\, Acl2 {\rangle}}%
 \@pvspace{8.0pt}%
- \@x{ UPDATE\_APP ( self ) \.{\defeq} \.{\land} pc [ self ]
- \.{=}\@w{UPDATE\_APP}}%
- \@x{\@s{112.94} \.{\land} env\_vars \.{'} \.{=} [ env\_vars {\EXCEPT} {\bang}
- . applications [ app\_up [ self ] ] . version \.{=} env\_vars . applications
- [ app\_up [ self ] ] . version \.{+} 1 ]}%
- \@x{\@s{112.94} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=} Head ( stack [ self ] ) . pc ]}%
- \@x{\@s{112.94} \.{\land} app\_up \.{'} \.{=} [ app\_up {\EXCEPT} {\bang} [
- self ] \.{=} Head ( stack [ self ] ) . app\_up ]}%
- \@x{\@s{112.94} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
- ] \.{=} Tail ( stack [ self ] ) ]}%
- \@x{\@s{112.94} \.{\land} {\UNCHANGED} {\langle} app\_vars ,\, aps\_vars ,\,
- permission\_type ,\, app\_ ,\,}%
- \@x{\@s{186.53} app\_u ,\, app\_t ,\, app\_d ,\, perm\_ ,\, app\_r ,\, app
- ,\,}%
-\@x{\@s{186.53} perm ,\, applications ,\, i\_ ,\, i {\rangle}}%
+\@x{ s2 ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{s2}}%
+\@x{\@s{53.00} \.{\land} Acl2 \.{'} \.{=} Acl}%
+ \@x{\@s{53.00} \.{\land} \.{\lor} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT}
+ {\bang} [ self ] \.{=}\@w{a} ]}%
+ \@x{\@s{64.11} \.{\lor} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{b} ]}%
+ \@x{\@s{64.11} \.{\lor} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{c} ]}%
+ \@x{\@s{64.11} \.{\lor} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{d} ]}%
+\@x{\@s{53.00} \.{\land} {\UNCHANGED} {\langle} Acl ,\, Resource {\rangle}}%
 \@pvspace{8.0pt}%
-\@x{ updateApp ( self ) \.{\defeq} UPDATE\_APP ( self )}%
+\@x{ a ( self )\@s{3.19} \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{a}}%
+\@x{\@s{52.16} \.{\land} {\IF} Acl [ self ] [ Resource [ self ] ] \.{=} NULL}%
+ \@x{\@s{75.43} \.{\THEN} \.{\land} Acl \.{'} \.{=} [ Acl {\EXCEPT} {\bang} [
+ self ] [ Resource [ self ] ] \.{=} REQUESTED ]}%
+\@x{\@s{75.43} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{106.74} \.{\land} Acl \.{'} \.{=} Acl}%
+ \@x{\@s{52.16} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{N} ]}%
+\@x{\@s{52.16} \.{\land} {\UNCHANGED} {\langle} Acl2 ,\, Resource {\rangle}}%
 \@pvspace{8.0pt}%
- \@x{ TERMINATED ( self ) \.{\defeq} \.{\land} pc [ self ]
- \.{=}\@w{TERMINATED}}%
- \@x{\@s{113.68} \.{\land} env\_vars \.{'} \.{=} [ env\_vars {\EXCEPT} {\bang}
- . applications [ self ] . terminated \.{=} {\TRUE} ]}%
- \@x{\@s{113.68} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=} Head ( stack [ self ] ) . pc ]}%
- \@x{\@s{113.68} \.{\land} app\_t \.{'} \.{=} [ app\_t {\EXCEPT} {\bang} [
- self ] \.{=} Head ( stack [ self ] ) . app\_t ]}%
- \@x{\@s{113.68} \.{\land} stack \.{'}\@s{1.93} \.{=} [ stack {\EXCEPT}
- {\bang} [ self ]\@s{1.93} \.{=} Tail ( stack [ self ] ) ]}%
- \@x{\@s{113.68} \.{\land} {\UNCHANGED} {\langle} app\_vars ,\, aps\_vars ,\,
- permission\_type ,\, app\_ ,\,}%
- \@x{\@s{187.26} app\_u ,\, app\_up ,\, app\_d ,\, perm\_ ,\, app\_r ,\, app
- ,\,}%
-\@x{\@s{187.26} perm ,\, applications ,\, i\_ ,\, i {\rangle}}%
+\@x{ b ( self )\@s{3.84} \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{b}}%
+ \@x{\@s{52.16} \.{\land} {\IF} Acl [ self ] [ Resource [ self ] ] \.{=}
+ REQUESTED}%
+\@x{\@s{75.43} \.{\THEN} \.{\land} \E\, b \.{\in} Boolean \.{:}}%
+\@x{\@s{126.05} {\IF} b \.{=} {\TRUE}}%
+ \@x{\@s{138.21} \.{\THEN} \.{\land} Acl \.{'} \.{=} [ Acl {\EXCEPT} {\bang} [
+ self ] [ Resource [ self ] ] \.{=} ALLOWED ]}%
+ \@x{\@s{138.21} \.{\ELSE} \.{\land} Acl \.{'} \.{=} [ Acl {\EXCEPT} {\bang} [
+ self ] [ Resource [ self ] ] \.{=} REJECTED ]}%
+\@x{\@s{75.43} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{106.74} \.{\land} Acl \.{'} \.{=} Acl}%
+ \@x{\@s{52.16} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{N} ]}%
+\@x{\@s{52.16} \.{\land} {\UNCHANGED} {\langle} Acl2 ,\, Resource {\rangle}}%
 \@pvspace{8.0pt}%
-\@x{ terminate ( self ) \.{\defeq} TERMINATED ( self )}%
+\@x{ c ( self )\@s{3.90} \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{c}}%
+ \@x{\@s{52.16} \.{\land} {\IF} Acl [ self ] [ Resource [ self ] ] \.{=}
+ ALLOWED}%
+ \@x{\@s{75.43} \.{\THEN} \.{\land} Acl \.{'} \.{=} [ Acl {\EXCEPT} {\bang} [
+ self ] [ Resource [ self ] ] \.{=} NULL ]}%
+\@x{\@s{75.43} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{106.74} \.{\land} Acl \.{'} \.{=} Acl}%
+ \@x{\@s{52.16} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{N} ]}%
+\@x{\@s{52.16} \.{\land} {\UNCHANGED} {\langle} Acl2 ,\, Resource {\rangle}}%
 \@pvspace{8.0pt}%
- \@x{ DECLARE\_PERMISSION ( self ) \.{\defeq} \.{\land} pc [ self ]
- \.{=}\@w{DECLARE\_PERMISSION}}%
- \@x{\@s{163.59} \.{\land} app\_vars \.{'} \.{=} [ app\_vars {\EXCEPT} {\bang}
- [ app\_d [ self ] ] . manifest [ perm\_ [ self ] ] \.{=} {\TRUE} ]}%
- \@x{\@s{163.59} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=} Head ( stack [ self ] ) . pc ]}%
- \@x{\@s{163.59} \.{\land} app\_d \.{'}\@s{0.25} \.{=} [ app\_d {\EXCEPT}
- {\bang} [ self ]\@s{0.25} \.{=} Head ( stack [ self ] ) . app\_d ]}%
- \@x{\@s{163.59} \.{\land} perm\_ \.{'} \.{=} [ perm\_ {\EXCEPT} {\bang} [
- self ] \.{=} Head ( stack [ self ] ) . perm\_ ]}%
- \@x{\@s{163.59} \.{\land} stack \.{'}\@s{4.06} \.{=} [ stack {\EXCEPT}
- {\bang} [ self ]\@s{4.06} \.{=} Tail ( stack [ self ] ) ]}%
-\@x{\@s{163.59} \.{\land} {\UNCHANGED} {\langle} env\_vars ,\, aps\_vars ,\,}%
-\@x{\@s{237.18} permission\_type ,\, app\_ ,\, app\_u ,\,}%
-\@x{\@s{237.18} app\_up ,\, app\_t ,\, app\_r ,\, app ,\, perm ,\,}%
-\@x{\@s{237.18} applications ,\, i\_ ,\, i {\rangle}}%
+\@x{ d ( self )\@s{2.92} \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{d}}%
+ \@x{\@s{52.16} \.{\land} {\IF} Acl [ self ] [ Resource [ self ] ] \.{=}
+ ALLOWED}%
+ \@x{\@s{75.43} \.{\THEN} \.{\land} Acl \.{'} \.{=} [ Acl {\EXCEPT} {\bang} [
+ self ] [ Resource [ self ] ] \.{=} IN\_USE ]}%
+\@x{\@s{75.43} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{106.74} \.{\land} Acl \.{'} \.{=} Acl}%
+ \@x{\@s{52.16} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{N} ]}%
+\@x{\@s{52.16} \.{\land} {\UNCHANGED} {\langle} Acl2 ,\, Resource {\rangle}}%
 \@pvspace{8.0pt}%
- \@x{ declarePermission ( self )\@s{35.25} \.{\defeq} DECLARE\_PERMISSION (
- self )}%
+\@x{ N ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{N}}%
+ \@x{\@s{52.16} \.{\land} Resource \.{'} \.{=} [ Resource {\EXCEPT} {\bang} [
+ self ] \.{=} Resource [ self ] \.{+} 1 ]}%
+\@x{\@s{52.16} \.{\land} {\IF} Resource \.{'} [ self ] \.{\in} Resources}%
+ \@x{\@s{75.43} \.{\THEN} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{s1} ]}%
+ \@x{\@s{75.43} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{s0} ]}%
+\@x{\@s{52.16} \.{\land} {\UNCHANGED} {\langle} Acl ,\, Acl2 {\rangle}}%
 \@pvspace{8.0pt}%
- \@x{ REVOKE\_PERMISSION ( self ) \.{\defeq} \.{\land} pc [ self ]
- \.{=}\@w{REVOKE\_PERMISSION}}%
- \@x{\@s{157.71} \.{\land} aps\_vars \.{'} \.{=} [ aps\_vars {\EXCEPT} {\bang}
- . app\_permissions [ app\_r [ self ] ] \.{=} [ p \.{\in} Permissions
- \.{\mapsto} Null ] ]}%
- \@x{\@s{157.71} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=} Head ( stack [ self ] ) . pc ]}%
- \@x{\@s{157.71} \.{\land} app\_r \.{'} \.{=} [ app\_r {\EXCEPT} {\bang} [
- self ] \.{=} Head ( stack [ self ] ) . app\_r ]}%
- \@x{\@s{157.71} \.{\land} stack \.{'}\@s{2.95} \.{=} [ stack {\EXCEPT}
- {\bang} [ self ]\@s{2.95} \.{=} Tail ( stack [ self ] ) ]}%
- \@x{\@s{157.71} \.{\land} {\UNCHANGED} {\langle} env\_vars ,\, app\_vars ,\,
- permission\_type ,\,}%
-\@x{\@s{231.30} app\_ ,\, app\_u ,\, app\_up ,\, app\_t ,\, app\_d ,\,}%
-\@x{\@s{231.30} perm\_ ,\, app ,\, perm ,\, applications ,\, i\_ ,\,}%
-\@x{\@s{231.30} i {\rangle}}%
+ \@x{ AcmNext ( self ) \.{\defeq} s0 ( self ) \.{\lor} s1 ( self ) \.{\lor} s2
+ ( self ) \.{\lor} a ( self ) \.{\lor} b ( self )}%
+\@x{\@s{97.53} \.{\lor} c ( self ) \.{\lor} d ( self ) \.{\lor} N ( self )}%
 \@pvspace{8.0pt}%
-\@x{ revokePermission ( self ) \.{\defeq} REVOKE\_PERMISSION ( self )}%
-\@pvspace{8.0pt}%
- \@x{ REQUEST\_PERMISSION ( self ) \.{\defeq} \.{\land} pc [ self ]
- \.{=}\@w{REQUEST\_PERMISSION}}%
- \@x{\@s{163.18} \.{\land} {\IF} aps\_vars . app\_permissions [ app [ self ] ]
- [ perm [ self ] ] \.{\neq} Null}%
- \@x{\@s{186.45} \.{\THEN} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
- self ] \.{=} Head ( stack [ self ] ) . pc ]}%
- \@x{\@s{217.76} \.{\land} app \.{'} \.{=} [ app {\EXCEPT} {\bang} [ self ]
- \.{=} Head ( stack [ self ] ) . app ]}%
- \@x{\@s{217.76} \.{\land} perm \.{'} \.{=} [ perm {\EXCEPT} {\bang} [ self ]
- \.{=} Head ( stack [ self ] ) . perm ]}%
- \@x{\@s{217.76} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
- ] \.{=} Tail ( stack [ self ] ) ]}%
- \@x{\@s{186.45} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
- self ] \.{=}\@w{SWITCH\_PERMISSION} ]}%
- \@x{\@s{217.76} \.{\land} {\UNCHANGED} {\langle} stack ,\, app ,\, perm
- {\rangle}}%
- \@x{\@s{163.18} \.{\land} {\UNCHANGED} {\langle} env\_vars ,\, app\_vars ,\,
- aps\_vars ,\,}%
-\@x{\@s{236.77} permission\_type ,\, app\_ ,\, app\_u ,\,}%
-\@x{\@s{236.77} app\_up ,\, app\_t ,\, app\_d ,\, perm\_ ,\, app\_r ,\,}%
-\@x{\@s{236.77} applications ,\, i\_ ,\, i {\rangle}}%
-\@pvspace{8.0pt}%
- \@x{ SWITCH\_PERMISSION ( self ) \.{\defeq} \.{\land} pc [ self ]
- \.{=}\@w{SWITCH\_PERMISSION}}%
-\@x{\@s{155.96} \.{\land} \E\, x \.{\in} PermissionType \.{:}}%
-\@x{\@s{175.27} \.{\land} permission\_type \.{'} \.{=} x}%
- \@x{\@s{175.27} \.{\land} {\IF} permission\_type \.{'} \.{=}
- PERMISSION\_TYPE\_NORMAL \.{\lor} permission\_type \.{'} \.{=}
- PERMISSION\_TYPE\_SIGNATURE}%
- \@x{\@s{198.54} \.{\lor} permission\_type \.{'} \.{=}
- PERMISSION\_TYPE\_SPECIAL}%
-\@x{\@s{198.54} \.{\THEN} \.{\land} {\TRUE}}%
-\@x{\@s{229.85} \.{\land} {\UNCHANGED} aps\_vars}%
- \@x{\@s{198.54} \.{\ELSE} \.{\land} {\IF}\@s{20.5} permission\_type \.{'}
- \.{=} PERMISSION\_TYPE\_RUNTIME \.{\lor} permission\_type \.{'} \.{=}
- PERMISSION\_TYPE\_URI}%
- \@x{\@s{253.26} \.{\lor} permission\_type \.{'} \.{=}
- PERMISSION\_TYPE\_CUSTOM}%
- \@x{\@s{253.26} \.{\THEN} \.{\land} \E\, r \.{\in} \{ {\TRUE} ,\, {\FALSE} \}
- \.{:}}%
- \@x{\@s{303.88} aps\_vars \.{'} \.{=} [ aps\_vars {\EXCEPT} {\bang} .
- app\_permissions [ app [ self ] ] [ perm [ self ] ] \.{=} Null ]}%
-\@x{\@s{253.26} \.{\ELSE} \.{\land} {\TRUE}}%
-\@x{\@s{284.57} \.{\land} {\UNCHANGED} aps\_vars}%
- \@x{\@s{155.96} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=} Head ( stack [ self ] ) . pc ]}%
- \@x{\@s{155.96} \.{\land} app \.{'} \.{=} [ app {\EXCEPT} {\bang} [ self ]
- \.{=} Head ( stack [ self ] ) . app ]}%
- \@x{\@s{155.96} \.{\land} perm \.{'} \.{=} [ perm {\EXCEPT} {\bang} [ self ]
- \.{=} Head ( stack [ self ] ) . perm ]}%
- \@x{\@s{155.96} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
- ] \.{=} Tail ( stack [ self ] ) ]}%
- \@x{\@s{155.96} \.{\land} {\UNCHANGED} {\langle} env\_vars ,\, app\_vars ,\,
- app\_ ,\, app\_u ,\,}%
-\@x{\@s{229.55} app\_up ,\, app\_t ,\, app\_d ,\, perm\_ ,\, app\_r ,\,}%
-\@x{\@s{229.55} applications ,\, i\_ ,\, i {\rangle}}%
-\@pvspace{8.0pt}%
- \@x{ requestPermission ( self )\@s{33.51} \.{\defeq} REQUEST\_PERMISSION (
- self )}%
-\@x{\@s{168.26} \.{\lor} SWITCH\_PERMISSION ( self )}%
-\@pvspace{8.0pt}%
-\@x{ EnvBegin \.{\defeq} \.{\land} pc [ EnvironmentId ] \.{=}\@w{EnvBegin}}%
-\@x{\@s{61.07} \.{\land} \.{\lor} \.{\land} {\TRUE}}%
- \@x{\@s{83.29} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
- EnvironmentId ] \.{=}\@w{EnvBegin} ]}%
-\@x{\@s{83.29} \.{\land} {\UNCHANGED} {\langle} stack ,\, app\_r {\rangle}}%
-\@x{\@s{72.18} \.{\lor} \.{\land} \E\, a \.{\in} Apps \.{:}}%
- \@x{\@s{102.61} \.{\land} \.{\land} app\_r \.{'} \.{=} [ app\_r {\EXCEPT}
- {\bang} [ EnvironmentId ] \.{=} a ]}%
- \@x{\@s{113.72} \.{\land} stack \.{'}\@s{2.95} \.{=} [ stack {\EXCEPT}
- {\bang} [ EnvironmentId ]\@s{2.95} \.{=} {\langle} [ procedure
- \.{\mapsto}\@s{4.1}\@w{revokePermission} ,\,}%
-\@x{\@s{333.64} pc\@s{32.39} \.{\mapsto}\@s{3.07}\@w{EnvBegin} ,\,}%
- \@x{\@s{333.64} app\_r\@s{15.37} \.{\mapsto}\@s{4.1} app\_r [ EnvironmentId ]
- ] {\rangle}}%
-\@x{\@s{331.07} \.{\circ} stack [ EnvironmentId ] ]}%
- \@x{\@s{102.61} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
- EnvironmentId ] \.{=}\@w{REVOKE\_PERMISSION} ]}%
- \@x{\@s{61.07} \.{\land} {\UNCHANGED} {\langle} env\_vars ,\, app\_vars ,\,
- aps\_vars ,\, permission\_type ,\,}%
- \@x{\@s{134.66} app\_ ,\, app\_u ,\, app\_up ,\, app\_t ,\, app\_d ,\, perm\_
- ,\, app ,\,}%
-\@x{\@s{134.66} perm ,\, applications ,\, i\_ ,\, i {\rangle}}%
-\@pvspace{8.0pt}%
-\@x{ EnvNext \.{\defeq} EnvBegin}%
-\@pvspace{8.0pt}%
-\@x{ AppBegin ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{AppBegin}}%
- \@x{\@s{85.93} \.{\land} {\IF} env\_vars . applications [ self ] . terminated
- \.{\neq} {\TRUE}}%
- \@x{\@s{109.20} \.{\THEN} \.{\land} \.{\lor} \.{\land} \.{\land} app\_t \.{'}
- \.{=} [ app\_t {\EXCEPT} {\bang} [ self ] \.{=} self ]}%
- \@x{\@s{173.84} \.{\land} stack \.{'}\@s{1.93} \.{=} [ stack {\EXCEPT}
- {\bang} [ self ]\@s{1.93} \.{=} {\langle} [ procedure
- \.{\mapsto}\@s{4.1}\@w{terminate} ,\,}%
-\@x{\@s{341.92} pc\@s{31.37} \.{\mapsto}\@s{4.09}\@w{AppBegin} ,\,}%
- \@x{\@s{341.92} app\_t\@s{16.39} \.{\mapsto}\@s{4.1} app\_t [ self ] ]
- {\rangle}}%
-\@x{\@s{339.35} \.{\circ} stack [ self ] ]}%
- \@x{\@s{162.73} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=}\@w{TERMINATED} ]}%
- \@x{\@s{162.73} \.{\land} {\UNCHANGED} {\langle} app\_u ,\, app\_up
- {\rangle}}%
- \@x{\@s{151.62} \.{\lor} \.{\land} {\IF} env\_vars . applications [ self ] .
- installed \.{=} {\TRUE}}%
- \@x{\@s{186.00} \.{\THEN} \.{\land} \.{\lor} \.{\land} \.{\land} app\_u \.{'}
- \.{=} [ app\_u {\EXCEPT} {\bang} [ self ] \.{=} self ]}%
- \@x{\@s{250.64} \.{\land} stack \.{'}\@s{3.79} \.{=} [ stack {\EXCEPT}
- {\bang} [ self ]\@s{3.79} \.{=} {\langle} [ procedure
- \.{\mapsto}\@s{4.1}\@w{uninstallApp} ,\,}%
-\@x{\@s{422.44} pc\@s{33.23} \.{\mapsto}\@s{2.23}\@w{AppBegin} ,\,}%
- \@x{\@s{422.44} app\_u\@s{14.53} \.{\mapsto}\@s{4.1} app\_u [ self ] ]
- {\rangle}}%
-\@x{\@s{419.88} \.{\circ} stack [ self ] ]}%
- \@x{\@s{239.53} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=}\@w{UNINSTALL\_APP} ]}%
-\@x{\@s{239.53} \.{\land} {\UNCHANGED} app\_up}%
- \@x{\@s{228.42} \.{\lor} \.{\land} {\IF} env\_vars . applications [ self ] .
- version \.{<} MaxAllowedUpdates}%
- \@x{\@s{262.80} \.{\THEN} \.{\land} \.{\land} app\_up \.{'} \.{=} [ app\_up
- {\EXCEPT} {\bang} [ self ] \.{=} self ]}%
- \@x{\@s{305.22} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
- ] \.{=} {\langle} [ procedure \.{\mapsto}\@s{4.1}\@w{updateApp} ,\,}%
-\@x{\@s{469.42} pc\@s{34.10} \.{\mapsto}\@s{1.35}\@w{AppBegin} ,\,}%
- \@x{\@s{469.42} app\_up\@s{9.55} \.{\mapsto}\@s{4.1} app\_up [ self ] ]
- {\rangle}}%
-\@x{\@s{466.85} \.{\circ} stack [ self ] ]}%
- \@x{\@s{294.11} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=}\@w{UPDATE\_APP} ]}%
- \@x{\@s{262.80} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
- self ] \.{=}\@w{AppBegin} ]}%
-\@x{\@s{294.11} \.{\land} {\UNCHANGED} {\langle} stack ,\,}%
-\@x{\@s{367.70} app\_up {\rangle}}%
-\@x{\@s{239.53} \.{\land} app\_u \.{'} \.{=} app\_u}%
- \@x{\@s{186.00} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
- self ] \.{=}\@w{DECLARING\_PERMISSION} ]}%
-\@x{\@s{217.31} \.{\land} {\UNCHANGED} {\langle} stack ,\, app\_u ,\,}%
-\@x{\@s{290.90} app\_up {\rangle}}%
-\@x{\@s{162.73} \.{\land} app\_t \.{'} \.{=} app\_t}%
- \@x{\@s{109.20} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
- self ] \.{=}\@w{Done} ]}%
- \@x{\@s{140.51} \.{\land} {\UNCHANGED} {\langle} stack ,\, app\_u ,\, app\_up
- ,\, app\_t {\rangle}}%
- \@x{\@s{85.93} \.{\land} {\UNCHANGED} {\langle} env\_vars ,\, app\_vars ,\,
- aps\_vars ,\,}%
- \@x{\@s{159.52} permission\_type ,\, app\_ ,\, app\_d ,\, perm\_ ,\, app\_r
- ,\,}%
-\@x{\@s{159.52} app ,\, perm ,\, applications ,\, i\_ ,\, i {\rangle}}%
-\@pvspace{8.0pt}%
- \@x{ DECLARING\_PERMISSION ( self ) \.{\defeq} \.{\land} pc [ self ]
- \.{=}\@w{DECLARING\_PERMISSION}}%
-\@x{\@s{175.50} \.{\land} \E\, p \.{\in} Permissions \.{:}}%
- \@x{\@s{194.81} \.{\land} \.{\land} app\_d \.{'}\@s{0.25} \.{=} [ app\_d
- {\EXCEPT} {\bang} [ self ]\@s{0.25} \.{=} self ]}%
- \@x{\@s{205.92} \.{\land} perm\_ \.{'} \.{=} [ perm\_ {\EXCEPT} {\bang} [
- self ] \.{=} p ]}%
- \@x{\@s{205.92} \.{\land} stack \.{'}\@s{4.06} \.{=} [ stack {\EXCEPT}
- {\bang} [ self ]\@s{4.06} \.{=} {\langle} [ procedure
- \.{\mapsto}\@s{4.1}\@w{declarePermission} ,\,}%
-\@x{\@s{378.25} pc\@s{33.49} \.{\mapsto}\@s{1.96}\@w{INSTALLING\_APP} ,\,}%
-\@x{\@s{378.25} app\_d\@s{16.65} \.{\mapsto}\@s{4.1} app\_d [ self ] ,\,}%
- \@x{\@s{378.25} perm\_\@s{14.26} \.{\mapsto}\@s{4.1} perm\_ [ self ] ]
- {\rangle}}%
-\@x{\@s{375.68} \.{\circ} stack [ self ] ]}%
- \@x{\@s{194.81} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=}\@w{DECLARE\_PERMISSION} ]}%
- \@x{\@s{175.50} \.{\land} {\UNCHANGED} {\langle} env\_vars ,\, app\_vars ,\,
- aps\_vars ,\,}%
-\@x{\@s{249.09} permission\_type ,\, app\_ ,\, app\_u ,\,}%
-\@x{\@s{249.09} app\_up ,\, app\_t ,\, app\_r ,\, app ,\, perm ,\,}%
-\@x{\@s{249.09} applications ,\, i\_ ,\, i {\rangle}}%
-\@pvspace{8.0pt}%
- \@x{ INSTALLING\_APP ( self ) \.{\defeq} \.{\land} pc [ self ]\@s{2.62}
- \.{=}\@w{INSTALLING\_APP}}%
- \@x{\@s{132.79} \.{\land} \.{\land} app\_ \.{'} \.{=} [ app\_ {\EXCEPT}
- {\bang} [ self ] \.{=} self ]}%
- \@x{\@s{143.90} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
- ] \.{=} {\langle} [ procedure \.{\mapsto}\@s{4.1}\@w{installApp} ,\,}%
-\@x{\@s{308.10} pc\@s{31.36} \.{\mapsto}\@s{4.10}\@w{AppBegin} ,\,}%
- \@x{\@s{308.10} app\_\@s{20.66} \.{\mapsto}\@s{4.1} app\_ [ self ] ]
- {\rangle}}%
-\@x{\@s{305.54} \.{\circ} stack [ self ] ]}%
- \@x{\@s{132.79} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=}\@w{INSTALL\_APP} ]}%
- \@x{\@s{132.79} \.{\land} {\UNCHANGED} {\langle} env\_vars ,\, app\_vars ,\,
- aps\_vars ,\,}%
-\@x{\@s{206.38} permission\_type ,\, app\_u ,\, app\_up ,\, app\_t ,\,}%
-\@x{\@s{206.38} app\_d ,\, perm\_ ,\, app\_r ,\, app ,\, perm ,\,}%
-\@x{\@s{206.38} applications ,\, i\_ ,\, i {\rangle}}%
-\@pvspace{8.0pt}%
- \@x{ AppNext ( self ) \.{\defeq} AppBegin ( self ) \.{\lor}
- DECLARING\_PERMISSION ( self )}%
-\@x{\@s{93.99} \.{\lor} INSTALLING\_APP ( self )}%
-\@pvspace{8.0pt}%
-\@x{ ApsBegin \.{\defeq} \.{\land} pc [ ApsId ] \.{=}\@w{ApsBegin}}%
-\@x{\@s{60.70} \.{\land} \.{\lor} \.{\land} {\TRUE}}%
- \@x{\@s{82.92} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ ApsId ]
- \.{=}\@w{ApsBegin} ]}%
- \@x{\@s{82.92} \.{\land} {\UNCHANGED} {\langle} stack ,\, app ,\, perm
- {\rangle}}%
-\@x{\@s{71.81} \.{\lor} \.{\land} \E\, a \.{\in} Apps \.{:}}%
-\@x{\@s{102.23} \E\, p \.{\in} Permissions \.{:}}%
- \@x{\@s{110.43} \.{\land} \.{\land} app \.{'} \.{=} [ app {\EXCEPT} {\bang} [
- ApsId ] \.{=} a ]}%
- \@x{\@s{121.54} \.{\land} perm \.{'} \.{=} [ perm {\EXCEPT} {\bang} [ ApsId ]
- \.{=} p ]}%
- \@x{\@s{121.54} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ ApsId
- ] \.{=} {\langle} [ procedure \.{\mapsto}\@s{4.1}\@w{requestPermission} ,\,}%
-\@x{\@s{295.95} pc\@s{33.09} \.{\mapsto}\@s{2.36}\@w{ApsBegin} ,\,}%
-\@x{\@s{295.95} app\@s{26.89} \.{\mapsto}\@s{4.1} app [ ApsId ] ,\,}%
- \@x{\@s{295.95} perm\@s{18.76} \.{\mapsto}\@s{4.1} perm [ ApsId ] ]
- {\rangle}}%
-\@x{\@s{293.38} \.{\circ} stack [ ApsId ] ]}%
- \@x{\@s{110.43} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ ApsId ]
- \.{=}\@w{REQUEST\_PERMISSION} ]}%
- \@x{\@s{60.70} \.{\land} {\UNCHANGED} {\langle} env\_vars ,\, app\_vars ,\,
- aps\_vars ,\, permission\_type ,\,}%
- \@x{\@s{134.29} app\_ ,\, app\_u ,\, app\_up ,\, app\_t ,\, app\_d ,\, perm\_
- ,\, app\_r ,\,}%
-\@x{\@s{134.29} applications ,\, i\_ ,\, i {\rangle}}%
-\@pvspace{8.0pt}%
-\@x{ ApsNext \.{\defeq} ApsBegin}%
-\@pvspace{8.0pt}%
-\@x{ Next \.{\defeq} EnvNext \.{\lor} ApsNext}%
- \@x{\@s{52.13} \.{\lor} ( \E\, self \.{\in} ProcSet \.{:}\@s{4.1} \.{\lor}
- installApp ( self ) \.{\lor} uninstallApp ( self )}%
-\@x{\@s{150.73} \.{\lor} updateApp ( self ) \.{\lor} terminate ( self )}%
-\@x{\@s{150.73} \.{\lor} declarePermission ( self )}%
-\@x{\@s{150.73} \.{\lor} revokePermission ( self )}%
-\@x{\@s{150.73} \.{\lor} requestPermission ( self ) )}%
-\@x{\@s{52.13} \.{\lor} ( \E\, self \.{\in} Apps \.{:} AppNext ( self ) )}%
+\@x{ Next \.{\defeq} ( \E\, self \.{\in} Processes \.{:} AcmNext ( self ) )}%
 \@pvspace{8.0pt}%
  \@x{ Spec\@s{1.46} \.{\defeq} \.{\land} Init \.{\land} {\Box} [ Next ]_{
  vars}}%
- \@x{\@s{39.83} \.{\land} \.{\land} {\WF}_{ vars} ( ( pc [ EnvironmentId ]
- \.{\neq}\@w{EnvBegin} ) \.{\land} EnvNext )}%
- \@x{\@s{50.94} \.{\land} {\WF}_{ vars} ( revokePermission ( EnvironmentId )
- )}%
- \@x{\@s{39.83} \.{\land} \A\, self \.{\in} Apps \.{:} \.{\land} {\WF}_{ vars}
- ( ( pc [ self ] \.{\neq}\@w{AppBegin} ) \.{\land} AppNext ( self ) )}%
-\@x{\@s{118.82} \.{\land} {\WF}_{ vars} ( terminate ( self ) )}%
-\@x{\@s{118.82} \.{\land} {\WF}_{ vars} ( uninstallApp ( self ) )}%
-\@x{\@s{118.82} \.{\land} {\WF}_{ vars} ( updateApp ( self ) )}%
-\@x{\@s{118.82} \.{\land} {\WF}_{ vars} ( declarePermission ( self ) )}%
-\@x{\@s{118.82} \.{\land} {\WF}_{ vars} ( installApp ( self ) )}%
- \@x{\@s{39.83} \.{\land} \.{\land} {\WF}_{ vars} ( ( pc [ ApsId ]
- \.{\neq}\@w{ApsBegin} ) \.{\land} ApsNext )}%
-\@x{\@s{50.94} \.{\land} {\WF}_{ vars} ( requestPermission ( ApsId ) )}%
+ \@x{\@s{39.83} \.{\land} \A\, self \.{\in} Processes \.{:} {\WF}_{ vars} (
+ AcmNext ( self ) )}%
 \@pvspace{8.0pt}%
 \@x{}%
 \@y{\@s{0}%
  END TRANSLATION
 }%
 \@xx{}%
+\@pvspace{8.0pt}%
+ \@x{ AcmTypeOK \.{\defeq} \.{\land} Acl \.{\in} [ Processes \.{\rightarrow} [
+ Resources \.{\rightarrow} ResourceStatus ] ]}%
+ \@x{\@s{75.84} \.{\land} Acl2 \.{\in} [ Processes \.{\rightarrow} [ Resources
+ \.{\rightarrow} ResourceStatus ] ]}%
+\@pvspace{8.0pt}%
+ \@x{ AcmConsistent \.{\defeq} {\lnot} ( \E\, p \.{\in} Processes\@s{1.78}
+ \.{:}}%
+\@x{\@s{96.30} \E\, r\@s{0.23} \.{\in} Resources \.{:}}%
+ \@x{\@s{109.05} Acl [ p ] [ r ] \.{=} IN\_USE \.{\land} Acl2 [ p ] [ r ]
+ \.{\neq} ALLOWED \.{\land} Acl2 [ p ] [ r ] \.{\neq} IN\_USE )}%
+\@pvspace{8.0pt}%
+ \@x{ AcmLiveness \.{\defeq} {\Diamond} ( \E\, p \.{\in} Processes\@s{1.78}
+ \.{:}}%
+\@x{\@s{88.36} \E\, r\@s{0.23} \.{\in} Resources \.{:}}%
+ \@x{\@s{101.11} Acl [ p ] [ r ] \.{=} REQUESTED \.{\leadsto} Acl [ p ] [ r ]
+ \.{=} ALLOWED \.{\lor} Acl [ p ] [ r ] \.{=} REJECTED )}%
 \@pvspace{8.0pt}%
 \@x{}\bottombar\@xx{}%
 \setboolean{shading}{false}
@@ -1783,13 +1186,13 @@
 \ensuremath{\.{\,\backslash\,}}* Modification History
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
- \ensuremath{\.{\,\backslash\,}}* Last modified Sun May 21 05:35:10
- \ensuremath{GMT\.{+}03}:30 2023 by \ensuremath{Amirhosein
+ \ensuremath{\.{\,\backslash\,}}* Last modified \ensuremath{Fri} May 26
+ 14:23:17 \ensuremath{GMT\.{+}03}:30 2023 by \ensuremath{Amirhosein
 }%
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
- \ensuremath{\.{\,\backslash\,}}* Created \ensuremath{Fri} \ensuremath{Apr} 28
- 08:40:56 \ensuremath{GMT\.{+}03}:30 2023 by \ensuremath{Amirhosein
+ \ensuremath{\.{\,\backslash\,}}* Created \ensuremath{Thu} \ensuremath{Mar} 23
+ 07:45:26 \ensuremath{GMT\.{+}03}:30 2023 by \ensuremath{Amirhosein
 }%
 \end{cpar}%
 \end{lcom}%

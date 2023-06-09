@@ -87,7 +87,10 @@ PermissionType == { PERMISSION_TYPE_NORMAL, PERMISSION_TYPE_SIGNATURE,
       {
        with(r \in { TRUE, FALSE })
        {
-        aps_vars.app_permissions[app][perm] := Null;
+        if(r = TRUE)
+         aps_vars.app_permissions[app][perm] := PERMISSION_ALLOWED;
+        else
+         aps_vars.app_permissions[app][perm] := PERMISSION_DENIED;
        }
       }
      };
@@ -172,8 +175,8 @@ PermissionType == { PERMISSION_TYPE_NORMAL, PERMISSION_TYPE_SIGNATURE,
 }
 
 ***)
-\* BEGIN TRANSLATION (chksum(pcal) = "8e0c5402" /\ chksum(tla) = "9d9aef41")
-\* Process variable i of process AppNext at line 121 col 19 changed to i_
+\* BEGIN TRANSLATION (chksum(pcal) = "769ce6e9" /\ chksum(tla) = "c9f08f3f")
+\* Process variable i of process AppNext at line 124 col 19 changed to i_
 \* Parameter app of procedure installApp at line 62 col 26 changed to app_
 \* Parameter app of procedure uninstallApp at line 63 col 28 changed to app_u
 \* Parameter app of procedure updateApp at line 64 col 25 changed to app_up
@@ -324,7 +327,9 @@ SWITCH_PERMISSION(self) == /\ pc[self] = "SWITCH_PERMISSION"
                                       ELSE /\ IF      permission_type' = PERMISSION_TYPE_RUNTIME \/ permission_type' = PERMISSION_TYPE_URI
                                                  \/ permission_type' = PERMISSION_TYPE_CUSTOM
                                                  THEN /\ \E r \in { TRUE, FALSE }:
-                                                           aps_vars' = [aps_vars EXCEPT !.app_permissions[app[self]][perm[self]] = Null]
+                                                           IF r = TRUE
+                                                              THEN /\ aps_vars' = [aps_vars EXCEPT !.app_permissions[app[self]][perm[self]] = PERMISSION_ALLOWED]
+                                                              ELSE /\ aps_vars' = [aps_vars EXCEPT !.app_permissions[app[self]][perm[self]] = PERMISSION_DENIED]
                                                  ELSE /\ TRUE
                                                       /\ UNCHANGED aps_vars
                            /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
@@ -467,5 +472,5 @@ Spec == /\ Init /\ [][Next]_vars
 
 =============================================================================
 \* Modification History
-\* Last modified Sun May 21 05:35:10 GMT+03:30 2023 by Amirhosein
+\* Last modified Sat May 27 09:44:39 GMT+03:30 2023 by Amirhosein
 \* Created Fri Apr 28 08:40:56 GMT+03:30 2023 by Amirhosein

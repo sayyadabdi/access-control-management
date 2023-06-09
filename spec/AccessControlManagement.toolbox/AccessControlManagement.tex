@@ -943,57 +943,245 @@
  AccessControlManagement}\moduleRightDash\@xx{}%
 \@x{ {\EXTENDS} Naturals ,\, Sequences}%
 \@pvspace{8.0pt}%
-\@x{ {\CONSTANTS} Apps ,\, Perms}%
+\@x{ {\CONSTANTS} Processes ,\, Resources}%
 \@pvspace{8.0pt}%
 \@x{ NULL \.{\defeq}\@w{NULL}}%
-\@x{ ALLOW \.{\defeq}\@w{ALLOW}}%
-\@x{ REJECT \.{\defeq}\@w{REJECT}}%
+\@x{ ALLOWED \.{\defeq}\@w{ALLOWED}}%
+\@x{ REJECTED \.{\defeq}\@w{REJECTED}}%
+\@x{ REQUESTED \.{\defeq}\@w{REQUESTED}}%
+\@x{ IN\_USE \.{\defeq}\@w{IN\_USE}}%
 \@pvspace{8.0pt}%
-\@x{ Boolean\@s{1.57} \.{\defeq} \{ {\TRUE} ,\, {\FALSE} \}}%
-\@x{ Consent \.{\defeq} \{ ALLOW ,\, REJECT \}}%
+\@x{ Boolean \.{\defeq} \{ {\TRUE} ,\, {\FALSE} \}}%
+ \@x{ ResourceStatus \.{\defeq} \{ NULL ,\, REQUESTED ,\, ALLOWED ,\, REJECTED
+ ,\, IN\_USE \}}%
 \@pvspace{8.0pt}%
-\@x{ {\VARIABLE} ACL ,\, Resource}%
+\pcalsymbolstrue
+\pcalshadingtrue
+\csyntaxtrue
+\@x{}%
+\@z{%
+ \ensuremath{\.{\stst}
+}}%
+\@xx{\@s{16.4} {\p@mmalgorithm} AccessControlManagement}%
+\@x{ {\p@lbrace}}%
+ \@x{\@s{16.4} {\p@variables} Acl \.{=} [ a \.{\in} Processes \.{\mapsto} [ r
+ \.{\in} Resources \.{\mapsto} NULL ] ] {\p@semicolon}}%
+ \@x{\@s{64.16} Acl2 \.{=} [ a \.{\in} Processes \.{\mapsto} [ r \.{\in}
+ Resources \.{\mapsto} NULL ] ] {\p@semicolon}}%
 \@pvspace{8.0pt}%
- \@x{ TypeOK \.{\defeq} \.{\land} \A\, a \.{\in} Apps \.{:} \A\, p \.{\in}
- Perms \.{:} \.{\land} ACL [ a ] [ p ] \.{\in} Consent \.{\cup} \{ NULL \}}%
-\@x{\@s{187.90} \.{\land} Resource [ a ] [ p ] \.{\in} Boolean}%
+\@x{\@s{16.4} {\p@macro} Request {\p@lparen} p ,\, r {\p@rparen}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+\@x{\@s{20.5} {\p@if} {\p@lparen} Acl [ p ] [ r ] \.{=} NULL {\p@rparen}}%
+\@x{\@s{24.6} Acl [ p ] [ r ] \.{:=} REQUESTED {\p@semicolon}}%
+\@x{\@s{16.4} {\p@rbrace}}%
 \@pvspace{8.0pt}%
- \@x{ decide ( a ,\, p ) \.{\defeq} \.{\land} \E\, c\@s{11.02} \.{\in} Consent
- \.{:}}%
- \@x{\@s{82.83} ACL \.{'} \.{=} [ ACL {\EXCEPT} {\bang} [ a ] \.{=} [ ACL [ a
- ] {\EXCEPT} {\bang} [ p ] \.{=} c ] ]}%
+\@x{\@s{16.4} {\p@macro} Decide {\p@lparen} p ,\, r {\p@rparen}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+ \@x{\@s{20.5} {\p@if} {\p@lparen} Acl [ p ] [ r ] \.{=} REQUESTED
+ {\p@rparen}}%
+\@x{\@s{24.6} {\p@with} {\p@lparen} b \.{\in} Boolean {\p@rparen}}%
+\@x{\@s{24.6} {\p@lbrace}}%
+\@x{\@s{28.7} {\p@if} {\p@lparen} b \.{=} {\TRUE} {\p@rparen}}%
+\@x{\@s{32.8} Acl [ p ] [ r ] \.{:=} ALLOWED {\p@semicolon}}%
+\@x{\@s{28.7} {\p@else}}%
+\@x{\@s{32.8} Acl [ p ] [ r ] \.{:=} REJECTED {\p@semicolon}}%
+\@x{\@s{24.6} {\p@rbrace}}%
+\@x{\@s{16.4} {\p@rbrace}}%
 \@pvspace{8.0pt}%
- \@x{ use ( a ,\, p )\@s{0.06} \.{\defeq} \.{\land} ACL [ a ] [ p ] \.{=}
- ALLOW}%
- \@x{\@s{59.27} \.{\land} Resource \.{'}\@s{1.43} \.{=} [ Resource {\EXCEPT}
- {\bang} [ a ] \.{=} [ Resource [ a ] {\EXCEPT} {\bang} [ p ] \.{=} {\TRUE} ]
+\@x{\@s{16.4} {\p@macro} Revoke {\p@lparen} p ,\, r {\p@rparen}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+\@x{\@s{20.5} {\p@if} {\p@lparen} Acl [ p ] [ r ] \.{=} ALLOWED {\p@rparen}}%
+\@x{\@s{24.6} Acl [ p ] [ r ] \.{:=} NULL {\p@semicolon}}%
+\@x{\@s{16.4} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+\@x{\@s{16.4} {\p@macro} Use {\p@lparen} p ,\, r {\p@rparen}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+\@x{\@s{20.5} {\p@if} {\p@lparen} Acl [ p ] [ r ] \.{=} ALLOWED {\p@rparen}}%
+\@x{\@s{24.6} Acl [ p ] [ r ] \.{:=} IN\_USE {\p@semicolon}}%
+\@x{\@s{16.4} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{16.4} {\p@fair} {\p@process} {\p@lparen} AcmNext \.{\in} Processes
+ {\p@rparen}}%
+\@x{\@s{16.4} {\p@variable} Resource \.{=} 1 {\p@semicolon}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+ \@x{\@s{32.8} s0\@s{.5}\textrm{:}\@s{3} {\p@while} {\p@lparen} {\TRUE}
+ {\p@rparen}}%
+\@x{\@s{32.8} {\p@lbrace}}%
+\@x{\@s{36.89} s1\@s{.5}\textrm{:}\@s{3} Resource \.{:=} 1 {\p@semicolon}}%
+\@x{\@s{36.89} s2\@s{.5}\textrm{:}\@s{3} Acl2 \.{:=} Acl {\p@semicolon}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{36.89} {\p@either} {\p@lbrace} a\@s{.5}\textrm{:}\@s{3} Request (
+ self ,\, Resource ) {\p@semicolon} {\p@rbrace}}%
+ \@x{\@s{36.89} {\p@or} {\p@lbrace} b\@s{.5}\textrm{:}\@s{3} Decide ( self ,\,
+ Resource )\@s{14.64} {\p@semicolon} {\p@rbrace}}%
+ \@x{\@s{36.89} {\p@or} {\p@lbrace} c\@s{.5}\textrm{:}\@s{3} Revoke ( self ,\,
+ Resource )\@s{13.42} {\p@semicolon} {\p@rbrace}}%
+ \@x{\@s{36.89} {\p@or}\@s{1.03} {\p@lbrace} d\@s{.5}\textrm{:}\@s{3} Use (
+ self ,\, Resource )\@s{3.23} {\p@semicolon} {\p@rbrace} {\p@semicolon}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{36.89} N\@s{.5}\textrm{:}\@s{3} Resource \.{:=} Resource \.{+} 1
+ {\p@semicolon}}%
+\@pvspace{8.0pt}%
+\@x{\@s{36.89} {\p@if} {\p@lparen} Resource \.{\in} Resources {\p@rparen}}%
+\@x{\@s{40.99} {\p@goto} s1 {\p@semicolon}}%
+\@x{\@s{32.8} {\p@rbrace}}%
+\@x{\@s{16.4} {\p@rbrace}}%
+\@x{ {\p@rbrace}}%
+\@y{}%
+\@xx{}%
+\pcalshadingfalse \pcalsymbolsfalse
+\begin{lcom}{0}%
+\begin{cpar}{0}{F}{F}{0}{0}{}%
+\ensuremath{\.{\stst}
+}%
+\end{cpar}%
+\end{lcom}%
+\@x{}%
+\@y{\@s{0}%
+ BEGIN TRANSLATION (\ensuremath{chksum(pcal) \.{=}} ``\ensuremath{815326e1}''
+ \ensuremath{\.{\land} chksum(tla) \.{=}} ``\ensuremath{5b152e55}'')
+}%
+\@xx{}%
+\@x{ {\VARIABLES} Acl ,\, Acl2 ,\, pc ,\, Resource}%
+\@pvspace{8.0pt}%
+\@x{ vars \.{\defeq} {\langle} Acl ,\, Acl2 ,\, pc ,\, Resource {\rangle}}%
+\@pvspace{8.0pt}%
+\@x{ ProcSet \.{\defeq} ( Processes )}%
+\@pvspace{8.0pt}%
+\@x{ Init \.{\defeq}}%
+\@y{\@s{0}%
+ Global variables
+}%
+\@xx{}%
+ \@x{\@s{35.70} \.{\land} Acl \.{=} [ a \.{\in} Processes \.{\mapsto} [ r
+ \.{\in} Resources \.{\mapsto} NULL ] ]}%
+ \@x{\@s{35.70} \.{\land} Acl2 \.{=} [ a \.{\in} Processes \.{\mapsto} [ r
+ \.{\in} Resources \.{\mapsto} NULL ] ]}%
+\@x{\@s{35.70}}%
+\@y{\@s{0}%
+ Process \ensuremath{AcmNext
+}}%
+\@xx{}%
+ \@x{\@s{35.70} \.{\land} Resource \.{=} [ self \.{\in} Processes \.{\mapsto}
+ 1 ]}%
+ \@x{\@s{35.70} \.{\land} pc \.{=} [ self \.{\in} ProcSet \.{\mapsto}\@w{s0}
  ]}%
-\@x{\@s{59.27} \.{\land} {\UNCHANGED} {\langle} ACL {\rangle}}%
 \@pvspace{8.0pt}%
-\@x{ ask ( a ,\, p ) \.{\defeq} {\IF} ACL [ a ] [ p ] \.{=} NULL}%
-\@x{\@s{71.42} \.{\THEN} \.{\land} decide ( a ,\, p )}%
-\@x{\@s{102.74} \.{\land} {\UNCHANGED} {\langle} Resource {\rangle}}%
-\@x{\@s{59.27} \.{\ELSE}}%
-\@x{\@s{71.57} \.{\land} {\UNCHANGED} {\langle} ACL ,\, Resource {\rangle}}%
+\@x{ s0 ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{s0}}%
+ \@x{\@s{53.00} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{s1} ]}%
+ \@x{\@s{53.00} \.{\land} {\UNCHANGED} {\langle} Acl ,\, Acl2 ,\, Resource
+ {\rangle}}%
 \@pvspace{8.0pt}%
- \@x{ Init\@s{4.12} \.{\defeq} \.{\land} ACL \.{=} [ a \.{\in} Apps
- \.{\mapsto} [ p \.{\in} Perms \.{\mapsto} NULL ] ]}%
- \@x{\@s{39.83} \.{\land} Resource\@s{3.49} \.{=} [ a \.{\in} Apps \.{\mapsto}
- [ p \.{\in} Perms \.{\mapsto} {\FALSE} ] ]}%
+\@x{ s1 ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{s1}}%
+ \@x{\@s{53.00} \.{\land} Resource \.{'} \.{=} [ Resource {\EXCEPT} {\bang} [
+ self ] \.{=} 1 ]}%
+ \@x{\@s{53.00} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{s2} ]}%
+\@x{\@s{53.00} \.{\land} {\UNCHANGED} {\langle} Acl ,\, Acl2 {\rangle}}%
 \@pvspace{8.0pt}%
- \@x{ Next \.{\defeq} \.{\lor} \E\, a \.{\in} Apps \.{:} \E\, p \.{\in} Perms
- \.{:} \.{\lor} ask ( a ,\, p )}%
-\@x{\@s{171.59} \.{\lor} use ( a ,\, p )}%
+\@x{ s2 ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{s2}}%
+\@x{\@s{53.00} \.{\land} Acl2 \.{'} \.{=} Acl}%
+ \@x{\@s{53.00} \.{\land} \.{\lor} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT}
+ {\bang} [ self ] \.{=}\@w{a} ]}%
+ \@x{\@s{64.11} \.{\lor} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{b} ]}%
+ \@x{\@s{64.11} \.{\lor} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{c} ]}%
+ \@x{\@s{64.11} \.{\lor} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{d} ]}%
+\@x{\@s{53.00} \.{\land} {\UNCHANGED} {\langle} Acl ,\, Resource {\rangle}}%
 \@pvspace{8.0pt}%
-\@x{ vars\@s{2.10} \.{\defeq} {\langle} ACL ,\, Resource {\rangle}}%
+\@x{ a ( self )\@s{3.19} \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{a}}%
+\@x{\@s{52.16} \.{\land} {\IF} Acl [ self ] [ Resource [ self ] ] \.{=} NULL}%
+ \@x{\@s{75.43} \.{\THEN} \.{\land} Acl \.{'} \.{=} [ Acl {\EXCEPT} {\bang} [
+ self ] [ Resource [ self ] ] \.{=} REQUESTED ]}%
+\@x{\@s{75.43} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{106.74} \.{\land} Acl \.{'} \.{=} Acl}%
+ \@x{\@s{52.16} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{N} ]}%
+\@x{\@s{52.16} \.{\land} {\UNCHANGED} {\langle} Acl2 ,\, Resource {\rangle}}%
 \@pvspace{8.0pt}%
- \@x{ Authorized \.{\defeq} {\Box} {\lnot} ( \.{\land} \E\, a \.{\in} Apps
- \.{:} \E\, p \.{\in} Perms \.{:}}%
-\@x{\@s{95.72} \.{\land} Resource [ a ] [ p ] \.{=} {\TRUE}}%
-\@x{\@s{95.72} \.{\land} ACL [ a ] [ p ] \.{\neq} ALLOW )}%
+\@x{ b ( self )\@s{3.84} \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{b}}%
+ \@x{\@s{52.16} \.{\land} {\IF} Acl [ self ] [ Resource [ self ] ] \.{=}
+ REQUESTED}%
+\@x{\@s{75.43} \.{\THEN} \.{\land} \E\, b \.{\in} Boolean \.{:}}%
+\@x{\@s{126.05} {\IF} b \.{=} {\TRUE}}%
+ \@x{\@s{138.21} \.{\THEN} \.{\land} Acl \.{'} \.{=} [ Acl {\EXCEPT} {\bang} [
+ self ] [ Resource [ self ] ] \.{=} ALLOWED ]}%
+ \@x{\@s{138.21} \.{\ELSE} \.{\land} Acl \.{'} \.{=} [ Acl {\EXCEPT} {\bang} [
+ self ] [ Resource [ self ] ] \.{=} REJECTED ]}%
+\@x{\@s{75.43} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{106.74} \.{\land} Acl \.{'} \.{=} Acl}%
+ \@x{\@s{52.16} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{N} ]}%
+\@x{\@s{52.16} \.{\land} {\UNCHANGED} {\langle} Acl2 ,\, Resource {\rangle}}%
 \@pvspace{8.0pt}%
- \@x{ Spec \.{\defeq} Init \.{\land} {\Box} [ Next ]_{ vars} \.{\land}
- Authorized}%
+\@x{ c ( self )\@s{3.90} \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{c}}%
+ \@x{\@s{52.16} \.{\land} {\IF} Acl [ self ] [ Resource [ self ] ] \.{=}
+ ALLOWED}%
+ \@x{\@s{75.43} \.{\THEN} \.{\land} Acl \.{'} \.{=} [ Acl {\EXCEPT} {\bang} [
+ self ] [ Resource [ self ] ] \.{=} NULL ]}%
+\@x{\@s{75.43} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{106.74} \.{\land} Acl \.{'} \.{=} Acl}%
+ \@x{\@s{52.16} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{N} ]}%
+\@x{\@s{52.16} \.{\land} {\UNCHANGED} {\langle} Acl2 ,\, Resource {\rangle}}%
+\@pvspace{8.0pt}%
+\@x{ d ( self )\@s{2.92} \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{d}}%
+ \@x{\@s{52.16} \.{\land} {\IF} Acl [ self ] [ Resource [ self ] ] \.{=}
+ ALLOWED}%
+ \@x{\@s{75.43} \.{\THEN} \.{\land} Acl \.{'} \.{=} [ Acl {\EXCEPT} {\bang} [
+ self ] [ Resource [ self ] ] \.{=} IN\_USE ]}%
+\@x{\@s{75.43} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{106.74} \.{\land} Acl \.{'} \.{=} Acl}%
+ \@x{\@s{52.16} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{N} ]}%
+\@x{\@s{52.16} \.{\land} {\UNCHANGED} {\langle} Acl2 ,\, Resource {\rangle}}%
+\@pvspace{8.0pt}%
+\@x{ N ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{N}}%
+ \@x{\@s{52.16} \.{\land} Resource \.{'} \.{=} [ Resource {\EXCEPT} {\bang} [
+ self ] \.{=} Resource [ self ] \.{+} 1 ]}%
+\@x{\@s{52.16} \.{\land} {\IF} Resource \.{'} [ self ] \.{\in} Resources}%
+ \@x{\@s{75.43} \.{\THEN} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{s1} ]}%
+ \@x{\@s{75.43} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{s0} ]}%
+\@x{\@s{52.16} \.{\land} {\UNCHANGED} {\langle} Acl ,\, Acl2 {\rangle}}%
+\@pvspace{8.0pt}%
+ \@x{ AcmNext ( self ) \.{\defeq} s0 ( self ) \.{\lor} s1 ( self ) \.{\lor} s2
+ ( self ) \.{\lor} a ( self ) \.{\lor} b ( self )}%
+\@x{\@s{97.53} \.{\lor} c ( self ) \.{\lor} d ( self ) \.{\lor} N ( self )}%
+\@pvspace{8.0pt}%
+\@x{ Next \.{\defeq} ( \E\, self \.{\in} Processes \.{:} AcmNext ( self ) )}%
+\@pvspace{8.0pt}%
+ \@x{ Spec\@s{1.46} \.{\defeq} \.{\land} Init \.{\land} {\Box} [ Next ]_{
+ vars}}%
+ \@x{\@s{39.83} \.{\land} \A\, self \.{\in} Processes \.{:} {\WF}_{ vars} (
+ AcmNext ( self ) )}%
+\@pvspace{8.0pt}%
+\@x{}%
+\@y{\@s{0}%
+ END TRANSLATION
+}%
+\@xx{}%
+\@pvspace{8.0pt}%
+ \@x{ AcmTypeOK \.{\defeq} \.{\land} Acl \.{\in} [ Processes \.{\rightarrow} [
+ Resources \.{\rightarrow} ResourceStatus ] ]}%
+ \@x{\@s{75.84} \.{\land} Acl2 \.{\in} [ Processes \.{\rightarrow} [ Resources
+ \.{\rightarrow} ResourceStatus ] ]}%
+\@pvspace{8.0pt}%
+ \@x{ AcmConsistent \.{\defeq} {\lnot} ( \E\, p \.{\in} Processes\@s{1.78}
+ \.{:}}%
+\@x{\@s{96.30} \E\, r\@s{0.23} \.{\in} Resources \.{:}}%
+ \@x{\@s{109.05} Acl [ p ] [ r ] \.{=} IN\_USE \.{\land} Acl2 [ p ] [ r ]
+ \.{\neq} ALLOWED \.{\land} Acl2 [ p ] [ r ] \.{\neq} IN\_USE )}%
+\@pvspace{8.0pt}%
+ \@x{ AcmLiveness \.{\defeq} {\Diamond} ( \E\, p \.{\in} Processes\@s{1.78}
+ \.{:}}%
+\@x{\@s{88.36} \E\, r\@s{0.23} \.{\in} Resources \.{:}}%
+ \@x{\@s{101.11} Acl [ p ] [ r ] \.{=} REQUESTED \.{\leadsto} Acl [ p ] [ r ]
+ \.{=} ALLOWED \.{\lor} Acl [ p ] [ r ] \.{=} REJECTED )}%
 \@pvspace{8.0pt}%
 \@x{}\bottombar\@xx{}%
 \setboolean{shading}{false}
@@ -1002,14 +1190,13 @@
 \ensuremath{\.{\,\backslash\,}}* Modification History
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
- \ensuremath{\.{\,\backslash\,}}* Last modified \ensuremath{Thu}
- \ensuremath{Mar} 23 14:10:47 \ensuremath{GMT}+03:30 2023 by
- \ensuremath{Amirhosein
+ \ensuremath{\.{\,\backslash\,}}* Last modified \ensuremath{Fri} May 26
+ 14:23:17 \ensuremath{GMT\.{+}03}:30 2023 by \ensuremath{Amirhosein
 }%
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
  \ensuremath{\.{\,\backslash\,}}* Created \ensuremath{Thu} \ensuremath{Mar} 23
- 07:45:26 \ensuremath{GMT}+03:30 2023 by \ensuremath{Amirhosein
+ 07:45:26 \ensuremath{GMT\.{+}03}:30 2023 by \ensuremath{Amirhosein
 }%
 \end{cpar}%
 \end{lcom}%

@@ -2,7 +2,7 @@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 64 and seed -7022240604276384940 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 18128] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 32 and seed -386356142934807210 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 3228] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
@@ -24,387 +24,3317 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2023-05-20 20:07:55)
+Starting... (2023-05-27 09:44:45)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2189:0 @!@!@
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2023-05-20 20:07:55.
+Finished computing initial states: 1 distinct state generated at 2023-05-27 09:44:45.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(14) at 2023-05-20 20:07:58: 348,062 states generated (348,062 s/min), 51,600 distinct states found (51,600 ds/min), 17,236 states left on queue.
+Progress(12) at 2023-05-27 09:44:48: 373,871 states generated (373,871 s/min), 84,775 distinct states found (84,775 ds/min), 39,592 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(32) at 2023-05-20 20:08:58: 14,551,440 states generated (14,203,378 s/min), 1,583,708 distinct states found (1,532,108 ds/min), 100,074 states left on queue.
+Progress(19) at 2023-05-27 09:45:48: 12,686,501 states generated (12,312,630 s/min), 2,319,643 distinct states found (2,234,868 ds/min), 726,439 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
-@!@!@STARTMSG 2193:0 @!@!@
-Model checking completed. No error has been found.
-  Estimates of the probability that TLC did not check all reachable states
-  because two distinct states had the same fingerprint:
-  calculated (optimistic):  val = 1.9E-6
-  based on the actual fingerprints:  val = 7.9E-8
-@!@!@ENDMSG 2193 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(21) at 2023-05-27 09:46:49: 25,060,470 states generated (12,373,969 s/min), 4,415,613 distinct states found (2,095,970 ds/min), 1,261,584 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(22) at 2023-05-27 09:47:49: 37,207,198 states generated (12,146,728 s/min), 6,451,410 distinct states found (2,035,797 ds/min), 1,732,954 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2023-05-20 20:09:22
+The coverage statistics at 2023-05-27 09:47:49
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
-<Init line 176, col 1 to line 176, col 4 of module CompositionalSpec>: 1:1
+<Init line 198, col 1 to line 198, col 4 of module CompositionalSpec>: 1:1
 @!@!@ENDMSG 2773 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 177, col 9 to line 214, col 70 of module CompositionalSpec: 1
+  line 199, col 9 to line 236, col 70 of module CompositionalSpec: 1
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<INSTALL_APP line 216, col 1 to line 216, col 17 of module CompositionalSpec>: 47668:262710
+<INSTALL_APP line 238, col 1 to line 238, col 17 of module CompositionalSpec>: 318183:611077
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 216, col 25 to line 216, col 48 of module CompositionalSpec: 8377530
+  line 238, col 25 to line 238, col 48 of module CompositionalSpec: 19485389
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 216, col 25 to line 216, col 32 of module CompositionalSpec: 8114820
+  |line 238, col 25 to line 238, col 32 of module CompositionalSpec: 18874320
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 217, col 25 to line 217, col 97 of module CompositionalSpec: 262710
+  ||line 238, col 25 to line 238, col 26 of module CompositionalSpec: 18874325
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 218, col 25 to line 218, col 72 of module CompositionalSpec: 262710
+  ||line 238, col 28 to line 238, col 31 of module CompositionalSpec: 18874332
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 219, col 25 to line 219, col 78 of module CompositionalSpec: 262710
+  line 239, col 25 to line 239, col 97 of module CompositionalSpec: 611077
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 220, col 25 to line 220, col 75 of module CompositionalSpec: 262710
+  line 240, col 25 to line 240, col 72 of module CompositionalSpec: 611077
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 221, col 25 to line 223, col 70 of module CompositionalSpec: 262710
+  line 241, col 25 to line 241, col 78 of module CompositionalSpec: 611077
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 242, col 25 to line 242, col 75 of module CompositionalSpec: 611077
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 243, col 25 to line 245, col 70 of module CompositionalSpec: 611077
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<UNINSTALL_APP line 227, col 1 to line 227, col 19 of module CompositionalSpec>: 135100:262710
+<UNINSTALL_APP line 249, col 1 to line 249, col 19 of module CompositionalSpec>: 304978:513536
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 227, col 27 to line 227, col 52 of module CompositionalSpec: 8377530
+  line 249, col 27 to line 249, col 52 of module CompositionalSpec: 19387961
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 227, col 27 to line 227, col 34 of module CompositionalSpec: 8114820
+  |line 249, col 27 to line 249, col 34 of module CompositionalSpec: 18874436
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 228, col 27 to line 228, col 101 of module CompositionalSpec: 262710
+  line 250, col 27 to line 250, col 101 of module CompositionalSpec: 513537
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 229, col 27 to line 229, col 74 of module CompositionalSpec: 262710
+  |line 250, col 39 to line 250, col 101 of module CompositionalSpec: 513539
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 230, col 27 to line 230, col 83 of module CompositionalSpec: 262710
+  line 251, col 27 to line 251, col 74 of module CompositionalSpec: 513539
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 231, col 27 to line 231, col 77 of module CompositionalSpec: 262710
+  |line 251, col 33 to line 251, col 74 of module CompositionalSpec: 513542
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 232, col 27 to line 234, col 79 of module CompositionalSpec: 262710
+  line 252, col 27 to line 252, col 83 of module CompositionalSpec: 513543
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 252, col 36 to line 252, col 83 of module CompositionalSpec: 513544
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 253, col 27 to line 253, col 77 of module CompositionalSpec: 513543
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 253, col 36 to line 253, col 77 of module CompositionalSpec: 513544
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 254, col 27 to line 256, col 79 of module CompositionalSpec: 513537
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<UPDATE_APP line 238, col 1 to line 238, col 16 of module CompositionalSpec>: 85532:175140
+<UPDATE_APP line 260, col 1 to line 260, col 16 of module CompositionalSpec>: 283444:455262
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 238, col 24 to line 238, col 46 of module CompositionalSpec: 8289960
+  line 260, col 24 to line 260, col 46 of module CompositionalSpec: 19329823
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 238, col 24 to line 238, col 31 of module CompositionalSpec: 8114820
+  |line 260, col 24 to line 260, col 31 of module CompositionalSpec: 18874568
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 239, col 24 to line 239, col 139 of module CompositionalSpec: 175140
+  ||line 260, col 24 to line 260, col 25 of module CompositionalSpec: 18874577
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 240, col 24 to line 240, col 71 of module CompositionalSpec: 175140
+  ||line 260, col 27 to line 260, col 30 of module CompositionalSpec: 18874585
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 241, col 24 to line 241, col 83 of module CompositionalSpec: 175140
+  line 261, col 24 to line 261, col 139 of module CompositionalSpec: 455268
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 242, col 24 to line 242, col 74 of module CompositionalSpec: 175140
+  line 262, col 24 to line 262, col 71 of module CompositionalSpec: 455268
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 243, col 24 to line 245, col 64 of module CompositionalSpec: 175140
+  line 263, col 24 to line 263, col 83 of module CompositionalSpec: 455268
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 264, col 24 to line 264, col 74 of module CompositionalSpec: 455329
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 265, col 24 to line 267, col 64 of module CompositionalSpec: 455263
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<TERMINATED line 249, col 1 to line 249, col 16 of module CompositionalSpec>: 271146:554610
+<TERMINATED line 271, col 1 to line 271, col 16 of module CompositionalSpec>: 596231:1365340
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 249, col 24 to line 249, col 46 of module CompositionalSpec: 8669430
+  line 271, col 24 to line 271, col 46 of module CompositionalSpec: 20242241
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 249, col 24 to line 249, col 31 of module CompositionalSpec: 8114820
+  |line 271, col 24 to line 271, col 31 of module CompositionalSpec: 18876903
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 250, col 24 to line 250, col 91 of module CompositionalSpec: 554610
+  line 272, col 24 to line 272, col 91 of module CompositionalSpec: 1365342
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 251, col 24 to line 251, col 71 of module CompositionalSpec: 554610
+  line 273, col 24 to line 273, col 71 of module CompositionalSpec: 1365343
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 252, col 24 to line 252, col 80 of module CompositionalSpec: 554610
+  line 274, col 24 to line 274, col 80 of module CompositionalSpec: 1365343
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 253, col 24 to line 253, col 74 of module CompositionalSpec: 554610
+  line 275, col 24 to line 275, col 74 of module CompositionalSpec: 1365343
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 254, col 24 to line 256, col 64 of module CompositionalSpec: 554610
+  line 276, col 24 to line 278, col 64 of module CompositionalSpec: 1365340
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<DECLARE_PERMISSION line 260, col 1 to line 260, col 24 of module CompositionalSpec>: 128703:583800
+<DECLARE_PERMISSION line 282, col 1 to line 282, col 24 of module CompositionalSpec>: 539682:1273714
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 260, col 32 to line 260, col 62 of module CompositionalSpec: 8698620
+  line 282, col 32 to line 282, col 62 of module CompositionalSpec: 20150648
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 260, col 32 to line 260, col 39 of module CompositionalSpec: 8114820
+  |line 282, col 32 to line 282, col 39 of module CompositionalSpec: 18876939
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 261, col 32 to line 261, col 104 of module CompositionalSpec: 583800
+  line 283, col 32 to line 283, col 104 of module CompositionalSpec: 1273714
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 262, col 32 to line 262, col 79 of module CompositionalSpec: 583800
+  line 284, col 32 to line 284, col 79 of module CompositionalSpec: 1273714
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 263, col 32 to line 263, col 88 of module CompositionalSpec: 583800
+  line 285, col 32 to line 285, col 88 of module CompositionalSpec: 1273715
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 264, col 32 to line 264, col 88 of module CompositionalSpec: 583800
+  line 286, col 32 to line 286, col 88 of module CompositionalSpec: 1273715
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 265, col 32 to line 265, col 82 of module CompositionalSpec: 583800
+  line 287, col 32 to line 287, col 82 of module CompositionalSpec: 1273715
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 266, col 32 to line 269, col 66 of module CompositionalSpec: 583800
+  line 288, col 32 to line 291, col 66 of module CompositionalSpec: 1273714
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<REVOKE_PERMISSION line 273, col 1 to line 273, col 23 of module CompositionalSpec>: 0:1352470
+<REVOKE_PERMISSION line 295, col 1 to line 295, col 23 of module CompositionalSpec>: 50:3193297
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 273, col 31 to line 273, col 60 of module CompositionalSpec: 9467290
+  line 295, col 31 to line 295, col 60 of module CompositionalSpec: 22070277
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 273, col 31 to line 273, col 38 of module CompositionalSpec: 8114820
+  |line 295, col 31 to line 295, col 38 of module CompositionalSpec: 18876980
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 274, col 31 to line 274, col 121 of module CompositionalSpec: 1352470
+  line 296, col 31 to line 296, col 121 of module CompositionalSpec: 3193300
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 275, col 31 to line 275, col 78 of module CompositionalSpec: 1352470
+  line 297, col 31 to line 297, col 78 of module CompositionalSpec: 3193303
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 276, col 31 to line 276, col 87 of module CompositionalSpec: 1352470
+  line 298, col 31 to line 298, col 87 of module CompositionalSpec: 3193303
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 277, col 31 to line 277, col 81 of module CompositionalSpec: 1352470
+  line 299, col 31 to line 299, col 81 of module CompositionalSpec: 3193303
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 278, col 31 to line 281, col 47 of module CompositionalSpec: 1352470
+  line 300, col 31 to line 303, col 47 of module CompositionalSpec: 3193299
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<REQUEST_PERMISSION line 285, col 1 to line 285, col 24 of module CompositionalSpec>: 19:9737784
+<REQUEST_PERMISSION line 307, col 1 to line 307, col 24 of module CompositionalSpec>: 415957:2694993
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 285, col 32 to line 285, col 62 of module CompositionalSpec: 9737784
+  line 307, col 32 to line 307, col 62 of module CompositionalSpec: 21572007
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 285, col 32 to line 285, col 39 of module CompositionalSpec: 8114820
+  |line 307, col 32 to line 307, col 39 of module CompositionalSpec: 18877017
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 287, col 34 to line 287, col 53 of module CompositionalSpec: 9737784
+  line 308, col 35 to line 308, col 88 of module CompositionalSpec: 2694993
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 286, col 41 to line 286, col 54 of module CompositionalSpec: 1622964
+  line 309, col 40 to line 312, col 93 of module CompositionalSpec: 1186920
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 288, col 32 to line 288, col 79 of module CompositionalSpec: 9737784
+  line 313, col 43 to line 313, col 89 of module CompositionalSpec: 1510800
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 289, col 32 to line 289, col 82 of module CompositionalSpec: 9737784
+  line 314, col 43 to line 314, col 74 of module CompositionalSpec: 1508073
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 290, col 32 to line 290, col 85 of module CompositionalSpec: 9737784
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 291, col 32 to line 291, col 82 of module CompositionalSpec: 9737784
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 292, col 32 to line 294, col 73 of module CompositionalSpec: 9737784
+  line 315, col 32 to line 318, col 66 of module CompositionalSpec: 2694993
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<EnvBegin line 298, col 1 to line 298, col 8 of module CompositionalSpec>: 2:2028705
+<SWITCH_PERMISSION line 320, col 1 to line 320, col 23 of module CompositionalSpec>: 4688:9923554
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 298, col 16 to line 298, col 45 of module CompositionalSpec: 2704940
+  line 320, col 31 to line 320, col 60 of module CompositionalSpec: 20002413
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 298, col 16 to line 298, col 32 of module CompositionalSpec: 2028705
+  |line 320, col 31 to line 320, col 38 of module CompositionalSpec: 18899796
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 299, col 22 to line 299, col 25 of module CompositionalSpec: 676235
+  line 322, col 36 to line 322, col 55 of module CompositionalSpec: 6615715
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 300, col 22 to line 300, col 68 of module CompositionalSpec: 676235
+  line 323, col 39 to line 324, col 83 of module CompositionalSpec: 6615721
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 301, col 22 to line 301, col 47 of module CompositionalSpec: 676235
+  |line 323, col 39 to line 323, col 127 of module CompositionalSpec: 6615725
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 303, col 24 to line 308, col 82 of module CompositionalSpec: 1352470
+  ||line 323, col 39 to line 323, col 79 of module CompositionalSpec: 6615733
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 302, col 31 to line 302, col 34 of module CompositionalSpec: 676235
+  ||line 323, col 84 to line 323, col 127 of module CompositionalSpec: 5513112
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 309, col 16 to line 311, col 56 of module CompositionalSpec: 2028705
+  |line 324, col 42 to line 324, col 83 of module CompositionalSpec: 4410490
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 325, col 47 to line 325, col 50 of module CompositionalSpec: 3307866
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 326, col 47 to line 326, col 64 of module CompositionalSpec: 3307854
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 327, col 55 to line 328, col 93 of module CompositionalSpec: 3307873
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 327, col 55 to line 327, col 138 of module CompositionalSpec: 3307877
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 327, col 55 to line 327, col 96 of module CompositionalSpec: 3307878
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 327, col 101 to line 327, col 138 of module CompositionalSpec: 2205255
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 328, col 53 to line 328, col 93 of module CompositionalSpec: 1102628
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 330, col 63 to line 330, col 70 of module CompositionalSpec: 6615764
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 331, col 68 to line 331, col 161 of module CompositionalSpec: 3307854
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 332, col 68 to line 332, col 160 of module CompositionalSpec: 3307854
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  line 329, col 67 to line 329, col 81 of module CompositionalSpec: 3307885:9923650
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 334, col 58 to line 334, col 75 of module CompositionalSpec: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 321, col 40 to line 321, col 53 of module CompositionalSpec: 1102630
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 335, col 31 to line 335, col 78 of module CompositionalSpec: 9923654
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 336, col 31 to line 336, col 81 of module CompositionalSpec: 9923655
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 337, col 31 to line 337, col 84 of module CompositionalSpec: 9923659
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 338, col 31 to line 338, col 81 of module CompositionalSpec: 9923666
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 339, col 31 to line 341, col 65 of module CompositionalSpec: 9923562
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<AppBegin line 315, col 1 to line 315, col 14 of module CompositionalSpec>: 924664:1926540
+<EnvBegin line 346, col 1 to line 346, col 8 of module CompositionalSpec>: 43:4577841
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 315, col 22 to line 315, col 42 of module CompositionalSpec: 5166630
+  line 346, col 16 to line 346, col 45 of module CompositionalSpec: 6250934
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 315, col 22 to line 315, col 29 of module CompositionalSpec: 4057410
+  |line 346, col 16 to line 346, col 32 of module CompositionalSpec: 4724988
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 316, col 25 to line 316, col 69 of module CompositionalSpec: 1109220
+  line 347, col 22 to line 347, col 25 of module CompositionalSpec: 1525947
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 317, col 39 to line 321, col 90 of module CompositionalSpec: 554610
+  line 348, col 22 to line 348, col 68 of module CompositionalSpec: 1525947
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 322, col 39 to line 322, col 78 of module CompositionalSpec: 554610
+  line 349, col 22 to line 349, col 47 of module CompositionalSpec: 1525947
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 323, col 39 to line 323, col 65 of module CompositionalSpec: 554610
+  line 351, col 24 to line 356, col 82 of module CompositionalSpec: 3051894
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 324, col 42 to line 324, col 85 of module CompositionalSpec: 554610
+  line 350, col 31 to line 350, col 34 of module CompositionalSpec: 1525947
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 325, col 56 to line 329, col 107 of module CompositionalSpec: 262710
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 330, col 56 to line 330, col 98 of module CompositionalSpec: 262710
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 331, col 56 to line 331, col 71 of module CompositionalSpec: 262710
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 332, col 59 to line 332, col 113 of module CompositionalSpec: 262710
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 333, col 64 to line 338, col 106 of module CompositionalSpec: 175140
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 339, col 67 to line 339, col 104 of module CompositionalSpec: 87570
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 340, col 67 to line 341, col 88 of module CompositionalSpec: 87570
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 342, col 56 to line 342, col 69 of module CompositionalSpec: 262710
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 343, col 50 to line 343, col 99 of module CompositionalSpec: 291900
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 344, col 50 to line 345, col 71 of module CompositionalSpec: 291900
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 346, col 39 to line 346, col 52 of module CompositionalSpec: 817320
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 347, col 33 to line 347, col 66 of module CompositionalSpec: 554610
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 348, col 33 to line 348, col 75 of module CompositionalSpec: 554610
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 349, col 22 to line 351, col 67 of module CompositionalSpec: 1926540
+  line 357, col 16 to line 359, col 56 of module CompositionalSpec: 4577841
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<DECLARING_PERMISSION line 353, col 1 to line 353, col 26 of module CompositionalSpec>: 299303:583800
+<AppBegin line 363, col 1 to line 363, col 14 of module CompositionalSpec>: 2667519:5476103
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 353, col 34 to line 353, col 66 of module CompositionalSpec: 4349310
+  line 363, col 22 to line 363, col 42 of module CompositionalSpec: 12305440
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 353, col 34 to line 353, col 41 of module CompositionalSpec: 4057410
+  |line 363, col 22 to line 363, col 29 of module CompositionalSpec: 9451069
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 355, col 36 to line 362, col 86 of module CompositionalSpec: 583800
+  line 364, col 25 to line 364, col 69 of module CompositionalSpec: 2854378
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 354, col 43 to line 354, col 53 of module CompositionalSpec: 291900
+  line 365, col 39 to line 369, col 90 of module CompositionalSpec: 1873515
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 363, col 34 to line 366, col 68 of module CompositionalSpec: 583800
+  line 370, col 39 to line 370, col 78 of module CompositionalSpec: 1873518
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 371, col 39 to line 371, col 65 of module CompositionalSpec: 1873515
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 372, col 42 to line 372, col 85 of module CompositionalSpec: 1873519
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 373, col 56 to line 377, col 107 of module CompositionalSpec: 748212
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 378, col 56 to line 378, col 98 of module CompositionalSpec: 748215
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 379, col 56 to line 379, col 71 of module CompositionalSpec: 748212
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 380, col 59 to line 380, col 113 of module CompositionalSpec: 748217
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 381, col 64 to line 386, col 106 of module CompositionalSpec: 654527
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 387, col 67 to line 387, col 104 of module CompositionalSpec: 93688
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 388, col 67 to line 389, col 88 of module CompositionalSpec: 93685
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 390, col 56 to line 390, col 69 of module CompositionalSpec: 748219
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 391, col 50 to line 391, col 99 of module CompositionalSpec: 1125309
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 392, col 50 to line 393, col 71 of module CompositionalSpec: 1125303
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 394, col 39 to line 394, col 52 of module CompositionalSpec: 2621752
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 395, col 33 to line 395, col 66 of module CompositionalSpec: 980865
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 396, col 33 to line 396, col 75 of module CompositionalSpec: 980861
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 397, col 22 to line 399, col 67 of module CompositionalSpec: 5476103
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<INSTALLING_APP line 368, col 1 to line 368, col 20 of module CompositionalSpec>: 136445:262710
+<DECLARING_PERMISSION line 401, col 1 to line 401, col 26 of module CompositionalSpec>: 877531:1705448
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 368, col 28 to line 368, col 54 of module CompositionalSpec: 4320120
+  line 401, col 34 to line 401, col 66 of module CompositionalSpec: 10303860
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 368, col 28 to line 368, col 35 of module CompositionalSpec: 4057410
+  |line 401, col 34 to line 401, col 41 of module CompositionalSpec: 9451141
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 369, col 28 to line 373, col 79 of module CompositionalSpec: 262710
+  line 403, col 36 to line 410, col 86 of module CompositionalSpec: 1705448
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 374, col 28 to line 374, col 68 of module CompositionalSpec: 262710
+  line 402, col 43 to line 402, col 53 of module CompositionalSpec: 852724
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 375, col 28 to line 378, col 62 of module CompositionalSpec: 262710
+  line 411, col 34 to line 414, col 68 of module CompositionalSpec: 1705448
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<ApsBegin line 383, col 1 to line 383, col 8 of module CompositionalSpec>: 122:2028705
+<INSTALLING_APP line 416, col 1 to line 416, col 20 of module CompositionalSpec>: 435451:831875
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 383, col 16 to line 383, col 37 of module CompositionalSpec: 2434446
+  line 416, col 28 to line 416, col 54 of module CompositionalSpec: 10284405
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 383, col 16 to line 383, col 24 of module CompositionalSpec: 2028705
+  |line 416, col 28 to line 416, col 35 of module CompositionalSpec: 9452532
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 384, col 22 to line 384, col 25 of module CompositionalSpec: 405741
+  line 417, col 28 to line 421, col 79 of module CompositionalSpec: 831875
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 385, col 22 to line 385, col 60 of module CompositionalSpec: 405741
+  line 422, col 28 to line 422, col 68 of module CompositionalSpec: 831875
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 386, col 22 to line 386, col 51 of module CompositionalSpec: 405741
+  line 423, col 28 to line 426, col 62 of module CompositionalSpec: 831875
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<ApsBegin line 431, col 1 to line 431, col 8 of module CompositionalSpec>: 13064:4621510
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 431, col 16 to line 431, col 37 of module CompositionalSpec: 5650580
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 389, col 26 to line 396, col 77 of module CompositionalSpec: 1622964
+  |line 431, col 16 to line 431, col 24 of module CompositionalSpec: 4726278
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 388, col 33 to line 388, col 43 of module CompositionalSpec: 811482
+  line 432, col 22 to line 432, col 25 of module CompositionalSpec: 924302
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 387, col 31 to line 387, col 34 of module CompositionalSpec: 405741
+  line 433, col 22 to line 433, col 60 of module CompositionalSpec: 924302
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 397, col 16 to line 399, col 50 of module CompositionalSpec: 2028705
+  line 434, col 22 to line 434, col 51 of module CompositionalSpec: 924302
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 437, col 26 to line 444, col 77 of module CompositionalSpec: 3697208
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 436, col 33 to line 436, col 43 of module CompositionalSpec: 1848604
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 435, col 31 to line 435, col 34 of module CompositionalSpec: 924302
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 445, col 16 to line 447, col 50 of module CompositionalSpec: 4621510
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2202:0 @!@!@
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(47) at 2023-05-20 20:09:22: 19,759,685 states generated (13,455,998 s/min), 2,028,705 distinct states found (1,381,512 ds/min), 0 states left on queue.
+Progress(23) at 2023-05-27 09:48:49: 49,531,638 states generated (12,324,440 s/min), 8,446,362 distinct states found (1,994,952 ds/min), 2,161,076 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
-@!@!@STARTMSG 2199:0 @!@!@
-19759685 states generated, 2028705 distinct states found, 0 states left on queue.
-@!@!@ENDMSG 2199 @!@!@
-@!@!@STARTMSG 2194:0 @!@!@
-The depth of the complete state graph search is 47.
-@!@!@ENDMSG 2194 @!@!@
-@!@!@STARTMSG 2268:0 @!@!@
-The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 10 and the 95th percentile is 2).
-@!@!@ENDMSG 2268 @!@!@
-@!@!@STARTMSG 2186:0 @!@!@
-Finished in 88136ms at (2023-05-20 20:09:22)
-@!@!@ENDMSG 2186 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(24) at 2023-05-27 09:49:49: 62,019,829 states generated (12,488,191 s/min), 10,374,169 distinct states found (1,927,807 ds/min), 2,546,004 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(24) at 2023-05-27 09:50:49: 74,116,406 states generated (12,096,577 s/min), 12,401,559 distinct states found (2,027,390 ds/min), 2,950,192 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(25) at 2023-05-27 09:51:49: 86,534,890 states generated (12,418,484 s/min), 14,365,824 distinct states found (1,964,265 ds/min), 3,312,946 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2023-05-27 09:51:49
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2773:0 @!@!@
+<Init line 198, col 1 to line 198, col 4 of module CompositionalSpec>: 1:1
+@!@!@ENDMSG 2773 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 199, col 9 to line 236, col 70 of module CompositionalSpec: 1
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<INSTALL_APP line 238, col 1 to line 238, col 17 of module CompositionalSpec>: 655732:1404221
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 238, col 25 to line 238, col 48 of module CompositionalSpec: 45615888
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 238, col 25 to line 238, col 32 of module CompositionalSpec: 44211673
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 239, col 25 to line 239, col 97 of module CompositionalSpec: 1404223
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 240, col 25 to line 240, col 72 of module CompositionalSpec: 1404223
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 241, col 25 to line 241, col 78 of module CompositionalSpec: 1404223
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 242, col 25 to line 242, col 75 of module CompositionalSpec: 1404223
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 243, col 25 to line 245, col 70 of module CompositionalSpec: 1404221
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<UNINSTALL_APP line 249, col 1 to line 249, col 19 of module CompositionalSpec>: 777444:1396831
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 249, col 27 to line 249, col 52 of module CompositionalSpec: 45608531
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 249, col 27 to line 249, col 34 of module CompositionalSpec: 44211702
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 250, col 27 to line 250, col 101 of module CompositionalSpec: 1396831
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 251, col 27 to line 251, col 74 of module CompositionalSpec: 1396832
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 252, col 27 to line 252, col 83 of module CompositionalSpec: 1396832
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 253, col 27 to line 253, col 77 of module CompositionalSpec: 1396832
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 254, col 27 to line 256, col 79 of module CompositionalSpec: 1396831
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<UPDATE_APP line 260, col 1 to line 260, col 16 of module CompositionalSpec>: 685213:1193012
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 260, col 24 to line 260, col 46 of module CompositionalSpec: 45404748
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 260, col 24 to line 260, col 31 of module CompositionalSpec: 44211737
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 261, col 24 to line 261, col 139 of module CompositionalSpec: 1193012
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 262, col 24 to line 262, col 71 of module CompositionalSpec: 1193012
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 263, col 24 to line 263, col 83 of module CompositionalSpec: 1193012
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 264, col 24 to line 264, col 74 of module CompositionalSpec: 1193012
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 265, col 24 to line 267, col 64 of module CompositionalSpec: 1193012
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<TERMINATED line 271, col 1 to line 271, col 16 of module CompositionalSpec>: 1406479:3219797
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 271, col 24 to line 271, col 46 of module CompositionalSpec: 47431768
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 271, col 24 to line 271, col 31 of module CompositionalSpec: 44211976
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 272, col 24 to line 272, col 91 of module CompositionalSpec: 3219797
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 273, col 24 to line 273, col 71 of module CompositionalSpec: 3219797
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 274, col 24 to line 274, col 80 of module CompositionalSpec: 3219797
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 275, col 24 to line 275, col 74 of module CompositionalSpec: 3220051
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 276, col 24 to line 278, col 64 of module CompositionalSpec: 3219797
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<DECLARE_PERMISSION line 282, col 1 to line 282, col 24 of module CompositionalSpec>: 1107742:2841954
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 282, col 32 to line 282, col 62 of module CompositionalSpec: 47057761
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 282, col 32 to line 282, col 39 of module CompositionalSpec: 44215808
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 283, col 32 to line 283, col 104 of module CompositionalSpec: 2841954
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 284, col 32 to line 284, col 79 of module CompositionalSpec: 2841954
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 285, col 32 to line 285, col 88 of module CompositionalSpec: 2841954
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 286, col 32 to line 286, col 88 of module CompositionalSpec: 2841954
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 287, col 32 to line 287, col 82 of module CompositionalSpec: 2841954
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 288, col 32 to line 291, col 66 of module CompositionalSpec: 2841954
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<REVOKE_PERMISSION line 295, col 1 to line 295, col 23 of module CompositionalSpec>: 50:7373293
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 295, col 31 to line 295, col 60 of module CompositionalSpec: 51589125
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 295, col 31 to line 295, col 38 of module CompositionalSpec: 44215833
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 296, col 31 to line 296, col 121 of module CompositionalSpec: 7373294
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 297, col 31 to line 297, col 78 of module CompositionalSpec: 7373294
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 298, col 31 to line 298, col 87 of module CompositionalSpec: 7373295
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 299, col 31 to line 299, col 81 of module CompositionalSpec: 7373295
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 300, col 31 to line 303, col 47 of module CompositionalSpec: 7373293
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<REQUEST_PERMISSION line 307, col 1 to line 307, col 24 of module CompositionalSpec>: 860972:6402020
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 307, col 32 to line 307, col 62 of module CompositionalSpec: 50617874
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 307, col 32 to line 307, col 39 of module CompositionalSpec: 44215859
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 308, col 35 to line 308, col 88 of module CompositionalSpec: 6402020
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 309, col 40 to line 312, col 93 of module CompositionalSpec: 3067776
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 313, col 43 to line 313, col 89 of module CompositionalSpec: 3334244
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 314, col 43 to line 314, col 74 of module CompositionalSpec: 3334244
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 315, col 32 to line 318, col 66 of module CompositionalSpec: 6402020
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<SWITCH_PERMISSION line 320, col 1 to line 320, col 23 of module CompositionalSpec>: 5324:23087268
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 320, col 31 to line 320, col 60 of module CompositionalSpec: 46781155
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 320, col 31 to line 320, col 38 of module CompositionalSpec: 44215907
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 322, col 36 to line 322, col 55 of module CompositionalSpec: 15391512
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 323, col 39 to line 324, col 83 of module CompositionalSpec: 15391512
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 323, col 39 to line 323, col 127 of module CompositionalSpec: 15393994
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 323, col 39 to line 323, col 79 of module CompositionalSpec: 15394000
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 323, col 84 to line 323, col 127 of module CompositionalSpec: 12828334
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 324, col 42 to line 324, col 83 of module CompositionalSpec: 10262669
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 325, col 47 to line 325, col 50 of module CompositionalSpec: 7697000
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 326, col 47 to line 326, col 64 of module CompositionalSpec: 7695756
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 327, col 55 to line 328, col 93 of module CompositionalSpec: 7697004
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 327, col 55 to line 327, col 138 of module CompositionalSpec: 7697004
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 327, col 55 to line 327, col 96 of module CompositionalSpec: 7697004
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 327, col 101 to line 327, col 138 of module CompositionalSpec: 5131336
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 328, col 53 to line 328, col 93 of module CompositionalSpec: 2565668
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 330, col 63 to line 330, col 70 of module CompositionalSpec: 15394012
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 331, col 68 to line 331, col 161 of module CompositionalSpec: 7695756
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 332, col 68 to line 332, col 160 of module CompositionalSpec: 7695756
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  line 329, col 67 to line 329, col 81 of module CompositionalSpec: 7697006:23091018
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 334, col 58 to line 334, col 75 of module CompositionalSpec: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 321, col 40 to line 321, col 53 of module CompositionalSpec: 2565669
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 335, col 31 to line 335, col 78 of module CompositionalSpec: 23091013
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 336, col 31 to line 336, col 81 of module CompositionalSpec: 23091015
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 337, col 31 to line 337, col 84 of module CompositionalSpec: 23091018
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 338, col 31 to line 338, col 81 of module CompositionalSpec: 23091021
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 339, col 31 to line 341, col 65 of module CompositionalSpec: 23087268
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<EnvBegin line 346, col 1 to line 346, col 8 of module CompositionalSpec>: 43:11041995
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 346, col 16 to line 346, col 45 of module CompositionalSpec: 14735748
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 346, col 16 to line 346, col 32 of module CompositionalSpec: 11055083
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 347, col 22 to line 347, col 25 of module CompositionalSpec: 3680665
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 348, col 22 to line 348, col 68 of module CompositionalSpec: 3680665
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 349, col 22 to line 349, col 47 of module CompositionalSpec: 3680665
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 351, col 24 to line 356, col 82 of module CompositionalSpec: 7361330
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 350, col 31 to line 350, col 34 of module CompositionalSpec: 3680665
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 357, col 16 to line 359, col 56 of module CompositionalSpec: 11041995
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<AppBegin line 363, col 1 to line 363, col 14 of module CompositionalSpec>: 6046559:12692876
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 363, col 22 to line 363, col 42 of module CompositionalSpec: 28729081
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 363, col 22 to line 363, col 29 of module CompositionalSpec: 22111552
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 364, col 25 to line 364, col 69 of module CompositionalSpec: 6617549
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 365, col 39 to line 369, col 90 of module CompositionalSpec: 4188195
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 370, col 39 to line 370, col 78 of module CompositionalSpec: 4188196
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 370, col 45 to line 370, col 78 of module CompositionalSpec: 4188196
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 371, col 39 to line 371, col 65 of module CompositionalSpec: 4188195
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 372, col 42 to line 372, col 85 of module CompositionalSpec: 4188196
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 373, col 59 to line 373, col 96 of module CompositionalSpec: 1887857
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 373, col 68 to line 373, col 96 of module CompositionalSpec: 1887857
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 374, col 59 to line 377, col 107 of module CompositionalSpec: 1887857
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 374, col 68 to line 377, col 107 of module CompositionalSpec: 1887857
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 378, col 56 to line 378, col 98 of module CompositionalSpec: 1887857
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 379, col 56 to line 379, col 71 of module CompositionalSpec: 1887856
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 380, col 59 to line 380, col 113 of module CompositionalSpec: 1887857
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 381, col 64 to line 386, col 106 of module CompositionalSpec: 1592536
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 387, col 67 to line 387, col 104 of module CompositionalSpec: 295321
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 388, col 67 to line 389, col 88 of module CompositionalSpec: 295320
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 390, col 56 to line 390, col 69 of module CompositionalSpec: 1887857
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 391, col 50 to line 391, col 99 of module CompositionalSpec: 2300340
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 392, col 50 to line 393, col 71 of module CompositionalSpec: 2300340
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 394, col 39 to line 394, col 52 of module CompositionalSpec: 6076054
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 395, col 33 to line 395, col 66 of module CompositionalSpec: 2429355
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 396, col 33 to line 396, col 75 of module CompositionalSpec: 2429351
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 397, col 22 to line 399, col 67 of module CompositionalSpec: 12693599
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<DECLARING_PERMISSION line 401, col 1 to line 401, col 26 of module CompositionalSpec>: 1871439:3646630
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 401, col 34 to line 401, col 66 of module CompositionalSpec: 23934902
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 401, col 34 to line 401, col 41 of module CompositionalSpec: 22111588
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 403, col 36 to line 410, col 86 of module CompositionalSpec: 3646630
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 402, col 43 to line 402, col 53 of module CompositionalSpec: 1823315
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 411, col 34 to line 414, col 68 of module CompositionalSpec: 3646630
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<INSTALLING_APP line 416, col 1 to line 416, col 20 of module CompositionalSpec>: 937416:1811328
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 416, col 28 to line 416, col 54 of module CompositionalSpec: 23924767
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 416, col 28 to line 416, col 35 of module CompositionalSpec: 22113341
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 417, col 28 to line 421, col 79 of module CompositionalSpec: 1811431
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 422, col 28 to line 422, col 68 of module CompositionalSpec: 1811431
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 423, col 28 to line 426, col 62 of module CompositionalSpec: 1811431
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<ApsBegin line 431, col 1 to line 431, col 8 of module CompositionalSpec>: 13272:10438950
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 431, col 16 to line 431, col 37 of module CompositionalSpec: 13144475
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 431, col 16 to line 431, col 24 of module CompositionalSpec: 11056686
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 432, col 22 to line 432, col 25 of module CompositionalSpec: 2087790
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 433, col 22 to line 433, col 60 of module CompositionalSpec: 2087790
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 434, col 22 to line 434, col 51 of module CompositionalSpec: 2087790
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 437, col 26 to line 444, col 77 of module CompositionalSpec: 8351160
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 436, col 33 to line 436, col 43 of module CompositionalSpec: 4175580
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 435, col 31 to line 435, col 34 of module CompositionalSpec: 2087790
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 445, col 16 to line 447, col 50 of module CompositionalSpec: 10438950
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2777:0 @!@!@
+End of statistics (please note that for performance reasons large models
+are best checked with coverage and cost statistics disabled).
+@!@!@ENDMSG 2777 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(25) at 2023-05-27 09:52:49: 98,928,506 states generated (12,393,616 s/min), 16,245,133 distinct states found (1,879,309 ds/min), 3,628,243 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(26) at 2023-05-27 09:53:49: 111,083,821 states generated (12,155,315 s/min), 18,177,683 distinct states found (1,932,550 ds/min), 3,960,167 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(26) at 2023-05-27 09:54:49: 122,871,228 states generated (11,787,407 s/min), 20,028,931 distinct states found (1,851,248 ds/min), 4,246,746 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(27) at 2023-05-27 09:55:49: 134,786,489 states generated (11,915,261 s/min), 21,659,964 distinct states found (1,631,033 ds/min), 4,489,605 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2023-05-27 09:55:49
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2773:0 @!@!@
+<Init line 198, col 1 to line 198, col 4 of module CompositionalSpec>: 1:1
+@!@!@ENDMSG 2773 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 199, col 9 to line 236, col 70 of module CompositionalSpec: 1
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<INSTALL_APP line 238, col 1 to line 238, col 17 of module CompositionalSpec>: 936514:2151769
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 238, col 25 to line 238, col 48 of module CompositionalSpec: 70833399
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 238, col 25 to line 238, col 32 of module CompositionalSpec: 68681637
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 239, col 25 to line 239, col 97 of module CompositionalSpec: 2151769
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 240, col 25 to line 240, col 72 of module CompositionalSpec: 2151769
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 241, col 25 to line 241, col 78 of module CompositionalSpec: 2151769
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 242, col 25 to line 242, col 75 of module CompositionalSpec: 2151769
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 243, col 25 to line 245, col 70 of module CompositionalSpec: 2151769
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<UNINSTALL_APP line 249, col 1 to line 249, col 19 of module CompositionalSpec>: 1244644:2315809
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 249, col 27 to line 249, col 52 of module CompositionalSpec: 70997490
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 249, col 27 to line 249, col 34 of module CompositionalSpec: 68681680
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 250, col 27 to line 250, col 101 of module CompositionalSpec: 2315810
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 250, col 39 to line 250, col 101 of module CompositionalSpec: 2315810
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 251, col 27 to line 251, col 74 of module CompositionalSpec: 2315810
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 252, col 27 to line 252, col 83 of module CompositionalSpec: 2315810
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 253, col 27 to line 253, col 77 of module CompositionalSpec: 2315810
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 254, col 27 to line 256, col 79 of module CompositionalSpec: 2315810
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<UPDATE_APP line 260, col 1 to line 260, col 16 of module CompositionalSpec>: 1059973:1929910
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 260, col 24 to line 260, col 46 of module CompositionalSpec: 70611632
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 260, col 24 to line 260, col 31 of module CompositionalSpec: 68681729
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 261, col 24 to line 261, col 139 of module CompositionalSpec: 1929911
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 262, col 24 to line 262, col 71 of module CompositionalSpec: 1929911
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 263, col 24 to line 263, col 83 of module CompositionalSpec: 1929911
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 264, col 24 to line 264, col 74 of module CompositionalSpec: 1929911
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 265, col 24 to line 267, col 64 of module CompositionalSpec: 1929910
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<TERMINATED line 271, col 1 to line 271, col 16 of module CompositionalSpec>: 2204149:5012308
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 271, col 24 to line 271, col 46 of module CompositionalSpec: 73694092
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 271, col 24 to line 271, col 31 of module CompositionalSpec: 68683604
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 272, col 24 to line 272, col 91 of module CompositionalSpec: 5012433
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 273, col 24 to line 273, col 71 of module CompositionalSpec: 5012433
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 274, col 24 to line 274, col 80 of module CompositionalSpec: 5012750
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 275, col 24 to line 275, col 74 of module CompositionalSpec: 5012750
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 276, col 24 to line 278, col 64 of module CompositionalSpec: 5012308
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<DECLARE_PERMISSION line 282, col 1 to line 282, col 24 of module CompositionalSpec>: 1586194:4314113
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 282, col 32 to line 282, col 62 of module CompositionalSpec: 73002079
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 282, col 32 to line 282, col 39 of module CompositionalSpec: 68687967
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 283, col 32 to line 283, col 104 of module CompositionalSpec: 4314113
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 284, col 32 to line 284, col 79 of module CompositionalSpec: 4314113
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 285, col 32 to line 285, col 88 of module CompositionalSpec: 4314114
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 286, col 32 to line 286, col 88 of module CompositionalSpec: 4314114
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 287, col 32 to line 287, col 82 of module CompositionalSpec: 4314114
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 288, col 32 to line 291, col 66 of module CompositionalSpec: 4314113
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<REVOKE_PERMISSION line 295, col 1 to line 295, col 23 of module CompositionalSpec>: 52:11076856
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 295, col 31 to line 295, col 60 of module CompositionalSpec: 79764840
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 295, col 31 to line 295, col 38 of module CompositionalSpec: 68687987
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 296, col 31 to line 296, col 121 of module CompositionalSpec: 11076858
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 296, col 43 to line 296, col 121 of module CompositionalSpec: 11076859
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 297, col 31 to line 297, col 78 of module CompositionalSpec: 11076859
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 297, col 37 to line 297, col 78 of module CompositionalSpec: 11076860
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 298, col 31 to line 298, col 87 of module CompositionalSpec: 11076860
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 298, col 40 to line 298, col 87 of module CompositionalSpec: 11076861
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 299, col 31 to line 299, col 81 of module CompositionalSpec: 11076861
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 300, col 31 to line 303, col 47 of module CompositionalSpec: 11076857
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<REQUEST_PERMISSION line 307, col 1 to line 307, col 24 of module CompositionalSpec>: 1244599:9985132
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 307, col 32 to line 307, col 62 of module CompositionalSpec: 78673145
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 307, col 32 to line 307, col 39 of module CompositionalSpec: 68688015
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 307, col 32 to line 307, col 33 of module CompositionalSpec: 68688016
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 307, col 35 to line 307, col 38 of module CompositionalSpec: 68688018
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 308, col 35 to line 308, col 88 of module CompositionalSpec: 9985135
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 309, col 40 to line 312, col 93 of module CompositionalSpec: 4901095
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 313, col 43 to line 313, col 89 of module CompositionalSpec: 5084041
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 314, col 43 to line 314, col 74 of module CompositionalSpec: 5084038
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 315, col 32 to line 318, col 66 of module CompositionalSpec: 9985133
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<SWITCH_PERMISSION line 320, col 1 to line 320, col 23 of module CompositionalSpec>: 5724:36292168
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 320, col 31 to line 320, col 60 of module CompositionalSpec: 72731630
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 320, col 31 to line 320, col 38 of module CompositionalSpec: 68699172
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 322, col 36 to line 322, col 55 of module CompositionalSpec: 24194798
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 322, col 55 to line 322, col 55 of module CompositionalSpec: 24194802
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 323, col 39 to line 324, col 83 of module CompositionalSpec: 24194804
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 323, col 39 to line 323, col 127 of module CompositionalSpec: 24194806
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 323, col 39 to line 323, col 79 of module CompositionalSpec: 24194808
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 323, col 84 to line 323, col 127 of module CompositionalSpec: 20162341
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 324, col 42 to line 324, col 83 of module CompositionalSpec: 16129874
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 325, col 47 to line 325, col 50 of module CompositionalSpec: 12097404
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 326, col 47 to line 326, col 64 of module CompositionalSpec: 12097390
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 327, col 55 to line 328, col 93 of module CompositionalSpec: 12097409
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 327, col 55 to line 327, col 138 of module CompositionalSpec: 12097410
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 327, col 55 to line 327, col 96 of module CompositionalSpec: 12097411
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 327, col 101 to line 327, col 138 of module CompositionalSpec: 8064942
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 328, col 53 to line 328, col 93 of module CompositionalSpec: 4032471
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 330, col 63 to line 330, col 70 of module CompositionalSpec: 24194828
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 331, col 68 to line 331, col 161 of module CompositionalSpec: 12097394
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 332, col 71 to line 332, col 160 of module CompositionalSpec: 12097417
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 332, col 83 to line 332, col 160 of module CompositionalSpec: 12097419
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  line 329, col 67 to line 329, col 81 of module CompositionalSpec: 12097420:36292260
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 334, col 58 to line 334, col 75 of module CompositionalSpec: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 321, col 40 to line 321, col 53 of module CompositionalSpec: 4032476
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 335, col 31 to line 335, col 78 of module CompositionalSpec: 36292274
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 335, col 37 to line 335, col 78 of module CompositionalSpec: 36292278
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 335, col 38 to line 335, col 39 of module CompositionalSpec: 36292281
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 335, col 48 to line 335, col 77 of module CompositionalSpec: 36292185
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 335, col 58 to line 335, col 77 of module CompositionalSpec: 36292281
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 335, col 58 to line 335, col 74 of module CompositionalSpec: 36292284
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 335, col 63 to line 335, col 73 of module CompositionalSpec: 36292286
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||line 335, col 63 to line 335, col 67 of module CompositionalSpec: 36292350
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||line 335, col 69 to line 335, col 72 of module CompositionalSpec: 36292354
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 336, col 31 to line 336, col 81 of module CompositionalSpec: 36292359
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 336, col 38 to line 336, col 81 of module CompositionalSpec: 36292361
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 337, col 31 to line 337, col 84 of module CompositionalSpec: 36292363
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 337, col 39 to line 337, col 84 of module CompositionalSpec: 36292366
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 338, col 31 to line 338, col 81 of module CompositionalSpec: 36292367
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 338, col 40 to line 338, col 81 of module CompositionalSpec: 36292376
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 339, col 31 to line 341, col 65 of module CompositionalSpec: 36292187
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<EnvBegin line 346, col 1 to line 346, col 8 of module CompositionalSpec>: 43:18285420
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 346, col 16 to line 346, col 45 of module CompositionalSpec: 23269981
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 346, col 16 to line 346, col 32 of module CompositionalSpec: 17174841
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 347, col 22 to line 347, col 25 of module CompositionalSpec: 6095140
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 348, col 22 to line 348, col 68 of module CompositionalSpec: 6095140
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 349, col 22 to line 349, col 47 of module CompositionalSpec: 6095140
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 351, col 24 to line 356, col 82 of module CompositionalSpec: 12190280
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 350, col 31 to line 350, col 34 of module CompositionalSpec: 6095140
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 357, col 16 to line 359, col 56 of module CompositionalSpec: 18285420
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<AppBegin line 363, col 1 to line 363, col 14 of module CompositionalSpec>: 9220568:19580165
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 363, col 22 to line 363, col 42 of module CompositionalSpec: 44589034
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 363, col 22 to line 363, col 29 of module CompositionalSpec: 34349688
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 364, col 25 to line 364, col 69 of module CompositionalSpec: 10239347
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 365, col 39 to line 369, col 90 of module CompositionalSpec: 6334464
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 370, col 39 to line 370, col 78 of module CompositionalSpec: 6334465
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 371, col 39 to line 371, col 65 of module CompositionalSpec: 6334464
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 372, col 42 to line 372, col 85 of module CompositionalSpec: 6334465
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 373, col 56 to line 377, col 107 of module CompositionalSpec: 3006355
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 378, col 56 to line 378, col 98 of module CompositionalSpec: 3006356
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 379, col 56 to line 379, col 71 of module CompositionalSpec: 3006355
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 380, col 59 to line 380, col 113 of module CompositionalSpec: 3006356
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 381, col 64 to line 386, col 106 of module CompositionalSpec: 2474915
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 387, col 67 to line 387, col 104 of module CompositionalSpec: 531440
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 388, col 67 to line 389, col 88 of module CompositionalSpec: 531440
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 390, col 56 to line 390, col 69 of module CompositionalSpec: 3006357
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 391, col 50 to line 391, col 99 of module CompositionalSpec: 3328109
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 392, col 50 to line 393, col 71 of module CompositionalSpec: 3328109
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 394, col 39 to line 394, col 52 of module CompositionalSpec: 9340823
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 395, col 33 to line 395, col 66 of module CompositionalSpec: 3904883
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 396, col 33 to line 396, col 75 of module CompositionalSpec: 3904882
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 397, col 22 to line 399, col 67 of module CompositionalSpec: 19580165
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<DECLARING_PERMISSION line 401, col 1 to line 401, col 26 of module CompositionalSpec>: 2755850:5393628
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 401, col 34 to line 401, col 66 of module CompositionalSpec: 37046508
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 401, col 34 to line 401, col 41 of module CompositionalSpec: 34349696
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 403, col 36 to line 410, col 86 of module CompositionalSpec: 5393628
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 402, col 43 to line 402, col 53 of module CompositionalSpec: 2696814
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 411, col 34 to line 414, col 68 of module CompositionalSpec: 5393628
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<INSTALLING_APP line 416, col 1 to line 416, col 20 of module CompositionalSpec>: 1391624:2693141
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 416, col 28 to line 416, col 54 of module CompositionalSpec: 37042839
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 416, col 28 to line 416, col 35 of module CompositionalSpec: 34349698
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 417, col 28 to line 421, col 79 of module CompositionalSpec: 2693141
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 422, col 28 to line 422, col 68 of module CompositionalSpec: 2693141
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 423, col 28 to line 426, col 62 of module CompositionalSpec: 2693141
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<ApsBegin line 431, col 1 to line 431, col 8 of module CompositionalSpec>: 13421:15777565
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 431, col 16 to line 431, col 37 of module CompositionalSpec: 20330367
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 431, col 16 to line 431, col 24 of module CompositionalSpec: 17174854
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 432, col 22 to line 432, col 25 of module CompositionalSpec: 3155513
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 433, col 22 to line 433, col 60 of module CompositionalSpec: 3155513
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 434, col 22 to line 434, col 51 of module CompositionalSpec: 3155513
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 437, col 26 to line 444, col 77 of module CompositionalSpec: 12622052
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 436, col 33 to line 436, col 43 of module CompositionalSpec: 6311026
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 435, col 31 to line 435, col 34 of module CompositionalSpec: 3155513
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 445, col 16 to line 447, col 50 of module CompositionalSpec: 15777565
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2777:0 @!@!@
+End of statistics (please note that for performance reasons large models
+are best checked with coverage and cost statistics disabled).
+@!@!@ENDMSG 2777 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(27) at 2023-05-27 09:56:49: 145,251,283 states generated (10,464,794 s/min), 23,439,260 distinct states found (1,779,296 ds/min), 4,768,463 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(27) at 2023-05-27 09:57:49: 156,453,468 states generated (11,202,185 s/min), 25,150,034 distinct states found (1,710,774 ds/min), 5,013,231 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(28) at 2023-05-27 09:58:49: 169,156,746 states generated (12,703,278 s/min), 26,849,766 distinct states found (1,699,732 ds/min), 5,238,537 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(28) at 2023-05-27 09:59:49: 180,004,839 states generated (10,848,093 s/min), 28,692,733 distinct states found (1,842,967 ds/min), 5,502,570 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2023-05-27 09:59:49
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2773:0 @!@!@
+<Init line 198, col 1 to line 198, col 4 of module CompositionalSpec>: 1:1
+@!@!@ENDMSG 2773 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 199, col 9 to line 236, col 70 of module CompositionalSpec: 1
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<INSTALL_APP line 238, col 1 to line 238, col 17 of module CompositionalSpec>: 1192336:2875206
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 238, col 25 to line 238, col 48 of module CompositionalSpec: 95635926
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 238, col 25 to line 238, col 32 of module CompositionalSpec: 92760722
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 239, col 25 to line 239, col 97 of module CompositionalSpec: 2875206
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 240, col 25 to line 240, col 72 of module CompositionalSpec: 2875206
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 241, col 25 to line 241, col 78 of module CompositionalSpec: 2875206
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 242, col 25 to line 242, col 75 of module CompositionalSpec: 2875206
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 243, col 25 to line 245, col 70 of module CompositionalSpec: 2875206
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<UNINSTALL_APP line 249, col 1 to line 249, col 19 of module CompositionalSpec>: 1707625:3240415
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 249, col 27 to line 249, col 52 of module CompositionalSpec: 96001159
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 249, col 27 to line 249, col 34 of module CompositionalSpec: 92760747
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 250, col 27 to line 250, col 101 of module CompositionalSpec: 3240415
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 251, col 27 to line 251, col 74 of module CompositionalSpec: 3240415
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 252, col 27 to line 252, col 83 of module CompositionalSpec: 3240415
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 253, col 27 to line 253, col 77 of module CompositionalSpec: 3240415
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 254, col 27 to line 256, col 79 of module CompositionalSpec: 3240415
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<UPDATE_APP line 260, col 1 to line 260, col 16 of module CompositionalSpec>: 1424786:2659738
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 260, col 24 to line 260, col 46 of module CompositionalSpec: 95420506
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 260, col 24 to line 260, col 31 of module CompositionalSpec: 92760771
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 261, col 24 to line 261, col 139 of module CompositionalSpec: 2659738
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 262, col 24 to line 262, col 71 of module CompositionalSpec: 2659738
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 263, col 24 to line 263, col 83 of module CompositionalSpec: 2659738
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 264, col 24 to line 264, col 74 of module CompositionalSpec: 2659738
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 265, col 24 to line 267, col 64 of module CompositionalSpec: 2659738
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<TERMINATED line 271, col 1 to line 271, col 16 of module CompositionalSpec>: 2998326:6781125
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 271, col 24 to line 271, col 46 of module CompositionalSpec: 99541912
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 271, col 24 to line 271, col 31 of module CompositionalSpec: 92760794
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 272, col 24 to line 272, col 91 of module CompositionalSpec: 6781126
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 273, col 24 to line 273, col 71 of module CompositionalSpec: 6781126
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 274, col 24 to line 274, col 80 of module CompositionalSpec: 6781126
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 275, col 24 to line 275, col 74 of module CompositionalSpec: 6781424
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 275, col 33 to line 275, col 74 of module CompositionalSpec: 6781424
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 276, col 24 to line 278, col 64 of module CompositionalSpec: 6781126
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<DECLARE_PERMISSION line 282, col 1 to line 282, col 24 of module CompositionalSpec>: 2034395:5764096
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 282, col 32 to line 282, col 62 of module CompositionalSpec: 98529085
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 282, col 32 to line 282, col 39 of module CompositionalSpec: 92764993
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 282, col 32 to line 282, col 33 of module CompositionalSpec: 92764998
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 282, col 35 to line 282, col 38 of module CompositionalSpec: 92765001
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 283, col 32 to line 283, col 104 of module CompositionalSpec: 5764099
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 284, col 32 to line 284, col 79 of module CompositionalSpec: 5764099
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 285, col 32 to line 285, col 88 of module CompositionalSpec: 5764099
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 286, col 32 to line 286, col 88 of module CompositionalSpec: 5764099
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 287, col 32 to line 287, col 82 of module CompositionalSpec: 5764099
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 288, col 32 to line 291, col 66 of module CompositionalSpec: 5764097
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<REVOKE_PERMISSION line 295, col 1 to line 295, col 23 of module CompositionalSpec>: 57:15517889
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 295, col 31 to line 295, col 60 of module CompositionalSpec: 108282936
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 295, col 31 to line 295, col 38 of module CompositionalSpec: 92765049
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 296, col 31 to line 296, col 121 of module CompositionalSpec: 15517891
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 297, col 31 to line 297, col 78 of module CompositionalSpec: 15517891
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 298, col 31 to line 298, col 87 of module CompositionalSpec: 15517894
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 299, col 31 to line 299, col 81 of module CompositionalSpec: 15517894
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 300, col 31 to line 303, col 47 of module CompositionalSpec: 15517889
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<REQUEST_PERMISSION line 307, col 1 to line 307, col 24 of module CompositionalSpec>: 1592236:13575192
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 307, col 32 to line 307, col 62 of module CompositionalSpec: 106340279
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 307, col 32 to line 307, col 39 of module CompositionalSpec: 92765091
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 308, col 35 to line 308, col 88 of module CompositionalSpec: 13575198
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 309, col 40 to line 312, col 93 of module CompositionalSpec: 6890874
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 313, col 43 to line 313, col 89 of module CompositionalSpec: 6684325
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 313, col 49 to line 313, col 89 of module CompositionalSpec: 6684327
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 314, col 43 to line 314, col 74 of module CompositionalSpec: 6684319
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 315, col 32 to line 318, col 66 of module CompositionalSpec: 13575194
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<SWITCH_PERMISSION line 320, col 1 to line 320, col 23 of module CompositionalSpec>: 6006:48644172
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 320, col 31 to line 320, col 60 of module CompositionalSpec: 98182675
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 320, col 31 to line 320, col 38 of module CompositionalSpec: 92777144
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 320, col 31 to line 320, col 32 of module CompositionalSpec: 92777145
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 320, col 34 to line 320, col 37 of module CompositionalSpec: 92777149
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 322, col 36 to line 322, col 55 of module CompositionalSpec: 32433216
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 323, col 39 to line 324, col 83 of module CompositionalSpec: 32433216
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 323, col 39 to line 323, col 127 of module CompositionalSpec: 32433216
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 323, col 39 to line 323, col 79 of module CompositionalSpec: 32433216
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 323, col 84 to line 323, col 127 of module CompositionalSpec: 27027680
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 324, col 42 to line 324, col 83 of module CompositionalSpec: 21622144
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 325, col 47 to line 325, col 50 of module CompositionalSpec: 16216608
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 326, col 47 to line 326, col 64 of module CompositionalSpec: 16216608
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 327, col 55 to line 328, col 93 of module CompositionalSpec: 16216608
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 327, col 55 to line 327, col 138 of module CompositionalSpec: 16216608
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 327, col 55 to line 327, col 96 of module CompositionalSpec: 16216608
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 327, col 101 to line 327, col 138 of module CompositionalSpec: 10811072
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 328, col 53 to line 328, col 93 of module CompositionalSpec: 5405536
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 330, col 63 to line 330, col 70 of module CompositionalSpec: 32433216
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 331, col 68 to line 331, col 161 of module CompositionalSpec: 16216608
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 332, col 68 to line 332, col 160 of module CompositionalSpec: 16216608
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  line 329, col 67 to line 329, col 81 of module CompositionalSpec: 16216608:48649824
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 334, col 58 to line 334, col 75 of module CompositionalSpec: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 321, col 40 to line 321, col 53 of module CompositionalSpec: 5405536
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 335, col 31 to line 335, col 78 of module CompositionalSpec: 48649824
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 336, col 31 to line 336, col 81 of module CompositionalSpec: 48649824
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 337, col 31 to line 337, col 84 of module CompositionalSpec: 48649824
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 338, col 31 to line 338, col 81 of module CompositionalSpec: 48649824
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 339, col 31 to line 341, col 65 of module CompositionalSpec: 48649824
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<EnvBegin line 346, col 1 to line 346, col 8 of module CompositionalSpec>: 43:23020116
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 346, col 16 to line 346, col 45 of module CompositionalSpec: 30867688
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 346, col 16 to line 346, col 32 of module CompositionalSpec: 23194316
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 347, col 22 to line 347, col 25 of module CompositionalSpec: 7673372
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 348, col 22 to line 348, col 68 of module CompositionalSpec: 7673372
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 349, col 22 to line 349, col 47 of module CompositionalSpec: 7673372
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 351, col 24 to line 356, col 82 of module CompositionalSpec: 15346744
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 350, col 31 to line 350, col 34 of module CompositionalSpec: 7673372
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 357, col 16 to line 359, col 56 of module CompositionalSpec: 23020116
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<AppBegin line 363, col 1 to line 363, col 14 of module CompositionalSpec>: 12303887:26283453
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 363, col 22 to line 363, col 42 of module CompositionalSpec: 60178230
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 363, col 22 to line 363, col 29 of module CompositionalSpec: 46391704
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 364, col 25 to line 364, col 69 of module CompositionalSpec: 13786526
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 365, col 39 to line 369, col 90 of module CompositionalSpec: 8394931
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 370, col 39 to line 370, col 78 of module CompositionalSpec: 8394931
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 371, col 39 to line 371, col 65 of module CompositionalSpec: 8394931
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 372, col 42 to line 372, col 85 of module CompositionalSpec: 8394931
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 373, col 56 to line 377, col 107 of module CompositionalSpec: 4101997
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 378, col 56 to line 378, col 98 of module CompositionalSpec: 4101997
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 379, col 56 to line 379, col 71 of module CompositionalSpec: 4101997
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 380, col 59 to line 380, col 113 of module CompositionalSpec: 4101997
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 381, col 64 to line 386, col 106 of module CompositionalSpec: 3323237
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 387, col 67 to line 387, col 104 of module CompositionalSpec: 778760
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 388, col 67 to line 389, col 88 of module CompositionalSpec: 778760
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 390, col 56 to line 390, col 69 of module CompositionalSpec: 4101997
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 391, col 50 to line 391, col 99 of module CompositionalSpec: 4292935
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 392, col 50 to line 393, col 71 of module CompositionalSpec: 4292934
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 394, col 39 to line 394, col 52 of module CompositionalSpec: 12496931
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 395, col 33 to line 395, col 66 of module CompositionalSpec: 5391596
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 396, col 33 to line 396, col 75 of module CompositionalSpec: 5391595
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 397, col 22 to line 399, col 67 of module CompositionalSpec: 26283454
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<DECLARING_PERMISSION line 401, col 1 to line 401, col 26 of module CompositionalSpec>: 3603935:7082590
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 401, col 34 to line 401, col 66 of module CompositionalSpec: 49933028
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 401, col 34 to line 401, col 41 of module CompositionalSpec: 46391734
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 403, col 36 to line 410, col 86 of module CompositionalSpec: 7082590
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 402, col 43 to line 402, col 53 of module CompositionalSpec: 3541295
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 411, col 34 to line 414, col 68 of module CompositionalSpec: 7082590
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<INSTALLING_APP line 416, col 1 to line 416, col 20 of module CompositionalSpec>: 1819135:3521466
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 416, col 28 to line 416, col 54 of module CompositionalSpec: 49915624
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 416, col 28 to line 416, col 35 of module CompositionalSpec: 46394160
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 417, col 28 to line 421, col 79 of module CompositionalSpec: 3521466
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 422, col 28 to line 422, col 68 of module CompositionalSpec: 3521466
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 423, col 28 to line 426, col 62 of module CompositionalSpec: 3521466
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<ApsBegin line 431, col 1 to line 431, col 8 of module CompositionalSpec>: 13465:21055845
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 431, col 16 to line 431, col 37 of module CompositionalSpec: 27408256
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 431, col 16 to line 431, col 24 of module CompositionalSpec: 23197087
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 432, col 22 to line 432, col 25 of module CompositionalSpec: 4211169
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 433, col 22 to line 433, col 60 of module CompositionalSpec: 4211169
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 434, col 22 to line 434, col 51 of module CompositionalSpec: 4211169
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 437, col 26 to line 444, col 77 of module CompositionalSpec: 16844676
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 436, col 33 to line 436, col 43 of module CompositionalSpec: 8422338
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 435, col 31 to line 435, col 34 of module CompositionalSpec: 4211169
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 445, col 16 to line 447, col 50 of module CompositionalSpec: 21055845
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2777:0 @!@!@
+End of statistics (please note that for performance reasons large models
+are best checked with coverage and cost statistics disabled).
+@!@!@ENDMSG 2777 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(28) at 2023-05-27 10:00:50: 191,184,132 states generated (11,179,293 s/min), 30,441,439 distinct states found (1,748,706 ds/min), 5,717,483 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(28) at 2023-05-27 10:01:50: 203,967,976 states generated (12,783,844 s/min), 32,107,567 distinct states found (1,666,128 ds/min), 5,932,525 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(29) at 2023-05-27 10:02:50: 215,035,313 states generated (11,067,337 s/min), 33,820,218 distinct states found (1,712,651 ds/min), 6,146,387 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(29) at 2023-05-27 10:03:50: 226,117,340 states generated (11,082,027 s/min), 35,611,673 distinct states found (1,791,455 ds/min), 6,360,445 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2023-05-27 10:03:50
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2773:0 @!@!@
+<Init line 198, col 1 to line 198, col 4 of module CompositionalSpec>: 1:1
+@!@!@ENDMSG 2773 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 199, col 9 to line 236, col 70 of module CompositionalSpec: 1
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<INSTALL_APP line 238, col 1 to line 238, col 17 of module CompositionalSpec>: 1415819:3584850
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 238, col 25 to line 238, col 48 of module CompositionalSpec: 120589826
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 238, col 25 to line 238, col 32 of module CompositionalSpec: 117004977
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 239, col 25 to line 239, col 97 of module CompositionalSpec: 3584850
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 240, col 25 to line 240, col 72 of module CompositionalSpec: 3584850
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 241, col 25 to line 241, col 78 of module CompositionalSpec: 3584850
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 242, col 25 to line 242, col 75 of module CompositionalSpec: 3584850
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 243, col 25 to line 245, col 70 of module CompositionalSpec: 3584850
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<UNINSTALL_APP line 249, col 1 to line 249, col 19 of module CompositionalSpec>: 2175770:4188148
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 249, col 27 to line 249, col 52 of module CompositionalSpec: 121193149
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 249, col 27 to line 249, col 34 of module CompositionalSpec: 117005003
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 249, col 27 to line 249, col 28 of module CompositionalSpec: 117005006
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 249, col 30 to line 249, col 33 of module CompositionalSpec: 117005008
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 250, col 27 to line 250, col 101 of module CompositionalSpec: 4188149
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 251, col 27 to line 251, col 74 of module CompositionalSpec: 4188149
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 252, col 27 to line 252, col 83 of module CompositionalSpec: 4188149
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 253, col 27 to line 253, col 77 of module CompositionalSpec: 4188149
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 254, col 27 to line 256, col 79 of module CompositionalSpec: 4188149
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<UPDATE_APP line 260, col 1 to line 260, col 16 of module CompositionalSpec>: 1782282:3389005
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 260, col 24 to line 260, col 46 of module CompositionalSpec: 120394029
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 260, col 24 to line 260, col 31 of module CompositionalSpec: 117005024
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 261, col 24 to line 261, col 139 of module CompositionalSpec: 3389005
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 262, col 24 to line 262, col 71 of module CompositionalSpec: 3389005
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 263, col 24 to line 263, col 83 of module CompositionalSpec: 3389005
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 264, col 24 to line 264, col 74 of module CompositionalSpec: 3389005
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 265, col 24 to line 267, col 64 of module CompositionalSpec: 3389005
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<TERMINATED line 271, col 1 to line 271, col 16 of module CompositionalSpec>: 3808239:8556322
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 271, col 24 to line 271, col 46 of module CompositionalSpec: 125561386
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 271, col 24 to line 271, col 31 of module CompositionalSpec: 117005066
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 272, col 24 to line 272, col 91 of module CompositionalSpec: 8556853
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 273, col 24 to line 273, col 71 of module CompositionalSpec: 8556853
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 274, col 24 to line 274, col 80 of module CompositionalSpec: 8556853
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 275, col 24 to line 275, col 74 of module CompositionalSpec: 8556853
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 276, col 24 to line 278, col 64 of module CompositionalSpec: 8556322
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<DECLARE_PERMISSION line 282, col 1 to line 282, col 24 of module CompositionalSpec>: 2447203:7217133
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 282, col 32 to line 282, col 62 of module CompositionalSpec: 124229076
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 282, col 32 to line 282, col 39 of module CompositionalSpec: 117011946
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 283, col 32 to line 283, col 104 of module CompositionalSpec: 7217133
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 284, col 32 to line 284, col 79 of module CompositionalSpec: 7217133
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 285, col 32 to line 285, col 88 of module CompositionalSpec: 7217133
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 286, col 32 to line 286, col 88 of module CompositionalSpec: 7217133
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 287, col 32 to line 287, col 82 of module CompositionalSpec: 7217133
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 288, col 32 to line 291, col 66 of module CompositionalSpec: 7217133
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<REVOKE_PERMISSION line 295, col 1 to line 295, col 23 of module CompositionalSpec>: 59:19753467
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 295, col 31 to line 295, col 60 of module CompositionalSpec: 136765429
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 295, col 31 to line 295, col 38 of module CompositionalSpec: 117011963
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 296, col 31 to line 296, col 121 of module CompositionalSpec: 19753468
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 297, col 31 to line 297, col 78 of module CompositionalSpec: 19753468
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 298, col 31 to line 298, col 87 of module CompositionalSpec: 19753469
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 299, col 31 to line 299, col 81 of module CompositionalSpec: 19753469
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 300, col 31 to line 303, col 47 of module CompositionalSpec: 19753467
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<REQUEST_PERMISSION line 307, col 1 to line 307, col 24 of module CompositionalSpec>: 1932127:17177349
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 307, col 32 to line 307, col 62 of module CompositionalSpec: 134189335
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 307, col 32 to line 307, col 39 of module CompositionalSpec: 117011986
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 308, col 35 to line 308, col 88 of module CompositionalSpec: 17177349
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 309, col 40 to line 312, col 93 of module CompositionalSpec: 8856684
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 313, col 43 to line 313, col 89 of module CompositionalSpec: 8320665
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 314, col 43 to line 314, col 74 of module CompositionalSpec: 8320665
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 315, col 32 to line 318, col 66 of module CompositionalSpec: 17177349
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<SWITCH_PERMISSION line 320, col 1 to line 320, col 23 of module CompositionalSpec>: 6249:61497083
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 320, col 31 to line 320, col 60 of module CompositionalSpec: 123845012
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 320, col 31 to line 320, col 38 of module CompositionalSpec: 117012204
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 322, col 36 to line 322, col 55 of module CompositionalSpec: 40998371
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 322, col 55 to line 322, col 55 of module CompositionalSpec: 40998374
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 323, col 39 to line 324, col 83 of module CompositionalSpec: 40998374
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 323, col 39 to line 323, col 127 of module CompositionalSpec: 40998375
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 323, col 39 to line 323, col 79 of module CompositionalSpec: 40998377
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 323, col 84 to line 323, col 127 of module CompositionalSpec: 34165317
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 324, col 42 to line 324, col 83 of module CompositionalSpec: 27332256
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 325, col 47 to line 325, col 50 of module CompositionalSpec: 20499188
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 326, col 47 to line 326, col 64 of module CompositionalSpec: 20499027
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 327, col 55 to line 328, col 93 of module CompositionalSpec: 20499197
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 327, col 55 to line 327, col 138 of module CompositionalSpec: 20499197
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 327, col 55 to line 327, col 96 of module CompositionalSpec: 20499197
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 327, col 101 to line 327, col 138 of module CompositionalSpec: 13666132
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 328, col 53 to line 328, col 93 of module CompositionalSpec: 6833066
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 330, col 63 to line 330, col 70 of module CompositionalSpec: 40998396
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 331, col 71 to line 331, col 161 of module CompositionalSpec: 20499197
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 331, col 83 to line 331, col 161 of module CompositionalSpec: 20499201
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 332, col 71 to line 332, col 160 of module CompositionalSpec: 20499202
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 332, col 83 to line 332, col 160 of module CompositionalSpec: 20499206
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  line 329, col 67 to line 329, col 81 of module CompositionalSpec: 20499206:61497617
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 334, col 58 to line 334, col 75 of module CompositionalSpec: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 321, col 40 to line 321, col 53 of module CompositionalSpec: 6833069
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 335, col 31 to line 335, col 78 of module CompositionalSpec: 61497614
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 335, col 37 to line 335, col 78 of module CompositionalSpec: 61497615
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 335, col 38 to line 335, col 39 of module CompositionalSpec: 61497618
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 335, col 48 to line 335, col 77 of module CompositionalSpec: 61497093
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 335, col 58 to line 335, col 77 of module CompositionalSpec: 61497626
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||line 335, col 58 to line 335, col 74 of module CompositionalSpec: 61497629
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||||line 335, col 63 to line 335, col 73 of module CompositionalSpec: 61497632
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||line 335, col 63 to line 335, col 67 of module CompositionalSpec: 61497637
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |||||line 335, col 69 to line 335, col 72 of module CompositionalSpec: 61497640
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 336, col 31 to line 336, col 81 of module CompositionalSpec: 61542363
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 336, col 38 to line 336, col 81 of module CompositionalSpec: 61542373
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 337, col 31 to line 337, col 84 of module CompositionalSpec: 61542374
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 337, col 39 to line 337, col 84 of module CompositionalSpec: 61542377
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 338, col 31 to line 338, col 81 of module CompositionalSpec: 61542380
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 338, col 40 to line 338, col 81 of module CompositionalSpec: 61542382
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 339, col 31 to line 341, col 65 of module CompositionalSpec: 61497094
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<EnvBegin line 346, col 1 to line 346, col 8 of module CompositionalSpec>: 43:28498575
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 346, col 16 to line 346, col 45 of module CompositionalSpec: 38767630
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 346, col 16 to line 346, col 32 of module CompositionalSpec: 29268106
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 347, col 22 to line 347, col 25 of module CompositionalSpec: 9499525
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 348, col 22 to line 348, col 68 of module CompositionalSpec: 9499525
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 349, col 22 to line 349, col 47 of module CompositionalSpec: 9499525
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 351, col 24 to line 356, col 82 of module CompositionalSpec: 18999050
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 350, col 31 to line 350, col 34 of module CompositionalSpec: 9499525
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 357, col 16 to line 359, col 56 of module CompositionalSpec: 28498575
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<AppBegin line 363, col 1 to line 363, col 14 of module CompositionalSpec>: 15380105:33011416
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 363, col 22 to line 363, col 42 of module CompositionalSpec: 75908943
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 363, col 22 to line 363, col 29 of module CompositionalSpec: 58536224
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 364, col 25 to line 364, col 69 of module CompositionalSpec: 17372722
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 365, col 39 to line 369, col 90 of module CompositionalSpec: 10443570
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 370, col 39 to line 370, col 78 of module CompositionalSpec: 10443572
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 371, col 39 to line 371, col 65 of module CompositionalSpec: 10443570
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 372, col 42 to line 372, col 85 of module CompositionalSpec: 10443572
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 373, col 56 to line 377, col 107 of module CompositionalSpec: 5195126
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 378, col 56 to line 378, col 98 of module CompositionalSpec: 5195127
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 379, col 56 to line 379, col 71 of module CompositionalSpec: 5195126
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 380, col 59 to line 380, col 113 of module CompositionalSpec: 5195127
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 381, col 64 to line 386, col 106 of module CompositionalSpec: 4145751
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 387, col 67 to line 387, col 104 of module CompositionalSpec: 1049376
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 388, col 67 to line 389, col 88 of module CompositionalSpec: 1049375
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 390, col 56 to line 390, col 69 of module CompositionalSpec: 5195127
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 391, col 50 to line 391, col 99 of module CompositionalSpec: 5248445
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 392, col 50 to line 393, col 71 of module CompositionalSpec: 5248445
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 394, col 39 to line 394, col 52 of module CompositionalSpec: 15639058
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 395, col 33 to line 395, col 66 of module CompositionalSpec: 6929362
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 396, col 33 to line 396, col 75 of module CompositionalSpec: 6929150
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 397, col 22 to line 399, col 67 of module CompositionalSpec: 33011418
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<DECLARING_PERMISSION line 401, col 1 to line 401, col 26 of module CompositionalSpec>: 4431204:8741172
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 401, col 34 to line 401, col 66 of module CompositionalSpec: 62908318
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 401, col 34 to line 401, col 41 of module CompositionalSpec: 58537732
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 403, col 36 to line 410, col 86 of module CompositionalSpec: 8741172
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 402, col 43 to line 402, col 53 of module CompositionalSpec: 4370586
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 411, col 34 to line 414, col 68 of module CompositionalSpec: 8741172
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<INSTALLING_APP line 416, col 1 to line 416, col 20 of module CompositionalSpec>: 2231146:4326482
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 416, col 28 to line 416, col 54 of module CompositionalSpec: 62864222
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 416, col 28 to line 416, col 35 of module CompositionalSpec: 58537740
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 417, col 28 to line 421, col 79 of module CompositionalSpec: 4326482
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 422, col 28 to line 422, col 68 of module CompositionalSpec: 4326482
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 423, col 28 to line 426, col 62 of module CompositionalSpec: 4326482
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<ApsBegin line 431, col 1 to line 431, col 8 of module CompositionalSpec>: 13504:26223375
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 431, col 16 to line 431, col 37 of module CompositionalSpec: 34513551
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 431, col 16 to line 431, col 24 of module CompositionalSpec: 29268876
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 432, col 22 to line 432, col 25 of module CompositionalSpec: 5244675
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 433, col 22 to line 433, col 60 of module CompositionalSpec: 5244675
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 434, col 22 to line 434, col 51 of module CompositionalSpec: 5244675
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 437, col 26 to line 444, col 77 of module CompositionalSpec: 20978700
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 436, col 33 to line 436, col 43 of module CompositionalSpec: 10489350
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 435, col 31 to line 435, col 34 of module CompositionalSpec: 5244675
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 445, col 16 to line 447, col 50 of module CompositionalSpec: 26223375
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2777:0 @!@!@
+End of statistics (please note that for performance reasons large models
+are best checked with coverage and cost statistics disabled).
+@!@!@ENDMSG 2777 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(29) at 2023-05-27 10:04:50: 238,162,752 states generated (12,045,412 s/min), 37,381,231 distinct states found (1,769,558 ds/min), 6,554,093 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(29) at 2023-05-27 10:05:50: 250,638,588 states generated (12,475,836 s/min), 38,960,036 distinct states found (1,578,805 ds/min), 6,721,766 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(30) at 2023-05-27 10:06:50: 261,633,378 states generated (10,994,790 s/min), 40,676,462 distinct states found (1,716,426 ds/min), 6,914,643 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(30) at 2023-05-27 10:07:50: 272,238,561 states generated (10,605,183 s/min), 42,386,390 distinct states found (1,709,928 ds/min), 7,099,957 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2023-05-27 10:07:50
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2773:0 @!@!@
+<Init line 198, col 1 to line 198, col 4 of module CompositionalSpec>: 1:1
+@!@!@ENDMSG 2773 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 199, col 9 to line 236, col 70 of module CompositionalSpec: 1
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<INSTALL_APP line 238, col 1 to line 238, col 17 of module CompositionalSpec>: 1619254:4287073
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 238, col 25 to line 238, col 48 of module CompositionalSpec: 145432856
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 238, col 25 to line 238, col 32 of module CompositionalSpec: 141145786
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 239, col 25 to line 239, col 97 of module CompositionalSpec: 4287073
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 240, col 25 to line 240, col 72 of module CompositionalSpec: 4287073
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 241, col 25 to line 241, col 78 of module CompositionalSpec: 4287073
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 242, col 25 to line 242, col 75 of module CompositionalSpec: 4287073
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 243, col 25 to line 245, col 70 of module CompositionalSpec: 4287073
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<UNINSTALL_APP line 249, col 1 to line 249, col 19 of module CompositionalSpec>: 2644175:5140975
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 249, col 27 to line 249, col 52 of module CompositionalSpec: 146286775
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 249, col 27 to line 249, col 34 of module CompositionalSpec: 141145801
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 250, col 27 to line 250, col 101 of module CompositionalSpec: 5140976
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 251, col 27 to line 251, col 74 of module CompositionalSpec: 5140976
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 252, col 27 to line 252, col 83 of module CompositionalSpec: 5140976
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 253, col 27 to line 253, col 77 of module CompositionalSpec: 5140976
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 254, col 27 to line 256, col 79 of module CompositionalSpec: 5140975
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<UPDATE_APP line 260, col 1 to line 260, col 16 of module CompositionalSpec>: 2131980:4106104
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 260, col 24 to line 260, col 46 of module CompositionalSpec: 145251919
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 260, col 24 to line 260, col 31 of module CompositionalSpec: 141145816
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 261, col 24 to line 261, col 139 of module CompositionalSpec: 4106104
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 262, col 24 to line 262, col 71 of module CompositionalSpec: 4106104
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 263, col 24 to line 263, col 83 of module CompositionalSpec: 4106104
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 264, col 24 to line 264, col 74 of module CompositionalSpec: 4106104
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 265, col 24 to line 267, col 64 of module CompositionalSpec: 4106104
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<TERMINATED line 271, col 1 to line 271, col 16 of module CompositionalSpec>: 4628884:10341776
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 271, col 24 to line 271, col 46 of module CompositionalSpec: 151487599
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 271, col 24 to line 271, col 31 of module CompositionalSpec: 141145824
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 272, col 24 to line 272, col 91 of module CompositionalSpec: 10341776
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 273, col 24 to line 273, col 71 of module CompositionalSpec: 10341776
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 274, col 24 to line 274, col 80 of module CompositionalSpec: 10342362
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 275, col 24 to line 275, col 74 of module CompositionalSpec: 10342363
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 276, col 24 to line 278, col 64 of module CompositionalSpec: 10341776
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<DECLARE_PERMISSION line 282, col 1 to line 282, col 24 of module CompositionalSpec>: 2845307:8657867
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 282, col 32 to line 282, col 62 of module CompositionalSpec: 149811812
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 282, col 32 to line 282, col 39 of module CompositionalSpec: 141153945
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 283, col 32 to line 283, col 104 of module CompositionalSpec: 8657868
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 284, col 32 to line 284, col 79 of module CompositionalSpec: 8657869
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 285, col 32 to line 285, col 88 of module CompositionalSpec: 8657869
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 286, col 32 to line 286, col 88 of module CompositionalSpec: 8657869
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 287, col 32 to line 287, col 82 of module CompositionalSpec: 8657869
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 288, col 32 to line 291, col 66 of module CompositionalSpec: 8657868
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<REVOKE_PERMISSION line 295, col 1 to line 295, col 23 of module CompositionalSpec>: 60:23713140
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 295, col 31 to line 295, col 60 of module CompositionalSpec: 164867111
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 295, col 31 to line 295, col 38 of module CompositionalSpec: 141153975
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 296, col 31 to line 296, col 121 of module CompositionalSpec: 23713143
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 296, col 43 to line 296, col 121 of module CompositionalSpec: 23713144
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 297, col 31 to line 297, col 78 of module CompositionalSpec: 23713144
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 297, col 37 to line 297, col 78 of module CompositionalSpec: 23713145
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 298, col 31 to line 298, col 87 of module CompositionalSpec: 23713145
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 298, col 40 to line 298, col 87 of module CompositionalSpec: 23713146
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 299, col 31 to line 299, col 81 of module CompositionalSpec: 23713146
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 299, col 40 to line 299, col 81 of module CompositionalSpec: 23713147
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 300, col 31 to line 303, col 47 of module CompositionalSpec: 23713142
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<REQUEST_PERMISSION line 307, col 1 to line 307, col 24 of module CompositionalSpec>: 2230767:20793146
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 307, col 32 to line 307, col 62 of module CompositionalSpec: 161947141
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 307, col 32 to line 307, col 39 of module CompositionalSpec: 141153995
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 308, col 35 to line 308, col 88 of module CompositionalSpec: 20793146
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 309, col 40 to line 312, col 93 of module CompositionalSpec: 10904043
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 313, col 43 to line 313, col 89 of module CompositionalSpec: 9889103
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 314, col 43 to line 314, col 74 of module CompositionalSpec: 9889103
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 315, col 32 to line 318, col 66 of module CompositionalSpec: 20793146
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<SWITCH_PERMISSION line 320, col 1 to line 320, col 23 of module CompositionalSpec>: 6420:74135979
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 320, col 31 to line 320, col 60 of module CompositionalSpec: 149400032
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 320, col 31 to line 320, col 38 of module CompositionalSpec: 141162703
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 322, col 36 to line 322, col 55 of module CompositionalSpec: 49423999
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 322, col 55 to line 322, col 55 of module CompositionalSpec: 49424003
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 323, col 39 to line 324, col 83 of module CompositionalSpec: 49424006
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 323, col 39 to line 323, col 127 of module CompositionalSpec: 49424009
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 323, col 39 to line 323, col 79 of module CompositionalSpec: 49424009
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 323, col 84 to line 323, col 127 of module CompositionalSpec: 41186677
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 324, col 42 to line 324, col 83 of module CompositionalSpec: 32949343
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 325, col 47 to line 325, col 50 of module CompositionalSpec: 24712005
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 326, col 47 to line 326, col 64 of module CompositionalSpec: 24711992
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 327, col 55 to line 328, col 93 of module CompositionalSpec: 24712010
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 327, col 55 to line 327, col 138 of module CompositionalSpec: 24712012
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 327, col 55 to line 327, col 96 of module CompositionalSpec: 24712013
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 327, col 101 to line 327, col 138 of module CompositionalSpec: 16474678
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 328, col 53 to line 328, col 93 of module CompositionalSpec: 8237339
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 330, col 63 to line 330, col 70 of module CompositionalSpec: 49424036
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 331, col 68 to line 331, col 161 of module CompositionalSpec: 24711998
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 332, col 71 to line 332, col 160 of module CompositionalSpec: 24712018
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 332, col 83 to line 332, col 160 of module CompositionalSpec: 24712019
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  line 329, col 67 to line 329, col 81 of module CompositionalSpec: 24712019:74136057
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 334, col 58 to line 334, col 75 of module CompositionalSpec: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 321, col 40 to line 321, col 53 of module CompositionalSpec: 8237343
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 335, col 31 to line 335, col 78 of module CompositionalSpec: 74136069
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 335, col 37 to line 335, col 78 of module CompositionalSpec: 74136076
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 336, col 31 to line 336, col 81 of module CompositionalSpec: 74136077
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 336, col 38 to line 336, col 81 of module CompositionalSpec: 74136083
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 337, col 31 to line 337, col 84 of module CompositionalSpec: 74136084
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 337, col 39 to line 337, col 84 of module CompositionalSpec: 74136087
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 337, col 40 to line 337, col 43 of module CompositionalSpec: 74136090
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 337, col 52 to line 337, col 83 of module CompositionalSpec: 74135994
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 338, col 31 to line 338, col 81 of module CompositionalSpec: 74139219
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 338, col 40 to line 338, col 81 of module CompositionalSpec: 74139219
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 339, col 31 to line 341, col 65 of module CompositionalSpec: 74135994
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<EnvBegin line 346, col 1 to line 346, col 8 of module CompositionalSpec>: 43:34726053
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 346, col 16 to line 346, col 45 of module CompositionalSpec: 46867908
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 346, col 16 to line 346, col 32 of module CompositionalSpec: 35292557
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 347, col 22 to line 347, col 25 of module CompositionalSpec: 11575351
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 348, col 22 to line 348, col 68 of module CompositionalSpec: 11575351
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 349, col 22 to line 349, col 47 of module CompositionalSpec: 11575351
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 351, col 24 to line 356, col 82 of module CompositionalSpec: 23150702
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 350, col 31 to line 350, col 34 of module CompositionalSpec: 11575351
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 357, col 16 to line 359, col 56 of module CompositionalSpec: 34726053
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<AppBegin line 363, col 1 to line 363, col 14 of module CompositionalSpec>: 18393951:39566767
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 363, col 22 to line 363, col 42 of module CompositionalSpec: 91483324
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 363, col 22 to line 363, col 29 of module CompositionalSpec: 70585134
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 364, col 25 to line 364, col 69 of module CompositionalSpec: 20898193
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 365, col 39 to line 369, col 90 of module CompositionalSpec: 12424685
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 370, col 39 to line 370, col 78 of module CompositionalSpec: 12424686
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 371, col 39 to line 371, col 65 of module CompositionalSpec: 12424685
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 372, col 42 to line 372, col 85 of module CompositionalSpec: 12424687
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 373, col 56 to line 377, col 107 of module CompositionalSpec: 6243891
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 378, col 56 to line 378, col 98 of module CompositionalSpec: 6243893
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 379, col 56 to line 379, col 71 of module CompositionalSpec: 6243891
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 380, col 59 to line 380, col 113 of module CompositionalSpec: 6243893
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 381, col 64 to line 386, col 106 of module CompositionalSpec: 4925520
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 387, col 67 to line 387, col 104 of module CompositionalSpec: 1318371
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 388, col 67 to line 389, col 88 of module CompositionalSpec: 1318371
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 390, col 56 to line 390, col 69 of module CompositionalSpec: 6243893
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 391, col 50 to line 391, col 99 of module CompositionalSpec: 6180796
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 392, col 50 to line 393, col 71 of module CompositionalSpec: 6180794
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 394, col 39 to line 394, col 52 of module CompositionalSpec: 18668583
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 395, col 33 to line 395, col 66 of module CompositionalSpec: 8473509
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 396, col 33 to line 396, col 75 of module CompositionalSpec: 8473507
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 397, col 22 to line 399, col 67 of module CompositionalSpec: 39566768
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<DECLARING_PERMISSION line 401, col 1 to line 401, col 26 of module CompositionalSpec>: 5255911:10403890
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 401, col 34 to line 401, col 66 of module CompositionalSpec: 75791263
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 401, col 34 to line 401, col 41 of module CompositionalSpec: 70589318
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 403, col 36 to line 410, col 86 of module CompositionalSpec: 10403890
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 402, col 43 to line 402, col 53 of module CompositionalSpec: 5201945
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 411, col 34 to line 414, col 68 of module CompositionalSpec: 10403890
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<INSTALLING_APP line 416, col 1 to line 416, col 20 of module CompositionalSpec>: 2621032:5094832
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 416, col 28 to line 416, col 54 of module CompositionalSpec: 75684160
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 416, col 28 to line 416, col 35 of module CompositionalSpec: 70589328
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 417, col 28 to line 421, col 79 of module CompositionalSpec: 5094832
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 422, col 28 to line 422, col 68 of module CompositionalSpec: 5094833
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 423, col 28 to line 426, col 62 of module CompositionalSpec: 5094832
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<ApsBegin line 431, col 1 to line 431, col 8 of module CompositionalSpec>: 13512:31301238
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 431, col 16 to line 431, col 37 of module CompositionalSpec: 41554918
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 431, col 16 to line 431, col 24 of module CompositionalSpec: 35294670
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 432, col 22 to line 432, col 25 of module CompositionalSpec: 6260249
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 433, col 22 to line 433, col 60 of module CompositionalSpec: 6260250
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 433, col 28 to line 433, col 60 of module CompositionalSpec: 6260251
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 434, col 22 to line 434, col 51 of module CompositionalSpec: 6260249
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 437, col 32 to line 437, col 63 of module CompositionalSpec: 25040996
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 437, col 39 to line 437, col 63 of module CompositionalSpec: 25040999
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 438, col 32 to line 438, col 65 of module CompositionalSpec: 25040999
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 438, col 40 to line 438, col 65 of module CompositionalSpec: 25041002
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 439, col 32 to line 443, col 82 of module CompositionalSpec: 25041002
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 439, col 41 to line 443, col 82 of module CompositionalSpec: 25041005
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 444, col 29 to line 444, col 77 of module CompositionalSpec: 25041004
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 444, col 35 to line 444, col 77 of module CompositionalSpec: 25041005
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 436, col 33 to line 436, col 43 of module CompositionalSpec: 12520504
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 435, col 31 to line 435, col 34 of module CompositionalSpec: 6260253
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 445, col 16 to line 447, col 50 of module CompositionalSpec: 31301241
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2777:0 @!@!@
+End of statistics (please note that for performance reasons large models
+are best checked with coverage and cost statistics disabled).
+@!@!@ENDMSG 2777 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(30) at 2023-05-27 10:08:51: 283,698,414 states generated (11,459,853 s/min), 44,124,613 distinct states found (1,738,223 ds/min), 7,248,302 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(30) at 2023-05-27 10:09:51: 296,057,844 states generated (12,359,430 s/min), 45,704,779 distinct states found (1,580,166 ds/min), 7,420,648 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(31) at 2023-05-27 10:10:51: 307,332,115 states generated (11,274,271 s/min), 47,175,281 distinct states found (1,470,502 ds/min), 7,537,399 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(31) at 2023-05-27 10:11:51: 316,627,546 states generated (9,295,431 s/min), 48,737,155 distinct states found (1,561,874 ds/min), 7,711,260 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2023-05-27 10:11:51
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2773:0 @!@!@
+<Init line 198, col 1 to line 198, col 4 of module CompositionalSpec>: 1:1
+@!@!@ENDMSG 2773 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 199, col 9 to line 236, col 70 of module CompositionalSpec: 1
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<INSTALL_APP line 238, col 1 to line 238, col 17 of module CompositionalSpec>: 1793687:4939485
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 238, col 25 to line 238, col 48 of module CompositionalSpec: 169043117
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 238, col 25 to line 238, col 32 of module CompositionalSpec: 164103636
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 239, col 25 to line 239, col 97 of module CompositionalSpec: 4939485
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 240, col 25 to line 240, col 72 of module CompositionalSpec: 4939485
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 241, col 25 to line 241, col 78 of module CompositionalSpec: 4939485
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 242, col 25 to line 242, col 75 of module CompositionalSpec: 4939485
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 243, col 25 to line 245, col 70 of module CompositionalSpec: 4939485
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<UNINSTALL_APP line 249, col 1 to line 249, col 19 of module CompositionalSpec>: 3081561:6033991
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 249, col 27 to line 249, col 52 of module CompositionalSpec: 170137644
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 249, col 27 to line 249, col 34 of module CompositionalSpec: 164103658
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 250, col 27 to line 250, col 101 of module CompositionalSpec: 6033991
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 251, col 27 to line 251, col 74 of module CompositionalSpec: 6033991
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 252, col 27 to line 252, col 83 of module CompositionalSpec: 6033991
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 253, col 27 to line 253, col 77 of module CompositionalSpec: 6033991
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 254, col 27 to line 256, col 79 of module CompositionalSpec: 6033991
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<UPDATE_APP line 260, col 1 to line 260, col 16 of module CompositionalSpec>: 2454929:4771682
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 260, col 24 to line 260, col 46 of module CompositionalSpec: 168875355
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 260, col 24 to line 260, col 31 of module CompositionalSpec: 164103676
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 261, col 24 to line 261, col 139 of module CompositionalSpec: 4771682
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 262, col 24 to line 262, col 71 of module CompositionalSpec: 4771682
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 263, col 24 to line 263, col 83 of module CompositionalSpec: 4771682
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 264, col 24 to line 264, col 74 of module CompositionalSpec: 4771682
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 265, col 24 to line 267, col 64 of module CompositionalSpec: 4771682
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<TERMINATED line 271, col 1 to line 271, col 16 of module CompositionalSpec>: 5410765:12026492
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 271, col 24 to line 271, col 46 of module CompositionalSpec: 176130181
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 271, col 24 to line 271, col 31 of module CompositionalSpec: 164103692
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 272, col 24 to line 272, col 91 of module CompositionalSpec: 12026493
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 273, col 24 to line 273, col 71 of module CompositionalSpec: 12026493
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 274, col 24 to line 274, col 80 of module CompositionalSpec: 12027014
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 275, col 24 to line 275, col 74 of module CompositionalSpec: 12027014
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 276, col 24 to line 278, col 64 of module CompositionalSpec: 12026492
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<DECLARE_PERMISSION line 282, col 1 to line 282, col 24 of module CompositionalSpec>: 3218196:10065143
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 282, col 32 to line 282, col 62 of module CompositionalSpec: 174176095
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 282, col 32 to line 282, col 39 of module CompositionalSpec: 164110955
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 283, col 32 to line 283, col 104 of module CompositionalSpec: 10065143
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 284, col 32 to line 284, col 79 of module CompositionalSpec: 10065143
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 285, col 32 to line 285, col 88 of module CompositionalSpec: 10065143
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 286, col 32 to line 286, col 88 of module CompositionalSpec: 10065143
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 287, col 32 to line 287, col 82 of module CompositionalSpec: 10065144
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 288, col 32 to line 291, col 66 of module CompositionalSpec: 10065143
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<REVOKE_PERMISSION line 295, col 1 to line 295, col 23 of module CompositionalSpec>: 60:27144341
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 295, col 31 to line 295, col 60 of module CompositionalSpec: 191255343
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 295, col 31 to line 295, col 38 of module CompositionalSpec: 164111004
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 296, col 31 to line 296, col 121 of module CompositionalSpec: 27144344
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 297, col 31 to line 297, col 78 of module CompositionalSpec: 27144345
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 298, col 31 to line 298, col 87 of module CompositionalSpec: 27144345
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 299, col 31 to line 299, col 81 of module CompositionalSpec: 27144346
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 300, col 31 to line 303, col 47 of module CompositionalSpec: 27144341
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<REQUEST_PERMISSION line 307, col 1 to line 307, col 24 of module CompositionalSpec>: 2490738:24240715
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 307, col 32 to line 307, col 62 of module CompositionalSpec: 188351763
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 307, col 32 to line 307, col 39 of module CompositionalSpec: 164111050
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 308, col 35 to line 308, col 88 of module CompositionalSpec: 24240720
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 309, col 43 to line 309, col 90 of module CompositionalSpec: 12887527
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 309, col 49 to line 309, col 90 of module CompositionalSpec: 12887529
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 310, col 43 to line 310, col 93 of module CompositionalSpec: 12887530
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 310, col 50 to line 310, col 93 of module CompositionalSpec: 12887530
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 311, col 43 to line 311, col 96 of module CompositionalSpec: 12887530
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 312, col 43 to line 312, col 93 of module CompositionalSpec: 12887531
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 312, col 52 to line 312, col 93 of module CompositionalSpec: 12887531
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 313, col 43 to line 313, col 89 of module CompositionalSpec: 11353193
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 314, col 43 to line 314, col 74 of module CompositionalSpec: 11353193
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 315, col 32 to line 318, col 66 of module CompositionalSpec: 24240719
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<SWITCH_PERMISSION line 320, col 1 to line 320, col 23 of module CompositionalSpec>: 6505:86122449
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 320, col 31 to line 320, col 60 of module CompositionalSpec: 173693430
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 320, col 31 to line 320, col 38 of module CompositionalSpec: 164124275
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 322, col 36 to line 322, col 55 of module CompositionalSpec: 57414966
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 323, col 39 to line 324, col 83 of module CompositionalSpec: 57414966
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 323, col 39 to line 323, col 127 of module CompositionalSpec: 57414966
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 323, col 39 to line 323, col 79 of module CompositionalSpec: 57414966
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 323, col 84 to line 323, col 127 of module CompositionalSpec: 47845805
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 324, col 42 to line 324, col 83 of module CompositionalSpec: 38276644
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 325, col 47 to line 325, col 50 of module CompositionalSpec: 28707483
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 326, col 47 to line 326, col 64 of module CompositionalSpec: 28707483
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 327, col 55 to line 328, col 93 of module CompositionalSpec: 28707483
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 327, col 55 to line 327, col 138 of module CompositionalSpec: 28707483
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 327, col 55 to line 327, col 96 of module CompositionalSpec: 28707483
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  ||line 327, col 101 to line 327, col 138 of module CompositionalSpec: 19138322
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 328, col 53 to line 328, col 93 of module CompositionalSpec: 9569161
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 330, col 63 to line 330, col 70 of module CompositionalSpec: 57414966
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 331, col 68 to line 331, col 161 of module CompositionalSpec: 28707483
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 332, col 68 to line 332, col 160 of module CompositionalSpec: 28707483
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2775:0 @!@!@
+  line 329, col 67 to line 329, col 81 of module CompositionalSpec: 28707483:86122449
+@!@!@ENDMSG 2775 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 334, col 58 to line 334, col 75 of module CompositionalSpec: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 321, col 40 to line 321, col 53 of module CompositionalSpec: 9569161
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 335, col 31 to line 335, col 78 of module CompositionalSpec: 86122449
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 336, col 31 to line 336, col 81 of module CompositionalSpec: 86122449
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 337, col 31 to line 337, col 84 of module CompositionalSpec: 86122449
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 338, col 31 to line 338, col 81 of module CompositionalSpec: 86122449
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 339, col 31 to line 341, col 65 of module CompositionalSpec: 86122449
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<EnvBegin line 346, col 1 to line 346, col 8 of module CompositionalSpec>: 43:41650227
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 346, col 16 to line 346, col 45 of module CompositionalSpec: 54914508
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 346, col 16 to line 346, col 32 of module CompositionalSpec: 41031100
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 347, col 22 to line 347, col 25 of module CompositionalSpec: 13883409
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 348, col 22 to line 348, col 68 of module CompositionalSpec: 13883409
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 349, col 22 to line 349, col 47 of module CompositionalSpec: 13883409
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 351, col 24 to line 356, col 82 of module CompositionalSpec: 27766818
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 350, col 31 to line 350, col 34 of module CompositionalSpec: 13883409
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 357, col 16 to line 359, col 56 of module CompositionalSpec: 41650227
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<AppBegin line 363, col 1 to line 363, col 14 of module CompositionalSpec>: 21247052:45766966
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 363, col 22 to line 363, col 42 of module CompositionalSpec: 106331478
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 363, col 22 to line 363, col 29 of module CompositionalSpec: 82065598
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 364, col 25 to line 364, col 69 of module CompositionalSpec: 24265885
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 365, col 39 to line 369, col 90 of module CompositionalSpec: 14282428
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 370, col 39 to line 370, col 78 of module CompositionalSpec: 14282430
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 371, col 39 to line 371, col 65 of module CompositionalSpec: 14282428
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 372, col 42 to line 372, col 85 of module CompositionalSpec: 14282431
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 373, col 56 to line 377, col 107 of module CompositionalSpec: 7218658
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 378, col 56 to line 378, col 98 of module CompositionalSpec: 7218658
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 379, col 56 to line 379, col 71 of module CompositionalSpec: 7218658
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 380, col 59 to line 380, col 113 of module CompositionalSpec: 7218658
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 381, col 64 to line 386, col 106 of module CompositionalSpec: 5630684
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 387, col 67 to line 387, col 104 of module CompositionalSpec: 1587974
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 388, col 67 to line 389, col 88 of module CompositionalSpec: 1587974
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 390, col 56 to line 390, col 69 of module CompositionalSpec: 7218658
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 391, col 50 to line 391, col 99 of module CompositionalSpec: 7063776
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 392, col 50 to line 393, col 71 of module CompositionalSpec: 7063770
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 394, col 39 to line 394, col 52 of module CompositionalSpec: 21501092
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 395, col 33 to line 395, col 66 of module CompositionalSpec: 9983456
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 396, col 33 to line 396, col 75 of module CompositionalSpec: 9983454
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 397, col 22 to line 399, col 67 of module CompositionalSpec: 45766970
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<DECLARING_PERMISSION line 401, col 1 to line 401, col 26 of module CompositionalSpec>: 6041372:11986798
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 401, col 34 to line 401, col 66 of module CompositionalSpec: 88059015
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 401, col 34 to line 401, col 41 of module CompositionalSpec: 82065618
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 403, col 42 to line 403, col 79 of module CompositionalSpec: 11986800
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 403, col 51 to line 403, col 79 of module CompositionalSpec: 11987324
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 404, col 42 to line 404, col 76 of module CompositionalSpec: 11987324
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 404, col 51 to line 404, col 76 of module CompositionalSpec: 11987324
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 405, col 42 to line 409, col 90 of module CompositionalSpec: 11987324
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 405, col 51 to line 409, col 90 of module CompositionalSpec: 11987324
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 410, col 39 to line 410, col 86 of module CompositionalSpec: 11987324
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 402, col 43 to line 402, col 53 of module CompositionalSpec: 5993662
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 411, col 34 to line 414, col 68 of module CompositionalSpec: 11986799
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<INSTALLING_APP line 416, col 1 to line 416, col 20 of module CompositionalSpec>: 2984190:5808313
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 416, col 28 to line 416, col 54 of module CompositionalSpec: 87877747
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 416, col 28 to line 416, col 35 of module CompositionalSpec: 82069434
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 417, col 28 to line 421, col 79 of module CompositionalSpec: 5808313
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 422, col 28 to line 422, col 68 of module CompositionalSpec: 5808313
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 423, col 28 to line 426, col 62 of module CompositionalSpec: 5808313
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<ApsBegin line 431, col 1 to line 431, col 8 of module CompositionalSpec>: 13517:36103425
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 431, col 16 to line 431, col 37 of module CompositionalSpec: 48255412
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 431, col 16 to line 431, col 24 of module CompositionalSpec: 41034728
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 432, col 22 to line 432, col 25 of module CompositionalSpec: 7220685
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 433, col 22 to line 433, col 60 of module CompositionalSpec: 7220685
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 434, col 22 to line 434, col 51 of module CompositionalSpec: 7220685
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 437, col 26 to line 444, col 77 of module CompositionalSpec: 28882740
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 436, col 33 to line 436, col 43 of module CompositionalSpec: 14441370
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 435, col 31 to line 435, col 34 of module CompositionalSpec: 7220685
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 445, col 16 to line 447, col 50 of module CompositionalSpec: 36103425
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2777:0 @!@!@
+End of statistics (please note that for performance reasons large models
+are best checked with coverage and cost statistics disabled).
+@!@!@ENDMSG 2777 @!@!@

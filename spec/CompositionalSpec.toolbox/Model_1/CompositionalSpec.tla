@@ -68,9 +68,31 @@ PermissionType == { PERMISSION_TYPE_NORMAL, PERMISSION_TYPE_SIGNATURE,
     procedure requestPermission(app, perm)
     {
      REQUEST_PERMISSION:
+     if(aps_vars.app_permissions[app][perm] # Null)
+        return;
+        
+     SWITCH_PERMISSION:
      with(x \in PermissionType)
      {
       permission_type := x;
+      
+      if(permission_type = PERMISSION_TYPE_NORMAL \/ permission_type = PERMISSION_TYPE_SIGNATURE
+         \/ permission_type = PERMISSION_TYPE_SPECIAL)
+      {
+       \* out of scope
+       skip;
+      }
+      else if(permission_type = PERMISSION_TYPE_RUNTIME \/ permission_type = PERMISSION_TYPE_URI
+         \/ permission_type = PERMISSION_TYPE_CUSTOM)
+      {
+       with(r \in { TRUE, FALSE })
+       {
+        if(r = TRUE)
+         aps_vars.app_permissions[app][perm] := PERMISSION_ALLOWED;
+        else
+         aps_vars.app_permissions[app][perm] := PERMISSION_DENIED;
+       }
+      }
      };
      return;
     }
@@ -153,8 +175,8 @@ PermissionType == { PERMISSION_TYPE_NORMAL, PERMISSION_TYPE_SIGNATURE,
 }
 
 ***)
-\* BEGIN TRANSLATION (chksum(pcal) = "c68d1dc4" /\ chksum(tla) = "24ab943")
-\* Process variable i of process AppNext at line 102 col 19 changed to i_
+\* BEGIN TRANSLATION (chksum(pcal) = "769ce6e9" /\ chksum(tla) = "c9f08f3f")
+\* Process variable i of process AppNext at line 124 col 19 changed to i_
 \* Parameter app of procedure installApp at line 62 col 26 changed to app_
 \* Parameter app of procedure uninstallApp at line 63 col 28 changed to app_u
 \* Parameter app of procedure updateApp at line 64 col 25 changed to app_up
@@ -283,17 +305,43 @@ REVOKE_PERMISSION(self) == /\ pc[self] = "REVOKE_PERMISSION"
 revokePermission(self) == REVOKE_PERMISSION(self)
 
 REQUEST_PERMISSION(self) == /\ pc[self] = "REQUEST_PERMISSION"
-                            /\ \E x \in PermissionType:
-                                 permission_type' = x
-                            /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
-                            /\ app' = [app EXCEPT ![self] = Head(stack[self]).app]
-                            /\ perm' = [perm EXCEPT ![self] = Head(stack[self]).perm]
-                            /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
-                            /\ UNCHANGED << env_vars, app_vars, aps_vars, app_, 
-                                            app_u, app_up, app_t, app_d, perm_, 
-                                            app_r, applications, i_, i >>
+                            /\ IF aps_vars.app_permissions[app[self]][perm[self]] # Null
+                                  THEN /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                                       /\ app' = [app EXCEPT ![self] = Head(stack[self]).app]
+                                       /\ perm' = [perm EXCEPT ![self] = Head(stack[self]).perm]
+                                       /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                                  ELSE /\ pc' = [pc EXCEPT ![self] = "SWITCH_PERMISSION"]
+                                       /\ UNCHANGED << stack, app, perm >>
+                            /\ UNCHANGED << env_vars, app_vars, aps_vars, 
+                                            permission_type, app_, app_u, 
+                                            app_up, app_t, app_d, perm_, app_r, 
+                                            applications, i_, i >>
+
+SWITCH_PERMISSION(self) == /\ pc[self] = "SWITCH_PERMISSION"
+                           /\ \E x \in PermissionType:
+                                /\ permission_type' = x
+                                /\ IF permission_type' = PERMISSION_TYPE_NORMAL \/ permission_type' = PERMISSION_TYPE_SIGNATURE
+                                      \/ permission_type' = PERMISSION_TYPE_SPECIAL
+                                      THEN /\ TRUE
+                                           /\ UNCHANGED aps_vars
+                                      ELSE /\ IF      permission_type' = PERMISSION_TYPE_RUNTIME \/ permission_type' = PERMISSION_TYPE_URI
+                                                 \/ permission_type' = PERMISSION_TYPE_CUSTOM
+                                                 THEN /\ \E r \in { TRUE, FALSE }:
+                                                           IF r = TRUE
+                                                              THEN /\ aps_vars' = [aps_vars EXCEPT !.app_permissions[app[self]][perm[self]] = PERMISSION_ALLOWED]
+                                                              ELSE /\ aps_vars' = [aps_vars EXCEPT !.app_permissions[app[self]][perm[self]] = PERMISSION_DENIED]
+                                                 ELSE /\ TRUE
+                                                      /\ UNCHANGED aps_vars
+                           /\ pc' = [pc EXCEPT ![self] = Head(stack[self]).pc]
+                           /\ app' = [app EXCEPT ![self] = Head(stack[self]).app]
+                           /\ perm' = [perm EXCEPT ![self] = Head(stack[self]).perm]
+                           /\ stack' = [stack EXCEPT ![self] = Tail(stack[self])]
+                           /\ UNCHANGED << env_vars, app_vars, app_, app_u, 
+                                           app_up, app_t, app_d, perm_, app_r, 
+                                           applications, i_, i >>
 
 requestPermission(self) == REQUEST_PERMISSION(self)
+                              \/ SWITCH_PERMISSION(self)
 
 EnvBegin == /\ pc[EnvironmentId] = "EnvBegin"
             /\ \/ /\ TRUE
@@ -424,5 +472,5 @@ Spec == /\ Init /\ [][Next]_vars
 
 =============================================================================
 \* Modification History
-\* Last modified Sat May 20 20:07:24 GMT+03:30 2023 by Amirhosein
+\* Last modified Sat May 27 09:44:39 GMT+03:30 2023 by Amirhosein
 \* Created Fri Apr 28 08:40:56 GMT+03:30 2023 by Amirhosein
