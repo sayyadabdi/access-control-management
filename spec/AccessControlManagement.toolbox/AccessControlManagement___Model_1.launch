@@ -5,13 +5,13 @@
     <stringAttribute key="distributedNetworkInterface" value="192.168.73.2"/>
     <intAttribute key="distributedNodesCount" value="1"/>
     <stringAttribute key="distributedTLC" value="off"/>
-    <intAttribute key="fpIndex" value="82"/>
+    <intAttribute key="fpIndex" value="125"/>
     <intAttribute key="maxHeapSize" value="25"/>
     <stringAttribute key="modelBehaviorInit" value=""/>
     <stringAttribute key="modelBehaviorNext" value=""/>
     <stringAttribute key="modelBehaviorSpec" value="Spec"/>
     <intAttribute key="modelBehaviorSpecType" value="1"/>
-    <stringAttribute key="modelBehaviorVars" value="Consent, Grid, stack, app1, app2, ResourceList, Acl, pc, Resource"/>
+    <stringAttribute key="modelBehaviorVars" value="Acl_PermissionType, Acl_Status, p2, app1, app2, Resource, pc, Grid, Consent, ResourceList_, Acl_PermissionLevel, stack, ResourceList"/>
     <stringAttribute key="modelComments" value=""/>
     <booleanAttribute key="modelCorrectnessCheckDeadlock" value="false"/>
     <listAttribute key="modelCorrectnessInvariants">
