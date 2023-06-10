@@ -230,7 +230,7 @@ AcmTypeOK == /\ Acl \in [Processes -> [Resources -> ResourceStatus]]
              /\ Grid \in [Processes -> [Processes -> Boolean]]
 
 
-AcmRedelegation == ~(\E p \in Processes:
+AcmConsistent == ~(\E p \in Processes:
                    \E r \in Resources:
                       /\ Acl[p][r] = IN_USE
                       /\ Consent[p][r] # TRUE)
@@ -241,5 +241,5 @@ AcmLiveness == <> (\E p \in Processes:
 
 =============================================================================
 \* Modification History
-\* Last modified Sat Jun 10 05:23:16 GMT+03:30 2023 by Amirhosein
+\* Last modified Fri Jun 09 22:29:27 GMT+03:30 2023 by Amirhosein
 \* Created Thu Mar 23 07:45:26 GMT+03:30 2023 by Amirhosein

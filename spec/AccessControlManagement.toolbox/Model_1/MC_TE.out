@@ -2,7 +2,7 @@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 1 and seed 7098184628943727901 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 6396] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 82 and seed -2694096776894545671 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 804] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
@@ -23,7 +23,7 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2023-06-09 20:01:25)
+Starting... (2023-06-10 05:23:51)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2212:0 @!@!@
 Implied-temporal checking--satisfiability problem has 1 branches.
@@ -32,497 +32,538 @@ Implied-temporal checking--satisfiability problem has 1 branches.
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2023-06-09 20:01:26.
+Finished computing initial states: 1 distinct state generated at 2023-06-10 05:23:51.
 @!@!@ENDMSG 2190 @!@!@
-@!@!@STARTMSG 2200:0 @!@!@
-Progress(41) at 2023-06-09 20:01:27: 67,793 states generated, 23,104 distinct states found, 0 states left on queue.
-@!@!@ENDMSG 2200 @!@!@
-@!@!@STARTMSG 2192:0 @!@!@
-Checking temporal properties for the complete state space with 23104 total distinct states at (2023-06-09 20:01:27)
-@!@!@ENDMSG 2192 @!@!@
-@!@!@STARTMSG 2116:1 @!@!@
-Temporal properties were violated.
-
-@!@!@ENDMSG 2116 @!@!@
-@!@!@STARTMSG 2264:1 @!@!@
-The following behavior constitutes a counter-example:
-
-@!@!@ENDMSG 2264 @!@!@
+@!@!@STARTMSG 2110:1 @!@!@
+Invariant AcmRedelegation is violated.
+@!@!@ENDMSG 2110 @!@!@
+@!@!@STARTMSG 2121:1 @!@!@
+The behavior up to this point is:
+@!@!@ENDMSG 2121 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
 1: <Initial predicate>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ pc = <<"s1", "s1">>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
 /\ Resource = <<0, 0>>
+/\ pc = <<"s0", "s0">>
+/\ Acl = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ Grid = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ Consent = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-2: <s1 line 82, col 13 to line 84, col 56 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ pc = <<"s2", "s1">>
+2: <s0 line 153, col 13 to line 157, col 39 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
 /\ Resource = <<0, 0>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-3: <s2 line 86, col 13 to line 90, col 46 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+/\ pc = <<"s1", "s0">>
 /\ Acl = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ pc = <<"s3", "s1">>
-/\ Resource = <<2, 0>>
+/\ Grid = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ Consent = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-4: <s1 line 82, col 13 to line 84, col 56 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+3: <s1 line 159, col 13 to line 162, col 53 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
+/\ Resource = <<0, 0>>
+/\ pc = <<"s2", "s0">>
 /\ Acl = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ pc = <<"s3", "s2">>
-/\ Resource = <<2, 0>>
+/\ Grid = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ Consent = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-5: <s2 line 86, col 13 to line 90, col 46 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
+4: <s2 line 164, col 13 to line 169, col 43 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
+/\ Resource = <<1, 0>>
+/\ pc = <<"s3", "s0">>
 /\ Acl = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ pc = <<"s3", "s3">>
-/\ Resource = <<2, 1>>
+/\ Grid = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ Consent = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-6: <s3 line 92, col 13 to line 106, col 51 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"NULL", "REQUESTED">>, <<"NULL", "NULL">>>>
-/\ pc = <<"s1", "s3">>
-/\ Resource = <<2, 1>>
+5: <s3 line 171, col 13 to line 190, col 78 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
+/\ Resource = <<1, 0>>
+/\ pc = <<"s4", "s0">>
+/\ Acl = <<<<"REQUESTED", "NULL">>, <<"NULL", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ Consent = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-7: <s1 line 82, col 13 to line 84, col 56 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"NULL", "REQUESTED">>, <<"NULL", "NULL">>>>
-/\ pc = <<"s2", "s3">>
-/\ Resource = <<2, 1>>
+6: <s4 line 192, col 13 to line 209, col 53 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
+/\ Resource = <<1, 0>>
+/\ pc = <<"s1", "s0">>
+/\ Acl = <<<<"REQUESTED", "NULL">>, <<"NULL", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ Consent = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-8: <s2 line 86, col 13 to line 90, col 46 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"NULL", "REQUESTED">>, <<"NULL", "NULL">>>>
-/\ pc = <<"s3", "s3">>
-/\ Resource = <<2, 1>>
+7: <s1 line 159, col 13 to line 162, col 53 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
+/\ Resource = <<1, 0>>
+/\ pc = <<"s2", "s0">>
+/\ Acl = <<<<"REQUESTED", "NULL">>, <<"NULL", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ Consent = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-9: <s3 line 92, col 13 to line 106, col 51 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"NULL", "REQUESTED">>, <<"REQUESTED", "NULL">>>>
-/\ pc = <<"s3", "s1">>
-/\ Resource = <<2, 1>>
+8: <s2 line 164, col 13 to line 169, col 43 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
+/\ Resource = <<1, 0>>
+/\ pc = <<"s3", "s0">>
+/\ Acl = <<<<"REQUESTED", "NULL">>, <<"NULL", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ Consent = <<<<FALSE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-10: <s1 line 82, col 13 to line 84, col 56 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"NULL", "REQUESTED">>, <<"REQUESTED", "NULL">>>>
-/\ pc = <<"s3", "s2">>
-/\ Resource = <<2, 1>>
+9: <s3 line 171, col 13 to line 190, col 78 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
+/\ Resource = <<1, 0>>
+/\ pc = <<"s4", "s0">>
+/\ Acl = <<<<"ALLOWED", "NULL">>, <<"NULL", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ Consent = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-11: <s2 line 86, col 13 to line 90, col 46 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"NULL", "REQUESTED">>, <<"REQUESTED", "NULL">>>>
-/\ pc = <<"s3", "s3">>
-/\ Resource = <<2, 1>>
+10: <s0 line 153, col 13 to line 157, col 39 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
+/\ Resource = <<1, 0>>
+/\ pc = <<"s4", "s1">>
+/\ Acl = <<<<"ALLOWED", "NULL">>, <<"NULL", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<FALSE, TRUE>>>>
+/\ Consent = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-12: <s3 line 92, col 13 to line 106, col 51 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"NULL", "REQUESTED">>, <<"ALLOWED", "NULL">>>>
-/\ pc = <<"s3", "s1">>
-/\ Resource = <<2, 1>>
+11: <s1 line 159, col 13 to line 162, col 53 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
+/\ Resource = <<1, 0>>
+/\ pc = <<"s4", "s2">>
+/\ Acl = <<<<"ALLOWED", "NULL">>, <<"NULL", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<FALSE, TRUE>>>>
+/\ Consent = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-13: <s1 line 82, col 13 to line 84, col 56 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"NULL", "REQUESTED">>, <<"ALLOWED", "NULL">>>>
-/\ pc = <<"s3", "s2">>
-/\ Resource = <<2, 1>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-14: <s2 line 86, col 13 to line 90, col 46 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"NULL", "REQUESTED">>, <<"ALLOWED", "NULL">>>>
-/\ pc = <<"s3", "s3">>
-/\ Resource = <<2, 2>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-15: <s3 line 92, col 13 to line 106, col 51 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"NULL", "ALLOWED">>, <<"ALLOWED", "NULL">>>>
-/\ pc = <<"s1", "s3">>
-/\ Resource = <<2, 2>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-16: <s3 line 92, col 13 to line 106, col 51 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"NULL", "ALLOWED">>, <<"ALLOWED", "REQUESTED">>>>
-/\ pc = <<"s1", "s1">>
-/\ Resource = <<2, 2>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-17: <s1 line 82, col 13 to line 84, col 56 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"NULL", "ALLOWED">>, <<"ALLOWED", "REQUESTED">>>>
-/\ pc = <<"s2", "s1">>
-/\ Resource = <<2, 2>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-18: <s2 line 86, col 13 to line 90, col 46 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"NULL", "ALLOWED">>, <<"ALLOWED", "REQUESTED">>>>
-/\ pc = <<"s3", "s1">>
-/\ Resource = <<1, 2>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-19: <s3 line 92, col 13 to line 106, col 51 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"REQUESTED", "ALLOWED">>, <<"ALLOWED", "REQUESTED">>>>
-/\ pc = <<"s1", "s1">>
-/\ Resource = <<1, 2>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-20: <s1 line 82, col 13 to line 84, col 56 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"REQUESTED", "ALLOWED">>, <<"ALLOWED", "REQUESTED">>>>
-/\ pc = <<"s2", "s1">>
-/\ Resource = <<1, 2>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-21: <s1 line 82, col 13 to line 84, col 56 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"REQUESTED", "ALLOWED">>, <<"ALLOWED", "REQUESTED">>>>
-/\ pc = <<"s2", "s2">>
-/\ Resource = <<1, 2>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-22: <s2 line 86, col 13 to line 90, col 46 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"REQUESTED", "ALLOWED">>, <<"ALLOWED", "REQUESTED">>>>
-/\ pc = <<"s3", "s2">>
-/\ Resource = <<1, 2>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-23: <s2 line 86, col 13 to line 90, col 46 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"REQUESTED", "ALLOWED">>, <<"ALLOWED", "REQUESTED">>>>
-/\ pc = <<"s3", "s3">>
-/\ Resource = <<1, 2>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-24: <s3 line 92, col 13 to line 106, col 51 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"REQUESTED", "ALLOWED">>, <<"ALLOWED", "ALLOWED">>>>
-/\ pc = <<"s3", "s1">>
-/\ Resource = <<1, 2>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-25: <s1 line 82, col 13 to line 84, col 56 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"REQUESTED", "ALLOWED">>, <<"ALLOWED", "ALLOWED">>>>
-/\ pc = <<"s3", "s2">>
-/\ Resource = <<1, 2>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-26: <s2 line 86, col 13 to line 90, col 46 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"REQUESTED", "ALLOWED">>, <<"ALLOWED", "ALLOWED">>>>
-/\ pc = <<"s3", "s3">>
-/\ Resource = <<1, 2>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-27: <s3 line 92, col 13 to line 106, col 51 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"REQUESTED", "ALLOWED">>, <<"ALLOWED", "IN_USE">>>>
-/\ pc = <<"s3", "s1">>
-/\ Resource = <<1, 2>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-28: <s1 line 82, col 13 to line 84, col 56 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"REQUESTED", "ALLOWED">>, <<"ALLOWED", "IN_USE">>>>
-/\ pc = <<"s3", "s2">>
-/\ Resource = <<1, 2>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-29: <s2 line 86, col 13 to line 90, col 46 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"REQUESTED", "ALLOWED">>, <<"ALLOWED", "IN_USE">>>>
-/\ pc = <<"s3", "s3">>
+12: <s2 line 164, col 13 to line 169, col 43 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
 /\ Resource = <<1, 1>>
+/\ pc = <<"s4", "s3">>
+/\ Acl = <<<<"ALLOWED", "NULL">>, <<"NULL", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<FALSE, TRUE>>>>
+/\ Consent = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-30: <s3 line 92, col 13 to line 106, col 51 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"ALLOWED", "ALLOWED">>, <<"ALLOWED", "IN_USE">>>>
-/\ pc = <<"s1", "s3">>
+13: <s3 line 171, col 13 to line 190, col 78 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
 /\ Resource = <<1, 1>>
+/\ pc = <<"s4", "s4">>
+/\ Acl = <<<<"ALLOWED", "NULL">>, <<"REQUESTED", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<FALSE, TRUE>>>>
+/\ Consent = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-31: <s1 line 82, col 13 to line 84, col 56 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"ALLOWED", "ALLOWED">>, <<"ALLOWED", "IN_USE">>>>
-/\ pc = <<"s2", "s3">>
+14: <s4 line 192, col 13 to line 209, col 53 of module AccessControlManagement>
+/\ app1 = <<0, 2>>
+/\ app2 = <<0, 1>>
 /\ Resource = <<1, 1>>
+/\ pc = <<"s4", "DELEGATE">>
+/\ Acl = <<<<"ALLOWED", "NULL">>, <<"REQUESTED", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<TRUE, TRUE>>>>
+/\ Consent = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = << <<>>,
+   << [ pc |-> "s1",
+        app1 |-> 0,
+        app2 |-> 0,
+        ResourceList |-> 1..2,
+        procedure |-> "Delegate" ] >> >>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-32: <s2 line 86, col 13 to line 90, col 46 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"ALLOWED", "ALLOWED">>, <<"ALLOWED", "IN_USE">>>>
-/\ pc = <<"s3", "s3">>
-/\ Resource = <<2, 1>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-33: <s3 line 92, col 13 to line 106, col 51 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"ALLOWED", "ALLOWED">>, <<"IN_USE", "IN_USE">>>>
-/\ pc = <<"s3", "s1">>
-/\ Resource = <<2, 1>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-34: <s3 line 92, col 13 to line 106, col 51 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"ALLOWED", "IN_USE">>, <<"IN_USE", "IN_USE">>>>
-/\ pc = <<"s1", "s1">>
-/\ Resource = <<2, 1>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-35: <s1 line 82, col 13 to line 84, col 56 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"ALLOWED", "IN_USE">>, <<"IN_USE", "IN_USE">>>>
-/\ pc = <<"s2", "s1">>
-/\ Resource = <<2, 1>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-36: <s2 line 86, col 13 to line 90, col 46 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"ALLOWED", "IN_USE">>, <<"IN_USE", "IN_USE">>>>
-/\ pc = <<"s3", "s1">>
+15: <DELEGATE line 133, col 19 to line 149, col 60 of module AccessControlManagement>
+/\ app1 = <<0, 2>>
+/\ app2 = <<0, 1>>
 /\ Resource = <<1, 1>>
+/\ pc = <<"s4", "DELEGATE">>
+/\ Acl = <<<<"ALLOWED", "NULL">>, <<"ALLOWED", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<TRUE, TRUE>>>>
+/\ Consent = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = << <<>>,
+   << [ pc |-> "s1",
+        app1 |-> 0,
+        app2 |-> 0,
+        ResourceList |-> 1..2,
+        procedure |-> "Delegate" ] >> >>
+/\ ResourceList = <<1..2, {2}>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-37: <s3 line 92, col 13 to line 106, col 51 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"IN_USE", "IN_USE">>, <<"IN_USE", "IN_USE">>>>
-/\ pc = <<"s1", "s1">>
+16: <DELEGATE line 133, col 19 to line 149, col 60 of module AccessControlManagement>
+/\ app1 = <<0, 2>>
+/\ app2 = <<0, 1>>
 /\ Resource = <<1, 1>>
+/\ pc = <<"s4", "DELEGATE">>
+/\ Acl = <<<<"ALLOWED", "NULL">>, <<"ALLOWED", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<TRUE, TRUE>>>>
+/\ Consent = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = << <<>>,
+   << [ pc |-> "s1",
+        app1 |-> 0,
+        app2 |-> 0,
+        ResourceList |-> 1..2,
+        procedure |-> "Delegate" ] >> >>
+/\ ResourceList = <<1..2, {}>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-38: <s1 line 82, col 13 to line 84, col 56 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"IN_USE", "IN_USE">>, <<"IN_USE", "IN_USE">>>>
-/\ pc = <<"s2", "s1">>
+17: <DELEGATE line 133, col 19 to line 149, col 60 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
 /\ Resource = <<1, 1>>
+/\ pc = <<"s4", "s1">>
+/\ Acl = <<<<"ALLOWED", "NULL">>, <<"ALLOWED", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<TRUE, TRUE>>>>
+/\ Consent = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-39: <s1 line 82, col 13 to line 84, col 56 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"IN_USE", "IN_USE">>, <<"IN_USE", "IN_USE">>>>
-/\ pc = <<"s2", "s2">>
+18: <s1 line 159, col 13 to line 162, col 53 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
 /\ Resource = <<1, 1>>
+/\ pc = <<"s4", "s2">>
+/\ Acl = <<<<"ALLOWED", "NULL">>, <<"ALLOWED", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<TRUE, TRUE>>>>
+/\ Consent = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-40: <s2 line 86, col 13 to line 90, col 46 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"IN_USE", "IN_USE">>, <<"IN_USE", "IN_USE">>>>
-/\ pc = <<"s2", "s3">>
+19: <s2 line 164, col 13 to line 169, col 43 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
 /\ Resource = <<1, 1>>
+/\ pc = <<"s4", "s3">>
+/\ Acl = <<<<"ALLOWED", "NULL">>, <<"ALLOWED", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<TRUE, TRUE>>>>
+/\ Consent = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
-41: <s2 line 86, col 13 to line 90, col 46 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"IN_USE", "IN_USE">>, <<"IN_USE", "IN_USE">>>>
-/\ pc = <<"s3", "s3">>
+20: <s3 line 171, col 13 to line 190, col 78 of module AccessControlManagement>
+/\ app1 = <<0, 0>>
+/\ app2 = <<0, 0>>
 /\ Resource = <<1, 1>>
+/\ pc = <<"s4", "s4">>
+/\ Acl = <<<<"ALLOWED", "NULL">>, <<"IN_USE", "NULL">>>>
+/\ Grid = <<<<TRUE, FALSE>>, <<TRUE, TRUE>>>>
+/\ Consent = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
+/\ stack = <<<<>>, <<>>>>
+/\ ResourceList = <<1..2, 1..2>>
 
 @!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2217:4 @!@!@
-42: <s3 line 92, col 13 to line 106, col 51 of module AccessControlManagement>
-/\ AclHistory = <<<<"NULL", "NULL">>, <<"NULL", "NULL">>>>
-/\ Acl = <<<<"IN_USE", "IN_USE">>, <<"IN_USE", "IN_USE">>>>
-/\ pc = <<"s3", "s1">>
-/\ Resource = <<1, 1>>
-
-@!@!@ENDMSG 2217 @!@!@
-@!@!@STARTMSG 2122:4 @!@!@
-37: Back to state: <s3 line 92, col 13 to line 106, col 51 of module AccessControlManagement>
-
-@!@!@ENDMSG 2122 @!@!@
-@!@!@STARTMSG 2267:0 @!@!@
-Finished checking temporal properties in 00s at 2023-06-09 20:01:28
-@!@!@ENDMSG 2267 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2023-06-09 20:01:28
+The coverage statistics at 2023-06-10 05:23:53
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
-<Init line 75, col 1 to line 75, col 4 of module AccessControlManagement>: 2:2
+<Init line 120, col 1 to line 120, col 4 of module AccessControlManagement>: 2:2
 @!@!@ENDMSG 2773 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 76, col 9 to line 80, col 43 of module AccessControlManagement: 2
+  line 121, col 9 to line 131, col 43 of module AccessControlManagement: 2
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<s1 line 82, col 1 to line 82, col 8 of module AccessControlManagement>: 7788:15520
+<DELEGATE line 133, col 1 to line 133, col 14 of module AccessControlManagement>: 2020:4658
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 82, col 16 to line 82, col 30 of module AccessControlManagement: 61793
+  line 133, col 22 to line 133, col 42 of module AccessControlManagement: 15250
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 82, col 16 to line 82, col 23 of module AccessControlManagement: 46273
+  |line 133, col 22 to line 133, col 29 of module AccessControlManagement: 11724
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 83, col 16 to line 83, col 47 of module AccessControlManagement: 15520
+  line 134, col 25 to line 134, col 47 of module AccessControlManagement: 3526
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 84, col 16 to line 84, col 56 of module AccessControlManagement: 15520
+  line 136, col 41 to line 136, col 68 of module AccessControlManagement: 4021
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 137, col 46 to line 137, col 94 of module AccessControlManagement: 299
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 138, col 46 to line 139, col 58 of module AccessControlManagement: 3722
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 140, col 38 to line 140, col 109 of module AccessControlManagement: 4021
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 135, col 42 to line 135, col 59 of module AccessControlManagement: 2889
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 141, col 33 to line 141, col 70 of module AccessControlManagement: 4021
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 142, col 33 to line 142, col 65 of module AccessControlManagement: 4021
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 143, col 30 to line 148, col 42 of module AccessControlManagement: 637
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 149, col 22 to line 149, col 60 of module AccessControlManagement: 4658
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<s2 line 86, col 1 to line 86, col 8 of module AccessControlManagement>: 7647:31042
+<s0 line 153, col 1 to line 153, col 8 of module AccessControlManagement>: 181:566
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 86, col 16 to line 86, col 30 of module AccessControlManagement: 61780
+  line 153, col 16 to line 153, col 30 of module AccessControlManagement: 12276
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 86, col 16 to line 86, col 23 of module AccessControlManagement: 46259
+  |line 153, col 16 to line 153, col 23 of module AccessControlManagement: 11710
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 88, col 18 to line 88, col 58 of module AccessControlManagement: 31042
+  line 154, col 16 to line 154, col 57 of module AccessControlManagement: 566
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 87, col 25 to line 87, col 33 of module AccessControlManagement: 15521
+  line 155, col 16 to line 155, col 47 of module AccessControlManagement: 566
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 89, col 16 to line 89, col 47 of module AccessControlManagement: 31042
-@!@!@ENDMSG 2221 @!@!@
-@!@!@STARTMSG 2221:0 @!@!@
-  line 90, col 16 to line 90, col 46 of module AccessControlManagement: 31042
+  line 156, col 16 to line 157, col 39 of module AccessControlManagement: 566
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<s3 line 92, col 1 to line 92, col 8 of module AccessControlManagement>: 7668:21334
+<s1 line 159, col 1 to line 159, col 8 of module AccessControlManagement>: 1089:2041
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 92, col 16 to line 92, col 30 of module AccessControlManagement: 61477
+  line 159, col 16 to line 159, col 30 of module AccessControlManagement: 13749
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 92, col 16 to line 92, col 23 of module AccessControlManagement: 46245
+  |line 159, col 16 to line 159, col 23 of module AccessControlManagement: 11708
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 93, col 19 to line 93, col 50 of module AccessControlManagement: 15232
+  line 160, col 16 to line 160, col 47 of module AccessControlManagement: 2041
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 94, col 24 to line 94, col 81 of module AccessControlManagement: 3047
+  line 161, col 16 to line 162, col 53 of module AccessControlManagement: 2041
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<s2 line 164, col 1 to line 164, col 8 of module AccessControlManagement>: 1513:3080
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 164, col 16 to line 164, col 30 of module AccessControlManagement: 13244
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 95, col 30 to line 95, col 66 of module AccessControlManagement: 12185
+  |line 164, col 16 to line 164, col 23 of module AccessControlManagement: 11704
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 97, col 43 to line 97, col 50 of module AccessControlManagement: 6114
+  line 166, col 18 to line 166, col 58 of module AccessControlManagement: 3080
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 98, col 48 to line 98, col 103 of module AccessControlManagement: 3057
+  line 165, col 25 to line 165, col 33 of module AccessControlManagement: 1540
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 99, col 48 to line 99, col 104 of module AccessControlManagement: 3057
+  line 167, col 16 to line 167, col 47 of module AccessControlManagement: 3080
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 96, col 47 to line 96, col 53 of module AccessControlManagement: 3057
+  line 168, col 16 to line 169, col 43 of module AccessControlManagement: 3080
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<s3 line 171, col 1 to line 171, col 8 of module AccessControlManagement>: 1468:2754
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 171, col 16 to line 171, col 30 of module AccessControlManagement: 13823
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 100, col 41 to line 100, col 75 of module AccessControlManagement: 9128
+  |line 171, col 16 to line 171, col 23 of module AccessControlManagement: 11700
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 101, col 46 to line 102, col 106 of module AccessControlManagement: 3045
+  line 172, col 19 to line 172, col 50 of module AccessControlManagement: 2125
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 103, col 46 to line 104, col 58 of module AccessControlManagement: 6083
+  line 173, col 27 to line 173, col 81 of module AccessControlManagement: 1369
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 105, col 16 to line 105, col 47 of module AccessControlManagement: 21334
+  line 174, col 27 to line 174, col 43 of module AccessControlManagement: 1369
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 106, col 16 to line 106, col 51 of module AccessControlManagement: 21334
+  line 175, col 30 to line 175, col 66 of module AccessControlManagement: 756
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 177, col 43 to line 177, col 50 of module AccessControlManagement: 1012
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 178, col 48 to line 179, col 108 of module AccessControlManagement: 506
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 180, col 48 to line 181, col 109 of module AccessControlManagement: 506
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 176, col 47 to line 176, col 53 of module AccessControlManagement: 506
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 182, col 41 to line 182, col 75 of module AccessControlManagement: 250
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 183, col 52 to line 184, col 113 of module AccessControlManagement: 123
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 185, col 55 to line 185, col 106 of module AccessControlManagement: 121
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 185, col 62 to line 185, col 106 of module AccessControlManagement: 123
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 186, col 55 to line 186, col 71 of module AccessControlManagement: 121
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 187, col 49 to line 187, col 52 of module AccessControlManagement: 127
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 188, col 49 to line 188, col 76 of module AccessControlManagement: 127
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 189, col 16 to line 189, col 47 of module AccessControlManagement: 2752
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 189, col 22 to line 189, col 47 of module AccessControlManagement: 2754
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 190, col 16 to line 190, col 78 of module AccessControlManagement: 2752
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<s4 line 192, col 1 to line 192, col 8 of module AccessControlManagement>: 1765:3830
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 192, col 16 to line 192, col 30 of module AccessControlManagement: 13609
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  |line 192, col 16 to line 192, col 23 of module AccessControlManagement: 11694
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 194, col 21 to line 194, col 31 of module AccessControlManagement: 3830
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 195, col 26 to line 206, col 71 of module AccessControlManagement: 1915
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 207, col 29 to line 207, col 60 of module AccessControlManagement: 1915
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 208, col 29 to line 208, col 81 of module AccessControlManagement: 1915
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 193, col 28 to line 193, col 34 of module AccessControlManagement: 1915
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 209, col 16 to line 209, col 53 of module AccessControlManagement: 3830
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2772:0 @!@!@
+<Terminating line 214, col 1 to line 214, col 11 of module AccessControlManagement>: 0:0
+@!@!@ENDMSG 2772 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 214, col 19 to line 214, col 56 of module AccessControlManagement: 5841
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 215, col 19 to line 215, col 32 of module AccessControlManagement: 0
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2774:0 @!@!@
-<AcmTypeOK line 117, col 1 to line 117, col 9 of module AccessControlManagement>
+<AcmTypeOK line 228, col 1 to line 228, col 9 of module AccessControlManagement>
 @!@!@ENDMSG 2774 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 117, col 14 to line 117, col 68 of module AccessControlManagement: 23104
+  line 228, col 14 to line 230, col 62 of module AccessControlManagement: 8037
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2774:0 @!@!@
-<AcmConsistent line 121, col 1 to line 121, col 13 of module AccessControlManagement>
+<AcmRedelegation line 233, col 1 to line 233, col 15 of module AccessControlManagement>
 @!@!@ENDMSG 2774 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 121, col 18 to line 124, col 24 of module AccessControlManagement: 23104
+  line 233, col 20 to line 236, col 46 of module AccessControlManagement: 8037
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 121, col 18 to line 123, col 41 of module AccessControlManagement: 23104
+  |line 233, col 22 to line 236, col 45 of module AccessControlManagement: 8037
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 121, col 20 to line 123, col 40 of module AccessControlManagement: 23104
+  ||line 234, col 20 to line 236, col 45 of module AccessControlManagement: 16074
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 122, col 20 to line 123, col 40 of module AccessControlManagement: 38000
+  |||line 235, col 23 to line 236, col 45 of module AccessControlManagement: 32146
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 123, col 23 to line 123, col 40 of module AccessControlManagement: 68500
+  ||||line 235, col 26 to line 235, col 43 of module AccessControlManagement: 32146
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 122, col 29 to line 122, col 37 of module AccessControlManagement: 38000
+  ||||line 236, col 26 to line 236, col 45 of module AccessControlManagement: 486
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 121, col 29 to line 121, col 37 of module AccessControlManagement: 23104
+  |||line 234, col 29 to line 234, col 37 of module AccessControlManagement: 16074
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 124, col 21 to line 124, col 24 of module AccessControlManagement: 13500
+  ||line 233, col 31 to line 233, col 39 of module AccessControlManagement: 8037
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2202:0 @!@!@
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(41) at 2023-06-09 20:01:28: 67,793 states generated (1,427,221 s/min), 23,104 distinct states found (486,400 ds/min), 0 states left on queue.
+Progress(20) at 2023-06-10 05:23:53: 16,873 states generated (380,165 s/min), 8,037 distinct states found (181,081 ds/min), 2,198 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
-67793 states generated, 23104 distinct states found, 0 states left on queue.
+16873 states generated, 8037 distinct states found, 2198 states left on queue.
 @!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2194:0 @!@!@
+The depth of the complete state graph search is 20.
+@!@!@ENDMSG 2194 @!@!@
+@!@!@STARTMSG 2268:0 @!@!@
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 4 and the 95th percentile is 2).
+@!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 2859ms at (2023-06-09 20:01:28)
+Finished in 2674ms at (2023-06-10 05:23:53)
 @!@!@ENDMSG 2186 @!@!@

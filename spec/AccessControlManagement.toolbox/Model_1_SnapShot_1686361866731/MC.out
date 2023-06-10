@@ -2,7 +2,7 @@
 TLC2 Version 2.16 of 31 December 2020 (rev: cdddf55)
 @!@!@ENDMSG 2262 @!@!@
 @!@!@STARTMSG 2187:0 @!@!@
-Running breadth-first search Model-Checking with fp 82 and seed -2694096776894545671 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 804] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
+Running breadth-first search Model-Checking with fp 110 and seed 8844332814315726957 with 4 workers on 8 cores with 599MB heap and 1345MB offheap memory [pid: 14176] (Windows 10 10.0 amd64, AdoptOpenJDK 14.0.1 x86_64, OffHeapDiskFPSet, DiskStateQueue).
 @!@!@ENDMSG 2187 @!@!@
 @!@!@STARTMSG 2220:0 @!@!@
 Starting SANY...
@@ -23,7 +23,7 @@ Semantic processing of module MC
 SANY finished.
 @!@!@ENDMSG 2219 @!@!@
 @!@!@STARTMSG 2185:0 @!@!@
-Starting... (2023-06-10 05:23:51)
+Starting... (2023-06-10 05:21:02)
 @!@!@ENDMSG 2185 @!@!@
 @!@!@STARTMSG 2212:0 @!@!@
 Implied-temporal checking--satisfiability problem has 1 branches.
@@ -32,10 +32,10 @@ Implied-temporal checking--satisfiability problem has 1 branches.
 Computing initial states...
 @!@!@ENDMSG 2189 @!@!@
 @!@!@STARTMSG 2190:0 @!@!@
-Finished computing initial states: 1 distinct state generated at 2023-06-10 05:23:51.
+Finished computing initial states: 1 distinct state generated at 2023-06-10 05:21:03.
 @!@!@ENDMSG 2190 @!@!@
 @!@!@STARTMSG 2110:1 @!@!@
-Invariant AcmRedelegation is violated.
+Invariant AcmConsistent is violated.
 @!@!@ENDMSG 2110 @!@!@
 @!@!@STARTMSG 2121:1 @!@!@
 The behavior up to this point is:
@@ -233,7 +233,7 @@ The behavior up to this point is:
 /\ app2 = <<0, 1>>
 /\ Resource = <<1, 1>>
 /\ pc = <<"s4", "DELEGATE">>
-/\ Acl = <<<<"ALLOWED", "NULL">>, <<"ALLOWED", "NULL">>>>
+/\ Acl = <<<<"ALLOWED", "NULL">>, <<"REQUESTED", "NULL">>>>
 /\ Grid = <<<<TRUE, FALSE>>, <<TRUE, TRUE>>>>
 /\ Consent = <<<<TRUE, FALSE>>, <<FALSE, FALSE>>>>
 /\ stack = << <<>>,
@@ -242,7 +242,7 @@ The behavior up to this point is:
         app2 |-> 0,
         ResourceList |-> 1..2,
         procedure |-> "Delegate" ] >> >>
-/\ ResourceList = <<1..2, {2}>>
+/\ ResourceList = <<1..2, {1}>>
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2217:4 @!@!@
@@ -316,7 +316,7 @@ The behavior up to this point is:
 
 @!@!@ENDMSG 2217 @!@!@
 @!@!@STARTMSG 2201:0 @!@!@
-The coverage statistics at 2023-06-10 05:23:53
+The coverage statistics at 2023-06-10 05:21:05
 @!@!@ENDMSG 2201 @!@!@
 @!@!@STARTMSG 2773:0 @!@!@
 <Init line 120, col 1 to line 120, col 4 of module AccessControlManagement>: 2:2
@@ -325,193 +325,193 @@ The coverage statistics at 2023-06-10 05:23:53
   line 121, col 9 to line 131, col 43 of module AccessControlManagement: 2
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<DELEGATE line 133, col 1 to line 133, col 14 of module AccessControlManagement>: 2020:4658
+<DELEGATE line 133, col 1 to line 133, col 14 of module AccessControlManagement>: 1997:4644
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 133, col 22 to line 133, col 42 of module AccessControlManagement: 15250
+  line 133, col 22 to line 133, col 42 of module AccessControlManagement: 15265
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 133, col 22 to line 133, col 29 of module AccessControlManagement: 11724
+  |line 133, col 22 to line 133, col 29 of module AccessControlManagement: 11744
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 134, col 25 to line 134, col 47 of module AccessControlManagement: 3526
+  line 134, col 25 to line 134, col 47 of module AccessControlManagement: 3521
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 136, col 41 to line 136, col 68 of module AccessControlManagement: 4021
+  line 136, col 41 to line 136, col 68 of module AccessControlManagement: 4003
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 137, col 46 to line 137, col 94 of module AccessControlManagement: 299
+  line 137, col 46 to line 137, col 94 of module AccessControlManagement: 300
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 138, col 46 to line 139, col 58 of module AccessControlManagement: 3722
+  line 138, col 46 to line 139, col 58 of module AccessControlManagement: 3703
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 140, col 38 to line 140, col 109 of module AccessControlManagement: 4021
+  line 140, col 38 to line 140, col 109 of module AccessControlManagement: 4003
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 135, col 42 to line 135, col 59 of module AccessControlManagement: 2889
+  line 135, col 42 to line 135, col 59 of module AccessControlManagement: 2880
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 141, col 33 to line 141, col 70 of module AccessControlManagement: 4021
+  line 141, col 33 to line 141, col 70 of module AccessControlManagement: 4003
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 142, col 33 to line 142, col 65 of module AccessControlManagement: 4021
+  line 142, col 33 to line 142, col 65 of module AccessControlManagement: 4003
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 143, col 30 to line 148, col 42 of module AccessControlManagement: 637
+  line 143, col 30 to line 148, col 42 of module AccessControlManagement: 641
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 149, col 22 to line 149, col 60 of module AccessControlManagement: 4658
+  line 149, col 22 to line 149, col 60 of module AccessControlManagement: 4644
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<s0 line 153, col 1 to line 153, col 8 of module AccessControlManagement>: 181:566
+<s0 line 153, col 1 to line 153, col 8 of module AccessControlManagement>: 168:571
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 153, col 16 to line 153, col 30 of module AccessControlManagement: 12276
+  line 153, col 16 to line 153, col 30 of module AccessControlManagement: 12301
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 153, col 16 to line 153, col 23 of module AccessControlManagement: 11710
+  |line 153, col 16 to line 153, col 23 of module AccessControlManagement: 11730
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 154, col 16 to line 154, col 57 of module AccessControlManagement: 566
+  line 154, col 16 to line 154, col 57 of module AccessControlManagement: 571
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 155, col 16 to line 155, col 47 of module AccessControlManagement: 566
+  line 155, col 16 to line 155, col 47 of module AccessControlManagement: 571
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 156, col 16 to line 157, col 39 of module AccessControlManagement: 566
+  line 156, col 16 to line 157, col 39 of module AccessControlManagement: 571
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<s1 line 159, col 1 to line 159, col 8 of module AccessControlManagement>: 1089:2041
+<s1 line 159, col 1 to line 159, col 8 of module AccessControlManagement>: 1072:2052
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 159, col 16 to line 159, col 30 of module AccessControlManagement: 13749
+  line 159, col 16 to line 159, col 30 of module AccessControlManagement: 13780
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 159, col 16 to line 159, col 23 of module AccessControlManagement: 11708
+  |line 159, col 16 to line 159, col 23 of module AccessControlManagement: 11728
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 160, col 16 to line 160, col 47 of module AccessControlManagement: 2041
+  line 160, col 16 to line 160, col 47 of module AccessControlManagement: 2052
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 161, col 16 to line 162, col 53 of module AccessControlManagement: 2041
+  line 161, col 16 to line 162, col 53 of module AccessControlManagement: 2052
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<s2 line 164, col 1 to line 164, col 8 of module AccessControlManagement>: 1513:3080
+<s2 line 164, col 1 to line 164, col 8 of module AccessControlManagement>: 1503:3090
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 164, col 16 to line 164, col 30 of module AccessControlManagement: 13244
+  line 164, col 16 to line 164, col 30 of module AccessControlManagement: 13269
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 164, col 16 to line 164, col 23 of module AccessControlManagement: 11704
+  |line 164, col 16 to line 164, col 23 of module AccessControlManagement: 11724
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 166, col 18 to line 166, col 58 of module AccessControlManagement: 3080
+  line 166, col 18 to line 166, col 58 of module AccessControlManagement: 3090
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 165, col 25 to line 165, col 33 of module AccessControlManagement: 1540
+  line 165, col 25 to line 165, col 33 of module AccessControlManagement: 1545
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 167, col 16 to line 167, col 47 of module AccessControlManagement: 3080
+  line 167, col 16 to line 167, col 47 of module AccessControlManagement: 3090
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 168, col 16 to line 169, col 43 of module AccessControlManagement: 3080
+  line 168, col 16 to line 169, col 43 of module AccessControlManagement: 3090
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<s3 line 171, col 1 to line 171, col 8 of module AccessControlManagement>: 1468:2754
+<s3 line 171, col 1 to line 171, col 8 of module AccessControlManagement>: 1485:2749
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 171, col 16 to line 171, col 30 of module AccessControlManagement: 13823
+  line 171, col 16 to line 171, col 30 of module AccessControlManagement: 13840
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 171, col 16 to line 171, col 23 of module AccessControlManagement: 11700
+  |line 171, col 16 to line 171, col 23 of module AccessControlManagement: 11720
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 172, col 19 to line 172, col 50 of module AccessControlManagement: 2125
+  line 172, col 19 to line 172, col 50 of module AccessControlManagement: 2122
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 173, col 27 to line 173, col 81 of module AccessControlManagement: 1369
+  line 173, col 27 to line 173, col 81 of module AccessControlManagement: 1366
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 174, col 27 to line 174, col 43 of module AccessControlManagement: 1369
+  line 174, col 27 to line 174, col 43 of module AccessControlManagement: 1366
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 175, col 30 to line 175, col 66 of module AccessControlManagement: 756
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 177, col 43 to line 177, col 50 of module AccessControlManagement: 1012
+  line 177, col 43 to line 177, col 50 of module AccessControlManagement: 1010
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 178, col 48 to line 179, col 108 of module AccessControlManagement: 506
+  line 178, col 48 to line 179, col 108 of module AccessControlManagement: 505
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 180, col 48 to line 181, col 109 of module AccessControlManagement: 506
+  line 180, col 48 to line 181, col 109 of module AccessControlManagement: 505
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 176, col 47 to line 176, col 53 of module AccessControlManagement: 506
+  line 176, col 47 to line 176, col 53 of module AccessControlManagement: 505
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 182, col 41 to line 182, col 75 of module AccessControlManagement: 250
+  line 182, col 41 to line 182, col 75 of module AccessControlManagement: 251
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 183, col 52 to line 184, col 113 of module AccessControlManagement: 123
+  line 183, col 52 to line 184, col 113 of module AccessControlManagement: 122
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 185, col 55 to line 185, col 106 of module AccessControlManagement: 121
+  line 185, col 55 to line 185, col 106 of module AccessControlManagement: 120
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 185, col 62 to line 185, col 106 of module AccessControlManagement: 123
+  |line 185, col 62 to line 185, col 106 of module AccessControlManagement: 122
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 186, col 55 to line 186, col 71 of module AccessControlManagement: 121
+  line 186, col 55 to line 186, col 71 of module AccessControlManagement: 120
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 187, col 49 to line 187, col 52 of module AccessControlManagement: 127
+  line 187, col 49 to line 187, col 52 of module AccessControlManagement: 129
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 188, col 49 to line 188, col 76 of module AccessControlManagement: 127
+  line 188, col 49 to line 188, col 76 of module AccessControlManagement: 129
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 189, col 16 to line 189, col 47 of module AccessControlManagement: 2752
+  line 189, col 16 to line 189, col 47 of module AccessControlManagement: 2747
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 189, col 22 to line 189, col 47 of module AccessControlManagement: 2754
+  |line 189, col 22 to line 189, col 47 of module AccessControlManagement: 2749
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 190, col 16 to line 190, col 78 of module AccessControlManagement: 2752
+  line 190, col 16 to line 190, col 78 of module AccessControlManagement: 2747
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
-<s4 line 192, col 1 to line 192, col 8 of module AccessControlManagement>: 1765:3830
+<s4 line 192, col 1 to line 192, col 8 of module AccessControlManagement>: 1809:3844
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 192, col 16 to line 192, col 30 of module AccessControlManagement: 13609
+  line 192, col 16 to line 192, col 30 of module AccessControlManagement: 13636
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 192, col 16 to line 192, col 23 of module AccessControlManagement: 11694
+  |line 192, col 16 to line 192, col 23 of module AccessControlManagement: 11714
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 194, col 21 to line 194, col 31 of module AccessControlManagement: 3830
+  line 194, col 21 to line 194, col 31 of module AccessControlManagement: 3844
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 195, col 26 to line 206, col 71 of module AccessControlManagement: 1915
+  line 195, col 26 to line 206, col 71 of module AccessControlManagement: 1922
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 207, col 29 to line 207, col 60 of module AccessControlManagement: 1915
+  line 207, col 29 to line 207, col 60 of module AccessControlManagement: 1922
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 208, col 29 to line 208, col 81 of module AccessControlManagement: 1915
+  line 208, col 29 to line 208, col 81 of module AccessControlManagement: 1922
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 193, col 28 to line 193, col 34 of module AccessControlManagement: 1915
+  line 193, col 28 to line 193, col 34 of module AccessControlManagement: 1922
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 209, col 16 to line 209, col 53 of module AccessControlManagement: 3830
+  line 209, col 16 to line 209, col 53 of module AccessControlManagement: 3844
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2772:0 @!@!@
 <Terminating line 214, col 1 to line 214, col 11 of module AccessControlManagement>: 0:0
 @!@!@ENDMSG 2772 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 214, col 19 to line 214, col 56 of module AccessControlManagement: 5841
+  line 214, col 19 to line 214, col 56 of module AccessControlManagement: 5851
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
   line 215, col 19 to line 215, col 32 of module AccessControlManagement: 0
@@ -520,43 +520,43 @@ The coverage statistics at 2023-06-10 05:23:53
 <AcmTypeOK line 228, col 1 to line 228, col 9 of module AccessControlManagement>
 @!@!@ENDMSG 2774 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 228, col 14 to line 230, col 62 of module AccessControlManagement: 8037
+  line 228, col 14 to line 230, col 62 of module AccessControlManagement: 8035
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2774:0 @!@!@
-<AcmRedelegation line 233, col 1 to line 233, col 15 of module AccessControlManagement>
+<AcmConsistent line 233, col 1 to line 233, col 13 of module AccessControlManagement>
 @!@!@ENDMSG 2774 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  line 233, col 20 to line 236, col 46 of module AccessControlManagement: 8037
+  line 233, col 18 to line 236, col 46 of module AccessControlManagement: 8035
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |line 233, col 22 to line 236, col 45 of module AccessControlManagement: 8037
+  |line 233, col 20 to line 236, col 45 of module AccessControlManagement: 8035
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 234, col 20 to line 236, col 45 of module AccessControlManagement: 16074
+  ||line 234, col 20 to line 236, col 45 of module AccessControlManagement: 16070
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 235, col 23 to line 236, col 45 of module AccessControlManagement: 32146
+  |||line 235, col 23 to line 236, col 45 of module AccessControlManagement: 32138
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 235, col 26 to line 235, col 43 of module AccessControlManagement: 32146
+  ||||line 235, col 26 to line 235, col 43 of module AccessControlManagement: 32138
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||||line 236, col 26 to line 236, col 45 of module AccessControlManagement: 486
+  ||||line 236, col 26 to line 236, col 45 of module AccessControlManagement: 488
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  |||line 234, col 29 to line 234, col 37 of module AccessControlManagement: 16074
+  |||line 234, col 29 to line 234, col 37 of module AccessControlManagement: 16070
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2221:0 @!@!@
-  ||line 233, col 31 to line 233, col 39 of module AccessControlManagement: 8037
+  ||line 233, col 29 to line 233, col 37 of module AccessControlManagement: 8035
 @!@!@ENDMSG 2221 @!@!@
 @!@!@STARTMSG 2202:0 @!@!@
 End of statistics.
 @!@!@ENDMSG 2202 @!@!@
 @!@!@STARTMSG 2200:0 @!@!@
-Progress(20) at 2023-06-10 05:23:53: 16,873 states generated (380,165 s/min), 8,037 distinct states found (181,081 ds/min), 2,198 states left on queue.
+Progress(20) at 2023-06-10 05:21:05: 16,902 states generated (308,149 s/min), 8,035 distinct states found (146,490 ds/min), 2,182 states left on queue.
 @!@!@ENDMSG 2200 @!@!@
 @!@!@STARTMSG 2199:0 @!@!@
-16873 states generated, 8037 distinct states found, 2198 states left on queue.
+16902 states generated, 8035 distinct states found, 2182 states left on queue.
 @!@!@ENDMSG 2199 @!@!@
 @!@!@STARTMSG 2194:0 @!@!@
 The depth of the complete state graph search is 20.
@@ -565,5 +565,5 @@ The depth of the complete state graph search is 20.
 The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 4 and the 95th percentile is 2).
 @!@!@ENDMSG 2268 @!@!@
 @!@!@STARTMSG 2186:0 @!@!@
-Finished in 2674ms at (2023-06-10 05:23:53)
+Finished in 3301ms at (2023-06-10 05:21:05)
 @!@!@ENDMSG 2186 @!@!@
