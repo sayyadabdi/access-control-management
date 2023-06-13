@@ -943,7 +943,10 @@
  AccessControlManagement}\moduleRightDash\@xx{}%
 \@x{ {\EXTENDS} Naturals ,\, Sequences}%
 \@pvspace{8.0pt}%
-\@x{ {\CONSTANTS} Processes ,\, Resources}%
+\@x{ {\CONSTANTS} ProcessCount ,\, ResourceCount}%
+\@pvspace{8.0pt}%
+\@x{ Processes\@s{1.78} \.{\defeq} 1 \.{\dotdot} ProcessCount}%
+\@x{ Resources \.{\defeq} 1 \.{\dotdot} ResourceCount}%
 \@pvspace{8.0pt}%
 \@x{ NULL \.{\defeq}\@w{NULL}}%
 \@x{ ALLOWED \.{\defeq}\@w{ALLOWED}}%
@@ -951,9 +954,18 @@
 \@x{ REQUESTED \.{\defeq}\@w{REQUESTED}}%
 \@x{ IN\_USE \.{\defeq}\@w{IN\_USE}}%
 \@pvspace{8.0pt}%
+\@x{ URI\_PERMISSION \.{\defeq}\@w{URI\_PERMISSION}}%
+\@x{ CUSTOM\_PERMISSION \.{\defeq}\@w{CUSTOM\_PERMISSION}}%
+\@pvspace{8.0pt}%
+\@x{ NORMAL \.{\defeq}\@w{NORMAL}}%
+\@x{ SIGNATURE\@s{4.45} \.{\defeq}\@w{SIGNATURE}}%
+\@x{ DANGEROUS \.{\defeq}\@w{DANGEROUS}}%
+\@pvspace{8.0pt}%
 \@x{ Boolean \.{\defeq} \{ {\TRUE} ,\, {\FALSE} \}}%
- \@x{ ResourceStatus \.{\defeq} \{ NULL ,\, REQUESTED ,\, ALLOWED ,\, REJECTED
- ,\, IN\_USE \}}%
+ \@x{ ResourceStatus \.{\defeq} \{ REQUESTED ,\, ALLOWED ,\, REJECTED ,\,
+ IN\_USE \}}%
+\@x{ PermissionTypes \.{\defeq} \{ URI\_PERMISSION ,\, CUSTOM\_PERMISSION \}}%
+\@x{ PermissionLevels \.{\defeq} \{ NORMAL ,\, SIGNATURE ,\, DANGEROUS \}}%
 \@pvspace{8.0pt}%
 \pcalsymbolstrue
 \pcalshadingtrue
@@ -964,69 +976,156 @@
 }}%
 \@xx{\@s{16.4} {\p@mmalgorithm} AccessControlManagement}%
 \@x{ {\p@lbrace}}%
- \@x{\@s{16.4} {\p@variables} Acl \.{=} [ a \.{\in} Processes \.{\mapsto} [ r
- \.{\in} Resources \.{\mapsto} NULL ] ] {\p@semicolon}}%
- \@x{\@s{64.16} Acl2 \.{=} [ a \.{\in} Processes \.{\mapsto} [ r \.{\in}
- Resources \.{\mapsto} NULL ] ] {\p@semicolon}}%
+ \@x{\@s{16.4} {\p@variables} Acl\_Status \.{=} [ a \.{\in} Processes
+ \.{\mapsto} [ r \.{\in} Resources \.{\mapsto} NULL ] ] {\p@semicolon}}%
+ \@x{\@s{64.16} Acl\_PermissionType \.{=} [ a \.{\in} Processes \.{\mapsto} [
+ r \.{\in} Resources \.{\mapsto} NULL ] ] {\p@semicolon}}%
+ \@x{\@s{64.16} Acl\_PermissionLevel \.{=} [ a \.{\in} Processes \.{\mapsto} [
+ r \.{\in} Resources \.{\mapsto} NULL ] ] {\p@semicolon}}%
+ \@x{\@s{64.16} Consent \.{=} [ a \.{\in} Processes \.{\mapsto} [ r \.{\in}
+ Resources \.{\mapsto} {\FALSE} ] ] {\p@semicolon}}%
+ \@x{\@s{64.16} Grid \.{=} [ a \.{\in} Processes \.{\mapsto} [ a2 \.{\in}
+ Processes \.{\mapsto} {\FALSE} ] ] {\p@semicolon}}%
 \@pvspace{8.0pt}%
-\@x{\@s{16.4} {\p@macro} Request {\p@lparen} p ,\, r {\p@rparen}}%
+\@x{\@s{16.4} {\p@macro} Define {\p@lparen} p ,\, r {\p@rparen}}%
 \@x{\@s{16.4} {\p@lbrace}}%
-\@x{\@s{20.5} {\p@if} {\p@lparen} Acl [ p ] [ r ] \.{=} NULL {\p@rparen}}%
-\@x{\@s{24.6} Acl [ p ] [ r ] \.{:=} REQUESTED {\p@semicolon}}%
+ \@x{\@s{20.5} {\p@with} {\p@lparen} t \.{\in} PermissionTypes {\p@rparen}
+ {\p@lbrace} Acl\_PermissionType [ p ] [ r ] \.{:=} t {\p@semicolon}
+ {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{20.5} Acl\_PermissionLevel [ p ] [ r ] \.{:=} NORMAL {\p@semicolon}}%
 \@x{\@s{16.4} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{16.4} {\p@macro} Request {\p@lparen} p ,\, r {\p@rparen} {\p@lbrace}
+ Acl\_Status [ p ] [ r ] \.{:=} REQUESTED {\p@semicolon} {\p@rbrace}}%
 \@pvspace{8.0pt}%
 \@x{\@s{16.4} {\p@macro} Decide {\p@lparen} p ,\, r {\p@rparen}}%
 \@x{\@s{16.4} {\p@lbrace}}%
- \@x{\@s{20.5} {\p@if} {\p@lparen} Acl [ p ] [ r ] \.{=} REQUESTED
- {\p@rparen}}%
-\@x{\@s{24.6} {\p@with} {\p@lparen} b \.{\in} Boolean {\p@rparen}}%
-\@x{\@s{24.6} {\p@lbrace}}%
-\@x{\@s{28.7} {\p@if} {\p@lparen} b \.{=} {\TRUE} {\p@rparen}}%
-\@x{\@s{32.8} Acl [ p ] [ r ] \.{:=} ALLOWED {\p@semicolon}}%
-\@x{\@s{28.7} {\p@else}}%
-\@x{\@s{32.8} Acl [ p ] [ r ] \.{:=} REJECTED {\p@semicolon}}%
-\@x{\@s{24.6} {\p@rbrace}}%
+\@x{\@s{24.59} {\p@with} {\p@lparen} b \.{\in} Boolean {\p@rparen}}%
+\@x{\@s{24.59} {\p@lbrace}}%
+\@x{\@s{28.69} {\p@if} {\p@lparen} b \.{=} {\TRUE} {\p@rparen}}%
+\@x{\@s{28.69} {\p@lbrace}}%
+\@x{\@s{32.8} Acl\_Status [ p ] [ r ] \.{:=} ALLOWED {\p@semicolon}}%
+\@x{\@s{32.8} Consent [ p ] [ r ] \.{:=} {\TRUE} {\p@semicolon}}%
+\@x{\@s{28.69} {\p@rbrace}}%
+\@x{\@s{28.69} {\p@else}}%
+\@x{\@s{28.69} {\p@lbrace}}%
+\@x{\@s{32.8} Acl\_Status [ p ] [ r ] \.{:=} REJECTED {\p@semicolon}}%
+\@x{\@s{32.8} Consent [ p ] [ r ] \.{:=} {\FALSE} {\p@semicolon}}%
+\@x{\@s{28.69} {\p@rbrace}}%
+\@x{\@s{24.59} {\p@rbrace}}%
 \@x{\@s{16.4} {\p@rbrace}}%
 \@pvspace{8.0pt}%
 \@x{\@s{16.4} {\p@macro} Revoke {\p@lparen} p ,\, r {\p@rparen}}%
 \@x{\@s{16.4} {\p@lbrace}}%
-\@x{\@s{20.5} {\p@if} {\p@lparen} Acl [ p ] [ r ] \.{=} ALLOWED {\p@rparen}}%
-\@x{\@s{24.6} Acl [ p ] [ r ] \.{:=} NULL {\p@semicolon}}%
+\@x{\@s{24.59} Acl\_Status [ p ] [ r ] \.{:=} NULL {\p@semicolon}}%
+\@x{\@s{24.59} Consent [ p ] [ r ] \.{:=} {\FALSE} {\p@semicolon}}%
 \@x{\@s{16.4} {\p@rbrace}}%
 \@pvspace{8.0pt}%
 \@x{\@s{16.4} {\p@macro} Use {\p@lparen} p ,\, r {\p@rparen}}%
 \@x{\@s{16.4} {\p@lbrace}}%
-\@x{\@s{20.5} {\p@if} {\p@lparen} Acl [ p ] [ r ] \.{=} ALLOWED {\p@rparen}}%
-\@x{\@s{24.6} Acl [ p ] [ r ] \.{:=} IN\_USE {\p@semicolon}}%
+\@x{\@s{24.59} Acl\_Status [ p ] [ r ] \.{:=} IN\_USE {\p@semicolon}}%
+\@x{\@s{16.4} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+\@x{\@s{16.4} {\p@macro} Connect {\p@lparen} a1 ,\, a2 {\p@rparen}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+\@x{\@s{20.5} Grid [ a1 ] [ a2 ] \.{:=} {\TRUE} {\p@semicolon}}%
+\@x{\@s{16.4} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+\@x{\@s{16.4} {\p@procedure} Update {\p@lparen} p2 {\p@rparen}}%
+\@x{\@s{16.4} {\p@variable} ResourceList \.{=} Resources {\p@semicolon}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+\@x{\@s{20.5} UPDATE\@s{.5}\textrm{:}\@s{3}}%
+\@x{\@s{20.5} {\p@while} {\p@lparen} ResourceList \.{\neq} \{ \} {\p@rparen}}%
+\@x{\@s{20.5} {\p@lbrace}}%
+\@x{\@s{24.6} {\p@with} {\p@lparen} r \.{\in} ResourceList {\p@rparen}}%
+\@x{\@s{24.6} {\p@lbrace}}%
+ \@x{\@s{28.7} {\p@if} {\p@lparen} Acl\_PermissionLevel [ p2 ] [ r ] \.{=}
+ NORMAL {\p@rparen}}%
+\@x{\@s{28.7} {\p@lbrace}}%
+ \@x{\@s{32.8} Acl\_PermissionLevel [ p2 ] [ r ] \.{:=} DANGEROUS
+ {\p@semicolon}}%
+\@x{\@s{32.8} Consent [ p2 ] [ r ] \.{:=} {\FALSE} {\p@semicolon}}%
+\@x{\@s{28.7} {\p@rbrace} {\p@semicolon}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{28.7} ResourceList \.{:=} ResourceList \.{\,\backslash\,} \{ r \}
+ {\p@semicolon}}%
+\@x{\@s{24.6} {\p@rbrace}}%
+\@x{\@s{20.5} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{20.5} {\p@return} {\p@semicolon}}%
+\@x{\@s{16.4} {\p@rbrace}}%
+\@pvspace{8.0pt}%
+\@x{\@s{16.4} {\p@procedure} Delegate {\p@lparen} app1 ,\, app2 {\p@rparen}}%
+\@x{\@s{16.4} {\p@variable} ResourceList \.{=} Resources {\p@semicolon}}%
+\@x{\@s{16.4} {\p@lbrace}}%
+\@x{\@s{20.5} DELEGATE\@s{.5}\textrm{:}\@s{3}}%
+\@x{\@s{20.5} {\p@while} {\p@lparen} ResourceList \.{\neq} \{ \} {\p@rparen}}%
+\@x{\@s{20.5} {\p@lbrace}}%
+\@x{\@s{24.6} {\p@with} {\p@lparen} r \.{\in} ResourceList {\p@rparen}}%
+\@x{\@s{24.6} {\p@lbrace}}%
+ \@x{\@s{28.7} {\p@if} {\p@lparen} Acl\_PermissionType [ app2 ] [ r ] \.{\neq}
+ NULL \.{\land} Acl\_PermissionType [ app1 ] [ r ] \.{=} NULL {\p@rparen}}%
+ \@x{\@s{32.8} Acl\_PermissionType [ app1 ] [ r ] \.{:=} Acl\_PermissionType [
+ app2 ] [ r ] {\p@semicolon}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{28.7} {\p@if} {\p@lparen} Acl\_Status [ app2 ] [ r ] \.{\neq} NULL
+ \.{\land} Acl\_Status [ app1 ] [ r ] \.{=} NULL {\p@rparen}}%
+ \@x{\@s{32.8} Acl\_Status [ app1 ] [ r ] \.{:=} Acl\_Status [ app2 ] [ r ]
+ {\p@semicolon}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{28.7} ResourceList \.{:=} ResourceList \.{\,\backslash\,} \{ r \}
+ {\p@semicolon}}%
+\@x{\@s{24.6} {\p@rbrace}}%
+\@x{\@s{20.5} {\p@rbrace} {\p@semicolon}}%
+\@x{\@s{20.5} {\p@return} {\p@semicolon}}%
 \@x{\@s{16.4} {\p@rbrace}}%
 \@pvspace{8.0pt}%
  \@x{\@s{16.4} {\p@fair} {\p@process} {\p@lparen} AcmNext \.{\in} Processes
  {\p@rparen}}%
-\@x{\@s{16.4} {\p@variable} Resource \.{=} 1 {\p@semicolon}}%
-\@x{\@s{16.4} {\p@lbrace}}%
- \@x{\@s{32.8} s0\@s{.5}\textrm{:}\@s{3} {\p@while} {\p@lparen} {\TRUE}
- {\p@rparen}}%
-\@x{\@s{32.8} {\p@lbrace}}%
-\@x{\@s{36.89} s1\@s{.5}\textrm{:}\@s{3} Resource \.{:=} 1 {\p@semicolon}}%
-\@x{\@s{36.89} s2\@s{.5}\textrm{:}\@s{3} Acl2 \.{:=} Acl {\p@semicolon}}%
-\@pvspace{8.0pt}%
- \@x{\@s{36.89} {\p@either} {\p@lbrace} a\@s{.5}\textrm{:}\@s{3} Request (
- self ,\, Resource ) {\p@semicolon} {\p@rbrace}}%
- \@x{\@s{36.89} {\p@or} {\p@lbrace} b\@s{.5}\textrm{:}\@s{3} Decide ( self ,\,
- Resource )\@s{14.64} {\p@semicolon} {\p@rbrace}}%
- \@x{\@s{36.89} {\p@or} {\p@lbrace} c\@s{.5}\textrm{:}\@s{3} Revoke ( self ,\,
- Resource )\@s{13.42} {\p@semicolon} {\p@rbrace}}%
- \@x{\@s{36.89} {\p@or}\@s{1.03} {\p@lbrace} d\@s{.5}\textrm{:}\@s{3} Use (
- self ,\, Resource )\@s{3.23} {\p@semicolon} {\p@rbrace} {\p@semicolon}}%
-\@pvspace{8.0pt}%
- \@x{\@s{36.89} N\@s{.5}\textrm{:}\@s{3} Resource \.{:=} Resource \.{+} 1
+\@x{\@s{16.4} {\p@variable} Resource}%
+\@x{\@s{16.4} \{}%
+ \@x{\@s{32.8} s0\@s{.5}\textrm{:}\@s{3} Grid [ self ] [ self ] \.{:=} {\TRUE}
  {\p@semicolon}}%
 \@pvspace{8.0pt}%
-\@x{\@s{36.89} {\p@if} {\p@lparen} Resource \.{\in} Resources {\p@rparen}}%
-\@x{\@s{40.99} {\p@goto} s1 {\p@semicolon}}%
-\@x{\@s{32.8} {\p@rbrace}}%
-\@x{\@s{16.4} {\p@rbrace}}%
-\@x{ {\p@rbrace}}%
+\@x{\@s{32.8} s1\@s{.5}\textrm{:}\@s{3} {\p@while} ( {\TRUE} )}%
+\@x{\@s{32.8} \{}%
+ \@x{\@s{36.89} s2\@s{.5}\textrm{:}\@s{3} {\p@with} ( R\@s{0.38} \.{\in}
+ Resources ) \{ Resource \.{:=} R {\p@semicolon} \} {\p@semicolon}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{36.89} s3\@s{.5}\textrm{:}\@s{3} {\p@with} ( B \.{\in} Boolean ) \{
+ {\p@if} ( B \.{=} {\TRUE} ) {\p@call} Update ( self ) {\p@semicolon} \}
+ {\p@semicolon}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{36.89} s4\@s{.5}\textrm{:}\@s{3} {\p@if} ( Acl\_PermissionType [ self
+ ] [ Resource ] \.{=} NULL ) \{ Define ( self ,\, Resource ) \}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{53.08} {\p@else} {\p@if} ( Acl\_Status [ self ] [ Resource ] \.{=}
+ NULL ) \{ Request ( self ,\, Resource ) {\p@semicolon} \}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{53.08} {\p@else} {\p@if} ( Acl\_Status [ self ] [ Resource ] \.{=}
+ REQUESTED ) \{ Decide ( self ,\, Resource ) {\p@semicolon} \}}%
+\@pvspace{8.0pt}%
+ \@x{\@s{53.08} {\p@else} {\p@if} ( Acl\_Status [ self ] [ Resource ] \.{=}
+ ALLOWED )}%
+\@x{\@s{53.08} \{}%
+\@x{\@s{57.18} {\p@either} \{ Revoke ( self ,\, Resource ) {\p@semicolon} \}}%
+\@x{\@s{57.18} {\p@or} \{ Use ( self ,\, Resource ) {\p@semicolon} \}}%
+\@x{\@s{53.08} \} {\p@semicolon}}%
+\@pvspace{8.0pt}%
+\@x{\@s{36.89} s5\@s{.5}\textrm{:}\@s{3} {\p@with} ( rand \.{\in} Boolean )}%
+\@x{\@s{36.89} \{}%
+\@x{\@s{40.99} {\p@if} ( rand \.{=} {\TRUE} )}%
+\@x{\@s{40.99} \{}%
+ \@x{\@s{45.09} {\p@with} ( a \.{\in} ( Processes \.{\,\backslash\,} \{ self
+ \} ) )}%
+\@x{\@s{45.09} \{}%
+\@x{\@s{49.19} Connect ( self ,\, a ) {\p@semicolon}}%
+\@x{\@s{49.19} {\p@call} Delegate ( self ,\, a ) {\p@semicolon}}%
+\@x{\@s{45.09} \}}%
+\@x{\@s{40.99} \}}%
+\@x{\@s{36.89} \}}%
+\@x{\@s{32.8} \}}%
+\@x{\@s{16.4} \}}%
+\@x{ \}}%
 \@y{}%
 \@xx{}%
 \pcalshadingfalse \pcalsymbolsfalse
@@ -1038,13 +1137,27 @@
 \end{lcom}%
 \@x{}%
 \@y{\@s{0}%
- BEGIN TRANSLATION (\ensuremath{chksum(pcal) \.{=}} ``\ensuremath{815326e1}''
- \ensuremath{\.{\land} chksum(tla) \.{=}} ``\ensuremath{5b152e55}'')
+ BEGIN TRANSLATION (\ensuremath{chksum(pcal) \.{=}} ``\ensuremath{68482efa}''
+ \ensuremath{\.{\land} chksum(tla) \.{=}} ``\ensuremath{b9184269}'')
 }%
 \@xx{}%
-\@x{ {\VARIABLES} Acl ,\, Acl2 ,\, pc ,\, Resource}%
+\@x{}%
+\@y{\@s{0}%
+ Procedure variable \ensuremath{ResourceList} of procedure
+ \ensuremath{Update} at line 77 col 14 changed to \ensuremath{ResourceList\_
+}}%
+\@xx{}%
+\@x{ {\CONSTANT} defaultInitValue}%
+ \@x{ {\VARIABLES} Acl\_Status ,\, Acl\_PermissionType ,\,
+ Acl\_PermissionLevel ,\, Consent ,\, Grid ,\,}%
+ \@x{\@s{51.42} pc ,\, stack ,\, p2 ,\, ResourceList\_ ,\, app1 ,\, app2 ,\,
+ ResourceList ,\, Resource}%
 \@pvspace{8.0pt}%
-\@x{ vars \.{\defeq} {\langle} Acl ,\, Acl2 ,\, pc ,\, Resource {\rangle}}%
+ \@x{ vars \.{\defeq} {\langle} Acl\_Status ,\, Acl\_PermissionType ,\,
+ Acl\_PermissionLevel ,\, Consent ,\, Grid ,\,}%
+ \@x{\@s{41.61} pc ,\, stack ,\, p2 ,\, ResourceList\_ ,\, app1 ,\, app2 ,\,
+ ResourceList ,\, Resource}%
+\@x{\@s{37.72} {\rangle}}%
 \@pvspace{8.0pt}%
 \@x{ ProcSet \.{\defeq} ( Processes )}%
 \@pvspace{8.0pt}%
@@ -1053,112 +1166,294 @@
  Global variables
 }%
 \@xx{}%
- \@x{\@s{35.70} \.{\land} Acl \.{=} [ a \.{\in} Processes \.{\mapsto} [ r
- \.{\in} Resources \.{\mapsto} NULL ] ]}%
- \@x{\@s{35.70} \.{\land} Acl2 \.{=} [ a \.{\in} Processes \.{\mapsto} [ r
- \.{\in} Resources \.{\mapsto} NULL ] ]}%
+ \@x{\@s{35.70} \.{\land} Acl\_Status \.{=} [ a \.{\in} Processes \.{\mapsto}
+ [ r \.{\in} Resources \.{\mapsto} NULL ] ]}%
+ \@x{\@s{35.70} \.{\land} Acl\_PermissionType \.{=} [ a \.{\in} Processes
+ \.{\mapsto} [ r \.{\in} Resources \.{\mapsto} NULL ] ]}%
+ \@x{\@s{35.70} \.{\land} Acl\_PermissionLevel \.{=} [ a \.{\in} Processes
+ \.{\mapsto} [ r \.{\in} Resources \.{\mapsto} NULL ] ]}%
+ \@x{\@s{35.70} \.{\land} Consent \.{=} [ a \.{\in} Processes \.{\mapsto} [ r
+ \.{\in} Resources \.{\mapsto} {\FALSE} ] ]}%
+ \@x{\@s{35.70} \.{\land} Grid \.{=} [ a \.{\in} Processes \.{\mapsto} [ a2
+ \.{\in} Processes \.{\mapsto} {\FALSE} ] ]}%
+\@x{\@s{35.70}}%
+\@y{\@s{0}%
+ Procedure \ensuremath{Update
+}}%
+\@xx{}%
+ \@x{\@s{35.70} \.{\land} p2 \.{=} [ self \.{\in} ProcSet \.{\mapsto}
+ defaultInitValue ]}%
+ \@x{\@s{35.70} \.{\land} ResourceList\_ \.{=} [ self \.{\in} ProcSet
+ \.{\mapsto} Resources ]}%
+\@x{\@s{35.70}}%
+\@y{\@s{0}%
+ Procedure \ensuremath{Delegate
+}}%
+\@xx{}%
+ \@x{\@s{35.70} \.{\land} app1 \.{=} [ self \.{\in} ProcSet \.{\mapsto}
+ defaultInitValue ]}%
+ \@x{\@s{35.70} \.{\land} app2 \.{=} [ self \.{\in} ProcSet \.{\mapsto}
+ defaultInitValue ]}%
+ \@x{\@s{35.70} \.{\land} ResourceList \.{=} [ self \.{\in} ProcSet
+ \.{\mapsto} Resources ]}%
 \@x{\@s{35.70}}%
 \@y{\@s{0}%
  Process \ensuremath{AcmNext
 }}%
 \@xx{}%
  \@x{\@s{35.70} \.{\land} Resource \.{=} [ self \.{\in} Processes \.{\mapsto}
- 1 ]}%
+ defaultInitValue ]}%
+ \@x{\@s{35.70} \.{\land} stack \.{=} [ self \.{\in} ProcSet \.{\mapsto}
+ {\langle} {\rangle} ]}%
  \@x{\@s{35.70} \.{\land} pc \.{=} [ self \.{\in} ProcSet \.{\mapsto}\@w{s0}
  ]}%
 \@pvspace{8.0pt}%
+\@x{ UPDATE ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{UPDATE}}%
+\@x{\@s{86.41} \.{\land} {\IF} ResourceList\_ [ self ] \.{\neq} \{ \}}%
+ \@x{\@s{109.68} \.{\THEN} \.{\land} \E\, r \.{\in} ResourceList\_ [ self ]
+ \.{:}}%
+ \@x{\@s{160.30} \.{\land} {\IF} Acl\_PermissionLevel [ p2 [ self ] ] [ r ]
+ \.{=} NORMAL}%
+ \@x{\@s{183.57} \.{\THEN} \.{\land} Acl\_PermissionLevel \.{'} \.{=} [
+ Acl\_PermissionLevel {\EXCEPT} {\bang} [ p2 [ self ] ] [ r ] \.{=} DANGEROUS
+ ]}%
+ \@x{\@s{214.88} \.{\land} Consent \.{'} \.{=} [ Consent {\EXCEPT} {\bang} [
+ p2 [ self ] ] [ r ] \.{=} {\FALSE} ]}%
+\@x{\@s{183.57} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{214.88} \.{\land} {\UNCHANGED} {\langle} Acl\_PermissionLevel ,\,}%
+\@x{\@s{288.47} Consent {\rangle}}%
+ \@x{\@s{160.30} \.{\land} ResourceList\_ \.{'} \.{=} [ ResourceList\_
+ {\EXCEPT} {\bang} [ self ] \.{=} ResourceList\_ [ self ] \.{\,\backslash\,}
+ \{ r \} ]}%
+ \@x{\@s{140.99} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{UPDATE} ]}%
+\@x{\@s{140.99} \.{\land} {\UNCHANGED} {\langle} stack ,\, p2 {\rangle}}%
+ \@x{\@s{109.68} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=} Head ( stack [ self ] ) . pc ]}%
+ \@x{\@s{140.99} \.{\land} ResourceList\_ \.{'} \.{=} [ ResourceList\_
+ {\EXCEPT} {\bang} [ self ] \.{=} Head ( stack [ self ] ) . ResourceList\_ ]}%
+ \@x{\@s{140.99} \.{\land} p2 \.{'} \.{=} [ p2 {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . p2 ]}%
+ \@x{\@s{140.99} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} Tail ( stack [ self ] ) ]}%
+ \@x{\@s{140.99} \.{\land} {\UNCHANGED} {\langle} Acl\_PermissionLevel ,\,
+ Consent {\rangle}}%
+ \@x{\@s{86.41} \.{\land} {\UNCHANGED} {\langle} Acl\_Status ,\,
+ Acl\_PermissionType ,\, Grid ,\, app1 ,\,}%
+\@x{\@s{160.00} app2 ,\, ResourceList ,\, Resource {\rangle}}%
+\@pvspace{8.0pt}%
+\@x{ Update ( self )\@s{12.39} \.{\defeq} UPDATE ( self )}%
+\@pvspace{8.0pt}%
+\@x{ DELEGATE ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{DELEGATE}}%
+\@x{\@s{100.02} \.{\land} {\IF} ResourceList [ self ] \.{\neq} \{ \}}%
+ \@x{\@s{123.29} \.{\THEN} \.{\land} \E\, r \.{\in} ResourceList [ self ]
+ \.{:}}%
+ \@x{\@s{173.91} \.{\land} {\IF} Acl\_PermissionType [ app2 [ self ] ] [ r ]
+ \.{\neq} NULL \.{\land} Acl\_PermissionType [ app1 [ self ] ] [ r ] \.{=}
+ NULL}%
+ \@x{\@s{197.18} \.{\THEN} \.{\land} Acl\_PermissionType \.{'} \.{=} [
+ Acl\_PermissionType {\EXCEPT} {\bang} [ app1 [ self ] ] [ r ] \.{=}
+ Acl\_PermissionType [ app2 [ self ] ] [ r ] ]}%
+\@x{\@s{197.18} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{228.49} \.{\land} {\UNCHANGED} Acl\_PermissionType}%
+ \@x{\@s{173.91} \.{\land} {\IF} Acl\_Status [ app2 [ self ] ] [ r ] \.{\neq}
+ NULL \.{\land} Acl\_Status [ app1 [ self ] ] [ r ] \.{=} NULL}%
+ \@x{\@s{197.18} \.{\THEN} \.{\land} Acl\_Status \.{'} \.{=} [ Acl\_Status
+ {\EXCEPT} {\bang} [ app1 [ self ] ] [ r ] \.{=} Acl\_Status [ app2 [ self ]
+ ] [ r ] ]}%
+\@x{\@s{197.18} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{228.49} \.{\land} {\UNCHANGED} Acl\_Status}%
+ \@x{\@s{173.91} \.{\land} ResourceList \.{'} \.{=} [ ResourceList {\EXCEPT}
+ {\bang} [ self ] \.{=} ResourceList [ self ] \.{\,\backslash\,} \{ r \} ]}%
+ \@x{\@s{154.60} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{DELEGATE} ]}%
+ \@x{\@s{154.60} \.{\land} {\UNCHANGED} {\langle} stack ,\, app1 ,\, app2
+ {\rangle}}%
+ \@x{\@s{123.29} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=} Head ( stack [ self ] ) . pc ]}%
+ \@x{\@s{154.60} \.{\land} ResourceList \.{'} \.{=} [ ResourceList {\EXCEPT}
+ {\bang} [ self ] \.{=} Head ( stack [ self ] ) . ResourceList ]}%
+ \@x{\@s{154.60} \.{\land} app1 \.{'} \.{=} [ app1 {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . app1 ]}%
+ \@x{\@s{154.60} \.{\land} app2 \.{'} \.{=} [ app2 {\EXCEPT} {\bang} [ self ]
+ \.{=} Head ( stack [ self ] ) . app2 ]}%
+ \@x{\@s{154.60} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} Tail ( stack [ self ] ) ]}%
+ \@x{\@s{154.60} \.{\land} {\UNCHANGED} {\langle} Acl\_Status ,\,
+ Acl\_PermissionType {\rangle}}%
+ \@x{\@s{100.02} \.{\land} {\UNCHANGED} {\langle} Acl\_PermissionLevel ,\,
+ Consent ,\, Grid ,\, p2 ,\,}%
+\@x{\@s{173.61} ResourceList\_ ,\, Resource {\rangle}}%
+\@pvspace{8.0pt}%
+\@x{ Delegate ( self )\@s{19.75} \.{\defeq} DELEGATE ( self )}%
+\@pvspace{8.0pt}%
 \@x{ s0 ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{s0}}%
+ \@x{\@s{53.00} \.{\land} Grid \.{'} \.{=} [ Grid {\EXCEPT} {\bang} [ self ] [
+ self ] \.{=} {\TRUE} ]}%
  \@x{\@s{53.00} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
  \.{=}\@w{s1} ]}%
- \@x{\@s{53.00} \.{\land} {\UNCHANGED} {\langle} Acl ,\, Acl2 ,\, Resource
- {\rangle}}%
+ \@x{\@s{53.00} \.{\land} {\UNCHANGED} {\langle} Acl\_Status ,\,
+ Acl\_PermissionType ,\,}%
+\@x{\@s{126.59} Acl\_PermissionLevel ,\, Consent ,\, stack ,\, p2 ,\,}%
+ \@x{\@s{126.59} ResourceList\_ ,\, app1 ,\, app2 ,\, ResourceList ,\,
+ Resource {\rangle}}%
 \@pvspace{8.0pt}%
 \@x{ s1 ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{s1}}%
- \@x{\@s{53.00} \.{\land} Resource \.{'} \.{=} [ Resource {\EXCEPT} {\bang} [
- self ] \.{=} 1 ]}%
  \@x{\@s{53.00} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
  \.{=}\@w{s2} ]}%
-\@x{\@s{53.00} \.{\land} {\UNCHANGED} {\langle} Acl ,\, Acl2 {\rangle}}%
+ \@x{\@s{53.00} \.{\land} {\UNCHANGED} {\langle} Acl\_Status ,\,
+ Acl\_PermissionType ,\,}%
+ \@x{\@s{126.59} Acl\_PermissionLevel ,\, Consent ,\, Grid ,\, stack ,\, p2
+ ,\,}%
+ \@x{\@s{126.59} ResourceList\_ ,\, app1 ,\, app2 ,\, ResourceList ,\,
+ Resource {\rangle}}%
 \@pvspace{8.0pt}%
 \@x{ s2 ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{s2}}%
-\@x{\@s{53.00} \.{\land} Acl2 \.{'} \.{=} Acl}%
- \@x{\@s{53.00} \.{\land} \.{\lor} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT}
- {\bang} [ self ] \.{=}\@w{a} ]}%
- \@x{\@s{64.11} \.{\lor} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
- self ] \.{=}\@w{b} ]}%
- \@x{\@s{64.11} \.{\lor} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
- self ] \.{=}\@w{c} ]}%
- \@x{\@s{64.11} \.{\lor} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
- self ] \.{=}\@w{d} ]}%
-\@x{\@s{53.00} \.{\land} {\UNCHANGED} {\langle} Acl ,\, Resource {\rangle}}%
+\@x{\@s{53.00} \.{\land} \E\, R \.{\in} Resources \.{:}}%
+ \@x{\@s{72.31} Resource \.{'} \.{=} [ Resource {\EXCEPT} {\bang} [ self ]
+ \.{=} R ]}%
+ \@x{\@s{53.00} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{s3} ]}%
+ \@x{\@s{53.00} \.{\land} {\UNCHANGED} {\langle} Acl\_Status ,\,
+ Acl\_PermissionType ,\,}%
+ \@x{\@s{126.59} Acl\_PermissionLevel ,\, Consent ,\, Grid ,\, stack ,\, p2
+ ,\,}%
+\@x{\@s{126.59} ResourceList\_ ,\, app1 ,\, app2 ,\, ResourceList {\rangle}}%
 \@pvspace{8.0pt}%
-\@x{ a ( self )\@s{3.19} \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{a}}%
-\@x{\@s{52.16} \.{\land} {\IF} Acl [ self ] [ Resource [ self ] ] \.{=} NULL}%
- \@x{\@s{75.43} \.{\THEN} \.{\land} Acl \.{'} \.{=} [ Acl {\EXCEPT} {\bang} [
- self ] [ Resource [ self ] ] \.{=} REQUESTED ]}%
-\@x{\@s{75.43} \.{\ELSE} \.{\land} {\TRUE}}%
-\@x{\@s{106.74} \.{\land} Acl \.{'} \.{=} Acl}%
- \@x{\@s{52.16} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=}\@w{N} ]}%
-\@x{\@s{52.16} \.{\land} {\UNCHANGED} {\langle} Acl2 ,\, Resource {\rangle}}%
+\@x{ s3 ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{s3}}%
+\@x{\@s{53.00} \.{\land} \E\, B \.{\in} Boolean \.{:}}%
+\@x{\@s{72.31} {\IF} B \.{=} {\TRUE}}%
+ \@x{\@s{84.47} \.{\THEN} \.{\land} \.{\land} p2 \.{'} \.{=} [ p2 {\EXCEPT}
+ {\bang} [ self ] \.{=} self ]}%
+ \@x{\@s{126.89} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} {\langle} [ procedure \.{\mapsto}\@s{4.1}\@w{Update} ,\,}%
+\@x{\@s{291.09} pc\@s{31.36} \.{\mapsto}\@s{4.10}\@w{s4} ,\,}%
+ \@x{\@s{291.09} ResourceList\_ \.{\mapsto}\@s{4.1} ResourceList\_ [ self ]
+ ,\,}%
+\@x{\@s{291.09} p2\@s{28.7} \.{\mapsto}\@s{4.1} p2 [ self ] ] {\rangle}}%
+\@x{\@s{288.53} \.{\circ} stack [ self ] ]}%
+ \@x{\@s{115.78} \.{\land} ResourceList\_ \.{'} \.{=} [ ResourceList\_
+ {\EXCEPT} {\bang} [ self ] \.{=} Resources ]}%
+ \@x{\@s{115.78} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{UPDATE} ]}%
+ \@x{\@s{84.47} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+ self ] \.{=}\@w{s4} ]}%
+ \@x{\@s{115.78} \.{\land} {\UNCHANGED} {\langle} stack ,\, p2 ,\,
+ ResourceList\_ {\rangle}}%
+ \@x{\@s{53.00} \.{\land} {\UNCHANGED} {\langle} Acl\_Status ,\,
+ Acl\_PermissionType ,\,}%
+ \@x{\@s{126.59} Acl\_PermissionLevel ,\, Consent ,\, Grid ,\, app1 ,\, app2
+ ,\,}%
+\@x{\@s{126.59} ResourceList ,\, Resource {\rangle}}%
 \@pvspace{8.0pt}%
-\@x{ b ( self )\@s{3.84} \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{b}}%
- \@x{\@s{52.16} \.{\land} {\IF} Acl [ self ] [ Resource [ self ] ] \.{=}
- REQUESTED}%
-\@x{\@s{75.43} \.{\THEN} \.{\land} \E\, b \.{\in} Boolean \.{:}}%
-\@x{\@s{126.05} {\IF} b \.{=} {\TRUE}}%
- \@x{\@s{138.21} \.{\THEN} \.{\land} Acl \.{'} \.{=} [ Acl {\EXCEPT} {\bang} [
- self ] [ Resource [ self ] ] \.{=} ALLOWED ]}%
- \@x{\@s{138.21} \.{\ELSE} \.{\land} Acl \.{'} \.{=} [ Acl {\EXCEPT} {\bang} [
- self ] [ Resource [ self ] ] \.{=} REJECTED ]}%
-\@x{\@s{75.43} \.{\ELSE} \.{\land} {\TRUE}}%
-\@x{\@s{106.74} \.{\land} Acl \.{'} \.{=} Acl}%
- \@x{\@s{52.16} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=}\@w{N} ]}%
-\@x{\@s{52.16} \.{\land} {\UNCHANGED} {\langle} Acl2 ,\, Resource {\rangle}}%
+\@x{ s4 ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{s4}}%
+ \@x{\@s{53.00} \.{\land} {\IF} Acl\_PermissionType [ self ] [ Resource [ self
+ ] ] \.{=} NULL}%
+\@x{\@s{76.27} \.{\THEN} \.{\land} \E\, t \.{\in} PermissionTypes \.{:}}%
+ \@x{\@s{126.89} Acl\_PermissionType \.{'} \.{=} [ Acl\_PermissionType
+ {\EXCEPT} {\bang} [ self ] [ Resource [ self ] ] \.{=} t ]}%
+ \@x{\@s{107.58} \.{\land} Acl\_PermissionLevel \.{'} \.{=} [
+ Acl\_PermissionLevel {\EXCEPT} {\bang} [ self ] [ Resource [ self ]
+ ]\@s{4.29} \.{=} NORMAL ]}%
+ \@x{\@s{107.58} \.{\land} {\UNCHANGED} {\langle} Acl\_Status ,\, Consent
+ {\rangle}}%
+ \@x{\@s{76.27} \.{\ELSE} \.{\land} {\IF} Acl\_Status [ self ] [ Resource [
+ self ] ] \.{=} NULL}%
+ \@x{\@s{130.85} \.{\THEN} \.{\land} Acl\_Status \.{'} \.{=} [ Acl\_Status
+ {\EXCEPT} {\bang} [ self ] [ Resource [ self ] ] \.{=} REQUESTED ]}%
+\@x{\@s{162.16} \.{\land} {\UNCHANGED} Consent}%
+ \@x{\@s{130.85} \.{\ELSE} \.{\land} {\IF} Acl\_Status [ self ] [ Resource [
+ self ] ] \.{=} REQUESTED}%
+\@x{\@s{185.42} \.{\THEN} \.{\land} \E\, b \.{\in} Boolean \.{:}}%
+\@x{\@s{236.04} {\IF} b \.{=} {\TRUE}}%
+ \@x{\@s{248.20} \.{\THEN} \.{\land} Acl\_Status \.{'} \.{=} [ Acl\_Status
+ {\EXCEPT} {\bang} [ self ] [ Resource [ self ] ] \.{=} ALLOWED ]}%
+ \@x{\@s{279.51} \.{\land} Consent \.{'} \.{=} [ Consent {\EXCEPT} {\bang} [
+ self ] [ Resource [ self ] ] \.{=} {\TRUE} ]}%
+ \@x{\@s{248.20} \.{\ELSE} \.{\land} Acl\_Status \.{'} \.{=} [ Acl\_Status
+ {\EXCEPT} {\bang} [ self ] [ Resource [ self ] ] \.{=} REJECTED ]}%
+ \@x{\@s{279.51} \.{\land} Consent \.{'} \.{=} [ Consent {\EXCEPT} {\bang} [
+ self ] [ Resource [ self ] ] \.{=} {\FALSE} ]}%
+ \@x{\@s{185.42} \.{\ELSE} \.{\land} {\IF} Acl\_Status [ self ] [ Resource [
+ self ] ] \.{=} ALLOWED}%
+ \@x{\@s{240.00} \.{\THEN} \.{\land} \.{\lor} \.{\land} Acl\_Status \.{'}
+ \.{=} [ Acl\_Status {\EXCEPT} {\bang} [ self ] [ Resource [ self ] ] \.{=}
+ NULL ]}%
+ \@x{\@s{293.53} \.{\land} Consent \.{'} \.{=} [ Consent {\EXCEPT} {\bang} [
+ self ] [ Resource [ self ] ] \.{=} {\FALSE} ]}%
+ \@x{\@s{282.42} \.{\lor} \.{\land} Acl\_Status \.{'} \.{=} [ Acl\_Status
+ {\EXCEPT} {\bang} [ self ] [ Resource [ self ] ] \.{=} IN\_USE ]}%
+\@x{\@s{293.53} \.{\land} {\UNCHANGED} Consent}%
+\@x{\@s{240.00} \.{\ELSE} \.{\land} {\TRUE}}%
+\@x{\@s{271.31} \.{\land} {\UNCHANGED} {\langle} Acl\_Status ,\,}%
+\@x{\@s{344.90} Consent {\rangle}}%
+ \@x{\@s{107.58} \.{\land} {\UNCHANGED} {\langle} Acl\_PermissionType ,\,
+ Acl\_PermissionLevel {\rangle}}%
+ \@x{\@s{53.00} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{s5} ]}%
+ \@x{\@s{53.00} \.{\land} {\UNCHANGED} {\langle} Grid ,\, stack ,\, p2 ,\,
+ ResourceList\_ ,\, app1 ,\, app2 ,\,}%
+\@x{\@s{126.59} ResourceList ,\, Resource {\rangle}}%
 \@pvspace{8.0pt}%
-\@x{ c ( self )\@s{3.90} \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{c}}%
- \@x{\@s{52.16} \.{\land} {\IF} Acl [ self ] [ Resource [ self ] ] \.{=}
- ALLOWED}%
- \@x{\@s{75.43} \.{\THEN} \.{\land} Acl \.{'} \.{=} [ Acl {\EXCEPT} {\bang} [
- self ] [ Resource [ self ] ] \.{=} NULL ]}%
-\@x{\@s{75.43} \.{\ELSE} \.{\land} {\TRUE}}%
-\@x{\@s{106.74} \.{\land} Acl \.{'} \.{=} Acl}%
- \@x{\@s{52.16} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=}\@w{N} ]}%
-\@x{\@s{52.16} \.{\land} {\UNCHANGED} {\langle} Acl2 ,\, Resource {\rangle}}%
-\@pvspace{8.0pt}%
-\@x{ d ( self )\@s{2.92} \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{d}}%
- \@x{\@s{52.16} \.{\land} {\IF} Acl [ self ] [ Resource [ self ] ] \.{=}
- ALLOWED}%
- \@x{\@s{75.43} \.{\THEN} \.{\land} Acl \.{'} \.{=} [ Acl {\EXCEPT} {\bang} [
- self ] [ Resource [ self ] ] \.{=} IN\_USE ]}%
-\@x{\@s{75.43} \.{\ELSE} \.{\land} {\TRUE}}%
-\@x{\@s{106.74} \.{\land} Acl \.{'} \.{=} Acl}%
- \@x{\@s{52.16} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
- \.{=}\@w{N} ]}%
-\@x{\@s{52.16} \.{\land} {\UNCHANGED} {\langle} Acl2 ,\, Resource {\rangle}}%
-\@pvspace{8.0pt}%
-\@x{ N ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{N}}%
- \@x{\@s{52.16} \.{\land} Resource \.{'} \.{=} [ Resource {\EXCEPT} {\bang} [
- self ] \.{=} Resource [ self ] \.{+} 1 ]}%
-\@x{\@s{52.16} \.{\land} {\IF} Resource \.{'} [ self ] \.{\in} Resources}%
- \@x{\@s{75.43} \.{\THEN} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
+\@x{ s5 ( self ) \.{\defeq} \.{\land} pc [ self ] \.{=}\@w{s5}}%
+\@x{\@s{53.00} \.{\land} \E\, rand \.{\in} Boolean \.{:}}%
+\@x{\@s{72.31} {\IF} rand \.{=} {\TRUE}}%
+ \@x{\@s{84.47} \.{\THEN} \.{\land} \E\, a \.{\in} ( Processes
+ \.{\,\backslash\,} \{ self \} ) \.{:}}%
+ \@x{\@s{135.09} \.{\land} Grid \.{'} \.{=} [ Grid {\EXCEPT} {\bang} [ self ]
+ [ a ] \.{=} {\TRUE} ]}%
+ \@x{\@s{135.09} \.{\land} \.{\land} app1 \.{'} \.{=} [ app1 {\EXCEPT} {\bang}
+ [ self ]\@s{0.72} \.{=} self ]}%
+ \@x{\@s{146.20} \.{\land} app2 \.{'} \.{=} [ app2 {\EXCEPT} {\bang} [ self
+ ]\@s{0.72} \.{=} a ]}%
+ \@x{\@s{146.20} \.{\land} stack \.{'} \.{=} [ stack {\EXCEPT} {\bang} [ self
+ ] \.{=} {\langle} [ procedure \.{\mapsto}\@s{4.1}\@w{Delegate} ,\,}%
+\@x{\@s{310.40} pc\@s{31.36} \.{\mapsto}\@s{4.10}\@w{s1} ,\,}%
+\@x{\@s{310.40} ResourceList \.{\mapsto}\@s{4.1} ResourceList [ self ] ,\,}%
+\@x{\@s{310.40} app1\@s{20.5} \.{\mapsto}\@s{4.1} app1 [ self ] ,\,}%
+\@x{\@s{310.40} app2\@s{20.5} \.{\mapsto}\@s{4.10} app2 [ self ] ] {\rangle}}%
+\@x{\@s{307.84} \.{\circ} stack [ self ] ]}%
+ \@x{\@s{135.09} \.{\land} ResourceList \.{'} \.{=} [ ResourceList {\EXCEPT}
+ {\bang} [ self ] \.{=} Resources ]}%
+ \@x{\@s{135.09} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [ self ]
+ \.{=}\@w{DELEGATE} ]}%
+ \@x{\@s{84.47} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
  self ] \.{=}\@w{s1} ]}%
- \@x{\@s{75.43} \.{\ELSE} \.{\land} pc \.{'} \.{=} [ pc {\EXCEPT} {\bang} [
- self ] \.{=}\@w{s0} ]}%
-\@x{\@s{52.16} \.{\land} {\UNCHANGED} {\langle} Acl ,\, Acl2 {\rangle}}%
+ \@x{\@s{115.78} \.{\land} {\UNCHANGED} {\langle} Grid ,\, stack ,\, app1 ,\,
+ app2 ,\, ResourceList {\rangle}}%
+ \@x{\@s{53.00} \.{\land} {\UNCHANGED} {\langle} Acl\_Status ,\,
+ Acl\_PermissionType ,\,}%
+ \@x{\@s{126.59} Acl\_PermissionLevel ,\, Consent ,\, p2 ,\, ResourceList\_
+ ,\,}%
+\@x{\@s{126.59} Resource {\rangle}}%
 \@pvspace{8.0pt}%
  \@x{ AcmNext ( self ) \.{\defeq} s0 ( self ) \.{\lor} s1 ( self ) \.{\lor} s2
- ( self ) \.{\lor} a ( self ) \.{\lor} b ( self )}%
-\@x{\@s{97.53} \.{\lor} c ( self ) \.{\lor} d ( self ) \.{\lor} N ( self )}%
+ ( self ) \.{\lor} s3 ( self ) \.{\lor} s4 ( self )}%
+\@x{\@s{97.53} \.{\lor} s5 ( self )}%
 \@pvspace{8.0pt}%
-\@x{ Next \.{\defeq} ( \E\, self \.{\in} Processes \.{:} AcmNext ( self ) )}%
+\@x{}%
+\@y{\@s{0}%
+ Allow infinite stuttering to prevent deadlock on termination.
+}%
+\@xx{}%
+ \@x{ Terminating \.{\defeq} \.{\land} \A\, self \.{\in} ProcSet \.{:} pc [
+ self ] \.{=}\@w{Done}}%
+\@x{\@s{73.56} \.{\land} {\UNCHANGED} vars}%
+\@pvspace{8.0pt}%
+ \@x{ Next \.{\defeq} ( \E\, self \.{\in} ProcSet \.{:} Update ( self )
+ \.{\lor} Delegate ( self ) )}%
+ \@x{\@s{47.82} \.{\lor} ( \E\, self \.{\in} Processes \.{:} AcmNext ( self )
+ )}%
+\@x{\@s{47.82} \.{\lor} Terminating}%
 \@pvspace{8.0pt}%
  \@x{ Spec\@s{1.46} \.{\defeq} \.{\land} Init \.{\land} {\Box} [ Next ]_{
  vars}}%
  \@x{\@s{39.83} \.{\land} \A\, self \.{\in} Processes \.{:} {\WF}_{ vars} (
- AcmNext ( self ) )}%
+ AcmNext ( self ) ) \.{\land} {\WF}_{ vars} ( Update ( self ) ) \.{\land}
+ {\WF}_{ vars} ( Delegate ( self ) )}%
+\@pvspace{8.0pt}%
+ \@x{ Termination \.{\defeq} {\Diamond} ( \A\, self \.{\in} ProcSet \.{:} pc [
+ self ] \.{=}\@w{Done} )}%
 \@pvspace{8.0pt}%
 \@x{}%
 \@y{\@s{0}%
@@ -1166,22 +1461,30 @@
 }%
 \@xx{}%
 \@pvspace{8.0pt}%
- \@x{ AcmTypeOK \.{\defeq} \.{\land} Acl \.{\in} [ Processes \.{\rightarrow} [
- Resources \.{\rightarrow} ResourceStatus ] ]}%
- \@x{\@s{75.84} \.{\land} Acl2 \.{\in} [ Processes \.{\rightarrow} [ Resources
- \.{\rightarrow} ResourceStatus ] ]}%
-\@pvspace{8.0pt}%
- \@x{ AcmConsistent \.{\defeq} {\lnot} ( \E\, p \.{\in} Processes\@s{1.78}
- \.{:}}%
-\@x{\@s{96.30} \E\, r\@s{0.23} \.{\in} Resources \.{:}}%
- \@x{\@s{109.05} Acl [ p ] [ r ] \.{=} IN\_USE \.{\land} Acl2 [ p ] [ r ]
- \.{\neq} ALLOWED \.{\land} Acl2 [ p ] [ r ] \.{\neq} IN\_USE )}%
+ \@x{ AcmTypeOK \.{\defeq} \.{\land} Acl\_Status \.{\in} [ Processes
+ \.{\rightarrow} [ Resources \.{\rightarrow} ResourceStatus \.{\cup} \{ NULL
+ \} ] ]}%
+ \@x{\@s{75.84} \.{\land} Acl\_PermissionType \.{\in} [ Processes
+ \.{\rightarrow} [ Resources \.{\rightarrow} PermissionTypes \.{\cup} \{ NULL
+ \} ] ]}%
+ \@x{\@s{75.84} \.{\land} Acl\_PermissionLevel \.{\in} [ Processes
+ \.{\rightarrow} [ Resources \.{\rightarrow} PermissionLevels \.{\cup} \{
+ NULL \} ] ]}%
+ \@x{\@s{75.84} \.{\land} Consent \.{\in} [ Processes \.{\rightarrow} [
+ Resources \.{\rightarrow} Boolean ] ]}%
+ \@x{\@s{75.84} \.{\land} Grid \.{\in} [ Processes \.{\rightarrow} [ Processes
+ \.{\rightarrow} Boolean ] ]}%
+\@pvspace{16.0pt}%
+\@x{ AcmRedelegation \.{\defeq} {\lnot} ( \E\, p \.{\in} Processes \.{:}}%
+\@x{\@s{93.41} \E\, r \.{\in} Resources \.{:}}%
+\@x{\@s{100.63} \.{\land} Acl\_Status [ p ] [ r ] \.{=} IN\_USE}%
+\@x{\@s{100.63} \.{\land} Consent [ p ] [ r ] \.{\neq} {\TRUE} )}%
 \@pvspace{8.0pt}%
  \@x{ AcmLiveness \.{\defeq} {\Diamond} ( \E\, p \.{\in} Processes\@s{1.78}
  \.{:}}%
 \@x{\@s{88.36} \E\, r\@s{0.23} \.{\in} Resources \.{:}}%
- \@x{\@s{101.11} Acl [ p ] [ r ] \.{=} REQUESTED \.{\leadsto} Acl [ p ] [ r ]
- \.{=} ALLOWED \.{\lor} Acl [ p ] [ r ] \.{=} REJECTED )}%
+ \@x{\@s{95.58} Acl\_Status [ p ] [ r ] \.{=} ALLOWED \.{\lor} Acl\_Status [ p
+ ] [ r ] \.{=} REJECTED )}%
 \@pvspace{8.0pt}%
 \@x{}\bottombar\@xx{}%
 \setboolean{shading}{false}
@@ -1190,13 +1493,13 @@
 \ensuremath{\.{\,\backslash\,}}* Modification History
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
- \ensuremath{\.{\,\backslash\,}}* Last modified \ensuremath{Fri} May 26
- 14:23:17 \ensuremath{GMT\.{+}03}:30 2023 by \ensuremath{Amirhosein
+ \ensuremath{\.{\,\backslash\,}}* Last modified Sat \ensuremath{Jun} 10
+ 23:11:47 \ensuremath{GMT}+03:30 2023 by \ensuremath{Amirhosein
 }%
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
  \ensuremath{\.{\,\backslash\,}}* Created \ensuremath{Thu} \ensuremath{Mar} 23
- 07:45:26 \ensuremath{GMT\.{+}03}:30 2023 by \ensuremath{Amirhosein
+ 07:45:26 \ensuremath{GMT}+03:30 2023 by \ensuremath{Amirhosein
 }%
 \end{cpar}%
 \end{lcom}%
