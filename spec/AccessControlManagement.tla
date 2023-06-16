@@ -33,19 +33,22 @@ ProcessStates == { NOT_INSTALLED, STOPPED, RUNNING, PAUSED }
 
 (***--algorithm AccessControlManagement
 {
-    variables Acl_Status = [a \in Processes |-> [r \in Resources |-> NULL]];
-              Acl_PermissionType = [a \in Processes |-> [r \in Resources |-> NULL]];
-              Acl_PermissionLevel = [a \in Processes |-> [r \in Resources |-> NULL]];
-              Consent = [a \in Processes |-> [r \in Resources |-> FALSE]];
-              Grid = [a \in Processes |-> [a2 \in Processes |-> FALSE]];
-              Clock = [a \in Processes |-> 0];
-              ProcessState = [a \in Processes |-> NOT_INSTALLED];
-              PauseHistory = [a \in Processes |-> FALSE];
+    variables
+     Acl_Status = [a \in Processes |-> [r \in Resources |-> NULL]];
+     Acl_PermissionType = [a \in Processes |-> [r \in Resources |-> NULL]];
+     Acl_PermissionLevel = [a \in Processes |-> [r \in Resources |-> NULL]];
+     Consent = [a \in Processes |-> [r \in Resources |-> FALSE]];
+     Grid = [a \in Processes |-> [a2 \in Processes |-> FALSE]];
+     Clock = [a \in Processes |-> 0];
+     ProcessState = [a \in Processes |-> NOT_INSTALLED];
+     PauseHistory = [a \in Processes |-> FALSE];
 
     macro Define(p, r)
     {
-     with(t \in PermissionTypes) { Acl_PermissionType[p][r] := t; };
-     Acl_PermissionLevel[p][r] := NORMAL;
+     with(t \in PermissionTypes)
+     { Acl_PermissionType[p][r] := t; };
+     with(t \in PermissionLevels)
+     { Acl_PermissionLevel[p][r] := t; };
     }
 
     macro Request(p, r) { Acl_Status[p][r] := REQUESTED; }
@@ -91,10 +94,13 @@ ProcessStates == { NOT_INSTALLED, STOPPED, RUNNING, PAUSED }
      {
       with(r \in ResourceList)
       {
-       if(Acl_PermissionLevel[p2][r] = NORMAL)
+       if(Acl_PermissionLevel[p2][r] # NULL)
        {
-        Acl_PermissionLevel[p2][r] := DANGEROUS;
-        Consent[p2][r] := FALSE;
+        with(l \in PermissionLevels)
+        {
+         Acl_PermissionLevel[p2][r] := l;
+         Consent[p2][r] := FALSE;
+        }
        };
         
        ResourceList := ResourceList \ {r};
@@ -111,7 +117,8 @@ ProcessStates == { NOT_INSTALLED, STOPPED, RUNNING, PAUSED }
      {
       with(r \in ResourceList)
       {
-       if(Acl_PermissionType[app2][r] # NULL /\ Acl_PermissionType[app1][r] = NULL)
+       if(/\ Acl_PermissionType[app2][r] # NULL
+          /\ Acl_PermissionType[app1][r] = NULL)
         Acl_PermissionType[app1][r] := Acl_PermissionType[app2][r];
        
        if(Acl_Status[app2][r] # NULL /\ Acl_Status[app1][r] = NULL)
@@ -160,7 +167,9 @@ ProcessStates == { NOT_INSTALLED, STOPPED, RUNNING, PAUSED }
          {
           either
           {
-           if(\E r \in Resources : Acl_PermissionType[self][r] = OTP /\ (Acl_Status[self][r] = ALLOWED \/ Acl_Status[self][r] = IN_USE))
+           if(\E r \in Resources : /\ Acl_PermissionType[self][r] = OTP
+                                   /\ (\/ Acl_Status[self][r] = ALLOWED
+                                       \/ Acl_Status[self][r] = IN_USE))
            {
             call ClearOtp(self);
            };
@@ -184,13 +193,22 @@ ProcessStates == { NOT_INSTALLED, STOPPED, RUNNING, PAUSED }
          
          s3: with (R \in Resources) { Resource := R; };
          
-         \*s4: with (B \in Boolean) { if(B = TRUE) call Update(self); };
+         s4: with (B \in Boolean) { if(B = TRUE) call Update(self); };
          
-         s5: if(Acl_PermissionType[self][Resource] = NULL) { Define(self, Resource) }
+         s5: if(Acl_PermissionType[self][Resource] = NULL)
+              {
+               Define(self, Resource)
+              }
          
-             else if(Acl_Status[self][Resource] = NULL) { Request(self, Resource); }
+             else if(Acl_Status[self][Resource] = NULL)
+             {
+              Request(self, Resource);
+             }
          
-             else if(Acl_Status[self][Resource] = REQUESTED) { Decide(self, Resource); }
+             else if(Acl_Status[self][Resource] = REQUESTED)
+             {
+              Decide(self, Resource);
+             }
              
              else if(Acl_Status[self][Resource] = ALLOWED)
              {
@@ -200,14 +218,14 @@ ProcessStates == { NOT_INSTALLED, STOPPED, RUNNING, PAUSED }
 
          s6: with (rand \in Boolean)
          {
-          if(rand = TRUE)
+         if(rand = TRUE)
+         {
+          with (a \in (Processes \ {self}))
           {
-           with (a \in (Processes \ {self}))
-           {
-            Connect(self, a);
-            call Delegate(self, a);
-           }
+           Connect(self, a);
+           call Delegate(self, a);
           }
+         }
          };
          
          s7: with (rand \in Boolean)
@@ -226,9 +244,9 @@ ProcessStates == { NOT_INSTALLED, STOPPED, RUNNING, PAUSED }
 }
 
 ***)
-\* BEGIN TRANSLATION (chksum(pcal) = "30a3331b" /\ chksum(tla) = "2ff69879")
-\* Procedure variable ResourceList of procedure Update at line 87 col 14 changed to ResourceList_
-\* Procedure variable ResourceList of procedure Delegate at line 107 col 14 changed to ResourceList_D
+\* BEGIN TRANSLATION (chksum(pcal) = "c5aa8986" /\ chksum(tla) = "9c05861f")
+\* Procedure variable ResourceList of procedure Update at line 90 col 14 changed to ResourceList_
+\* Procedure variable ResourceList of procedure Delegate at line 113 col 14 changed to ResourceList_D
 CONSTANT defaultInitValue
 VARIABLES Acl_Status, Acl_PermissionType, Acl_PermissionLevel, Consent, Grid, 
           Clock, ProcessState, PauseHistory, pc, stack, p2, ResourceList_, 
@@ -267,9 +285,10 @@ Init == (* Global variables *)
 UPDATE(self) == /\ pc[self] = "UPDATE"
                 /\ IF ResourceList_[self] # {}
                       THEN /\ \E r \in ResourceList_[self]:
-                                /\ IF Acl_PermissionLevel[p2[self]][r] = NORMAL
-                                      THEN /\ Acl_PermissionLevel' = [Acl_PermissionLevel EXCEPT ![p2[self]][r] = DANGEROUS]
-                                           /\ Consent' = [Consent EXCEPT ![p2[self]][r] = FALSE]
+                                /\ IF Acl_PermissionLevel[p2[self]][r] # NULL
+                                      THEN /\ \E l \in PermissionLevels:
+                                                /\ Acl_PermissionLevel' = [Acl_PermissionLevel EXCEPT ![p2[self]][r] = l]
+                                                /\ Consent' = [Consent EXCEPT ![p2[self]][r] = FALSE]
                                       ELSE /\ TRUE
                                            /\ UNCHANGED << Acl_PermissionLevel, 
                                                            Consent >>
@@ -290,7 +309,8 @@ Update(self) == UPDATE(self)
 DELEGATE(self) == /\ pc[self] = "DELEGATE"
                   /\ IF ResourceList_D[self] # {}
                         THEN /\ \E r \in ResourceList_D[self]:
-                                  /\ IF Acl_PermissionType[app2[self]][r] # NULL /\ Acl_PermissionType[app1[self]][r] = NULL
+                                  /\ IF /\ Acl_PermissionType[app2[self]][r] # NULL
+                                        /\ Acl_PermissionType[app1[self]][r] = NULL
                                         THEN /\ Acl_PermissionType' = [Acl_PermissionType EXCEPT ![app1[self]][r] = Acl_PermissionType[app2[self]][r]]
                                         ELSE /\ TRUE
                                              /\ UNCHANGED Acl_PermissionType
@@ -380,7 +400,9 @@ s2(self) == /\ pc[self] = "s2"
 
 s51(self) == /\ pc[self] = "s51"
              /\ IF ProcessState[self] = PAUSED
-                   THEN /\ \/ /\ IF \E r \in Resources : Acl_PermissionType[self][r] = OTP /\ (Acl_Status[self][r] = ALLOWED \/ Acl_Status[self][r] = IN_USE)
+                   THEN /\ \/ /\ IF \E r \in Resources : /\ Acl_PermissionType[self][r] = OTP
+                                                         /\ (\/ Acl_Status[self][r] = ALLOWED
+                                                             \/ Acl_Status[self][r] = IN_USE)
                                     THEN /\ /\ app' = [app EXCEPT ![self] = self]
                                             /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "ClearOtp",
                                                                                      pc        |->  "STOPPING_APP",
@@ -433,18 +455,37 @@ s50(self) == /\ pc[self] = "s50"
 s3(self) == /\ pc[self] = "s3"
             /\ \E R \in Resources:
                  Resource' = [Resource EXCEPT ![self] = R]
-            /\ pc' = [pc EXCEPT ![self] = "s5"]
+            /\ pc' = [pc EXCEPT ![self] = "s4"]
             /\ UNCHANGED << Acl_Status, Acl_PermissionType, 
                             Acl_PermissionLevel, Consent, Grid, Clock, 
                             ProcessState, PauseHistory, stack, p2, 
                             ResourceList_, app1, app2, ResourceList_D, app, 
                             ResourceList >>
 
+s4(self) == /\ pc[self] = "s4"
+            /\ \E B \in Boolean:
+                 IF B = TRUE
+                    THEN /\ /\ p2' = [p2 EXCEPT ![self] = self]
+                            /\ stack' = [stack EXCEPT ![self] = << [ procedure |->  "Update",
+                                                                     pc        |->  "s5",
+                                                                     ResourceList_ |->  ResourceList_[self],
+                                                                     p2        |->  p2[self] ] >>
+                                                                 \o stack[self]]
+                         /\ ResourceList_' = [ResourceList_ EXCEPT ![self] = Resources]
+                         /\ pc' = [pc EXCEPT ![self] = "UPDATE"]
+                    ELSE /\ pc' = [pc EXCEPT ![self] = "s5"]
+                         /\ UNCHANGED << stack, p2, ResourceList_ >>
+            /\ UNCHANGED << Acl_Status, Acl_PermissionType, 
+                            Acl_PermissionLevel, Consent, Grid, Clock, 
+                            ProcessState, PauseHistory, app1, app2, 
+                            ResourceList_D, app, ResourceList, Resource >>
+
 s5(self) == /\ pc[self] = "s5"
             /\ IF Acl_PermissionType[self][Resource[self]] = NULL
                   THEN /\ \E t \in PermissionTypes:
                             Acl_PermissionType' = [Acl_PermissionType EXCEPT ![self][Resource[self]] = t]
-                       /\ Acl_PermissionLevel' = [Acl_PermissionLevel EXCEPT ![self][Resource[self]] = NORMAL]
+                       /\ \E t \in PermissionLevels:
+                            Acl_PermissionLevel' = [Acl_PermissionLevel EXCEPT ![self][Resource[self]] = t]
                        /\ UNCHANGED << Acl_Status, Consent >>
                   ELSE /\ IF Acl_Status[self][Resource[self]] = NULL
                              THEN /\ Acl_Status' = [Acl_Status EXCEPT ![self][Resource[self]] = REQUESTED]
@@ -511,7 +552,7 @@ s7(self) == /\ pc[self] = "s7"
 
 AcmNext(self) == s0(self) \/ s10(self) \/ s1(self) \/ s2(self) \/ s51(self)
                     \/ STOPPING_APP(self) \/ s50(self) \/ s3(self)
-                    \/ s5(self) \/ s6(self) \/ s7(self)
+                    \/ s4(self) \/ s5(self) \/ s6(self) \/ s7(self)
 
 (* Allow infinite stuttering to prevent deadlock on termination. *)
 Terminating == /\ \A self \in ProcSet: pc[self] = "Done"
@@ -525,6 +566,7 @@ Next == (\E self \in ProcSet:  \/ Update(self) \/ Delegate(self)
 Spec == /\ Init /\ [][Next]_vars
         /\ \A self \in Processes : /\ WF_vars(AcmNext(self))
                                    /\ WF_vars(ClearOtp(self))
+                                   /\ WF_vars(Update(self))
                                    /\ WF_vars(Delegate(self))
 
 Termination == <>(\A self \in ProcSet: pc[self] = "Done")
@@ -541,29 +583,22 @@ AcmTypeOK == /\ Acl_Status \in [Processes -> [Resources -> ResourceStatus \cup {
              /\ PauseHistory \in [Processes -> Boolean]
 
 
-AcmRedelegation == ~(\E p \in Processes:
-                     \E r \in Resources:
-                        /\ Acl_Status[p][r] = IN_USE
-                        /\ Consent[p][r] # TRUE)
+AcmConsent == ~(\E p \in Processes:
+                \E r \in Resources:
+                   /\ Acl_Status[p][r] = IN_USE
+                   /\ Consent[p][r] # TRUE)
 
 AcmLiveness == <> (\E p \in Processes:
                    \E r \in Resources:
-                      Acl_Status[p][r] = ALLOWED \/ Acl_Status[p][r] = REJECTED \/ ProcessState[p] = STOPPED)
+                      \/ Acl_Status[p][r] = ALLOWED
+                      \/ Acl_Status[p][r] = REJECTED
+                      \/ ProcessState[p] = STOPPED)
 
 AcmOtpConsistent == (\A p \in Processes:
-                         Clock[p] < 2
-                         \/ PauseHistory[p] = FALSE)
-                      \*  \E r \in Resources:
-                        \*   Acl_Status[p][r] = IN_USE
-                           \*Acl_PermissionType[p][r] = OTP)
-                          \*  ~> Acl_Status[p][r] = NULL)
-                          
-ABC == <> (\E p \in Processes:
-              \E r \in Resources:
-                  (/\ Acl_PermissionType[p][r] = OTP
-                  /\ Acl_Status[p][r] = IN_USE) ~> Acl_Status[p][r] = NULL)
+                      \/ Clock[p] < 2
+                      \/ PauseHistory[p] = FALSE)
 
 =============================================================================
 \* Modification History
-\* Last modified Tue Jun 13 06:54:14 GMT+03:30 2023 by Amirhosein
+\* Last modified Fri Jun 16 19:29:41 GMT+03:30 2023 by Amirhosein
 \* Created Thu Mar 23 07:45:26 GMT+03:30 2023 by Amirhosein

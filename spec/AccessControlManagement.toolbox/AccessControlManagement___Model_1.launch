@@ -12,7 +12,7 @@
     <stringAttribute key="distributedTLC" value="off"/>
     <stringAttribute key="distributedTLCVMArgs" value=""/>
     <intAttribute key="fpBits" value="1"/>
-    <intAttribute key="fpIndex" value="77"/>
+    <intAttribute key="fpIndex" value="81"/>
     <booleanAttribute key="fpIndexRandom" value="true"/>
     <intAttribute key="maxHeapSize" value="38"/>
     <intAttribute key="maxSetSize" value="1000000"/>
@@ -26,7 +26,7 @@
     <booleanAttribute key="modelCorrectnessCheckDeadlock" value="false"/>
     <listAttribute key="modelCorrectnessInvariants">
         <listEntry value="0AcmTypeOK"/>
-        <listEntry value="1AcmRedelegation"/>
+        <listEntry value="0AcmConsent"/>
         <listEntry value="0AcmOtpConsistent"/>
     </listAttribute>
     <listAttribute key="modelCorrectnessProperties">
@@ -36,8 +36,8 @@
     <stringAttribute key="modelExpressionEval" value=""/>
     <stringAttribute key="modelParameterActionConstraint" value=""/>
     <listAttribute key="modelParameterConstants">
-        <listEntry value="ProcessCount;;2;0;0"/>
-        <listEntry value="ResourceCount;;2;0;0"/>
+        <listEntry value="ProcessCount;;1;0;0"/>
+        <listEntry value="ResourceCount;;1;0;0"/>
         <listEntry value="defaultInitValue;;0;0;0"/>
     </listAttribute>
     <stringAttribute key="modelParameterContraint" value=""/>
